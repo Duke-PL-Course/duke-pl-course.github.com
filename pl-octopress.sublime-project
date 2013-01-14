@@ -1,0 +1,10 @@
+{
+	"folders":
+	[
+		{
+			"path": "/",
+      "folder_exclude_patterns": [".bundle", ".themes", ".sass-cache", ".gist-cache", ".pygments-cache", "_deploy", "public", "sass.old", "source.old", "source/_stash", "vendor", "node_modules"],
+      "file_exclude_patterns": ["*.sublime-workspace", "*.css"]
+		}
+	]
+}

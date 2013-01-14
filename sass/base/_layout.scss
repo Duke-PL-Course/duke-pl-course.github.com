@@ -275,6 +275,17 @@ header#sidebar h2#subtitle {
   aside#octopress_linkback {
     display: none;
   }
+
+  input.search {
+    margin-left: 10px !important;
+  }
+
+  aside#logo div {
+    margin: 10px auto !important;
+    a {
+      margin: 6px auto !important;
+    }
+  }
 }
 
 // Articles

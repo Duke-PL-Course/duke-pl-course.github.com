@@ -2,6 +2,7 @@
 layout: page
 title: "about"
 date: 2013-01-14 01:13
+footer: false
 ---
 
 # Duke House Course 59.18 - Programming Languages

@@ -1,0 +1,13 @@
+---
+layout: post
+title: "Welcome!"
+date: 2013-01-14 00:55
+comments: true
+
+---
+
+Welcome to Programming Languages House Course!
+
+We are very excited to have you in our class and look forward to meeting all of you.
+
+Meanwhile, please take a look at the [about](/about/) and [resources](/resources/) pages for more information on the class.

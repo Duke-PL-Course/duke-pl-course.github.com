@@ -26,32 +26,28 @@ aside#logo {
   display: block;
   width: $logo-width;
   height: $logo-height;
-  border-radius: $logo-radius;
-  -moz-border-radius: $logo-radius;
-  -webkit-border-radius: $logo-radius;
+  @include border-radius($logo-radius);
   margin-left: 30px;
   margin-top: 40px;
-}
 
-aside#logo div {
-  border-radius: $logo-inner-radius;
-  -moz-border-radius: $logo-inner-radius;
-  -webkit-border-radius: $logo-inner-radius;
-  width: $logo-inner-width;
-  height: $logo-inner-height;
-  text-indent: -9999px;
-  margin: 0 auto;
-  margin-top: 10px;
-  clear: both;
-}
+  div {
+    @include border-radius($logo-inner-radius);
+    width: $logo-inner-width;
+    height: $logo-inner-height;
+    text-indent: -9999px;
+    // margin: 0 auto;
+    margin-top: 10px;
+    clear: both;
 
-aside#logo div a {
-  display: block;
-  clear: both;
-  width: 78px;
-  height: 78px;
-  margin: 0 auto;
-  margin-top: 6px;
+    a {
+      display: block;
+      clear: both;
+      width: 78px;
+      height: 78px;
+      // margin: 0 auto;
+      margin-top: 6px;
+    }
+  }
 }
 
 ul#menu {
@@ -60,35 +56,34 @@ ul#menu {
   padding: 0;
   margin-left: 30px;
   width: 75%;
-}
 
-ul#menu li {
-  display: block;
-  clear: both;
-  margin: 0;
-  padding: 0;
-  margin-bottom: 15px;
-}
+  li {
+    display: block;
+    clear: both;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 15px;
+    &.title {
+      margin-bottom: 0;
+    }
 
-ul#menu a {
-  display: inline-block;
-  font-size: 15px;
-  line-height: 14px;
-  z-index: 999;
-  padding: 7px;
-  padding-left: 33px;
-  padding-right: 12px;
-  margin-left: -15px;
-  font-weight: 600;
-  position: relative;
-}
+    &.subtitle {
+      margin-top: 0;
+    }
+  }
 
-ul#menu li.title {
-  margin-bottom: 0;
-}
-
-ul#menu li.subtitle {
-  margin-top: 0;
+  a {
+    display: inline-block;
+    font-size: 15px;
+    line-height: 14px;
+    z-index: 999;
+    padding: 7px;
+    padding-left: 33px;
+    padding-right: 12px;
+    margin-left: -15px;
+    font-weight: 600;
+    position: relative;
+  }
 }
 
 header#sidebar h1#title {
@@ -110,7 +105,7 @@ header#sidebar h1#title {
   padding: 10px;
   height: 30px;
   z-index: 9999;
-  border-radius: 5px;
+  @include border-radius(5px);
 }
 
 #main {
@@ -155,18 +150,16 @@ header#sidebar h2#subtitle {
   aside#logo {
     width: 165px;
     height: 165px;
-  }
-
-  aside#logo div {
-    width: 135px;
-    height: 135px;
-    margin-top: 15px;
-  }
-
-  aside#logo div a {
-    width: 117px;
-    height: 117px;
-    margin-top: 9px;
+    div {
+      width: 135px;
+      height: 135px;
+      margin-top: 15px;
+      a {
+        width: 117px;
+        height: 117px;
+        margin-top: 9px;
+      }
+    }
   }
 
   ul#menu {
@@ -224,19 +217,19 @@ header#sidebar h2#subtitle {
     margin: 0 auto;
     padding: 0;
     text-align: center;
-  }
-
-  ul#menu li.link {
-    display: inline-block;
-    float: none;
-    width: auto;
-    clear: none;
-    margin: 0;
-    margin-bottom: 5px;
-  }
-
-  ul#menu li.rss {
-    display: none;
+    li {
+      &.link {
+        display: inline-block;
+        float: none;
+        width: auto;
+        clear: none;
+        margin: 0;
+        margin-bottom: 5px;
+      }
+      &.rss {
+        display: none;
+      }
+    }
   }
 
   section#main {
@@ -246,19 +239,20 @@ header#sidebar h2#subtitle {
     min-width: 0;
     margin-top: 15px;
     overflow: hidden;
+    article {
+      width: auto;
+      padding-left: 0;
+      padding-top: 30px;
+      padding-bottom: 30px;
+      overflow: hidden;
+    }
   }
 
-  section#main article {
-    width: auto;
-    padding-left: 0;
-    padding-top: 30px;
-    padding-bottom: 30px;
-    overflow: hidden;
-  }
-
-  article p, article h2, article h1, article h3, article h4, article h5, article h6 {
-    padding-right: 10px;
-    padding-left: 15px;
+  article {
+    p, h2, h1, h3, h4, h5, h6 {
+      padding-right: 10px;
+      padding-left: 15px;
+    }
   }
 
   section#main article h2 {
@@ -271,12 +265,11 @@ header#sidebar h2#subtitle {
     padding-top: 30px;
     padding-bottom: 15px;
     overflow: hidden;
-  }
-
-  article.post figure {
-    padding-right: 10px;
-    padding-left: 15px;
-    width: 90%;
+    figure {
+      padding-right: 10px;
+      padding-left: 15px;
+      width: 90%;
+    }
   }
 
   aside#octopress_linkback {
@@ -302,15 +295,14 @@ section.comments {
   overflow-x: hidden;
 }
 
-article.post h2, article.post p {
-  max-width: 500px;
-}
-
-article.post figure {
-  max-width: 500px;
+article.post {
+  h2, p, figure {
+    max-width: 500px;
+  }
 }
 
 // Anchor
+
 h2.entry-title a.anchor {
   font-size: 0.9em;
   margin-left: 5px;
@@ -318,30 +310,50 @@ h2.entry-title a.anchor {
 }
 
 // Navigation
+
 nav#pagination {
   padding: 40px;
   border-top: 1px solid #E2E2E2;
   padding-bottom: 100px;
+  span {
+    &.next a {
+      padding: 10px;
+      padding-left: 20px;
+      padding-right: 20px;
+      @include border-radius(30px);
+      font-weight: 700;
+      text-transform: uppercase;
+      border: 3px solid;
+    }
+    &.prev {
+      a {
+        padding: 10px;
+        padding-left: 20px;
+        padding-right: 20px;
+        @include border-radius(30px);
+        font-weight: 700;
+        text-transform: uppercase;
+        border: 3px solid;
+      }
+      display: block;
+      float: left;
+    }
+    &.next {
+      display: block;
+      float: right;
+    }
+  }
 }
 
-nav#pagination span.next a, nav#pagination span.prev a {
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-  border-radius: 30px;
-  -moz-border-radius: 30px;
-  -webkit-border-radius: 30px;
-  font-weight: 700;
-  text-transform: uppercase;
-  border: 3px solid;
-}
+input.search {
+  // outline: none;
+  margin-left: 30px;
+  @include border-radius(5px);
+  padding: 3px 4px;
+  border: 2px solid #CCC;
+  width: 64%;
 
-nav#pagination span.prev {
-  display: block;
-  float: left;
-}
-
-nav#pagination span.next {
-  display: block;
-  float: right;
+  &:hover {
+    border-color: #DDD;
+  }
 }

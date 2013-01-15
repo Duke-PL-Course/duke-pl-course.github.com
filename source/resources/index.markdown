@@ -30,7 +30,7 @@ footer: false
 Type this in your terminal:
 
 ```bash
-curl https://gist.github.com/raw/4536661/4e06d085f1e0ebee0eb45bfab25cc8e1a2aa0da4/Duke-PL-Course-MacOSX-Install.sh | sh
+curl https://gist.github.com/raw/4536661/78b2d3d861ed60cdd327e70b4234748def9adca3/Duke-PL-Course-MacOSX-Install.sh | sh
 ```
 
 You should be set after the script completes.

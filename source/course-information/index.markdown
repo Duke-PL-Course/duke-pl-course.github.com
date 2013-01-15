@@ -1,6 +1,6 @@
 ---
 layout: page
-title: "course information"
+title: "Course Information"
 date: 2013-01-15 01:58
 footer: false
 ---
@@ -29,7 +29,7 @@ Perkins LINK 2-087 classroom 3
 
 ### Yang Su
 
-<img src="https://sphotos-a.xx.fbcdn.net/hphotos-ash4/378370_4387482124332_1996081585_n.jpg" alt="" style="max-width: 200px; p#adding: 5px; border: 1px solid #F0F0F0;">
+<img src="https://sphotos-a.xx.fbcdn.net/hphotos-snc7/432248_10151119162660988_1733947672_n.jpg" alt="" style="max-width: 200px; p#adding: 5px; border: 1px solid #F0F0F0;">
 
 ECE & CS 2013
 github: [@yangsu](https://github.com/yangsu)

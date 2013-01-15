@@ -34,6 +34,8 @@ curl https://gist.github.com/raw/4536661/0a71bbc39968da36b75fa1f1354a5ad7357cf75
 
 You should be set after the script completes.
 
+If you are interested in what the install script is doing, you can view the source [here](https://gist.github.com/4536661).
+
 <h3 id="windows">Windows</h3>
 
 Since many of the languages can't run natively on Windows, we have created a Virtual Machine for you to use. Follow the instructions in [this post]() to set it up.

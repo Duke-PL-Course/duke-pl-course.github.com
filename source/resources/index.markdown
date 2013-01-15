@@ -55,22 +55,29 @@ If you are you vim user or feel adventurous, ask Kevin Gao for his vim configura
 <h2 id="language-specific-resources">Language Specific Resources</h2>
 
 <h3 id="ruby">Ruby</h3>
+
 [Ruby](http://www.ruby-lang.org/en/)
 
 <h3 id="io">Io</h3>
+
 [Io](http://www.iolanguage.com/)
 
 <h3 id="prolog">Prolog</h3>
+
 [Prolog](http://c2.com/cgi/wiki?PrologLanguage)
 
 <h3 id="scala">Scala</h3>
+
 [Scala](http://www.scala-lang.org/)
 
 <h3 id="erlang">Erlang</h3>
+
 [Erlang](http://www.erlang.org/)
 
 <h3 id="clojure">Clojure</h3>
+
 [Clojure](http://clojure.org/)
 
 <h3 id="haskell">Haskell</h3>
+
 [Haskell](http://www.haskell.org/haskellwiki/Haskell)

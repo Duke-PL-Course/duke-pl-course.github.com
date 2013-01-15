@@ -14,7 +14,7 @@ Sublime Text 2 is an incredibly fast and powerful editor that's been replacing [
 
 ## Package Control
 
-Sublime Text 2 supports Textmate Snippets, Syntax Highlighting, and other packages that made Textmate successful. However, Sublime Text 2 did not include a package manager out of the box. Developer [@wbond](http://wbond.net/) has creaded [a full-featured package manager][package-control] that helps discovering, installing, updating and removing packages for Sublime Text 2.
+Sublime Text 2 supports Textmate Snippets, Syntax Highlighting, and other packages that made Textmate successful. However, Sublime Text 2 did not include a package manager out of the box. Developer [@wbond](http://wbond.net/) has created [a full-featured package manager][package-control] that helps discovering, installing, updating and removing packages for Sublime Text 2.
 
 To install [Package Control][package-control], open up Sublime Text 2, and hit `ctrl+\`` or click on ***View > Show Console*** to open up the Console. Once open, paste in the following command:
 
@@ -38,7 +38,7 @@ Sublime Text natively supports JavaScript, Ruby, Scala, Erlang, Clojure, and Has
 
 ### Prolog
 
-For Prolog, a syntax highlighting package has been created by [@alnkpa](https://github.com/alnkpa/sublimeprolog). It can be installed by using *Install Package* from the *Command Palette*, which will bring up a separate window that lists all the available packages after a few seconds. Type in *Prolog* in the search and you should be able to see the package after a few key strokes. Select the *Prolog* package and press enter to install. Then that's it. Sublime Text will recognize files that with the extensions `pl` or `pro` as Prolog source files. However, `pl` is commonly used as an extension for Perl and Sublime Text will select Perl as in the languge instead of Prolog if you use a `pl` extension. As a result, we prefer to use `pro`.
+For Prolog, a syntax highlighting package has been created by [@alnkpa](https://github.com/alnkpa/sublimeprolog). It can be installed by using *Install Package* from the *Command Palette*, which will bring up a separate window that lists all the available packages after a few seconds. Type in *Prolog* in the search and you should be able to see the package after a few key strokes. Select the *Prolog* package and press enter to install. Then that's it. Sublime Text will recognize files that with the extensions `pl` or `pro` as Prolog source files. However, `pl` is commonly used as an extension for Perl and Sublime Text will select Perl as in the language instead of Prolog if you use a `pl` extension. As a result, we prefer to use `pro`.
 
 ![Prolog Package](/images/prolog-package.png)
 
@@ -46,7 +46,7 @@ As a side note, you can set the syntax of any source file at any time by using *
 
 ### Io
 
-A package for Io has actualy been created by one of the instructors [@yangsu](https://github.com/yangsu/sublime-io). However, it has yet to be approved. As a result, some additional steps need to be taken.
+A package for Io has actually been created by one of the instructors [@yangsu](https://github.com/yangsu/sublime-io). However, it has yet to be approved. As a result, some additional steps need to be taken.
 
 First, bring up *Package Control Settings* by typing *Preferences: Package Control Settings - User* and press enter to open it up.
 
@@ -63,7 +63,7 @@ Now, bring up *Install Package* again and search for `sublime-io` and install it
 
 ![sublime-io](/images/package-control-prefs-io.png)
 
-After the installation completes, Sublime Text will recognize any file with `io` extention as `io` source files. As noted above, you can also set the syntax of any source file to io with *Command Palette* > *Set Syntax: (Language)*.
+After the installation completes, Sublime Text will recognize any file with `io` extension as `io` source files. As noted above, you can also set the syntax of any source file to io with *Command Palette* > *Set Syntax: (Language)*.
 
 ### Additional Resources
 

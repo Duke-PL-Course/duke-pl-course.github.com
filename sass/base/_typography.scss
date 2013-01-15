@@ -89,7 +89,7 @@ q { font-style: italic;
 
 em, dfn { font-style: italic; }
 
-strong, dfn { font-weight: bold; }
+strong, dfn { font-weight: bold; @include text-shadow(0 0 1px #222); }
 
 del, s { text-decoration: line-through; }
 

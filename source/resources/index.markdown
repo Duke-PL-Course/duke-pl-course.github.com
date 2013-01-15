@@ -48,7 +48,7 @@ You can install most of the packages using `apt-get` or its equivalent for your 
 
 <h2 id="sublime-text-2">Sublime Text 2</h2>
 
-We suggest that you use [Sublime Text 2](http://www.sublimetext.com/), a cross platform editor that's extremely flexible. You can download and evaluate it for free indefinitely. Follow the instructions in this post to set up [Package Control](http://wbond.net/sublime_packages/package_control) and other useful packages to make your development environment easier to work with.
+We suggest that you use [Sublime Text 2](http://www.sublimetext.com/), a cross platform editor that's extremely flexible. You can download and evaluate it for free indefinitely. Follow the instructions in [this post](/blog/2013/01/15/setting-up-sublime-text-2/) to set up [Package Control](http://wbond.net/sublime_packages/package_control) and other useful packages to make your development environment easier to work with.
 
 <h2 id="vim">Vim</h2>
 

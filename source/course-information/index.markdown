@@ -56,7 +56,7 @@ Office Hours: TBD
 
 To be successful in this course, students should know at least one programming language, and be familiar with fundamental programming principles, with the material covered in CS 101, as well as [github.com](http://github.com) and [git](http://git-scm.com/)
 
-<h2 id="textbook">Textbook - *Optional*</h2>
+<h2 id="textbook">Textbook</h2>
 
 ![Seven Languages in Seven Weeks: A Pragmatic Guide to Learning Programming Languages - Bruce Tate](http://imagery.pragprog.com/products/195/btlang_xlargecover.jpg?1298589937)
 [Seven Languages in Seven Weeks: A Pragmatic Guide to Learning Programming Languages - Bruce Tate](http://pragprog.com/book/btlang/seven-languages-in-seven-weeks)
@@ -85,7 +85,7 @@ Students must attend at least **eleven** class sessions to pass the course
 
 <h2 id="homework">Homework</h2>
 
-In order to follow the course, students are assigned one chapter of the [textbook](/) roughly every week, which is about 20 - 30 pages.
+In order to follow the course, students are assigned one chapter of the [textbook](#textbook) roughly every week, which is about 20 - 30 pages.
 
 Assignments will be released on under the [assignments page] each week. Students will submit assignments to an auto grader. Instructions for using the auto grader will be added once the course begins. Homework assignments are due at 11:59 PM on the due date, which is usually a Wednesday; check the class website to be sure. Assignments submitted up to 24 hours late are penalized 25%, and submissions up to 48 hours late are penalized 50%. Assignments received later than 48 hours get zero credit, since we need to post solutions in a timely manner.
 

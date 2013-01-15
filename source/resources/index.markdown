@@ -10,6 +10,7 @@ footer: false
     * [Mac OS X](#mac-os-x)
     * [Windows](#windows)
     * [Linux](#linux)
+* [Git](#git)
 * [Editors](#editors)
     * [Sublime Text 2](#sublime-text-2)
     * [Vim](#vim)
@@ -43,6 +44,12 @@ Since many of the languages can't run natively on Windows, we have created a Vir
 <h3 id="linux">Linux</h3>
 
 You can install most of the packages using `apt-get` or its equivalent for your distribution. If you are having trouble, please let the instructors know.
+
+<h2 id="git">Git</h2>
+
+[Pro Git](http://git-scm.com/book/) is a good book to start
+
+Most problems can be found using google or stackoverflow. If you are still having trouble, let the instructors know.
 
 <h2 id="editors">Editors</h2>
 

@@ -7,18 +7,11 @@ footer: false
 
 # Duke House Course 59.18 - Programming Languages
 
-## Table of Contents
-* [Motivation](#motivation)
-* [Course Overview](#course-overview)
-* [Instructors](#instructors)
-* [Schedule (Tentative)](#schedule)
-* [Attendance](#attendance)
-
-<h2 id="motivation">Motivation</h2>
+## Motivation
 
 Duke's Computer Science Curriculum offers a wide selection of courses in various application areas, such as Bio Informatics, Mobile Applications, Databases, Distributed Systems, etc., and specific fields within Computer Science, such as Algorithms, Information Theory, and Artificial Intelligence.  However, despite the breadth of the Curriculum and areas covered, many courses, introductory courses in particular, use Java, C++, and other similar Object Oriented languages exclusively. While this is a great decision to help students build foundations, Object Oriented languages are not the universal solutions to every kind of problem. At the moment, there are no courses on Functional Programming or other types of languages. This house course is student lead an attempt to fill this gap.
 
-<h2 id="course-overview">Course Overview</h2>
+## Course Overview
 
 Each language has its own set of idioms, its strengths, and its weaknesses. By learning several different programming languages, you will be able to see which language is best suited to the kinds of problems that interest you most. In this course, we will learn about each of the following 7 languages:
 
@@ -52,43 +45,3 @@ What a language offers to control of the flow and logic of programs, such as pat
 What differentiates a language from another? High-level constructs such as Clojure’s macros or Io’s message interpretation, Erlang’s BEAM or the JVM that Scala runs on, Prolog's ability to use logic to solve constraints, as well as concurrency models such as Io’s implementation of futures, Scala’s actors, or Erlang’s “Let it crash” philosophy, how Haskell programmers leave mutable state behind, or how Clojure uses versioning to solve some of the most difficult concurrency problems.
 
 When you're through, you will not be an expert in any of these languages, but you will know what each uniquely has to offer.
-
-<h2 id="instructors">Instructors</h2>
-
-### Yang Su
-<img src="https://sphotos-a.xx.fbcdn.net/hphotos-ash4/378370_4387482124332_1996081585_n.jpg" alt="" style="max-width: 200px; p#adding: 5px; border: 1px solid #F0F0F0;">
-
-ECE & CS 2013
-github: [@yangsu](https://github.com/yangsu)
-Email: [yang.su@duke.edu](mailto:yang.su@duke.edu)
-Office Hours: TBD
-
-### Kevin Gao
-<img src="http://i.imgur.com/epik0.png" alt="" style="max-width: 200px; p#adding: 5px; border: 1px solid #F0F0F0;">
-
-ECE & CS 2013
-github: [@sudowork](https://github.com/sudowork)
-Email: [kevin.gao@duke.edu]('mailto:kevin.gao@duke.edu')
-Office Hours: TBD
-
-<h2 id="schedule">Schedule (Tentative)</h2>
-
-**Week 1 (1/15/13)** - Intro + Ruby (Faculty Sponsor Present)  
-**Week 2 (1/22/13)** - Ruby  
-**Week 3 (1/29/13)** - Io  
-**Week 4 (2/5/13)** - Io + Prolog  
-**Week 5 (2/12/13)** - Prolog  
-**Week 6 (2/19/13)** - Scala  
-**Week 7 (2/26/13)** - Scala + Discussion (Faculty Sponsor Present)  
-**Week 8 (3/5/13)** - Challenge  
-**Week 9 (3/12/13)** - *Spring Break*  
-**Week 10 (3/19/13)** - Erlang  
-**Week 11 (3/26/13)** - Erlang + Clojure  
-**Week 12 (4/2/13)** - Clojure  
-**Week 13 (4/9/13)** - Haskell  
-**Week 14 (4/16/13)** - Haskell + Discussion (Faculty Sponsor Present)  
-**Week 15 (4/23/13)** - Challenge  
-
-<h2 id="attendance">Attendance</h2>
-
-Students must attend at least **eleven** class sessions to pass the course

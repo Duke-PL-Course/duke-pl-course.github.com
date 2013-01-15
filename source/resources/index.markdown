@@ -6,7 +6,6 @@ footer: false
 ---
 
 ## Table of Contents
-* [Textbook](#textbook)
 * [Installation](#installation)
     * [Mac OS X](#mac-os-x)
     * [Windows](#windows)
@@ -22,11 +21,6 @@ footer: false
     * [Erlang](#erlang)
     * [Clojure](#clojure)
     * [Haskell](#haskell)
-
-<h2 id="textbook">Textbook - *Optional*</h2>
-
-![Seven Languages in Seven Weeks: A Pragmatic Guide to Learning Programming Languages - Bruce Tate](http://imagery.pragprog.com/products/195/btlang_xlargecover.jpg?1298589937)
-[Seven Languages in Seven Weeks: A Pragmatic Guide to Learning Programming Languages - Bruce Tate](http://pragprog.com/book/btlang/seven-languages-in-seven-weeks)
 
 <h2 id="installation">Installation</h2>
 

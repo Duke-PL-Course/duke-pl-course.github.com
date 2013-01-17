@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Duke PL Course</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/default.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+<!-- <slide class="logoslide nobackground">
+  <article class="flexbox vcenter">
+    <span><img src="images/google_developers_logo.png"></span>
+  </article>
+</slide> -->
+
+<slide class="title-slide segue nobackground">
+  <aside class="gdbar"><img src="images/logo.png"></aside>
+  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+  <hgroup class="auto-fadein">
+    <h1 data-config-title><!-- populated from slide_config.json --></h1>
+    <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+    <p data-config-presenter><!-- populated from slide_config.json --></p>
+  </hgroup>
+</slide>
+
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ruby Overview</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Ruby is ...</p>
+<ul class="build fade">
+  <li>Created by Yukihiro (Matz) Matsumoto</li>
+  <li>Interpreted: No compilation necessary, code is executed by an interpreter</li>
+  <li>Object-oriented: Everything is an object</li>
+  <li>Strongly typed: Types must be compatible or <em>coercible</em></li>
+  <li>Dynamically typed: Type checking is performed at run-time</li>
+  <li>Duck typed: more on this later</li>
+  <li>Commonly used for scripting and web development (Rails)</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Code Example</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="ruby">
+>> properties = ['object oriented', 'duck typed', 'productive', 'fun']
+=> ["object oriented", "duck typed", "productive", "fun"]
+>> properties.each {|property| puts "Ruby is #{property}."}
+Ruby is object oriented.
+Ruby is duck typed.
+Ruby is productive.
+Ruby is fun.
+=> ["object oriented", "duck typed", "productive", "fun"]
+
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Purely Object Oriented</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><em>Everything</em> in Ruby is an object</p>
+<pre class="prettyprint" data-lang="ruby">
+42.class      # => Fixnum
+42.0.class    # => Float
+"foo".class   # => String
+[1,2,3].class # => Array
+
+42.methods    # shows the methods available on the object
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Typing</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>In addition to being object-oriented, Ruby is <strong>strongly</strong> and <strong>dynamically</strong> typed</p>
+<pre class="prettyprint" data-lang="ruby">
+4 + 4       # => 8
+4 + "foo"   # results in a TypeError, hence strongly typed
+4 + 4.0     # => 8.0      this works because of type coercion
+
+# What about this though?
+def add_stuff
+  4 + 4.0
+end # => nil
+
+add_stuff # => TypeError    This proves that Ruby is dynamically typed
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Duck Typing</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>The duck test:</p>
+<blockquote>
+  "If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck."
+</blockquote>
+
+<p><br></p>
+<p>Ruby is duck-typed, meaning that if two objects of different classes have the same method signature, then they can be used together.</p>
+<pre class="prettyprint" data-lang="ruby">
+i = 0
+a = ['100', 100.0, '50', 50.0]
+while i < a.size
+  <b>puts a[i].to_i</b>
+  i = i + 1
+end
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Variables</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="ruby">
+foo = 'hello, plcourse' # here we define a function. Notice there's no type declaration
+foo = 'is mutable'      # variables are mutable, i.e. they can vary
+CONSTANTS = 'are defined like this' # they are immutable
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Ranges</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>inclusive <code>1..3</code></li>
+<li>exclusive <code>1...3</code></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Functions</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="ruby">
+puts(foo)               # this prints "hello, plcourse" and returns nil
+puts foo                # this is exactly the same as above, with a bit of syntactic sugar
+</pre>
+
+<p>We saw a bit of defining a function earlier in add_stuff</p>
+<p>Notice that you didn't need to specify parameter types, return types, or even a return statement</p>
+<p><strong>Every function returns something</strong>. If you do not specify an explicit return, the function will return the value of the last expression that’s processed before exiting.</p>
+<pre class="prettyprint" data-lang="ruby">
+def be_truthful
+  42
+  true    # The last expression is always the one that gets returned
+end
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Operators</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><a href="http://www.techotopia.com/index.php/Ruby_Operator_Precedence#Operator_Precedence_Table">Full table of operators</a></p>
+<h4>Comparison operators (order of precedence):</h4>
+<ul>
+<li><code>( )</code>   Note: not really an operator</li>
+<li><code>&lt;=</code>, <code>&lt;</code>, <code>&gt;</code>, <code>&gt;=</code></li>
+<li><code>&lt;=&gt;</code>, <code>==</code>, <code>===</code>, <code>!=</code>, <code>=~</code>, <code>!~</code></li>
+</ul>
+<h4>Logical Operators</h4>
+<ul>
+<li>Short circuit: <code>&amp;&amp;</code>, <code>and</code> Whole expression: <code>&amp;</code></li>
+<li>Short circuit: <code>||</code>, <code>or</code> Whole expression: <code>|</code></li>
+<li><code>not</code>, <code>!</code></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Tricky precedence nuance</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>Don't use <code>or</code>, <code>and</code>, or <code>not</code> when dealing with assignment, and don't mix <code>&amp;&amp;</code> and <code>||</code> with <code>and</code> and <code>or</code>.</li>
+<li>Why? <code>and</code>, <code>or</code>, and <code>not</code> are lower precedence than assignment.</li>
+<li>So when is it okay to use them?</li>
+</ul>
+<p>Why not use them?</p>
+<pre class="prettyprint" data-lang="ruby">
+>> foo = false or true    # This expression evaluates to true
+=> true
+>> foo                    # But it assigned foo to false
+=> false
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Control Structures</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><h3>Expression modifiers</h3>
+<p><code>if</code>, <code>unless</code>, <code>while</code>, <code>until</code></p>
+<h3>Falsy Values</h3>
+<p>everything but <code>nil</code> and <code>false</code> evaluate to true. <code>0</code> is true!</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Arrays</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Arrays in Ruby can contain mixed types</p>
+<pre class="prettyprint" data-lang="ruby">
+[1, "two", 3] # is perfectly valid
+Array.new     # remember, these are objects, and objects can be instantiated
+              #   with .new()
+
+cars = ['ford', 'toyota', 'subaru']
+cars[0]     # => "ford"
+cars[2]     # => "subaru"
+cars[-1]    # => "subaru"
+cars[-4]    # => nil
+cars[9001]  # => nil
+cars[1..2]  # => ["toyota", "subaru"]
+cars[1..2]  # => ["toyota", "subaru"]
+cars[0...2] # => ["ford", "toyota"]
+cars.[](0...2)# => ["ford", "toyota"]
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>More Arrays</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><code>[]</code> and <code>[]=</code> are just methods of the Array class; their typical usage is just syntactic sugar</p>
+<p>Multidimensional arrays are just arrays of arrays</p>
+<p><code>push</code>, <code>pop</code>, as well as other functions exist natively in the [Array API][Array] that allow arrays to be used as queues, linked lists, stacks, or sets.</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Hashes/Maps</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="ruby">
+
+# Literal Form
+numbers = { 1 => 'one', 2 => 'two' }
+# => {1=>"one", 2=>"two"}
+
+# Accessing element using key
+numbers[1] # => "one"
+
+# Can use symbols as keys
+stuff = { :array => [1, 2, 3], :string => 'Hello' }
+# => {:array=>[1, 2, 3], :string=>"Hello"}
+
+# Accessing element using key
+stuff[:string] # => "Hello"
+</pre>
+
+<p><strong>symbol</strong>s are identifying values/objects. Two symbols of the same name always refer to the same object id</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Named Parameters</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Hashes can be used to implement Named Parameters</p>
+<pre class="prettyprint" data-lang="ruby">
+def tell_the_truth(options={})
+  if options[:profession] == :lawyer
+    'it could be believed that this is almost certainly not false.'
+  else
+    true
+  end
+end
+
+tell_the_truth
+=> true
+tell_the_truth( :profession => :lawyer )
+=> "it could be believed that this is almost certainly not false.
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Code blocks</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><code>{ ... }</code> code between braces is a code block; alternavitely, <code>do ... end</code> (usually for multi-line blocks) syntax can be used</p>
+<p><code>Fixnum.times</code> can be used to loop a certain number of times: <code>3.times { puts 'Hello, World!' }</code></p>
+<p>Use <code>each</code> on a collection (Array or Hash) to iterate over the elements in the collection: <code>animals.each { |a| puts a }</code> and <code>numbers.each { |k,v| puts "#{k} maps to #{v}" }</code></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Yielding</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Augmenting a class definition and using <strong>yield</strong> to call a block</p>
+<pre class="prettyprint" data-lang="ruby">
+class Fixnum
+  def my_times
+    i = self
+    while i > 0
+      i -= 1
+      yield
+    end
+  end
+end
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Call</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Alternatively, call a block using <code>call</code>. When we do this, the block is actually an instance of <code>Proc</code> (short for procedure). The main difference is that a Proc can be stored.</p>
+<p>Useful for policy enforcement, conditional execution, transactions, etc.</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Code for Call</h2>
+      <h3></h3>
+    </hgroup>
+    <article class="small"><pre class="prettyprint" data-lang="ruby">
+def call_block(&block)  # NOTE: block is actually an instance of Proc
+  block.call 1, 2
+end
+call_block { |a,b| puts "Hello #{a} and #{b}" } # "Hello 1 and 2"
+
+def yield_params
+  yield 1, 2
+end
+yield_params { |a,b| puts "#{a} and #{b}" } # "1 and 2"
+
+# Example of instantiating a proc
+someProc = Proc.new do
+  # do stuff here
+end
+otherProc = lambda do
+  # do other stuff here
+end
+puts someProc.class   # Proc
+puts otherProc.class  # Proc
+</pre></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Classes</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li>Classes start with capital letters and typically use <code>CamelCase</code> to denote capitalization</li>
+<li>You must prepend instance variables (one value per object) with <code>@</code> and class variables (one value per class) with <code>@@</code></li>
+<li>Instance variables and method names begin with lowercase letters in the <code>underscore_style</code>. Constants are in <code>ALL_CAPS</code></li>
+<li>Functions and methods that test typically use a question mark (<code>if test?</code>)</li>
+<li>The <code>attr</code> keyword defines an instance variable. Several versions exist. The most common are attr (defining an instance variable and a method of the same name to access it) and <code>attr_accessor</code>, defining an instance variable, an accessor, and a setter</li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Sample Tree Implementation</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-15-tree.rb">Source</a></p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Mixins and Modules</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Object-oriented languages use inheritance to propagate behavior to similar objects. When the behaviors are not similar, you use multiple inheritance (usually complicated and problematic) or you use something else. Java uses interfaces to solve this problem. Ruby uses modules.</p>
+<p>A module is a collection of functions and constants. When you include a module as part of a class, those behaviors and constants become part of the class.</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Module Example</h2>
+      <h3></h3>
+    </hgroup>
+    <article class="small"><pre class="prettyprint" data-lang="ruby">
+module ToFile
+  def filename "object_#{self.object_id}.txt" end
+  def to_f File.open(filename, 'w') {|f| f.write(to_s)} end
+end
+class Person
+  include ToFile
+  attr_accessor :name
+  def initialize(name) @name = name end
+  def to_s name end
+end
+Person.new('Kevin').to_f
+</pre>
+
+<p>Note that <code>to_s</code> is used in the module but implemented in the class. With Java, this contract is explicit: the class will implement a formal interface. With Ruby, this contract is implicit, through duck typing.</p></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Modules, Enumerable, and Sets</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
+<li><strong>enumerable</strong> and <strong>comparable</strong> are important modules/mixins.</li>
+<li>A <strong>comparable</strong> class must implement <strong>&lt;=&gt;</strong> (spaceship) operator</li>
+<li>[<strong>enumerable</strong>][Enumerable] include the following methods: <code>sort</code>, <code>any?</code>, <code>all?</code>, <code>collect</code> (map), <code>map</code>, <code>flat_map</code>, <code>select</code> (filter), <code>find</code>, <code>max</code>, <code>min</code>, <code>member?</code>, <code>inject</code> (reduce), <code>reduce</code></li>
+</ul></article>
+ 
+</slide>
+
+<slide  >
+  
+    <hgroup>
+      <h2>Day 3: Serious Change</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><strong>Metaprogramming</strong>: writing programs that write programs.</p>
+<h3>Active Record</h3>
+<ul>
+<li>
+<p><a href="http://en.wikipedia.org/wiki/Active_record_pattern"><em>ActiveRecord</em></a> is an <a href="http://en.wikipedia.org/wiki/Object-relational_mapping">Object Relational Mapping (ORM)</a> that is commonly used in Ruby/<a href="http://rubyonrails.org/">Rails</a> applications for writing a data abstraction layer for applications.</p>
+</li>
+<li>
+<p><code>has_many</code> and <code>has_one</code> are Ruby methods that add all the instance variables and methods needed to establish a <code>has_many</code> relationship.</p>
+</li>
+</ul>
+<p><code>ruby
+class Department &lt; ActiveRecord::Base
+  has_many :employees
+  has_one :manager
+end</code></p>
+<h3>Open classes</h3>
+<ul>
+<li>
+<p>Ruby classes are never closed to modification. You can always add methods to classes at any time; objects that have been instantiated before the modification can use the new methods. This combined with duck typing is very powerful, but also very dangerous.</p>
+</li>
+<li>
+<p>The first invocation of class defines a class; once a class is already defined, subsequent invocations modify that class.</p>
+</li>
+</ul>
+<p>```ruby
+class NilClass
+  def blank?
+    true
+  end
+end</p>
+<p>class String
+  def blank?
+    self.size == 0
+  end
+end</p>
+<p>["", "person", nil].each do |element|
+  puts element unless element.blank?
+end
+```</p>
+<h3>Via <code>method_missing</code></h3>
+<ul>
+<li>
+<p><code>method_missing</code> is a debugging method that is called whenever a called method is not available. This can be used to develop a rich, reflective API. Be careful, however, because this means you can no longer debug wrong method calls. An example of such an API is shown below:</p>
+<p><code>ruby
+class Roman
+  def self.method_missing name, *args
+    roman = name.to_s
+    roman.gsub!("IV", "IIII")
+    roman.gsub!("IX", "VIIII")
+    roman.gsub!("XL", "XXXX")
+    roman.gsub!("XC", "LXXXX")
+    (roman.count("I") +
+     roman.count("V") * 5 +
+     roman.count("X") * 10 +
+     roman.count("L") * 50 +
+     roman.count("C") * 100)
+  end
+end
+puts Roman.X    # 10
+puts Roman.XC   # 90
+puts Roman.XII  # 12
+puts Roman.IX   # 9</code></p>
+</li>
+</ul>
+<h3>Modules</h3>
+<p><strong>Macros</strong> are used to change the behavior of a class depending on the environment, taking advantage of inheritance. They can be used to define <a href="http://en.wikipedia.org/wiki/Domain-specific_language">Domain Specific Languages (DSL)</a> with custom syntax</p>
+<ul>
+<li><strong>Macro</strong>s and <code>define_method</code>: In addition we take another look at <strong>module</strong>s and a Ruby idiom commonly used to provide the same functionality via modules.</li>
+</ul>
+<h4>The inheritance/macro approach</h4>
+<p>```ruby
+class Person
+  attr_accessor :name
+  def self.can_speak  # This is a class method! Notice the self.
+    define_method 'speak' do  # an instance method
+      puts "I can talk, my name is #{@name}!"
+    end
+  end</p>
+<p>def initialize(name)
+    @name = name
+  end
+end</p>
+<p>class Guy &lt; Person
+  can_speak
+end</p>
+<p>class ShyGuy &lt; Person
+end</p>
+<p>john = Guy.new('John')
+bob = ShyGuy.new('Bob')
+john.methods.include?(:speak)   # true
+bob.methods.include?(:speak)    # false
+```</p>
+<h4>The module approach</h4>
+<p>```ruby
+module Person
+  attr_accessor :name
+  def self.included(base) # included is invoked whenever a module is included; base is implicit
+    base.extend ClassMethods  # extend will add the methods defined in ClassMethods as class methods
+  end
+  module ClassMethods
+    def can_speak
+      include InstanceMethods # This includes all the instance methods
+    end
+  end
+  module InstanceMethods
+    def speak
+      puts "I can talk, my name is #{@name}!"
+    end
+  end
+  def initialize(name)
+    @name = name
+  end
+end</p>
+<p>class Guy
+  include Person
+  can_speak
+end</p>
+<p>class ShyGuy
+  include Person
+end</p>
+<p>john = Guy.new('John')
+bob = ShyGuy.new('Bob')
+john.methods.include?(:speak)   # true
+bob.methods.include?(:speak)    # false
+```</p>
+<h2>Wrapping Up</h2>
+<h3>Strengths</h3>
+<ul>
+<li>Purely object oriented (no primitives)</li>
+<li>Duck typing for increased polymorphism</li>
+<li>Can be used somewhat functionally (blocks)</li>
+<li>Web development (see <a href="http://rubyonrails.org/">Ruby on Rails</a>)</li>
+<li>Good for scripting and being productive quickly</li>
+<li>Prototyping</li>
+<li>Lots of libraries and gems available</li>
+<li>Fun?</li>
+</ul>
+<h3>Weaknesses</h3>
+<ul>
+<li>Slow (new Ruby VMs try to solve this, see <a href="http://rubini.us/">Rubinius</a>)</li>
+<li>Stateful programming due to objects make concurrency hard to get right</li>
+<li>Duck typing can be dangerous with regards to type safety, and makes it difficult for developer tools (debuggers, IDEs, etc.) to work with Ruby correctly.</li>
+</ul>
+<!-- Links --></article>
+ 
+</slide>
+
+
+<slide class="thank-you-slide segue nobackground">
+  <aside class="gdbar right"><img src="images/logo.png"></aside>
+  <article class="flexbox vleft auto-fadein">
+    <h2>&lt;Thank You!&gt;</h2>
+    <p></p>
+  </article>
+  <p class="auto-fadein" data-config-contact>
+    <!-- populated from slide_config.json -->
+  </p>
+</slide>
+
+<!-- <slide class="logoslide dark nobackground">
+  <article class="flexbox vcenter">
+    <span><img src="images/google_developers_logo_white.png"></span>
+  </article>
+</slide> -->
+
+<slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37638428-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

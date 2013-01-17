@@ -16,15 +16,22 @@ Sublime Text 2 is an incredibly fast and powerful editor that's been replacing [
 
 Sublime Text 2 supports Textmate Snippets, Syntax Highlighting, and other packages that made Textmate successful. However, Sublime Text 2 did not include a package manager out of the box. Developer [@wbond](http://wbond.net/) has created [a full-featured package manager][package-control] that helps discovering, installing, updating and removing packages for Sublime Text 2.
 
-To install [Package Control][package-control], open up Sublime Text 2, and hit `ctrl+\`` or click on ***View > Show Console*** to open up the Console. Once open, paste in the following command:
+To install [Package Control][package-control], open up Sublime Text 2, and hit `ctrl+'` or click on ***View > Show Console*** to open up the Console. Once open, paste in the following command:
 
 ```python
 import urllib2,os; pf='Package Control.sublime-package'; ipp=sublime.installed_packages_path(); os.makedirs(ipp) if not os.path.exists(ipp) else None; urllib2.install_opener(urllib2.build_opener(urllib2.ProxyHandler())); open(os.path.join(ipp,pf),'wb').write(urllib2.urlopen('http://sublime.wbond.net/'+pf.replace(' ','%20')).read()); print 'Please restart Sublime Text to finish installation'
 ```
 
 ![Console](/images/console.png)
+*Note: ignore the text displayed in the console shown above.*
 
-After it completes, you should restart Sublime Text 2 and start using Package Control. For more detailed instructions on installation, see the [Package Control Installation Guide](http://wbond.net/sublime_packages/package_control/installation).
+Press enter to execute the code. Sublime text should display the message 
+
+{% blockquote %}
+Please restart Sublime Text to finish installation
+{% endblockquote %}
+
+After restarting Sublime Text 2, you should be able to use Package Control. For more detailed instructions on installation, see the [Package Control Installation Guide](http://wbond.net/sublime_packages/package_control/installation).
 
 You can access all the Package Control Commands with Sublime Text's Command Palette, which you can bring up with `Control+Shift+P` or `Command+Shift+P` on Mac.
 
@@ -38,7 +45,9 @@ Sublime Text natively supports JavaScript, Ruby, Scala, Erlang, Clojure, and Has
 
 ### Prolog
 
-For Prolog, a syntax highlighting package has been created by [@alnkpa](https://github.com/alnkpa/sublimeprolog). It can be installed by using *Install Package* from the *Command Palette*, which will bring up a separate window that lists all the available packages after a few seconds. Type in *Prolog* in the search and you should be able to see the package after a few key strokes. Select the *Prolog* package and press enter to install. Then that's it. Sublime Text will recognize files that with the extensions `pl` or `pro` as Prolog source files. However, `pl` is commonly used as an extension for Perl and Sublime Text will select Perl as in the language instead of Prolog if you use a `pl` extension. As a result, we prefer to use `pro`.
+For Prolog, a syntax highlighting package has been created by [@alnkpa](https://github.com/alnkpa/sublimeprolog). It can be installed by using *Install Package* from the *Command Palette*, which will bring up a separate window that lists all the available packages after a few seconds. Type in *Prolog* in the search and you should be able to see the package after a few key strokes. Select the *Prolog* package and press enter to install. Then that's it. 
+
+Sublime Text will recognize files that with the extensions `pl` or `pro` as Prolog source files. However, `pl` is commonly used as an extension for Perl and Sublime Text will select Perl as in the language instead of Prolog if you use a `pl` extension. As a result, we prefer to use `pro`.
 
 ![Prolog Package](/images/prolog-package.png)
 
@@ -46,22 +55,7 @@ As a side note, you can set the syntax of any source file at any time by using *
 
 ### Io
 
-A package for Io has actually been created by one of the instructors [@yangsu](https://github.com/yangsu/sublime-io). However, it has yet to be approved. As a result, some additional steps need to be taken.
-
-First, bring up *Package Control Settings* by typing *Preferences: Package Control Settings - User* and press enter to open it up.
-
-![Package Control Preferences](/images/package-control-prefs.png)
-
-Once open, scroll to the bottom of the file to the `repository_channels` field. Add in the following link to the list. Don't forget the comma delimiter.
-```
-"https://raw.github.com/wbond/package_control_channel/master/repositories.json"
-```
-
-![Package Control Preferences repository_channels](/images/package-control-prefs-repo.png)
-
-Now, bring up *Install Package* again and search for `sublime-io` and install it like any other package. 
-
-![sublime-io](/images/package-control-prefs-io.png)
+A package for Io has actually been created by one of the instructors [@yangsu](https://github.com/yangsu/sublime-io). Used *Install Package* to install a package called *Io Langugae*.
 
 After the installation completes, Sublime Text will recognize any file with `io` extension as `io` source files. As noted above, you can also set the syntax of any source file to io with *Command Palette* > *Set Syntax: (Language)*.
 

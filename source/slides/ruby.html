@@ -9,8 +9,8 @@
   <!--This one seems to work all the time, but really small on ipad-->
   <!--<meta name="viewport" content="initial-scale=0.4">-->
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" media="all" href="theme/css/default.css">
-  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <link rel="stylesheet" media="all" href="/stylesheets/slidedefault.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/stylesheets/slidephone.css">
   <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
   <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
 </head>
@@ -36,7 +36,7 @@
 
 
 <slide  >
-  
+
     <hgroup>
       <h2>Ruby Overview</h2>
       <h3></h3>
@@ -51,11 +51,11 @@
   <li>Duck typed: more on this later</li>
   <li>Commonly used for scripting and web development (Rails)</li>
 </ul></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Code Example</h2>
       <h3></h3>
@@ -71,11 +71,11 @@ Ruby is fun.
 => ["object oriented", "duck typed", "productive", "fun"]
 
 </pre></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Purely Object Oriented</h2>
       <h3></h3>
@@ -89,11 +89,11 @@ Ruby is fun.
 
 42.methods    # shows the methods available on the object
 </pre></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Typing</h2>
       <h3></h3>
@@ -111,11 +111,11 @@ end # => nil
 
 add_stuff # => TypeError    This proves that Ruby is dynamically typed
 </pre></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Duck Typing</h2>
       <h3></h3>
@@ -135,11 +135,11 @@ while i < a.size
   i = i + 1
 end
 </pre></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Variables</h2>
       <h3></h3>
@@ -149,11 +149,11 @@ foo = 'hello, plcourse' # here we define a function. Notice there's no type decl
 foo = 'is mutable'      # variables are mutable, i.e. they can vary
 CONSTANTS = 'are defined like this' # they are immutable
 </pre></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Ranges</h2>
       <h3></h3>
@@ -162,11 +162,11 @@ CONSTANTS = 'are defined like this' # they are immutable
 <li>inclusive <code>1..3</code></li>
 <li>exclusive <code>1...3</code></li>
 </ul></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Functions</h2>
       <h3></h3>
@@ -185,11 +185,11 @@ def be_truthful
   true    # The last expression is always the one that gets returned
 end
 </pre></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Operators</h2>
       <h3></h3>
@@ -207,11 +207,11 @@ end
 <li>Short circuit: <code>||</code>, <code>or</code> Whole expression: <code>|</code></li>
 <li><code>not</code>, <code>!</code></li>
 </ul></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Tricky precedence nuance</h2>
       <h3></h3>
@@ -228,11 +228,11 @@ end
 >> foo                    # But it assigned foo to false
 => false
 </pre></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Control Structures</h2>
       <h3></h3>
@@ -241,11 +241,11 @@ end
 <p><code>if</code>, <code>unless</code>, <code>while</code>, <code>until</code></p>
 <h3>Falsy Values</h3>
 <p>everything but <code>nil</code> and <code>false</code> evaluate to true. <code>0</code> is true!</p></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Arrays</h2>
       <h3></h3>
@@ -267,11 +267,11 @@ cars[1..2]  # => ["toyota", "subaru"]
 cars[0...2] # => ["ford", "toyota"]
 cars.[](0...2)# => ["ford", "toyota"]
 </pre></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>More Arrays</h2>
       <h3></h3>
@@ -279,11 +279,11 @@ cars.[](0...2)# => ["ford", "toyota"]
     <article ><p><code>[]</code> and <code>[]=</code> are just methods of the Array class; their typical usage is just syntactic sugar</p>
 <p>Multidimensional arrays are just arrays of arrays</p>
 <p><code>push</code>, <code>pop</code>, as well as other functions exist natively in the [Array API][Array] that allow arrays to be used as queues, linked lists, stacks, or sets.</p></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Hashes/Maps</h2>
       <h3></h3>
@@ -306,11 +306,11 @@ stuff[:string] # => "Hello"
 </pre>
 
 <p><strong>symbol</strong>s are identifying values/objects. Two symbols of the same name always refer to the same object id</p></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Named Parameters</h2>
       <h3></h3>
@@ -330,11 +330,11 @@ tell_the_truth
 tell_the_truth( :profession => :lawyer )
 => "it could be believed that this is almost certainly not false.
 </pre></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Code blocks</h2>
       <h3></h3>
@@ -342,11 +342,11 @@ tell_the_truth( :profession => :lawyer )
     <article ><p><code>{ ... }</code> code between braces is a code block; alternavitely, <code>do ... end</code> (usually for multi-line blocks) syntax can be used</p>
 <p><code>Fixnum.times</code> can be used to loop a certain number of times: <code>3.times { puts 'Hello, World!' }</code></p>
 <p>Use <code>each</code> on a collection (Array or Hash) to iterate over the elements in the collection: <code>animals.each { |a| puts a }</code> and <code>numbers.each { |k,v| puts "#{k} maps to #{v}" }</code></p></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Yielding</h2>
       <h3></h3>
@@ -363,22 +363,22 @@ class Fixnum
   end
 end
 </pre></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Call</h2>
       <h3></h3>
     </hgroup>
     <article ><p>Alternatively, call a block using <code>call</code>. When we do this, the block is actually an instance of <code>Proc</code> (short for procedure). The main difference is that a Proc can be stored.</p>
 <p>Useful for policy enforcement, conditional execution, transactions, etc.</p></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Code for Call</h2>
       <h3></h3>
@@ -404,11 +404,11 @@ end
 puts someProc.class   # Proc
 puts otherProc.class  # Proc
 </pre></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Classes</h2>
       <h3></h3>
@@ -420,32 +420,32 @@ puts otherProc.class  # Proc
 <li>Functions and methods that test typically use a question mark (<code>if test?</code>)</li>
 <li>The <code>attr</code> keyword defines an instance variable. Several versions exist. The most common are attr (defining an instance variable and a method of the same name to access it) and <code>attr_accessor</code>, defining an instance variable, an accessor, and a setter</li>
 </ul></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Sample Tree Implementation</h2>
       <h3></h3>
     </hgroup>
     <article ><p><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-15-tree.rb">Source</a></p></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Mixins and Modules</h2>
       <h3></h3>
     </hgroup>
     <article ><p>Object-oriented languages use inheritance to propagate behavior to similar objects. When the behaviors are not similar, you use multiple inheritance (usually complicated and problematic) or you use something else. Java uses interfaces to solve this problem. Ruby uses modules.</p>
 <p>A module is a collection of functions and constants. When you include a module as part of a class, those behaviors and constants become part of the class.</p></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Module Example</h2>
       <h3></h3>
@@ -465,11 +465,11 @@ Person.new('Kevin').to_f
 </pre>
 
 <p>Note that <code>to_s</code> is used in the module but implemented in the class. With Java, this contract is explicit: the class will implement a formal interface. With Ruby, this contract is implicit, through duck typing.</p></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Modules, Enumerable, and Sets</h2>
       <h3></h3>
@@ -479,11 +479,11 @@ Person.new('Kevin').to_f
 <li>A <strong>comparable</strong> class must implement <strong>&lt;=&gt;</strong> (spaceship) operator</li>
 <li>[<strong>enumerable</strong>][Enumerable] include the following methods: <code>sort</code>, <code>any?</code>, <code>all?</code>, <code>collect</code> (map), <code>map</code>, <code>flat_map</code>, <code>select</code> (filter), <code>find</code>, <code>max</code>, <code>min</code>, <code>member?</code>, <code>inject</code> (reduce), <code>reduce</code></li>
 </ul></article>
- 
+
 </slide>
 
 <slide  >
-  
+
     <hgroup>
       <h2>Day 3: Serious Change</h2>
       <h3></h3>
@@ -632,7 +632,7 @@ bob.methods.include?(:speak)    # false
 <li>Duck typing can be dangerous with regards to type safety, and makes it difficult for developer tools (debuggers, IDEs, etc.) to work with Ruby correctly.</li>
 </ul>
 <!-- Links --></article>
- 
+
 </slide>
 
 

@@ -87,7 +87,7 @@ Students must attend at least **eleven** class sessions to pass the course
 
 In order to follow the course, students are assigned one chapter of the [textbook](#textbook) roughly every week, which is about 20 - 30 pages.
 
-Assignments will be released on under the [assignments page] each week. Students will submit assignments to an auto grader. Instructions for using the auto grader will be added once the course begins. Homework assignments are due at 11:59 PM on the due date, which is usually a Wednesday; check the class website to be sure. Assignments submitted up to 24 hours late are penalized 25%, and submissions up to 48 hours late are penalized 50%. Assignments received later than 48 hours get zero credit, since we need to post solutions in a timely manner.
+Assignments will be released on under the [assignments page](/assignments/) each week. Students will submit assignments to an auto grader. Instructions for using the auto grader will be added once the course begins. Homework assignments are due at 11:59 PM on the due date, which is usually a Wednesday; check the class website to be sure. Assignments submitted up to 24 hours late are penalized 25%, and submissions up to 48 hours late are penalized 50%. Assignments received later than 48 hours get zero credit, since we need to post solutions in a timely manner.
 
 <h2 id="challenge">Challenge</h2>
 

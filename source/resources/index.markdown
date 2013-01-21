@@ -22,6 +22,7 @@ footer: false
     * [Erlang](#erlang)
     * [Clojure](#clojure)
     * [Haskell](#haskell)
+* [Downloads](#downloads)
 
 <h2 id="installation">Installation</h2>
 
@@ -90,3 +91,7 @@ If you are a vim user or would like to use vim for this course, then you can fin
 <h3 id="haskell">Haskell</h3>
 
 [Haskell](http://www.haskell.org/haskellwiki/Haskell)
+
+<h2 id="downloads">Downloads</h2>
+
+[Shared Dropbox folder with course resources](https://www.dropbox.com/sh/i02fg0bhisrzsx0/H2o-7DuA3G)

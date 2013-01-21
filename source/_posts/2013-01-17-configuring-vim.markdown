@@ -8,7 +8,7 @@ categories: intro, guide, vim
 
 ## Installing Vim
 
-Most Unix-like systems like Mac OS X or Linux distributions will come with Vim installed already. However, you may want to upgrade vim for better compatability or new features. Here, we will cover some of the recommended ways to install `vim`.
+Most Unix-like systems like Mac OS X or Linux distributions will come with Vim installed already. However, you may want to upgrade vim for better compatibility or new features. Here, we will cover some of the recommended ways to install `vim`.
 
 *TL;DR: Here is a link to the [vim dotfiles](https://www.dropbox.com/s/bka5j2rkobq0gxu/vimdotfiles.tgz) recommended for a base configuration.*
 
@@ -50,4 +50,5 @@ This configuration uses [Pathogen](https://github.com/tpope/vim-pathogen) to loa
 If you've reached this point, you've now successfully installed and configured Vim. It should look something like this:
 
 ![Configured Vim](/images/vim_done.png)
-*Note: The NERDTree plugin has been opened by issueing :NERDTreeToggle*
+*Note: The NERDTree plugin has been opened by issuing :NERDTreeToggle*
+

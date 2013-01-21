@@ -49,5 +49,5 @@ This configuration uses [Pathogen](https://github.com/tpope/vim-pathogen) to loa
 
 If you've reached this point, you've now successfully installed and configured Vim. It should look something like this:
 
-![Configured Vim](/images/vim_finished.png)
+![Configured Vim](/images/vim_done.png)
 *Note: The NERDTree plugin has been opened by issueing :NERDTreeToggle*

@@ -59,7 +59,7 @@ We suggest that you use [Sublime Text 2](http://www.sublimetext.com/), a cross p
 
 <h2 id="vim">Vim</h2>
 
-If you are a vim user or would like to use vim for this course, then you can find the recommended plugins and configuration files in [this archive](https://www.dropbox.com/s/bka5j2rkobq0gxu/vimdotfiles.tgz).
+If you are a vim user or would like to use vim for this course, then you can find the recommended plugins and configuration files in [this archive](https://www.dropbox.com/s/bka5j2rkobq0gxu/vimdotfiles.tgz). In addition, you can find a blog post on how to install and configure vim [here](/blog/2013/01/17/configuring-vim/).
 
 <h2 id="language-specific-resources">Language Specific Resources</h2>
 

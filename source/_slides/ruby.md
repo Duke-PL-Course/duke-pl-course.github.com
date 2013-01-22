@@ -319,7 +319,7 @@ puts otherProc.class  # Proc
 
 title: Block Example - Tree Implementation
 
-[Source](https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-15-tree.rb)
+[Source](https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-22-lecture02.rb#L71-L120)
 
 ---
 
@@ -574,13 +574,8 @@ class SizeMatters
   end
 end
 
-[
-  SizeMatters.new("S"),
-  SizeMatters.new("SSSS"),
-  SizeMatters.new("SSSSS"),
-  SizeMatters.new("SS"),
-  SizeMatters.new("SSS")
-].sort
+[ SizeMatters.new("S"), SizeMatters.new("SSSS"), SizeMatters.new("SSSSS"),
+  SizeMatters.new("SS"), SizeMatters.new("SSS") ].sort
 </pre>
 
 ---
@@ -722,70 +717,13 @@ title: Modules
 
 title: The inheritance/macro approach
 
-<pre class="prettyprint" data-lang="ruby">
-class Person
-  attr_accessor :name
-  def self.can_speak  # This is a class method! Notice the self.
-    define_method 'speak' do  # an instance method
-      puts "I can talk, my name is #{@name}!"
-    end
-  end
+[Example](https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-22-lecture02.rb#L290-L315)
 
-  def initialize(name)
-    @name = name
-  end
-end
-
-class Guy < Person
-  can_speak
-end
-
-class ShyGuy < Person
-end
-
-john = Guy.new('John')
-bob = ShyGuy.new('Bob')
-john.methods.include?(:speak)   # true
-bob.methods.include?(:speak)    # false
-</pre>
+---
 
 title: The module approach
 
-<pre class="prettyprint" data-lang="ruby">
-module Person
-  attr_accessor :name
-  def self.included(base) # included is invoked whenever a module is included; base is implicit
-    base.extend ClassMethods  # extend will add the methods defined in ClassMethods as class methods
-  end
-  module ClassMethods
-    def can_speak
-      include InstanceMethods # This includes all the instance methods
-    end
-  end
-  module InstanceMethods
-    def speak
-      puts "I can talk, my name is #{@name}!"
-    end
-  end
-  def initialize(name)
-    @name = name
-  end
-end
-
-class Guy
-  include Person
-  can_speak
-end
-
-class ShyGuy
-  include Person
-end
-
-john = Guy.new('John')
-bob = ShyGuy.new('Bob')
-john.methods.include?(:speak)   # true
-bob.methods.include?(:speak)    # false
-</pre>
+[Example](https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-22-lecture02.rb#L321-L353)
 
 ---
 

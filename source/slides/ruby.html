@@ -412,7 +412,7 @@ puts otherProc.class  # Proc
       <h2>Block Example - Tree Implementation</h2>
       <h3></h3>
     </hgroup>
-    <article ><p><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-15-tree.rb">Source</a></p></article>
+    <article ><p><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-22-lecture02.rb#L71-L120">Source</a></p></article>
 
 </slide>
 
@@ -713,13 +713,8 @@ class SizeMatters
   end
 end
 
-[
-  SizeMatters.new("S"),
-  SizeMatters.new("SSSS"),
-  SizeMatters.new("SSSSS"),
-  SizeMatters.new("SS"),
-  SizeMatters.new("SSS")
-].sort
+[ SizeMatters.new("S"), SizeMatters.new("SSSS"), SizeMatters.new("SSSSS"),
+  SizeMatters.new("SS"), SizeMatters.new("SSS") ].sort
 </pre></article>
 
 </slide>
@@ -921,10 +916,17 @@ john = Guy.new('John')
 bob = ShyGuy.new('Bob')
 john.methods.include?(:speak)   # true
 bob.methods.include?(:speak)    # false
-</pre>
+</pre></article>
 
-<p>title: The module approach</p>
-<pre class="prettyprint" data-lang="ruby">
+</slide>
+
+<slide  >
+
+    <hgroup>
+      <h2>The module approach</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="ruby">
 module Person
   attr_accessor :name
   def self.included(base) # included is invoked whenever a module is included; base is implicit

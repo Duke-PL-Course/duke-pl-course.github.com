@@ -317,6 +317,12 @@ puts otherProc.class  # Proc
 
 ---
 
+title: Block Example - Tree Implementation
+
+[Source](https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-15-tree.rb)
+
+---
+
 title: Classes
 
 **Conventions**
@@ -459,13 +465,24 @@ p T::get        #=> 'fubar'
 
 ---
 
-title: Class Example - Tree Implementation
-
-[Source](https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-15-tree.rb)
-
----
-
 title: Inheritance
+
+<pre class="prettyprint" data-lang="ruby">
+class Base
+  def initialize()
+    @x = 10
+  end
+end
+
+class Derived < Base
+  def x
+    @x = 20
+  end
+end
+
+d = Derived.new
+p d.x # => 20
+</pre>
 
 ---
 
@@ -772,9 +789,8 @@ bob.methods.include?(:speak)    # false
 
 ---
 
-title: Wrapping Up
+title: Strengths
 
-### Strengths
 * Purely object oriented (no primitives)
 * Duck typing for increased polymorphism
 * Can be used somewhat functionally (blocks)
@@ -784,10 +800,14 @@ title: Wrapping Up
 * Lots of libraries and gems available
 * Fun?
 
-### Weaknesses
+[RoR]: http://rubyonrails.org/
+
+---
+
+title: Weaknesses
+
 * Slow (new Ruby VMs try to solve this, see [Rubinius][])
 * Stateful programming due to objects make concurrency hard to get right
 * Duck typing can be dangerous with regards to type safety, and makes it difficult for developer tools (debuggers, IDEs, etc.) to work with Ruby correctly.
 
-[RoR]: http://rubyonrails.org/
 [Rubinius]: http://rubini.us/

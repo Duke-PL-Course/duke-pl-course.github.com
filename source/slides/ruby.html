@@ -409,6 +409,16 @@ puts otherProc.class  # Proc
 <slide  >
 
     <hgroup>
+      <h2>Block Example - Tree Implementation</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-15-tree.rb">Source</a></p></article>
+
+</slide>
+
+<slide  >
+
+    <hgroup>
       <h2>Classes</h2>
       <h3></h3>
     </hgroup>
@@ -583,20 +593,25 @@ p T::get        #=> 'fubar'
 <slide  >
 
     <hgroup>
-      <h2>Class Example - Tree Implementation</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-15-tree.rb">Source</a></p></article>
-
-</slide>
-
-<slide  >
-
-    <hgroup>
       <h2>Inheritance</h2>
       <h3></h3>
     </hgroup>
-    <article ></article>
+    <article ><pre class="prettyprint" data-lang="ruby">
+class Base
+  def initialize()
+    @x = 10
+  end
+end
+
+class Derived < Base
+  def x
+    @x = 20
+  end
+end
+
+d = Derived.new
+p d.x # => 20
+</pre></article>
 
 </slide>
 
@@ -950,11 +965,10 @@ bob.methods.include?(:speak)    # false
 <slide  >
 
     <hgroup>
-      <h2>Wrapping Up</h2>
+      <h2>Strengths</h2>
       <h3></h3>
     </hgroup>
-    <article ><h3>Strengths</h3>
-<ul>
+    <article ><ul>
 <li>Purely object oriented (no primitives)</li>
 <li>Duck typing for increased polymorphism</li>
 <li>Can be used somewhat functionally (blocks)</li>
@@ -963,9 +977,17 @@ bob.methods.include?(:speak)    # false
 <li>Prototyping</li>
 <li>Lots of libraries and gems available</li>
 <li>Fun?</li>
-</ul>
-<h3>Weaknesses</h3>
-<ul>
+</ul></article>
+
+</slide>
+
+<slide  >
+
+    <hgroup>
+      <h2>Weaknesses</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><ul>
 <li>Slow (new Ruby VMs try to solve this, see <a href="http://rubini.us/">Rubinius</a>)</li>
 <li>Stateful programming due to objects make concurrency hard to get right</li>
 <li>Duck typing can be dangerous with regards to type safety, and makes it difficult for developer tools (debuggers, IDEs, etc.) to work with Ruby correctly.</li>

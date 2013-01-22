@@ -1,17 +1,21 @@
 title: Ruby Overview
+build_lists: true
 
 Ruby is ...
 
-<ul class="build fade">
-  <li>Created by Yukihiro (Matz) Matsumoto</li>
-  <li>Interpreted: No compilation necessary, code is executed by an interpreter</li>
-  <li>Object-oriented: Everything is an object</li>
-  <li>Strongly typed: Types must be compatible or <em>coercible</em></li>
-  <li>Dynamically typed: Type checking is performed at run-time</li>
-  <li>Duck typed: more on this later</li>
-  <li>Commonly used for scripting and web development (Rails)</li>
-</ul>
+* Created by Yukihiro (Matz) Matsumoto
+* [Interpreted][]: No compilation necessary, code is executed by an interpreter
+* [Object-oriented][]: Everything is an object
+* [Strongly typed][]: Types must be compatible or <em>coercible</em>
+* [Dynamically typed][]: Type checking is performed at run-time
+* [Duck typed][]: more on this later
+* Commonly used for scripting and web development (Rails)
 
+[Interpreted]: http://en.wikipedia.org/wiki/Interpreted_language
+[Object-oriented]: http://en.wikipedia.org/wiki/Object-oriented_programming
+[Strongly typed]: http://en.wikipedia.org/wiki/Strong_typing
+[Dynamically typed]: http://en.wikipedia.org/wiki/Type_system#Dynamic_typing
+[Duck typed]: http://en.wikipedia.org/wiki/Duck_typing
 
 ---
 
@@ -56,7 +60,7 @@ In addition to being object-oriented, Ruby is **strongly** and **dynamically** t
 
 # What about this though?
 def add_stuff
-  4 + 4.0
+  4 + "foo"
 end # => nil
 
 add_stuff # => TypeError    This proves that Ruby is dynamically typed
@@ -200,6 +204,8 @@ Multidimensional arrays are just arrays of arrays
 
 `push`, `pop`, as well as other functions exist natively in the [Array API][Array] that allow arrays to be used as queues, linked lists, stacks, or sets.
 
+[Array]: http://www.ruby-doc.org/core-1.9.3/Array.html
+
 ---
 
 title: Hashes/Maps
@@ -248,7 +254,7 @@ tell_the_truth( :profession => :lawyer )
 
 title: Code blocks
 
-`{ ... }` code between braces is a code block; alternavitely, `do ... end` (usually for multi-line blocks) syntax can be used
+`{ ... }` code between braces is a code block; alternatively, `do ... end` (usually for multi-line blocks) syntax can be used
 
 `Fixnum.times` can be used to loop a certain number of times: `3.times { puts 'Hello, World!' }`
 
@@ -276,9 +282,11 @@ end
 
 title: Call
 
-Alternatively, call a block using `call`. When we do this, the block is actually an instance of `Proc` (short for procedure). The main difference is that a Proc can be stored.
+Alternatively, call a block using `call`. When we do this, the block is actually an instance of [`Proc`][Proc] (short for procedure). The main difference is that a [`Proc`][Proc] can be stored.
 
 Useful for policy enforcement, conditional execution, transactions, etc.
+
+[Proc]: http://www.ruby-doc.org/core-1.9.3/Proc.html
 
 ---
 
@@ -311,15 +319,26 @@ puts otherProc.class  # Proc
 
 title: Classes
 
-* Classes start with capital letters and typically use `CamelCase` to denote capitalization
-* You must prepend instance variables (one value per object) with `@` and class variables (one value per class) with `@@`
-* Instance variables and method names begin with lowercase letters in the `underscore_style`. Constants are in `ALL_CAPS`
-* Functions and methods that test typically use a question mark (`if test?`)
-* The `attr` keyword defines an instance variable. Several versions exist. The most common are attr (defining an instance variable and a method of the same name to access it) and `attr_accessor`, defining an instance variable, an accessor, and a setter
+Classes start with **capital letters** and typically use `CamelCase` to denote capitalization
+
+You must prepend **instance variables** (one value per object) with `@` and class variables (one value per class) with `@@`
+
+**Instance variables** and **method names** begin with **lowercase letters** in the `underscore_style`. Constants are in `ALL_CAPS`
+
+define a **constructor** by overwriting the `initialize` method
+
+Functions and methods that test (return a boolean value) typically use a question mark (`if test?`)
+
+Several ways to declare instance variables
+
+* `attr` defines an instance variable and a method to access it
+* `attr_accessor` defines an instance variable, an accessor, and a setter
+
+*Note*: This is very similar to how Objective-C uses the `@property` and `@synthesize` directives
 
 ---
 
-title: Sample Tree Implementation
+title: Class Example - Tree Implementation
 
 [Source](https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-15-tree.rb)
 
@@ -327,63 +346,185 @@ title: Sample Tree Implementation
 
 title: Mixins and Modules
 
-Object-oriented languages use inheritance to propagate behavior to similar objects. When the behaviors are not similar, you use multiple inheritance (usually complicated and problematic) or you use something else. Java uses interfaces to solve this problem. Ruby uses modules.
+Object-oriented languages use inheritance to propagate behavior to similar objects
 
-A module is a collection of functions and constants. When you include a module as part of a class, those behaviors and constants become part of the class.
+When the behaviors are not similar, you use [**multiple inheritance**](http://en.wikipedia.org/wiki/Multiple_inheritance) (usually complicated and problematic) or you use something else. 
+
+**Java** uses interfaces to solve this problem. **Ruby** uses modules.
+
+A **module** is a collection of functions and constants. When you include a module as part of a class, those behaviors and constants become part of the class.
+
 
 ---
 
 title: Module Example
 content_class: small
 
+<aside class="note" markdown="1">
+  <section>
+  The ability to write to a file has nothing to do with whether a class is actually a `Person`. We add the capability to add the contents to a file by **mixing in** the capability. We can add new mixins and subclasses to `Person`, and each subclass will have the capabilities of all the mixins without having to know about the mixin’s implementation. 
+
+  Single inheritance plus mixins allow for a nice packaging of behavior.
+  </section>
+</aside>
+
 <pre class="prettyprint" data-lang="ruby">
 module ToFile
-  def filename "object_#{self.object_id}.txt" end
-  def to_f File.open(filename, 'w') {|f| f.write(to_s)} end
+  def filename
+    "object_#{self.object_id}.txt"
+  end
+  def to_f
+    File.open(filename, 'w') {|f| f.write(to_s)}
+  end
 end
 class Person
   include ToFile
   attr_accessor :name
-  def initialize(name) @name = name end
-  def to_s name end
+  def initialize(name)
+    @name = name
+  end
+  def to_s
+    name
+  end
 end
 Person.new('Kevin').to_f
 </pre>
 
-Note that `to_s` is used in the module but implemented in the class. With Java, this contract is explicit: the class will implement a formal interface. With Ruby, this contract is implicit, through duck typing.
+---
+
+title: Module Example Continued
+
+Note that `to_s` is used in the module but implemented in the class. 
+
+With Java, this contract is **explicit**: the class will implement a formal **interface**
+
+With Ruby, this contract is **implicit**, through **duck typing**
 
 ---
 
-title: Modules, Enumerable, and Sets
+title: Comparable
 
-* **enumerable** and **comparable** are important modules/mixins.
-* A **comparable** class must implement **<=>** (spaceship) operator
-* [**enumerable**][Enumerable] include the following methods: `sort`, `any?`, `all?`, `collect` (map), `map`, `flat_map`, `select` (filter), `find`, `max`, `min`, `member?`, `inject` (reduce), `reduce`
+A [**comparable**][comp] class must implement **<=>** (spaceship) operator
+
+[comp]: http://www.ruby-doc.org/core-1.9.3/Comparable.html
+
+<pre class="prettyprint" data-lang="ruby">
+'begin' <=> 'end' # => -1
+'same' <=> 'same' # => 0
+</pre>
 
 ---
 
-title: Day 3: Serious Change
+title: Sorting Example
 
-**Metaprogramming**: writing programs that write programs.
+<pre class="prettyprint" data-lang="ruby">
+class SizeMatters
+  include Comparable
+  attr :str
+  def <=>(anOther)
+    str.size <=> anOther.str.size
+  end
+  def initialize(str)
+    @str = str
+  end
+  def inspect
+    @str
+  end
+end
 
-### Active Record
-* [_ActiveRecord_][ActiveRecord] is an [Object Relational Mapping (ORM)][ORM] that is commonly used in Ruby/[Rails][RoR] applications for writing a data abstraction layer for applications.
+[
+  SizeMatters.new("S"),
+  SizeMatters.new("SSSS"),
+  SizeMatters.new("SSSSS"),
+  SizeMatters.new("SS"),
+  SizeMatters.new("SSS")
+].sort
+</pre>
+
+---
+
+title: Enumerable
+
+[**enumerable**][enum] include the following methods: `sort`, `any?`, `all?`, `collect` (map), `map`, `flat_map`, `select` (filter), `find`, `max`, `min`, `member?`, `inject` (reduce), `reduce`
+
+<pre class="prettyprint" data-lang="ruby">
+a = [5, 3, 4, 1]
+a.sort # => [1, 3, 4, 5]
+a.any? {|i| i > 6} # => false
+a.any? {|i| i > 4} # => true
+a.all? {|i| i > 4} # => false
+a.all? {|i| i > 0} # => true
+a.collect {|i| i * 2} # => [10, 6, 8, 2]
+a.select {|i| i % 2 == 0 } # even => [4]
+a.select {|i| i % 2 == 1 } # odd => [5, 3, 1]
+a.max # => 5
+a.member?(2) # => false
+</pre>
+
+[enum]: http://ruby-doc.org/core-1.9.3/Enumerable.html
+
+---
+
+title: inject Example
+
+<pre class="prettyprint" data-lang="ruby">
+a = [5, 3, 4, 1]
+a.inject(0) {|sum, i| sum + i}
+# => 13
+a.inject {|sum, i| sum + i}
+# => 13
+a.inject {|product, i| product * i}
+# = 560
+a.inject(0) do |sum, i|
+ puts "sum: #{sum} i: #{i} sum + i: #{sum + i}"
+ sum + i
+end
+# sum:0 i:5 sum+i:5
+# sum:5 i:3 sum+i:8
+# sum:8 i:4 sum+i:12
+# sum:12 i:1 sum+i:13
+</pre>
+
+---
+
+title: Questions
+
+Any questions about what we talked about thus far?
+
+---
+
+title: Metaprogramming
+
+Writing programs that write programs.
+
+---
+
+title: Active Record
+
+* [ActiveRecord][] is an [Object Relational Mapping (ORM)][ORM] that is commonly used in Ruby/[Rails][RoR] applications for writing a data abstraction layer for applications.
 
 * `has_many` and `has_one` are Ruby methods that add all the instance variables and methods needed to establish a `has_many` relationship.
 
-```ruby
+<pre class="prettyprint" data-lang="ruby">
 class Department < ActiveRecord::Base
   has_many :employees
   has_one :manager
 end
-```
+</pre>
 
-### Open classes
+[RoR]: http://rubyonrails.org/
+[ActiveRecord]: http://en.wikipedia.org/wiki/Active_record_pattern
+[ORM]: http://en.wikipedia.org/wiki/Object-relational_mapping
+
+---
+
+title: Open classes
+
 * Ruby classes are never closed to modification. You can always add methods to classes at any time; objects that have been instantiated before the modification can use the new methods. This combined with duck typing is very powerful, but also very dangerous.
 
 * The first invocation of class defines a class; once a class is already defined, subsequent invocations modify that class.
 
-```ruby
+<pre class="prettyprint" data-lang="ruby">
 class NilClass
   def blank?
     true
@@ -399,39 +540,47 @@ end
 ["", "person", nil].each do |element|
   puts element unless element.blank?
 end
-```
+</pre>
 
-### Via `method_missing`
-* `method_missing` is a debugging method that is called whenever a called method is not available. This can be used to develop a rich, reflective API. Be careful, however, because this means you can no longer debug wrong method calls. An example of such an API is shown below:
+---
 
-    ```ruby
-    class Roman
-      def self.method_missing name, *args
-        roman = name.to_s
-        roman.gsub!("IV", "IIII")
-        roman.gsub!("IX", "VIIII")
-        roman.gsub!("XL", "XXXX")
-        roman.gsub!("XC", "LXXXX")
-        (roman.count("I") +
-         roman.count("V") * 5 +
-         roman.count("X") * 10 +
-         roman.count("L") * 50 +
-         roman.count("C") * 100)
-      end
-    end
-    puts Roman.X    # 10
-    puts Roman.XC   # 90
-    puts Roman.XII  # 12
-    puts Roman.IX   # 9
-    ```
+title: method_missing
 
-### Modules
+`method_missing` is a debugging method that is called whenever a called method is not available. This can be used to develop a rich, reflective API. Be careful, however, because this means you can no longer debug wrong method calls
+
+<pre class="prettyprint" data-lang="ruby">
+class Roman
+  def self.method_missing name, *args
+    roman = name.to_s
+    roman.gsub!("IV", "IIII")
+    roman.gsub!("IX", "VIIII")
+    roman.gsub!("XL", "XXXX")
+    roman.gsub!("XC", "LXXXX")
+    (roman.count("I") + roman.count("V")*5 + roman.count("X")*10
+     + roman.count("L")*50 + roman.count("C")*100)
+  end
+end
+puts Roman.X    # 10
+puts Roman.XC   # 90
+puts Roman.XII  # 12
+puts Roman.IX   # 9
+</pre>
+
+---
+
+title: Modules
+
 **Macros** are used to change the behavior of a class depending on the environment, taking advantage of inheritance. They can be used to define [Domain Specific Languages (DSL)][DSL] with custom syntax
 
 * **Macro**s and `define_method`: In addition we take another look at **module**s and a Ruby idiom commonly used to provide the same functionality via modules.
 
-#### The inheritance/macro approach
-```ruby
+[DSL]: http://en.wikipedia.org/wiki/Domain-specific_language
+
+---
+
+title: The inheritance/macro approach
+
+<pre class="prettyprint" data-lang="ruby">
 class Person
   attr_accessor :name
   def self.can_speak  # This is a class method! Notice the self.
@@ -456,10 +605,11 @@ john = Guy.new('John')
 bob = ShyGuy.new('Bob')
 john.methods.include?(:speak)   # true
 bob.methods.include?(:speak)    # false
-```
+</pre>
 
-#### The module approach
-```ruby
+title: The module approach
+
+<pre class="prettyprint" data-lang="ruby">
 module Person
   attr_accessor :name
   def self.included(base) # included is invoked whenever a module is included; base is implicit
@@ -493,9 +643,11 @@ john = Guy.new('John')
 bob = ShyGuy.new('Bob')
 john.methods.include?(:speak)   # true
 bob.methods.include?(:speak)    # false
-```
+</pre>
 
-## Wrapping Up
+---
+
+title: Wrapping Up
 
 ### Strengths
 * Purely object oriented (no primitives)
@@ -512,18 +664,5 @@ bob.methods.include?(:speak)    # false
 * Stateful programming due to objects make concurrency hard to get right
 * Duck typing can be dangerous with regards to type safety, and makes it difficult for developer tools (debuggers, IDEs, etc.) to work with Ruby correctly.
 
-<!-- Links -->
-
-[Interpreted]: http://en.wikipedia.org/wiki/Interpreted_language
-[Object-oriented]: http://en.wikipedia.org/wiki/Object-oriented_programming
-[Strongly typed]: http://en.wikipedia.org/wiki/Strong_typing
-[Dynamically typed]: http://en.wikipedia.org/wiki/Type_system#Dynamic_typing
-[Duck typed]: http://en.wikipedia.org/wiki/Duck_typing
-[Array]: http://www.ruby-doc.org/core-1.9.3/Array.html
-[Proc]: http://www.ruby-doc.org/core-1.9.3/Proc.html
-[Enumerable]: http://ruby-doc.org/core-1.9.3/Enumerable.html
 [RoR]: http://rubyonrails.org/
 [Rubinius]: http://rubini.us/
-[DSL]: http://en.wikipedia.org/wiki/Domain-specific_language
-[ActiveRecord]: http://en.wikipedia.org/wiki/Active_record_pattern
-[ORM]: http://en.wikipedia.org/wiki/Object-relational_mapping

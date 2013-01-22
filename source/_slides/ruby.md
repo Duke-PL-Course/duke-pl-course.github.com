@@ -374,8 +374,8 @@ end
 a = MyClass.new
 
 puts a.method1 # => method1
-puts a.method2 # => protected method `method2' called for #<MyClass:0x007faa7884a010> (NoMethodError)
-puts a.method3 # => private method `method3' called  for #<MyClass:0x007faa7884a010> (NoMethodError)
+puts a.method2 # => protected method `method2' called for ... (NoMethodError)
+puts a.method3 # => private method `method3' called  for ... (NoMethodError)
 puts a.method4 # => method4
 </pre>
 
@@ -423,8 +423,16 @@ title: Encapsulation
 Ruby variables are **always** private. You can only access them through the verbose getters and setters defined by the directives shown previously.
 
 However, any variable can be accessed using the following code:
+
 <pre class="prettyprint" data-lang="ruby">
-d.instance_variable_get :@x
+class Base
+  def initialize()
+    @x = 10
+  end
+end
+d = Base.new
+puts d.x # => undefined method `x' for ... (NoMethodError)
+puts d.instance_variable_get :@x # => 10
 </pre>
 
 ---
@@ -432,6 +440,10 @@ d.instance_variable_get :@x
 title: Class Example - Tree Implementation
 
 [Source](https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-15-tree.rb)
+
+---
+
+title: Inheritance
 
 ---
 

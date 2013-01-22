@@ -5,7 +5,8 @@ import codecs
 import jinja2
 import markdown
 
-extensions = ['extra', 'nl2br']
+# extensions = ['extra', 'nl2br']
+extensions = ['extra']
 
 def process_slides(input, output):
     with codecs.open(output, 'w', encoding='utf8') as outfile:

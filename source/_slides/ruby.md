@@ -319,22 +319,113 @@ puts otherProc.class  # Proc
 
 title: Classes
 
-Classes start with **capital letters** and typically use `CamelCase` to denote capitalization
+**Conventions**
 
-You must prepend **instance variables** (one value per object) with `@` and class variables (one value per class) with `@@`
+* Classes start with **capital letters** and typically use `CamelCase` to denote capitalization
 
-**Instance variables** and **method names** begin with **lowercase letters** in the `underscore_style`. Constants are in `ALL_CAPS`
+* **Instance variables** and **method names** begin with **lowercase letters** in the `underscore_style`. Constants are in `ALL_CAPS`
 
-define a **constructor** by overwriting the `initialize` method
+* Functions and methods that test (return a boolean value) typically use a question mark (`if test?`)
 
-Functions and methods that test (return a boolean value) typically use a question mark (`if test?`)
+* A **constructor** can be defined by overwriting the `initialize` method
+
+---
+
+title: Methods and Method Encapsulation
+
+<pre class="prettyprint" data-lang="ruby">
+class MyClass
+      def method1    # default is 'public'
+        #...
+      end
+  protected          # subsequent methods will be 'protected'
+      def method2    # will be 'protected'
+        #...
+      end
+  private            # subsequent methods will be 'private'
+      def method3    # will be 'private'
+        #...
+      end
+  public             # subsequent methods will be 'public'
+      def method4    # and this will be 'public'
+        #...
+      end
+end
+</pre>
+
+---
+
+title: Methods and Method Encapsulation
+
+Or Alternatively
+
+<pre class="prettyprint" data-lang="ruby">
+class MyClass
+  def method1
+  end
+
+  # ... and so on
+
+  public    :method1, :method4
+  protected :method2
+  private   :method3
+end
+
+a = MyClass.new
+
+puts a.method1 # => method1
+puts a.method2 # => protected method `method2' called for #<MyClass:0x007faa7884a010> (NoMethodError)
+puts a.method3 # => private method `method3' called  for #<MyClass:0x007faa7884a010> (NoMethodError)
+puts a.method4 # => method4
+</pre>
+
+---
+
+title: Variables
 
 Several ways to declare instance variables
 
+* direct use/undeclared
 * `attr` defines an instance variable and a method to access it
+* `attr_reader` defines an instance variable, an accessor
+* `attr_writer` defines an instance variable, and a setter
 * `attr_accessor` defines an instance variable, an accessor, and a setter
 
-*Note*: This is very similar to how Objective-C uses the `@property` and `@synthesize` directives
+---
+
+title: Instance Variables
+
+<pre class="prettyprint" data-lang="ruby">
+class Person
+  attr :age
+  attr_reader :age
+  # gets translated into:
+  def age
+    @age
+  end
+
+  attr_writer :age
+  # gets translated into:
+  def age=(value)
+    @age = value
+  end
+
+  # attr_accessor :age gets will generate both of the methods above
+end
+</pre>
+
+To access the variables, you must prepend **instance variables** (one value per object) with `@` and class variables (one value per class) with `@@`
+
+---
+
+title: Encapsulation
+
+Ruby variables are **always** private. You can only access them through the verbose getters and setters defined by the directives shown previously.
+
+However, any variable can be accessed using the following code:
+<pre class="prettyprint" data-lang="ruby">
+d.instance_variable_get :@x
+</pre>
 
 ---
 

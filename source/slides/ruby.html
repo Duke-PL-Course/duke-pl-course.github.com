@@ -412,17 +412,138 @@ puts otherProc.class  # Proc
       <h2>Classes</h2>
       <h3></h3>
     </hgroup>
-    <article ><p>Classes start with <strong>capital letters</strong> and typically use <code>CamelCase</code> to denote capitalization</p>
-<p>You must prepend <strong>instance variables</strong> (one value per object) with <code>@</code> and class variables (one value per class) with <code>@@</code></p>
-<p><strong>Instance variables</strong> and <strong>method names</strong> begin with <strong>lowercase letters</strong> in the <code>underscore_style</code>. Constants are in <code>ALL_CAPS</code></p>
-<p>define a <strong>constructor</strong> by overwriting the <code>initialize</code> method</p>
-<p>Functions and methods that test (return a boolean value) typically use a question mark (<code>if test?</code>)</p>
-<p>Several ways to declare instance variables</p>
+    <article ><p><strong>Conventions</strong></p>
 <ul>
+<li>
+<p>Classes start with <strong>capital letters</strong> and typically use <code>CamelCase</code> to denote capitalization</p>
+</li>
+<li>
+<p><strong>Instance variables</strong> and <strong>method names</strong> begin with <strong>lowercase letters</strong> in the <code>underscore_style</code>. Constants are in <code>ALL_CAPS</code></p>
+</li>
+<li>
+<p>Functions and methods that test (return a boolean value) typically use a question mark (<code>if test?</code>)</p>
+</li>
+<li>
+<p>A <strong>constructor</strong> can be defined by overwriting the <code>initialize</code> method</p>
+</li>
+</ul></article>
+
+</slide>
+
+<slide  >
+
+    <hgroup>
+      <h2>Methods and Method Encapsulation</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="ruby">
+class MyClass
+      def method1    # default is 'public'
+        #...
+      end
+  protected          # subsequent methods will be 'protected'
+      def method2    # will be 'protected'
+        #...
+      end
+  private            # subsequent methods will be 'private'
+      def method3    # will be 'private'
+        #...
+      end
+  public             # subsequent methods will be 'public'
+      def method4    # and this will be 'public'
+        #...
+      end
+end
+</pre></article>
+
+</slide>
+
+<slide  >
+
+    <hgroup>
+      <h2>Methods and Method Encapsulation</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Or Alternatively</p>
+<pre class="prettyprint" data-lang="ruby">
+class MyClass
+  def method1
+  end
+
+  # ... and so on
+
+  public    :method1, :method4
+  protected :method2
+  private   :method3
+end
+
+a = MyClass.new
+
+puts a.method1 # => method1
+puts a.method2 # => protected method `method2' called for #<MyClass:0x007faa7884a010> (NoMethodError)
+puts a.method3 # => private method `method3' called  for #<MyClass:0x007faa7884a010> (NoMethodError)
+puts a.method4 # => method4
+</pre></article>
+
+</slide>
+
+<slide  >
+
+    <hgroup>
+      <h2>Variables</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Several ways to declare instance variables</p>
+<ul>
+<li>direct use/undeclared</li>
 <li><code>attr</code> defines an instance variable and a method to access it</li>
+<li><code>attr_reader</code> defines an instance variable, an accessor</li>
+<li><code>attr_writer</code> defines an instance variable, and a setter</li>
 <li><code>attr_accessor</code> defines an instance variable, an accessor, and a setter</li>
-</ul>
-<p><em>Note</em>: This is very similar to how Objective-C uses the <code>@property</code> and <code>@synthesize</code> directives</p></article>
+</ul></article>
+
+</slide>
+
+<slide  >
+
+    <hgroup>
+      <h2>Instance Variables</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="ruby">
+class Person
+  attr :age
+  attr_reader :age
+  # gets translated into:
+  def age
+    @age
+  end
+
+  attr_writer :age
+  # gets translated into:
+  def age=(value)
+    @age = value
+  end
+
+  # attr_accessor :age gets will generate both of the methods above
+end
+</pre>
+
+<p>To access the variables, you must prepend <strong>instance variables</strong> (one value per object) with <code>@</code> and class variables (one value per class) with <code>@@</code></p></article>
+
+</slide>
+
+<slide  >
+
+    <hgroup>
+      <h2>Encapsulation</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><p>Ruby variables are <strong>always</strong> private. You can only access them through the verbose getters and setters defined by the directives shown previously.</p>
+<p>However, any variable can be accessed using the following code:<br />
+<pre class="prettyprint" data-lang="ruby"><br />
+d.instance_variable_get :@x<br />
+</pre></p></article>
 
 </slide>
 

@@ -3,8 +3,15 @@
 	[
 		{
 			"path": "/",
-      "folder_exclude_patterns": [".bundle", ".themes", ".sass-cache", ".gist-cache", ".pygments-cache", "_deploy", "public", "sass.old", "source.old", "source/_stash", "vendor", "node_modules"],
-      "file_exclude_patterns": ["*.sublime-workspace", "*.css"]
+			"folder_exclude_patterns": [".bundle", ".themes", ".sass-cache", ".gist-cache", ".pygments-cache", "_deploy", "_cache", "public", "sass.old", "source.old", "source/_stash", "vendor", "node_modules"],
+			"file_exclude_patterns": ["*.sublime-workspace", "*.css"]
 		}
-	]
+	],
+	"build_systems":[{
+		"name": "Compile Slides",
+		"selector": "text.html.markdown",
+		"cmd": ["python", "$project_path/source/_slides/render.py", "-i", "$file", "-o", "$project_path/source/slides/$file_base_name.html"],
+		// "path": "/bin:/usr/local/bin:/usr/bin",
+		"working_dir": "$project_path/source/_slides/"
+	}]
 }

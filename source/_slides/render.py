@@ -5,6 +5,7 @@ import codecs
 import jinja2
 import markdown
 
+extensions = ['extra', 'nl2br']
 
 def process_slides(input, output):
     with codecs.open(output, 'w', encoding='utf8') as outfile:
@@ -25,7 +26,7 @@ def process_slides(input, output):
             remainder_index = metadata and 1 or 0
             # Get the content from the rest of the slide.
             content_section = '\n\n'.join(sections[remainder_index:])
-            html = markdown.markdown(content_section)
+            html = markdown.markdown(content_section, extensions)
             slide['content'] = postprocess_html(html, metadata)
 
             slides.append(slide)

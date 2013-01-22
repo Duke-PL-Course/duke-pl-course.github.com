@@ -69,7 +69,6 @@ Ruby is duck typed.
 Ruby is productive.
 Ruby is fun.
 => ["object oriented", "duck typed", "productive", "fun"]
-
 </pre></article>
 
 </slide>
@@ -498,11 +497,12 @@ Person.new('Kevin').to_f
 <p><code>has_many</code> and <code>has_one</code> are Ruby methods that add all the instance variables and methods needed to establish a <code>has_many</code> relationship.</p>
 </li>
 </ul>
-<p><code>ruby
-class Department &lt; ActiveRecord::Base
+<pre><code class="ruby">class Department &lt; ActiveRecord::Base
   has_many :employees
   has_one :manager
-end</code></p>
+end
+</code></pre>
+
 <h3>Open classes</h3>
 <ul>
 <li>
@@ -512,21 +512,23 @@ end</code></p>
 <p>The first invocation of class defines a class; once a class is already defined, subsequent invocations modify that class.</p>
 </li>
 </ul>
-<p>```ruby
-class NilClass
+<pre><code class="ruby">class NilClass
   def blank?
     true
   end
-end</p>
-<p>class String
+end
+
+class String
   def blank?
     self.size == 0
   end
-end</p>
-<p>["", "person", nil].each do |element|
+end
+
+[&quot;&quot;, &quot;person&quot;, nil].each do |element|
   puts element unless element.blank?
 end
-```</p>
+</code></pre>
+
 <h3>Via <code>method_missing</code></h3>
 <ul>
 <li>
@@ -558,31 +560,34 @@ puts Roman.IX   # 9</code></p>
 <li><strong>Macro</strong>s and <code>define_method</code>: In addition we take another look at <strong>module</strong>s and a Ruby idiom commonly used to provide the same functionality via modules.</li>
 </ul>
 <h4>The inheritance/macro approach</h4>
-<p>```ruby
-class Person
+<pre><code class="ruby">class Person
   attr_accessor :name
   def self.can_speak  # This is a class method! Notice the self.
     define_method 'speak' do  # an instance method
-      puts "I can talk, my name is #{@name}!"
+      puts &quot;I can talk, my name is #{@name}!&quot;
     end
-  end</p>
-<p>def initialize(name)
+  end
+
+  def initialize(name)
     @name = name
   end
-end</p>
-<p>class Guy &lt; Person
+end
+
+class Guy &lt; Person
   can_speak
-end</p>
-<p>class ShyGuy &lt; Person
-end</p>
-<p>john = Guy.new('John')
+end
+
+class ShyGuy &lt; Person
+end
+
+john = Guy.new('John')
 bob = ShyGuy.new('Bob')
 john.methods.include?(:speak)   # true
 bob.methods.include?(:speak)    # false
-```</p>
+</code></pre>
+
 <h4>The module approach</h4>
-<p>```ruby
-module Person
+<pre><code class="ruby">module Person
   attr_accessor :name
   def self.included(base) # included is invoked whenever a module is included; base is implicit
     base.extend ClassMethods  # extend will add the methods defined in ClassMethods as class methods
@@ -594,25 +599,29 @@ module Person
   end
   module InstanceMethods
     def speak
-      puts "I can talk, my name is #{@name}!"
+      puts &quot;I can talk, my name is #{@name}!&quot;
     end
   end
   def initialize(name)
     @name = name
   end
-end</p>
-<p>class Guy
+end
+
+class Guy
   include Person
   can_speak
-end</p>
-<p>class ShyGuy
+end
+
+class ShyGuy
   include Person
-end</p>
-<p>john = Guy.new('John')
+end
+
+john = Guy.new('John')
 bob = ShyGuy.new('Bob')
 john.methods.include?(:speak)   # true
 bob.methods.include?(:speak)    # false
-```</p>
+</code></pre>
+
 <h2>Wrapping Up</h2>
 <h3>Strengths</h3>
 <ul>

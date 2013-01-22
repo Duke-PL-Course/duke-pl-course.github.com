@@ -26,7 +26,6 @@ Ruby is duck typed.
 Ruby is productive.
 Ruby is fun.
 => ["object oriented", "duck typed", "productive", "fun"]
-
 </pre>
 
 ---

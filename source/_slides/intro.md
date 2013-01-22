@@ -11,11 +11,11 @@ title: Instructors
 
 ### Yang Su
 
-<img src="https://sphotos-a.xx.fbcdn.net/hphotos-snc7/432248_10151119162660988_1733947672_n.jpg" alt="" style="max-width: 200px; p#adding: 5px; border: 1px solid #F0F0F0;">
+![Yang Su](https://sphotos-a.xx.fbcdn.net/hphotos-snc7/432248_10151119162660988_1733947672_n.jpg){: style="max-width: 200px; p#adding: 5px; border: 1px solid #F0F0F0;"}
 
 ### Kevin Gao
 
-<img src="http://i.imgur.com/epik0.png" alt="" style="max-width: 200px; p#adding: 5px; border: 1px solid #F0F0F0;">
+![Kevin Gao](http://i.imgur.com/epik0.png){: style="max-width: 200px; p#adding: 5px; border: 1px solid #F0F0F0;"}
 
 ---
 
@@ -101,18 +101,18 @@ build_lists: true
 * Core Control and Data Structure
 * Unique Features
 
-<aside class="note">
+<aside class="note" markdown="1">
   <section>
-    <strong>strong:</strong> types can't be mixed<br>
-    <strong>weak:</strong> types can be mixed<br>
-    <strong>static:</strong> types checked at compile time<br>
-    <strong>dynamic:</strong> types checked during run time<br>
-    <strong>duck:</strong> properties and methods determine valid semantics rather than classes and inheritance<br>
-    <strong>functional:</strong> functions as basic units of computation and avoids mutable state<br>
-    <strong>procedural:</strong> imperative style, list of commands<br>
-    <strong>compiled:</strong> generate machine code from source code, and then the machine code gets interpreted<br>
-    <strong>interpreted:</strong> source code is interpreted and executed directly by the language interpreter<br>
-    <strong>vm:</strong> have a single format for machine code that can run on different machines<br>
+    **strong:** types can't be mixed
+    **weak:** types can be mixed
+    **static:** types checked at compile time
+    **dynamic:** types checked during run time
+    **duck:** properties and methods determine valid semantics rather than classes and inheritance
+    **functional:** functions as basic units of computation and avoids mutable state
+    **procedural:** imperative style, list of commands
+    **compiled:** generate machine code from source code, and then the machine code gets interpreted
+    **interpreted:** source code is interpreted and executed directly by the language interpreter
+    **vm:** have a single format for machine code that can run on different machines
   </section>
 </aside>
 
@@ -121,78 +121,24 @@ build_lists: true
 title: Language Comparisons
 content_class: smaller
 
-<table>
-  <tr>
-    <th></th>
-    <th>Typing Model</th>
-    <th>Programming Model</th>
-    <th>Implementation</th>
-    <th>Core Control and Data Structure</th>
-    <th>Unique Features</th>
-  </tr>
-  <tr>
-    <td>Ruby</td>
-    <td>strong, dynamic, duck</td>
-    <td>object oriented</td>
-    <td>interpreted</td>
-    <td>classes, modules</td>
-    <td>purely object oriented, rails, open classes, macros</td>
-  </tr>
-  <tr>
-    <td>Io</td>
-    <td>weak, dynamic, duck</td>
-    <td>prototype</td>
-    <td>interpreted</td>
-    <td>messages</td>
-    <td>custom syntax, message/object reflection, coroutines, futures</td>
-  </tr>
-  <tr>
-    <td>Prolog</td>
-    <td>weak, dynamic</td>
-    <td>logic based</td>
-    <td>compiled</td>
-    <td>variables, rules/facts/queries, unification, recursion</td>
-    <td>solving constraints </td>
-  </tr>
-  <tr>
-    <td>Scala</td>
-    <td>strong, static</td>
-    <td>functional, object oriented</td>
-    <td>compiled, virtual machine</td>
-    <td>tuples, pattern matching</td>
-    <td>actors, futures, JVM</td>
-  </tr>
-  <tr>
-    <td>Erlang</td>
-    <td>strong, dynamic</td>
-    <td>functional</td>
-    <td>compiled, virtual machine</td>
-    <td>pattern matching</td>
-    <td>"Let it crash", BEAM VM, hotswapping</td>
-  </tr>
-  <tr>
-    <td>Clojure</td>
-    <td>strong, dynamic</td>
-    <td>functional</td>
-    <td>compiled, virtual machine</td>
-    <td>lazy evaluation, data as code</td>
-    <td>macros, versioning, JVM</td>
-  </tr>
-  <tr>
-    <td>Haskell</td>
-    <td>strong, static</td>
-    <td>functional</td>
-    <td>compiled</td>
-    <td>user-defined types</td>
-    <td>purely functional</td>
-  </tr>
-</table>
+Language | Typing Model          | Programming Model | Implementation | Core Control and Data Structure | Unique Features 
+-------- | --------------------- | ----------------- | -------------- | ------------------------------- | ---------------
+Ruby     | strong, dynamic, duck | OO                | interpreted    | classes, modules                | purely OO, rails, open classes, macros
+Io       | weak, dynamic, duck   | prototype         | interpreted    | messages                        | custom syntax, message/object reflection, coroutines, futures
+Prolog   | weak, dynamic         | logic based       | compiled       | variables, rules/facts/queries, unification, recursion | solving constraints
+Scala    | strong, static        | functional, OO    | compiled, VM   | tuples, pattern matching        | actors, futures, JVM
+Erlang   | strong, dynamic       | functional        | compiled, VM   | pattern matching                | "Let it crash", BEAM VM, hotswapping
+Clojure  | strong, dynamic       | functional        | compiled, VM   | lazy evaluation, data as code   | macros, versioning, JVM
+Haskell  | strong, static        | functional        | compiled       | user-defined types              | purely functional
+
+*[OO]: Object Oriented
+*[VM]: Virtual Machine
 
 ---
 
 title: Git
 
-<img src="http://git-scm.com/images/logo@2x.png" alt="Git" style="float: right; margin-left: 10px;">
+![Git](http://git-scm.com/images/logo@2x.png){: style="float: right; margin-left: 10px;"}
 
 We will use Git as the version control system for all the assignments and materials for this course.
 
@@ -212,7 +158,7 @@ You can find more information and resources on git under the [resources page](ht
 
 title: Github
 
-<img src="images/github-logo.png" alt="Github Octocat" style="max-height: 350px; float: left; margin-right: 10px;">
+![Github Octocat](images/github-logo.png){: style="max-height: 350px; float: left; margin-right: 10px;"}
 
 We will used [github](http://github.com) extensively. 
 
@@ -236,43 +182,7 @@ We also recommend Sublime Text 2 for the editor. You can use [this post](http://
 
 title: Discussion JavaScript vs Io
 
-<table>
-  <tr>
-    <th></th>
-    <th>Advantages</th>
-    <th>Disadvantages</th>
-  </tr>
-  <tr>
-    <td>JavaScript</td>
-    <td>
-      <ul>
-        <li>Widely Used</li>
-        <li>Large and rapidly growing community</li>
-        <li>Variety of applications and uses (node)</li>
-      </ul>
-    </td>
-    <td>
-      <ul>
-        <li>Is not covered in the textbook</li>
-        <li>Is not as flexible as Io</li>
-      </ul>
-    </td>
-  </tr>
-  <tr>
-    <td>Io</td>
-    <td>
-      <ul>
-        <li>Extremely flexible, light weight syntax</li>
-        <li>Elegant implementations of coroutines, futures, and actors</li>
-        <li>Powerful reflection features</li>
-      </ul>
-    </td>
-    <td>
-      <ul>
-        <li>Small community</li>
-        <li>Little syntactical sugar</li>
-        <li>More of a niche language</li>
-      </ul>
-    </td>
-  </tr>
-</table>
+Language | Advantages | Disadvantages
+---------|------------|--------------
+JavaScript | Widely Used<br>Large and rapidly growing community<br>Variety of applications and uses (node) | Is not covered in the textbook<br>Is not as flexible as Io
+Io | Extremely flexible, light weight syntax<br>Elegant implementations of coroutines, futures, and actors<br>Powerful reflection features | Small community<br>Little syntactical sugar<br>More of a niche language

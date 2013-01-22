@@ -557,6 +557,32 @@ puts d.instance_variable_get :@x # => 10
 <slide  >
 
     <hgroup>
+      <h2>Class Variables</h2>
+      <h3></h3>
+    </hgroup>
+    <article ><pre class="prettyprint" data-lang="ruby">
+module T
+  @@foo = 'bar'
+
+  def self.set(x)
+    @@foo = x
+  end
+
+  def self.get
+    @@foo
+  end
+end
+
+p T.get         #=> 'bar'
+T.set('fubar')
+p T::get        #=> 'fubar'
+</pre></article>
+
+</slide>
+
+<slide  >
+
+    <hgroup>
       <h2>Class Example - Tree Implementation</h2>
       <h3></h3>
     </hgroup>

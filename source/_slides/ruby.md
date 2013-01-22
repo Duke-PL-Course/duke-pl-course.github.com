@@ -437,6 +437,28 @@ puts d.instance_variable_get :@x # => 10
 
 ---
 
+title: Class Variables
+
+<pre class="prettyprint" data-lang="ruby">
+module T
+  @@foo = 'bar'
+
+  def self.set(x)
+    @@foo = x
+  end
+
+  def self.get
+    @@foo
+  end
+end
+
+p T.get         #=> 'bar'
+T.set('fubar')
+p T::get        #=> 'fubar'
+</pre>
+
+---
+
 title: Class Example - Tree Implementation
 
 [Source](https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-15-tree.rb)

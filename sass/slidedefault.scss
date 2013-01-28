@@ -62,9 +62,9 @@ $article-content-top-padding: 45px;
 }
 
 ::-webkit-scrollbar {
-  height: 16px;
+  height: 10px;
   overflow: visible;
-  width: 16px;
+  width: 10px;
 }
 ::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, .1);
@@ -73,7 +73,7 @@ $article-content-top-padding: 45px;
   min-height: 28px;
   padding: 100px 0 0;
   @include box-shadow(inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07));
-  border-width: 1px 1px 1px 6px;
+  border-width: 1px 1px 1px 0;
 }
 ::-webkit-scrollbar-thumb:hover {
   background-color: rgba(0, 0, 0, 0.5);
@@ -405,6 +405,11 @@ ul {
 // This is a hack to hide gist footer and only show the direct link
 .gist {
   position: relative;
+  .gist-data {
+    max-height: 518px;
+    overflow-y: auto;
+  }
+
   .gist-meta {
     position: absolute;
     top: 0;

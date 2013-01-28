@@ -25,16 +25,7 @@ Ruby is ...
 
 title: Code Example
 
-<pre class="prettyprint" data-lang="ruby">
->> properties = ['object oriented', 'duck typed', 'productive', 'fun']
-=> ["object oriented", "duck typed", "productive", "fun"]
->> properties.each {|property| puts "Ruby is #{property}."}
-Ruby is object oriented.
-Ruby is duck typed.
-Ruby is productive.
-Ruby is fun.
-=> ["object oriented", "duck typed", "productive", "fun"]
-</pre>
+<script src="https://gist.github.com/4652670.js"></script>
 
 ---
 
@@ -42,14 +33,7 @@ title: Purely Object Oriented
 
 _Everything_ in Ruby is an object
 
-<pre class="prettyprint" data-lang="ruby">
-42.class      # => Fixnum
-42.0.class    # => Float
-"foo".class   # => String
-[1,2,3].class # => Array
-
-42.methods    # shows the methods available on the object
-</pre>
+<script src="https://gist.github.com/4652698.js"></script>
 
 ---
 
@@ -57,18 +41,7 @@ title: Typing
 
 In addition to being object-oriented, Ruby is **strongly** and **dynamically** typed
 
-<pre class="prettyprint" data-lang="ruby">
-4 + 4       # => 8
-4 + "foo"   # results in a TypeError, hence strongly typed
-4 + 4.0     # => 8.0      this works because of type coercion
-
-# What about this though?
-def add_stuff
-  4 + "foo"
-end # => nil
-
-add_stuff # => TypeError    This proves that Ruby is dynamically typed
-</pre>
+<script src="https://gist.github.com/4652806.js"></script>
 
 ---
 
@@ -84,24 +57,13 @@ The duck test:
 
 Ruby is duck-typed, meaning that if two objects of different classes have the same method signature, then they can be used together.
 
-<pre class="prettyprint" data-lang="ruby">
-i = 0
-a = ['100', 100.0, '50', 50.0]
-while i < a.size
-  <b>puts a[i].to_i</b>
-  i = i + 1
-end
-</pre>
+<script src="https://gist.github.com/4652821.js"></script>
 
 ---
 
 title: Variables
 
-<pre class="prettyprint" data-lang="ruby">
-foo = 'hello, plcourse' # here we define a function. Notice there's no type declaration
-foo = 'is mutable'      # variables are mutable, i.e. they can vary
-CONSTANTS = 'are defined like this' # they are immutable
-</pre>
+<script src="https://gist.github.com/4652825.js"></script>
 
 ---
 
@@ -114,10 +76,7 @@ title: Ranges
 
 title: Functions
 
-<pre class="prettyprint" data-lang="ruby">
-puts(foo)               # this prints "hello, plcourse" and returns nil
-puts foo                # this is exactly the same as above, with a bit of syntactic sugar
-</pre>
+<script src="https://gist.github.com/4652826.js"></script>
 
 We saw a bit of defining a function earlier in add_stuff
 
@@ -125,12 +84,7 @@ Notice that you didn't need to specify parameter types, return types, or even a 
 
 **Every function returns something**. If you do not specify an explicit return, the function will return the value of the last expression that’s processed before exiting.
 
-<pre class="prettyprint" data-lang="ruby">
-def be_truthful
-  42
-  true    # The last expression is always the one that gets returned
-end
-</pre>
+<script src="https://gist.github.com/4652828.js"></script>
 
 ---
 
@@ -150,7 +104,7 @@ title: Operators
 
 ---
 
-title: Tricky precedence nuance
+title: Tricky Precedence Nuance
 
 * Don't use `or`, `and`, or `not` when dealing with assignment, and don't mix `&&` and `||` with `and` and `or`.
 * Why? `and`, `or`, and `not` are lower precedence than assignment.
@@ -158,12 +112,7 @@ title: Tricky precedence nuance
 
 Why not use them?
 
-<pre class="prettyprint" data-lang="ruby">
->> foo = false or true    # This expression evaluates to true
-=> true
->> foo                    # But it assigned foo to false
-=> false
-</pre>
+<script src="https://gist.github.com/4652831.js"></script>
 
 ---
 
@@ -181,22 +130,7 @@ title: Arrays
 
 Arrays in Ruby can contain mixed types
 
-<pre class="prettyprint" data-lang="ruby">
-[1, "two", 3] # is perfectly valid
-Array.new     # remember, these are objects, and objects can be instantiated
-              #   with .new()
-
-cars = ['ford', 'toyota', 'subaru']
-cars[0]     # => "ford"
-cars[2]     # => "subaru"
-cars[-1]    # => "subaru"
-cars[-4]    # => nil
-cars[9001]  # => nil
-cars[1..2]  # => ["toyota", "subaru"]
-cars[1..2]  # => ["toyota", "subaru"]
-cars[0...2] # => ["ford", "toyota"]
-cars.[](0...2)# => ["ford", "toyota"]
-</pre>
+<script src="https://gist.github.com/4652835.js"></script>
 
 ---
 
@@ -212,24 +146,9 @@ Multidimensional arrays are just arrays of arrays
 
 ---
 
-title: Hashes/Maps
+title: Hashes/maps
 
-<pre class="prettyprint" data-lang="ruby">
-
-# Literal Form
-numbers = { 1 => 'one', 2 => 'two' }
-# => {1=>"one", 2=>"two"}
-
-# Accessing element using key
-numbers[1] # => "one"
-
-# Can use symbols as keys
-stuff = { :array => [1, 2, 3], :string => 'Hello' }
-# => {:array=>[1, 2, 3], :string=>"Hello"}
-
-# Accessing element using key
-stuff[:string] # => "Hello"
-</pre>
+<script src="https://gist.github.com/4652840.js"></script>
 
 **symbol**s are identifying values/objects. Two symbols of the same name always refer to the same object id
 
@@ -239,24 +158,11 @@ title: Named Parameters
 
 Hashes can be used to implement Named Parameters
 
-<pre class="prettyprint" data-lang="ruby">
-def tell_the_truth(options={})
-  if options[:profession] == :lawyer
-    'it could be believed that this is almost certainly not false.'
-  else
-    true
-  end
-end
-
-tell_the_truth
-=> true
-tell_the_truth( :profession => :lawyer )
-=> "it could be believed that this is almost certainly not false.
-</pre>
+<script src="https://gist.github.com/4652844.js"></script>
 
 ---
 
-title: Code blocks
+title: Code Blocks
 
 `{ ... }` code between braces is a code block; alternatively, `do ... end` (usually for multi-line blocks) syntax can be used
 
@@ -270,17 +176,7 @@ title: Yielding
 
 Augmenting a class definition and using **yield** to call a block
 
-<pre class="prettyprint" data-lang="ruby">
-class Fixnum
-  def my_times
-    i = self
-    while i > 0
-      i -= 1
-      yield
-    end
-  end
-end
-</pre>
+<script src="https://gist.github.com/4652848.js"></script>
 
 ---
 
@@ -294,30 +190,10 @@ Useful for policy enforcement, conditional execution, transactions, etc.
 
 ---
 
-title: Code for Call
+title: Code For Call
 content_class: small
 
-<pre class="prettyprint" data-lang="ruby">
-def call_block(&block)  # NOTE: block is actually an instance of Proc
-  block.call 1, 2
-end
-call_block { |a,b| puts "Hello #{a} and #{b}" } # "Hello 1 and 2"
-
-def yield_params
-  yield 1, 2
-end
-yield_params { |a,b| puts "#{a} and #{b}" } # "1 and 2"
-
-# Example of instantiating a proc
-someProc = Proc.new do
-  # do stuff here
-end
-otherProc = lambda do
-  # do other stuff here
-end
-puts someProc.class   # Proc
-puts otherProc.class  # Proc
-</pre>
+<script src="https://gist.github.com/4652852.js"></script>
 
 ---
 
@@ -341,53 +217,17 @@ title: Classes
 
 ---
 
-title: Methods and Method Encapsulation
+title: Methods And Method Encapsulation
 
-<pre class="prettyprint" data-lang="ruby">
-class MyClass
-      def method1    # default is 'public'
-        #...
-      end
-  protected          # subsequent methods will be 'protected'
-      def method2    # will be 'protected'
-        #...
-      end
-  private            # subsequent methods will be 'private'
-      def method3    # will be 'private'
-        #...
-      end
-  public             # subsequent methods will be 'public'
-      def method4    # and this will be 'public'
-        #...
-      end
-end
-</pre>
+<script src="https://gist.github.com/4652856.js"></script>
 
 ---
 
-title: Methods and Method Encapsulation
+title: Methods And Method Encapsulation
 
 Or Alternatively
 
-<pre class="prettyprint" data-lang="ruby">
-class MyClass
-  def method1
-  end
-
-  # ... and so on
-
-  public    :method1, :method4
-  protected :method2
-  private   :method3
-end
-
-a = MyClass.new
-
-puts a.method1 # => method1
-puts a.method2 # => protected method `method2' called for ... (NoMethodError)
-puts a.method3 # => private method `method3' called  for ... (NoMethodError)
-puts a.method4 # => method4
-</pre>
+<script src="https://gist.github.com/4652861.js"></script>
 
 ---
 
@@ -405,92 +245,40 @@ Several ways to declare instance variables
 
 title: Instance Variables
 
-<pre class="prettyprint" data-lang="ruby">
-class Person
-  attr :age
-  attr_reader :age
-  # gets translated into:
-  def age
-    @age
-  end
 
-  attr_writer :age
-  # gets translated into:
-  def age=(value)
-    @age = value
-  end
-
-  # attr_accessor :age gets will generate both of the methods above
-end
-</pre>
+<script src="https://gist.github.com/4652864.js"></script>
 
 To access the variables, you must prepend **instance variables** (one value per object) with `@` and class variables (one value per class) with `@@`
 
 ---
 
-title: Encapsulation
+title: Variable Encapsulation
 
 Ruby variables are **always** private. You can only access them through the verbose getters and setters defined by the directives shown previously.
 
 However, any variable can be accessed using the following code:
 
-<pre class="prettyprint" data-lang="ruby">
-class Base
-  def initialize()
-    @x = 10
-  end
-end
-d = Base.new
-puts d.x # => undefined method `x' for ... (NoMethodError)
-puts d.instance_variable_get :@x # => 10
-</pre>
+<script src="https://gist.github.com/4652873.js"></script>
 
 ---
 
 title: Class Variables
 
-<pre class="prettyprint" data-lang="ruby">
-module T
-  @@foo = 'bar'
+<script src="https://gist.github.com/4652876.js"></script>
 
-  def self.set(x)
-    @@foo = x
-  end
+---
 
-  def self.get
-    @@foo
-  end
-end
-
-p T.get         #=> 'bar'
-T.set('fubar')
-p T::get        #=> 'fubar'
-</pre>
+title: Class Variables
 
 ---
 
 title: Inheritance
 
-<pre class="prettyprint" data-lang="ruby">
-class Base
-  def initialize()
-    @x = 10
-  end
-end
-
-class Derived < Base
-  def x
-    @x = 20
-  end
-end
-
-d = Derived.new
-p d.x # => 20
-</pre>
+<script src="https://gist.github.com/4652877.js"></script>
 
 ---
 
-title: Mixins and Modules
+title: Mixins And Modules
 
 Object-oriented languages use inheritance to propagate behavior to similar objects
 
@@ -514,27 +302,7 @@ content_class: small
   </section>
 </aside>
 
-<pre class="prettyprint" data-lang="ruby">
-module ToFile
-  def filename
-    "object_#{self.object_id}.txt"
-  end
-  def to_f
-    File.open(filename, 'w') {|f| f.write(to_s)}
-  end
-end
-class Person
-  include ToFile
-  attr_accessor :name
-  def initialize(name)
-    @name = name
-  end
-  def to_s
-    name
-  end
-end
-Person.new('Kevin').to_f
-</pre>
+<script src="https://gist.github.com/4652878.js"></script>
 
 ---
 
@@ -554,33 +322,13 @@ A [**comparable**][comp] class must implement **<=>** (spaceship) operator
 
 [comp]: http://www.ruby-doc.org/core-1.9.3/Comparable.html
 
-<pre class="prettyprint" data-lang="ruby">
-'begin' <=> 'end' # => -1
-'same' <=> 'same' # => 0
-</pre>
+<script src="https://gist.github.com/4652879.js"></script>
 
 ---
 
 title: Sorting Example
 
-<pre class="prettyprint" data-lang="ruby">
-class SizeMatters
-  include Comparable
-  attr :str
-  def <=>(anOther)
-    str.size <=> anOther.str.size
-  end
-  def initialize(str)
-    @str = str
-  end
-  def inspect
-    @str
-  end
-end
-
-[ SizeMatters.new("S"), SizeMatters.new("SSSS"), SizeMatters.new("SSSSS"),
-  SizeMatters.new("SS"), SizeMatters.new("SSS") ].sort
-</pre>
+<script src="https://gist.github.com/4652883.js"></script>
 
 ---
 
@@ -588,43 +336,15 @@ title: Enumerable
 
 [**enumerable**][enum] include the following methods: `sort`, `any?`, `all?`, `collect` (map), `map`, `flat_map`, `select` (filter), `find`, `max`, `min`, `member?`, `inject` (reduce), `reduce`
 
-<pre class="prettyprint" data-lang="ruby">
-a = [5, 3, 4, 1]
-a.sort # => [1, 3, 4, 5]
-a.any? {|i| i > 6} # => false
-a.any? {|i| i > 4} # => true
-a.all? {|i| i > 4} # => false
-a.all? {|i| i > 0} # => true
-a.collect {|i| i * 2} # => [10, 6, 8, 2]
-a.select {|i| i % 2 == 0 } # even => [4]
-a.select {|i| i % 2 == 1 } # odd => [5, 3, 1]
-a.max # => 5
-a.member?(2) # => false
-</pre>
+<script src="https://gist.github.com/4652885.js"></script>
 
 [enum]: http://ruby-doc.org/core-1.9.3/Enumerable.html
 
 ---
 
-title: inject Example
+title: Inject Example
 
-<pre class="prettyprint" data-lang="ruby">
-a = [5, 3, 4, 1]
-a.inject(0) {|sum, i| sum + i}
-# => 13
-a.inject {|sum, i| sum + i}
-# => 13
-a.inject {|product, i| product * i}
-# = 560
-a.inject(0) do |sum, i|
- puts "sum: #{sum} i: #{i} sum + i: #{sum + i}"
- sum + i
-end
-# sum:0 i:5 sum+i:5
-# sum:5 i:3 sum+i:8
-# sum:8 i:4 sum+i:12
-# sum:12 i:1 sum+i:13
-</pre>
+<script src="https://gist.github.com/4652888.js"></script>
 
 ---
 
@@ -646,12 +366,7 @@ title: Active Record
 
 * `has_many` and `has_one` are Ruby methods that add all the instance variables and methods needed to establish a `has_many` relationship.
 
-<pre class="prettyprint" data-lang="ruby">
-class Department < ActiveRecord::Base
-  has_many :employees
-  has_one :manager
-end
-</pre>
+<script src="https://gist.github.com/4652891.js"></script>
 
 [RoR]: http://rubyonrails.org/
 [ActiveRecord]: http://en.wikipedia.org/wiki/Active_record_pattern
@@ -659,53 +374,21 @@ end
 
 ---
 
-title: Open classes
+title: Open Classes
 
 * Ruby classes are never closed to modification. You can always add methods to classes at any time; objects that have been instantiated before the modification can use the new methods. This combined with duck typing is very powerful, but also very dangerous.
 
 * The first invocation of class defines a class; once a class is already defined, subsequent invocations modify that class.
 
-<pre class="prettyprint" data-lang="ruby">
-class NilClass
-  def blank?
-    true
-  end
-end
-
-class String
-  def blank?
-    self.size == 0
-  end
-end
-
-["", "person", nil].each do |element|
-  puts element unless element.blank?
-end
-</pre>
+<script src="https://gist.github.com/4652895.js"></script>
 
 ---
 
-title: method_missing
+title: Method_missing
 
 `method_missing` is a debugging method that is called whenever a called method is not available. This can be used to develop a rich, reflective API. Be careful, however, because this means you can no longer debug wrong method calls
 
-<pre class="prettyprint" data-lang="ruby">
-class Roman
-  def self.method_missing name, *args
-    roman = name.to_s
-    roman.gsub!("IV", "IIII")
-    roman.gsub!("IX", "VIIII")
-    roman.gsub!("XL", "XXXX")
-    roman.gsub!("XC", "LXXXX")
-    (roman.count("I") + roman.count("V")*5 + roman.count("X")*10
-     + roman.count("L")*50 + roman.count("C")*100)
-  end
-end
-puts Roman.X    # 10
-puts Roman.XC   # 90
-puts Roman.XII  # 12
-puts Roman.IX   # 9
-</pre>
+<script src="https://gist.github.com/4652898.js"></script>
 
 ---
 
@@ -719,15 +402,15 @@ title: Modules
 
 ---
 
-title: The inheritance/macro approach
+title: The Inheritance/Macro Approach
 
-[Example](https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-22-lecture02.rb#L290-L315)
+<script src="https://gist.github.com/4652951.js"></script>
 
 ---
 
-title: The module approach
+title: The Module Approach
 
-[Example](https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-22-lecture02.rb#L321-L353)
+<script src="https://gist.github.com/4652955.js"></script>
 
 ---
 

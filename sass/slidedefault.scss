@@ -402,6 +402,34 @@ ul {
 //   color: #333;
 // }
 
+// This is a hack to hide gist footer and only show the direct link
+.gist {
+  position: relative;
+  .gist-meta {
+    position: absolute;
+    top: 0;
+
+    // Force background to be transparent
+    background-color: transparent !important;
+
+    // Ensure the link is visible
+    overflow: visible !important;
+    // Move entire container offscreen
+    right: -9999px;
+
+    & > a {
+      // hide all links
+      display: none;
+      // only show the direct link, which is the second one
+      &:nth-child(2) {
+        display: block;
+        position: relative;
+        right: 9999px;
+      }
+    }
+  }
+}
+
 code {
   font-size: 95%;
   font-family: 'Source Code Pro', 'Courier New', monospace;

@@ -11,10 +11,17 @@ extensions = ['extra']
 def process_slides(input, output):
     with codecs.open(output, 'w', encoding='utf8') as outfile:
         md = codecs.open(input, encoding='utf8').read()
+
         md_slides = md.split('\n---\n')
+        # The first slide is always the header information for the slides
+        header_info = parse_metadata(md_slides[0].strip())
+        # Only use the slides after the first one
+        md_slides = md_slides[1:]
+
         print 'Compiled %s slides.' % len(md_slides)
 
         slides = []
+
         # Process each slide separately.
         for md_slide in md_slides:
             slide = {}

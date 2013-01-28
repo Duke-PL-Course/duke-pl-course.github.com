@@ -1,47 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Duke PL Course</title>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="chrome=1">
-  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
-  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-  <!--This one seems to work all the time, but really small on ipad-->
-  <!--<meta name="viewport" content="initial-scale=0.4">-->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <link rel="stylesheet" media="all" href="/stylesheets/slidedefault.css">
-  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/stylesheets/slidephone.css">
-  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
-  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+    <title>Duke PL Course</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!--This one seems to work all the time, but really small on ipad-->
+    <!--<meta name="viewport" content="initial-scale=0.4">-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" media="all" href="/stylesheets/slidedefault.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/stylesheets/slidephone.css">
+    <base target="_blank"><!-- This amazingness opens all links in a new tab. -->
+    <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
 </head>
 <body style="opacity: 0">
+    <slides class="layout-widescreen">
 
-<slides class="layout-widescreen">
+        <!-- <slide class="logoslide nobackground">
+            <article class="flexbox vcenter">
+                <span><img src="images/google_developers_logo.png"></span>
+            </article>
+        </slide> -->
+        <slide class="title-slide segue nobackground">
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+            <hgroup class="auto-fadein">
 
-<!-- <slide class="logoslide nobackground">
-  <article class="flexbox vcenter">
-    <span><img src="images/google_developers_logo.png"></span>
-  </article>
-</slide> -->
-
-<slide class="title-slide segue nobackground">
-  <aside class="gdbar"><img src="images/logo.png"></aside>
-  <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
-  <hgroup class="auto-fadein">
-    <h1 data-config-title><!-- populated from slide_config.json --></h1>
-    <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
-    <p data-config-presenter><!-- populated from slide_config.json --></p>
-  </hgroup>
-</slide>
+                <h1 data-config-title><!-- populated from slide_config.json --></h1>
 
 
-<slide  >
+                <h2>Ruby</h2>
 
-    <hgroup>
-      <h2>Ruby Overview</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Ruby is ...</p>
+                <p data-config-presenter><!-- populated from slide_config.json --></p>
+            </hgroup>
+        </slide>
+
+
+        <slide>
+
+            <hgroup>
+                <h2>Ruby Overview</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Ruby is ...</p>
 <ul class="build">
 <li>Created by Yukihiro (Matz) Matsumoto</li>
 <li><a href="http://en.wikipedia.org/wiki/Interpreted_language">Interpreted</a>: No compilation necessary, code is executed by an interpreter</li>
@@ -52,15 +54,15 @@
 <li>Commonly used for scripting and web development (Rails)</li>
 </ul></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Code Example</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="prettyprint" data-lang="ruby">
+            <hgroup>
+                <h2>Code Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><pre class="prettyprint" data-lang="ruby">
 >> properties = ['object oriented', 'duck typed', 'productive', 'fun']
 => ["object oriented", "duck typed", "productive", "fun"]
 >> properties.each {|property| puts "Ruby is #{property}."}
@@ -71,15 +73,15 @@ Ruby is fun.
 => ["object oriented", "duck typed", "productive", "fun"]
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Purely Object Oriented</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><em>Everything</em> in Ruby is an object</p>
+            <hgroup>
+                <h2>Purely Object Oriented</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><em>Everything</em> in Ruby is an object</p>
 <pre class="prettyprint" data-lang="ruby">
 42.class      # => Fixnum
 42.0.class    # => Float
@@ -89,15 +91,15 @@ Ruby is fun.
 42.methods    # shows the methods available on the object
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Typing</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>In addition to being object-oriented, Ruby is <strong>strongly</strong> and <strong>dynamically</strong> typed</p>
+            <hgroup>
+                <h2>Typing</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>In addition to being object-oriented, Ruby is <strong>strongly</strong> and <strong>dynamically</strong> typed</p>
 <pre class="prettyprint" data-lang="ruby">
 4 + 4       # => 8
 4 + "foo"   # results in a TypeError, hence strongly typed
@@ -111,15 +113,15 @@ end # => nil
 add_stuff # => TypeError    This proves that Ruby is dynamically typed
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Duck Typing</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>The duck test:</p>
+            <hgroup>
+                <h2>Duck Typing</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>The duck test:</p>
 <blockquote>
   "If it looks like a duck, swims like a duck, and quacks like a duck, then it probably is a duck."
 </blockquote>
@@ -135,42 +137,42 @@ while i < a.size
 end
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Variables</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="prettyprint" data-lang="ruby">
+            <hgroup>
+                <h2>Variables</h2>
+                <h3></h3>
+            </hgroup>
+            <article><pre class="prettyprint" data-lang="ruby">
 foo = 'hello, plcourse' # here we define a function. Notice there's no type declaration
 foo = 'is mutable'      # variables are mutable, i.e. they can vary
 CONSTANTS = 'are defined like this' # they are immutable
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Ranges</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul>
+            <hgroup>
+                <h2>Ranges</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
 <li>inclusive <code>1..3</code></li>
 <li>exclusive <code>1...3</code></li>
 </ul></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Functions</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="prettyprint" data-lang="ruby">
+            <hgroup>
+                <h2>Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><pre class="prettyprint" data-lang="ruby">
 puts(foo)               # this prints "hello, plcourse" and returns nil
 puts foo                # this is exactly the same as above, with a bit of syntactic sugar
 </pre>
@@ -185,15 +187,15 @@ def be_truthful
 end
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Operators</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><a href="http://www.techotopia.com/index.php/Ruby_Operator_Precedence#Operator_Precedence_Table">Full table of operators</a></p>
+            <hgroup>
+                <h2>Operators</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="http://www.techotopia.com/index.php/Ruby_Operator_Precedence#Operator_Precedence_Table">Full table of operators</a></p>
 <h4>Comparison operators (order of precedence):</h4>
 <ul>
 <li><code>( )</code>   Note: not really an operator</li>
@@ -207,15 +209,15 @@ end
 <li><code>not</code>, <code>!</code></li>
 </ul></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Tricky precedence nuance</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul>
+            <hgroup>
+                <h2>Tricky precedence nuance</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
 <li>Don't use <code>or</code>, <code>and</code>, or <code>not</code> when dealing with assignment, and don't mix <code>&amp;&amp;</code> and <code>||</code> with <code>and</code> and <code>or</code>.</li>
 <li>Why? <code>and</code>, <code>or</code>, and <code>not</code> are lower precedence than assignment.</li>
 <li>So when is it okay to use them?</li>
@@ -228,28 +230,28 @@ end
 => false
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Control Structures</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><h3>Expression modifiers</h3>
+            <hgroup>
+                <h2>Control Structures</h2>
+                <h3></h3>
+            </hgroup>
+            <article><h3>Expression modifiers</h3>
 <p><code>if</code>, <code>unless</code>, <code>while</code>, <code>until</code></p>
 <h3>Falsy Values</h3>
 <p>everything but <code>nil</code> and <code>false</code> evaluate to true. <code>0</code> is true!</p></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Arrays</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Arrays in Ruby can contain mixed types</p>
+            <hgroup>
+                <h2>Arrays</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Arrays in Ruby can contain mixed types</p>
 <pre class="prettyprint" data-lang="ruby">
 [1, "two", 3] # is perfectly valid
 Array.new     # remember, these are objects, and objects can be instantiated
@@ -267,27 +269,27 @@ cars[0...2] # => ["ford", "toyota"]
 cars.[](0...2)# => ["ford", "toyota"]
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>More Arrays</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><code>[]</code> and <code>[]=</code> are just methods of the Array class; their typical usage is just syntactic sugar</p>
+            <hgroup>
+                <h2>More Arrays</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>[]</code> and <code>[]=</code> are just methods of the Array class; their typical usage is just syntactic sugar</p>
 <p>Multidimensional arrays are just arrays of arrays</p>
 <p><code>push</code>, <code>pop</code>, as well as other functions exist natively in the <a href="http://www.ruby-doc.org/core-1.9.3/Array.html">Array API</a> that allow arrays to be used as queues, linked lists, stacks, or sets.</p></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Hashes/Maps</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="prettyprint" data-lang="ruby">
+            <hgroup>
+                <h2>Hashes/Maps</h2>
+                <h3></h3>
+            </hgroup>
+            <article><pre class="prettyprint" data-lang="ruby">
 
 # Literal Form
 numbers = { 1 => 'one', 2 => 'two' }
@@ -306,15 +308,15 @@ stuff[:string] # => "Hello"
 
 <p><strong>symbol</strong>s are identifying values/objects. Two symbols of the same name always refer to the same object id</p></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Named Parameters</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Hashes can be used to implement Named Parameters</p>
+            <hgroup>
+                <h2>Named Parameters</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Hashes can be used to implement Named Parameters</p>
 <pre class="prettyprint" data-lang="ruby">
 def tell_the_truth(options={})
   if options[:profession] == :lawyer
@@ -330,27 +332,27 @@ tell_the_truth( :profession => :lawyer )
 => "it could be believed that this is almost certainly not false.
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Code blocks</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><code>{ ... }</code> code between braces is a code block; alternatively, <code>do ... end</code> (usually for multi-line blocks) syntax can be used</p>
+            <hgroup>
+                <h2>Code blocks</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>{ ... }</code> code between braces is a code block; alternatively, <code>do ... end</code> (usually for multi-line blocks) syntax can be used</p>
 <p><code>Fixnum.times</code> can be used to loop a certain number of times: <code>3.times { puts 'Hello, World!' }</code></p>
 <p>Use <code>each</code> on a collection (Array or Hash) to iterate over the elements in the collection: <code>animals.each { |a| puts a }</code> and <code>numbers.each { |k,v| puts "#{k} maps to #{v}" }</code></p></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Yielding</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Augmenting a class definition and using <strong>yield</strong> to call a block</p>
+            <hgroup>
+                <h2>Yielding</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Augmenting a class definition and using <strong>yield</strong> to call a block</p>
 <pre class="prettyprint" data-lang="ruby">
 class Fixnum
   def my_times
@@ -363,26 +365,26 @@ class Fixnum
 end
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Call</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Alternatively, call a block using <code>call</code>. When we do this, the block is actually an instance of <a href="http://www.ruby-doc.org/core-1.9.3/Proc.html"><code>Proc</code></a> (short for procedure). The main difference is that a <a href="http://www.ruby-doc.org/core-1.9.3/Proc.html"><code>Proc</code></a> can be stored.</p>
+            <hgroup>
+                <h2>Call</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Alternatively, call a block using <code>call</code>. When we do this, the block is actually an instance of <a href="http://www.ruby-doc.org/core-1.9.3/Proc.html"><code>Proc</code></a> (short for procedure). The main difference is that a <a href="http://www.ruby-doc.org/core-1.9.3/Proc.html"><code>Proc</code></a> can be stored.</p>
 <p>Useful for policy enforcement, conditional execution, transactions, etc.</p></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Code for Call</h2>
-      <h3></h3>
-    </hgroup>
-    <article class="small"><pre class="prettyprint" data-lang="ruby">
+            <hgroup>
+                <h2>Code for Call</h2>
+                <h3></h3>
+            </hgroup>
+            <article class="small"><pre class="prettyprint" data-lang="ruby">
 def call_block(&block)  # NOTE: block is actually an instance of Proc
   block.call 1, 2
 end
@@ -404,25 +406,25 @@ puts someProc.class   # Proc
 puts otherProc.class  # Proc
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Block Example - Tree Implementation</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-22-lecture02.rb#L71-L120">Source</a></p></article>
+            <hgroup>
+                <h2>Block Example - Tree Implementation</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-22-lecture02.rb#L71-L120">Source</a></p></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Classes</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><strong>Conventions</strong></p>
+            <hgroup>
+                <h2>Classes</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><strong>Conventions</strong></p>
 <ul>
 <li>
 <p>Classes start with <strong>capital letters</strong> and typically use <code>CamelCase</code> to denote capitalization</p>
@@ -438,15 +440,15 @@ puts otherProc.class  # Proc
 </li>
 </ul></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Methods and Method Encapsulation</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="prettyprint" data-lang="ruby">
+            <hgroup>
+                <h2>Methods and Method Encapsulation</h2>
+                <h3></h3>
+            </hgroup>
+            <article><pre class="prettyprint" data-lang="ruby">
 class MyClass
       def method1    # default is 'public'
         #...
@@ -466,15 +468,15 @@ class MyClass
 end
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Methods and Method Encapsulation</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Or Alternatively</p>
+            <hgroup>
+                <h2>Methods and Method Encapsulation</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Or Alternatively</p>
 <pre class="prettyprint" data-lang="ruby">
 class MyClass
   def method1
@@ -495,15 +497,15 @@ puts a.method3 # => private method `method3' called  for ... (NoMethodError)
 puts a.method4 # => method4
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Variables</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Several ways to declare instance variables</p>
+            <hgroup>
+                <h2>Variables</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Several ways to declare instance variables</p>
 <ul>
 <li>direct use/undeclared</li>
 <li><code>attr</code> defines an instance variable and a method to access it</li>
@@ -512,15 +514,15 @@ puts a.method4 # => method4
 <li><code>attr_accessor</code> defines an instance variable, an accessor, and a setter</li>
 </ul></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Instance Variables</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="prettyprint" data-lang="ruby">
+            <hgroup>
+                <h2>Instance Variables</h2>
+                <h3></h3>
+            </hgroup>
+            <article><pre class="prettyprint" data-lang="ruby">
 class Person
   attr :age
   attr_reader :age
@@ -541,15 +543,15 @@ end
 
 <p>To access the variables, you must prepend <strong>instance variables</strong> (one value per object) with <code>@</code> and class variables (one value per class) with <code>@@</code></p></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Encapsulation</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Ruby variables are <strong>always</strong> private. You can only access them through the verbose getters and setters defined by the directives shown previously.</p>
+            <hgroup>
+                <h2>Encapsulation</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Ruby variables are <strong>always</strong> private. You can only access them through the verbose getters and setters defined by the directives shown previously.</p>
 <p>However, any variable can be accessed using the following code:</p>
 <pre class="prettyprint" data-lang="ruby">
 class Base
@@ -562,15 +564,15 @@ puts d.x # => undefined method `x' for ... (NoMethodError)
 puts d.instance_variable_get :@x # => 10
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Class Variables</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="prettyprint" data-lang="ruby">
+            <hgroup>
+                <h2>Class Variables</h2>
+                <h3></h3>
+            </hgroup>
+            <article><pre class="prettyprint" data-lang="ruby">
 module T
   @@foo = 'bar'
 
@@ -588,15 +590,15 @@ T.set('fubar')
 p T::get        #=> 'fubar'
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Inheritance</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="prettyprint" data-lang="ruby">
+            <hgroup>
+                <h2>Inheritance</h2>
+                <h3></h3>
+            </hgroup>
+            <article><pre class="prettyprint" data-lang="ruby">
 class Base
   def initialize()
     @x = 10
@@ -613,28 +615,28 @@ d = Derived.new
 p d.x # => 20
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Mixins and Modules</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Object-oriented languages use inheritance to propagate behavior to similar objects</p>
+            <hgroup>
+                <h2>Mixins and Modules</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Object-oriented languages use inheritance to propagate behavior to similar objects</p>
 <p>When the behaviors are not similar, you use <a href="http://en.wikipedia.org/wiki/Multiple_inheritance"><strong>multiple inheritance</strong></a> (usually complicated and problematic) or you use something else. </p>
 <p><strong>Java</strong> uses interfaces to solve this problem. <strong>Ruby</strong> uses modules.</p>
 <p>A <strong>module</strong> is a collection of functions and constants. When you include a module as part of a class, those behaviors and constants become part of the class.</p></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Module Example</h2>
-      <h3></h3>
-    </hgroup>
-    <article class="small"><aside class="note">
+            <hgroup>
+                <h2>Module Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article class="small"><aside class="note">
 
 <p><section>
   The ability to write to a file has nothing to do with whether a class is actually a <code>Person</code>. We add the capability to add the contents to a file by <strong>mixing in</strong> the capability. We can add new mixins and subclasses to <code>Person</code>, and each subclass will have the capabilities of all the mixins without having to know about the mixin’s implementation.</p>
@@ -664,41 +666,41 @@ end
 Person.new('Kevin').to_f
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Module Example Continued</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Note that <code>to_s</code> is used in the module but implemented in the class. </p>
+            <hgroup>
+                <h2>Module Example Continued</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Note that <code>to_s</code> is used in the module but implemented in the class. </p>
 <p>With Java, this contract is <strong>explicit</strong>: the class will implement a formal <strong>interface</strong></p>
 <p>With Ruby, this contract is <strong>implicit</strong>, through <strong>duck typing</strong></p></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Comparable</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>A <a href="http://www.ruby-doc.org/core-1.9.3/Comparable.html"><strong>comparable</strong></a> class must implement <strong>&lt;=&gt;</strong> (spaceship) operator</p>
+            <hgroup>
+                <h2>Comparable</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>A <a href="http://www.ruby-doc.org/core-1.9.3/Comparable.html"><strong>comparable</strong></a> class must implement <strong>&lt;=&gt;</strong> (spaceship) operator</p>
 <pre class="prettyprint" data-lang="ruby">
 'begin' <=> 'end' # => -1
 'same' <=> 'same' # => 0
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Sorting Example</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="prettyprint" data-lang="ruby">
+            <hgroup>
+                <h2>Sorting Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><pre class="prettyprint" data-lang="ruby">
 class SizeMatters
   include Comparable
   attr :str
@@ -717,15 +719,15 @@ end
   SizeMatters.new("SS"), SizeMatters.new("SSS") ].sort
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Enumerable</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><a href="http://ruby-doc.org/core-1.9.3/Enumerable.html"><strong>enumerable</strong></a> include the following methods: <code>sort</code>, <code>any?</code>, <code>all?</code>, <code>collect</code> (map), <code>map</code>, <code>flat_map</code>, <code>select</code> (filter), <code>find</code>, <code>max</code>, <code>min</code>, <code>member?</code>, <code>inject</code> (reduce), <code>reduce</code></p>
+            <hgroup>
+                <h2>Enumerable</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="http://ruby-doc.org/core-1.9.3/Enumerable.html"><strong>enumerable</strong></a> include the following methods: <code>sort</code>, <code>any?</code>, <code>all?</code>, <code>collect</code> (map), <code>map</code>, <code>flat_map</code>, <code>select</code> (filter), <code>find</code>, <code>max</code>, <code>min</code>, <code>member?</code>, <code>inject</code> (reduce), <code>reduce</code></p>
 <pre class="prettyprint" data-lang="ruby">
 a = [5, 3, 4, 1]
 a.sort # => [1, 3, 4, 5]
@@ -740,15 +742,15 @@ a.max # => 5
 a.member?(2) # => false
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>inject Example</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><pre class="prettyprint" data-lang="ruby">
+            <hgroup>
+                <h2>inject Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><pre class="prettyprint" data-lang="ruby">
 a = [5, 3, 4, 1]
 a.inject(0) {|sum, i| sum + i}
 # => 13
@@ -766,35 +768,35 @@ end
 # sum:12 i:1 sum+i:13
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Questions</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Any questions about what we talked about thus far?</p></article>
+            <hgroup>
+                <h2>Questions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Any questions about what we talked about thus far?</p></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Metaprogramming</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p>Writing programs that write programs.</p></article>
+            <hgroup>
+                <h2>Metaprogramming</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Writing programs that write programs.</p></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Active Record</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul>
+            <hgroup>
+                <h2>Active Record</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
 <li>
 <p><a href="http://en.wikipedia.org/wiki/Active_record_pattern">ActiveRecord</a> is an <a href="http://en.wikipedia.org/wiki/Object-relational_mapping">Object Relational Mapping (ORM)</a> that is commonly used in Ruby/<a href="http://rubyonrails.org/">Rails</a> applications for writing a data abstraction layer for applications.</p>
 </li>
@@ -809,15 +811,15 @@ class Department < ActiveRecord::Base
 end
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Open classes</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul>
+            <hgroup>
+                <h2>Open classes</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
 <li>
 <p>Ruby classes are never closed to modification. You can always add methods to classes at any time; objects that have been instantiated before the modification can use the new methods. This combined with duck typing is very powerful, but also very dangerous.</p>
 </li>
@@ -843,15 +845,15 @@ end
 end
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>method_missing</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><code>method_missing</code> is a debugging method that is called whenever a called method is not available. This can be used to develop a rich, reflective API. Be careful, however, because this means you can no longer debug wrong method calls</p>
+            <hgroup>
+                <h2>method_missing</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>method_missing</code> is a debugging method that is called whenever a called method is not available. This can be used to develop a rich, reflective API. Be careful, however, because this means you can no longer debug wrong method calls</p>
 <pre class="prettyprint" data-lang="ruby">
 class Roman
   def self.method_missing name, *args
@@ -870,48 +872,48 @@ puts Roman.XII  # 12
 puts Roman.IX   # 9
 </pre></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Modules</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><strong>Macros</strong> are used to change the behavior of a class depending on the environment, taking advantage of inheritance. They can be used to define <a href="http://en.wikipedia.org/wiki/Domain-specific_language">Domain Specific Languages (DSL)</a> with custom syntax</p>
+            <hgroup>
+                <h2>Modules</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><strong>Macros</strong> are used to change the behavior of a class depending on the environment, taking advantage of inheritance. They can be used to define <a href="http://en.wikipedia.org/wiki/Domain-specific_language">Domain Specific Languages (DSL)</a> with custom syntax</p>
 <ul>
 <li><strong>Macro</strong>s and <code>define_method</code>: In addition we take another look at <strong>module</strong>s and a Ruby idiom commonly used to provide the same functionality via modules.</li>
 </ul></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>The inheritance/macro approach</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-22-lecture02.rb#L290-L315">Example</a></p></article>
+            <hgroup>
+                <h2>The inheritance/macro approach</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-22-lecture02.rb#L290-L315">Example</a></p></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>The module approach</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><p><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-22-lecture02.rb#L321-L353">Example</a></p></article>
+            <hgroup>
+                <h2>The module approach</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-22-lecture02.rb#L321-L353">Example</a></p></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Strengths</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul>
+            <hgroup>
+                <h2>Strengths</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
 <li>Purely object oriented (no primitives)</li>
 <li>Duck typing for increased polymorphism</li>
 <li>Can be used somewhat functionally (blocks)</li>
@@ -922,42 +924,41 @@ puts Roman.IX   # 9
 <li>Fun?</li>
 </ul></article>
 
-</slide>
+        </slide>
 
-<slide  >
+        <slide>
 
-    <hgroup>
-      <h2>Weaknesses</h2>
-      <h3></h3>
-    </hgroup>
-    <article ><ul>
+            <hgroup>
+                <h2>Weaknesses</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
 <li>Slow (new Ruby VMs try to solve this, see <a href="http://rubini.us/">Rubinius</a>)</li>
 <li>Stateful programming due to objects make concurrency hard to get right</li>
 <li>Duck typing can be dangerous with regards to type safety, and makes it difficult for developer tools (debuggers, IDEs, etc.) to work with Ruby correctly.</li>
 </ul></article>
 
-</slide>
+        </slide>
 
 
-<slide class="thank-you-slide segue nobackground">
-  <aside class="gdbar right"><img src="images/logo.png"></aside>
-  <article class="flexbox vleft auto-fadein">
-    <h2>&lt;Thank You!&gt;</h2>
-    <p></p>
-  </article>
-  <p class="auto-fadein" data-config-contact>
-    <!-- populated from slide_config.json -->
-  </p>
-</slide>
+        <slide class="thank-you-slide segue nobackground">
+            <aside class="gdbar right"><img src="images/logo.png"></aside>
+            <article class="flexbox vleft auto-fadein">
+                <h2>&lt;Thank You!&gt;</h2>
+                <p></p>
+            </article>
+            <p class="auto-fadein" data-config-contact>
+                <!-- populated from slide_config.json -->
+            </p>
+        </slide>
 
-<!-- <slide class="logoslide dark nobackground">
-  <article class="flexbox vcenter">
-    <span><img src="images/google_developers_logo_white.png"></span>
-  </article>
-</slide> -->
+        <!-- <slide class="logoslide dark nobackground">
+        <article class="flexbox vcenter">
+            <span><img src="images/google_developers_logo_white.png"></span>
+        </article>
+        </slide> -->
 
-<slide class="backdrop"></slide>
-
+    <slide class="backdrop"></slide>
 </slides>
 
 <script>
@@ -973,8 +974,8 @@ _gaq.push(['_trackPageview']);
 </script>
 
 <!--[if IE]>
-  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
-  <script>CFInstall.check({mode: 'overlay'});</script>
+<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+<script>CFInstall.check({mode: 'overlay'});</script>
 <![endif]-->
 </body>
 </html>

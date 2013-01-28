@@ -268,10 +268,6 @@ title: Class Variables
 
 ---
 
-title: Class Variables
-
----
-
 title: Inheritance
 
 <script src="https://gist.github.com/4652877.js"></script>

@@ -770,7 +770,9 @@ SlideDeck.prototype.loadAnalytics_ = function() {
     test: !!document.body.classList && !!document.body.dataset,
     nope: ['js/polyfills/classList.min.js', 'js/polyfills/dataset.min.js'],
     complete: function() {
-      window.slidedeck = new SlideDeck();
+      $(function () {
+        window.slidedeck = new SlideDeck();
+      });
     }
   });
 })();

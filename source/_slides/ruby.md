@@ -199,7 +199,7 @@ content_class: small
 
 title: Block Example - Tree Implementation
 
-[Source](https://github.com/Duke-PL-Course/Ruby/blob/master/examples/2013-01-22-lecture02.rb#L71-L120)
+<script src="https://gist.github.com/4653338.js"></script>
 
 ---
 

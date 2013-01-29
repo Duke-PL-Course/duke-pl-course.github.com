@@ -426,3 +426,36 @@ title: Module Pattern
 title: Cascading Function Calls
 
 <script src="https://gist.github.com/4668114.js"></script>
+
+---
+
+title: Inheritance
+class: segue dark
+
+---
+
+title: Prototypal Inheritance
+
+JavaScript, being a loosely typed language, never casts. The lineage of an object is irrelevant. What matters about an object is what it can do, not what it is descended from.
+
+JavaScript is a prototypal language, which means that **objects inherit directly from other objects**.
+
+---
+
+title: Pseudoclassical
+
+We can define a constructor and augment its prototype:
+
+<script src="https://gist.github.com/4668774.js"></script>
+
+---
+
+title: Prototypal
+
+<script src="https://gist.github.com/4668822.js"></script>
+
+---
+
+title: Functional
+
+<script src="https://gist.github.com/4668863.js"></script>

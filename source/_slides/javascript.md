@@ -8,7 +8,7 @@ build_lists: true
 JavaScript is ...
 
 * Created by [Brendan Eich][] in 1995 while working for Netscape
-* A cross-platform, object-oriented, loosely typed scripting language, designed to run in a host environment (ex: browsers, Node, or other applications)
+* A cross-platform, object-oriented, dynamically typed scripting language, designed to run in a host environment (ex: browsers, Node, or other applications)
 * The first [Prototype][] and [lambda][] language to go mainstream
 * More closely related to [Self][] or [Scheme][] than C or Java, despite its name
 
@@ -24,7 +24,7 @@ title: Code Example
 
 ---
 
-title: Syntax
+title: Data Types
 class: segue dark
 
 ---
@@ -32,51 +32,101 @@ class: segue dark
 title: Three Primitive Types
 
 boolean
-: `true` or `false`
 
 number
-: 64 bit floating number. No integers. Many constants are defined in the Number and Math classes, including `NaN`, `Infinity`, `E`, `PI`, etc.
 
 string
-: sequence of zero or more Unicode characters enclosed by `'` or `"`. Characters can be escaped with `\`
+
 
 ---
 
-title: Boolean Values
+title: Boolean
 
-### Logic Operators
+`true` or `false`
 
-* and: `&&`
-* or `||`
-* not `!`
-* comparisons `>`, `<`, `>=`, `<=` 
-* equals `==`, `===`
-* not equals `!=`, `!==` 
-
-```javascript
-true && true   # > true
-true && false  # > false
-true || false   # > true
-false || false  # > false
-
-
-```
+<script src="https://gist.github.com/4667142"></script>
 
 ---
 
+title: Number
+
+All numbers in JavaScript are **64 bit floating point number**. There are **no integers**. Many constants are defined in the Number and Math classes, including `NaN`, `Infinity`, `Math.E`, `Math.PI`, `Number.MAX_VALUE`, etc.
+
+Most of the math operations you'd expect are supported natively. Many of the utility methods are included in the [`Math`][math] global object.
+
+<script src="https://gist.github.com/4666936.js"></script>
+
+[math]: https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Math
+
 ---
 
-title: Falsy Values
+title: String
 
+A string is **a sequence of zero or more Unicode characters** enclosed by `'` or `"`. Characters can be escaped with `\`
 
+`"string"` is equivalent to `new String("string")`
+
+A character is simply a string of length 1
+
+There are many utility methods defined on the [`String`][string] global object
+
+<script src="https://gist.github.com/4667033.js"></script>
+
+[string]: https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String
+
+---
+
+title: Type Conversion
+
+### Implicit
+
+Because JavaScript is a dynamically and loosely typed language. Differently typed values can be combined without error.
+
+<script src="https://gist.github.com/4667108.js"></script>
+
+### Explicit
+
+You can do type conversion explicitly using prefined functions: `Boolean`, `String`, `Number`, etc.
+
+<script src="https://gist.github.com/4667212.js"></script>
 
 ---
 
 title: Special Values
 
-Two special values
-1. `null`
-2. `undefined`
+`null`: can be used to denote valid value that represents nothing or emptiness
+
+`undefined`: default value for anything not yet defined or assigned a value
+
+---
+
+title: Everything
+
+title: Logic Operators
+
+* and: `&&`
+* or `||`
+* not `!`
+* comparisons `>`, `<`, `>=`, `<=`
+* equals `==`, `===`
+* not equals `!=`, `!==`
+
+*Note*: Use `!!` to convert any time to its equivalent boolean value
+
+<script src="https://gist.github.com/4667305.js"></script>
+
+---
+
+title: Falsy Values
+
+* 0
+* '' or ""
+* null
+* undefined
+* false
+* NaN
+
+<script src="https://gist.github.com/4667307.j"></script>
 
 ---
 
@@ -90,7 +140,7 @@ An **object** is a basically a hashtable, but none of the hash-table nature (suc
 
 **Values** can be any of the data types, including other objects
 
---- 
+---
 
 title: Objects Usage
 
@@ -98,17 +148,35 @@ title: Objects Usage
 
 Use subscript notation or dot notation to add, replace, or retrieve elements in the hashtable.
 
-var obj = {};
-obj['delet']
-myHashtable["name"] = "Carl Hollywood";
-There is also a dot notation which is a little more convenient.
+**Note**: dot notation is limited as you can't look up using reserved words or names that contain dashes
 
-myHashtable.city = "Anytown";
+<script src="https://gist.github.com/4667388.js"></script>
+
+---
+
+title: Object References
+
+In JavaScript objects are passed by reference, not value.
+
+<script src="https://gist.github.com/4667415.js"></script>
 
 ---
 
 title: Arrays
 
+Arrays in JavaScript are also hashtable objects (The values are located by a key, not by an offset). This makes them very well suited to sparse array applications.
+
+`[]` is equivalent to `new Array()`. Both create an empty array.
+
+Arrays are not typed and dynamic
+
+use `[]` to index into the array and `[]=` to assign values
+
+<script src="https://gist.github.com/4667482.js"></script>
+
+---
+
+title: Variables
 
 ---
 

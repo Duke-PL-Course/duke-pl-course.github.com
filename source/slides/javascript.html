@@ -46,7 +46,7 @@
             <article><p>JavaScript is ...</p>
 <ul class="build">
 <li>Created by <a href="https://brendaneich.com/">Brendan Eich</a> in 1995 while working for Netscape</li>
-<li>A cross-platform, object-oriented, loosely typed scripting language, designed to run in a host environment (ex: browsers, Node, or other applications)</li>
+<li>A cross-platform, object-oriented, dynamically typed scripting language, designed to run in a host environment (ex: browsers, Node, or other applications)</li>
 <li>The first <a href="http://en.wikipedia.org/wiki/Prototype-based_programming">Prototype</a> and <a href="http://en.wikipedia.org/wiki/Lambda_(programming)">lambda</a> language to go mainstream</li>
 <li>More closely related to <a href="http://research.sun.com/self/language.html">Self</a> or <a href="http://javascript.crockford.com/little.html">Scheme</a> than C or Java, despite its name</li>
 </ul></article>
@@ -67,7 +67,7 @@
             
             <aside class="gdbar"><img src="images/logo.png"></aside>
             <hgroup class="auto-fadein">
-                <h2>Syntax</h2>
+                <h2>Data Types</h2>
                 <h3></h3>
             </hgroup>
             
@@ -79,14 +79,62 @@
                 <h2>Three Primitive Types</h2>
                 <h3></h3>
             </hgroup>
-            <article><dl>
-<dt>boolean</dt>
-<dd><code>true</code> or <code>false</code></dd>
-<dt>number</dt>
-<dd>64 bit floating number. No integers. Many constants are defined in the Number and Math classes, including <code>NaN</code>, <code>Infinity</code>, <code>E</code>, <code>PI</code>, etc.</dd>
-<dt>string</dt>
-<dd>sequence of zero or more Unicode characters enclosed by <code>'</code> or <code>"</code>. Characters can be escaped with <code>\</code></dd>
-</dl></article>
+            <article><p>boolean</p>
+<p>number</p>
+<p>string</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Boolean</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>true</code> or <code>false</code></p>
+<script src="https://gist.github.com/4667142"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Number</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>All numbers in JavaScript are <strong>64 bit floating point number</strong>. There are <strong>no integers</strong>. Many constants are defined in the Number and Math classes, including <code>NaN</code>, <code>Infinity</code>, <code>Math.E</code>, <code>Math.PI</code>, <code>Number.MAX_VALUE</code>, etc.</p>
+<p>Most of the math operations you'd expect are supported natively. Many of the utility methods are included in the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Math"><code>Math</code></a> global object.</p>
+<script src="https://gist.github.com/4666936.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>String</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>A string is <strong>a sequence of zero or more Unicode characters</strong> enclosed by <code>'</code> or <code>"</code>. Characters can be escaped with <code>\</code></p>
+<p><code>"string"</code> is equivalent to <code>new String("string")</code></p>
+<p>A character is simply a string of length 1</p>
+<p>There are many utility methods defined on the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String"><code>String</code></a> global object</p>
+<script src="https://gist.github.com/4667033.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Type Conversion</h2>
+                <h3></h3>
+            </hgroup>
+            <article><h3>Implicit</h3>
+<p>Because JavaScript is a dynamically and loosely typed language. Differently typed values can be combined without error.</p>
+<script src="https://gist.github.com/4667108.js"></script>
+
+<h3>Explicit</h3>
+<p>You can do type conversion explicitly using prefined functions: <code>Boolean</code>, <code>String</code>, <code>Number</code>, etc.</p>
+<script src="https://gist.github.com/4667212.js"></script></article>
             
         </slide>
         
@@ -96,9 +144,46 @@
                 <h2>Special Values</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>Two special values
-1. <code>null</code>
-2. <code>undefined</code></p></article>
+            <article><p><code>null</code>: can be used to denote valid value that represents nothing or emptiness</p>
+<p><code>undefined</code>: default value for anything not yet defined or assigned a value</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Everything</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>title: Logic Operators</p>
+<ul>
+<li>and: <code>&amp;&amp;</code></li>
+<li>or <code>||</code></li>
+<li>not <code>!</code></li>
+<li>comparisons <code>&gt;</code>, <code>&lt;</code>, <code>&gt;=</code>, <code>&lt;=</code></li>
+<li>equals <code>==</code>, <code>===</code></li>
+<li>not equals <code>!=</code>, <code>!==</code></li>
+</ul>
+<p><em>Note</em>: Use <code>!!</code> to convert any time to its equivalent boolean value</p>
+<script src="https://gist.github.com/4667305.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Falsy Values</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
+<li>0</li>
+<li>'' or ""</li>
+<li>null</li>
+<li>undefined</li>
+<li>false</li>
+<li>NaN</li>
+</ul>
+<script src="https://gist.github.com/4667307.j"></script></article>
             
         </slide>
         
@@ -108,7 +193,241 @@
                 <h2>Objects</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>An object is a referenceable container of name/value pairs. The names are strings (or other elements such as numbers that are converted to strings). The values can be any of the data types, including other objects. Objects are usually implemented as hash-tables, but none of the hash-table nature (such as hash functions or rehashing methods) is visible.</p></article>
+            <article><p>Any other data type, such as <code>Function</code>, <code>RegExp</code>, <code>Date</code>, etc., are implemented as objects</p>
+<p>An <strong>object</strong> is a basically a hashtable, but none of the hash-table nature (such as hash functions or rehashing methods) is visible.</p>
+<p><strong>Keys</strong> are strings, or other elements such as numbers that are converted to strings</p>
+<p><strong>Values</strong> can be any of the data types, including other objects</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Objects Usage</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>{}</code> is equivalent to <code>new Object()</code>. Both create a new object</p>
+<p>Use subscript notation or dot notation to add, replace, or retrieve elements in the hashtable.</p>
+<p><strong>Note</strong>: dot notation is limited as you can't look up using reserved words or names that contain dashes</p>
+<script src="https://gist.github.com/4667388.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Object References</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>In JavaScript objects are passed by reference, not value.</p>
+<script src="https://gist.github.com/4667415.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Arrays</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Arrays in JavaScript are also hashtable objects (The values are located by a key, not by an offset). This makes them very well suited to sparse array applications.</p>
+<p><code>[]</code> is equivalent to <code>new Array()</code>. Both create an empty array.</p>
+<p>Arrays are not typed and dynamic</p>
+<p>use <code>[]</code> to index into the array and <code>[]=</code> to assign values</p>
+<script src="https://gist.github.com/4667482.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Variables</h2>
+                <h3></h3>
+            </hgroup>
+            <article></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>What are functions in javascript?</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>A function is a set of statements and expressions enclosed within a special block.</p>
+<p>Functions <strong>are objects</strong>, having a hidden, native link to <code>Function.prototype</code>.</p>
+<p>Functions also have two hidden properties (its context and set of statements that it implements).</p>
+<p>Functions are <strong>first-class objects</strong>; they can be used like any other value:
+<em> They can be used as arguments
+</em> They can be stored in datastructures (arrays, objects)
+<em> They can be returned
+</em> They can have properties and methods</p>
+<p>They are unique in the fact that they can be invoked.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Writing a function</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>A function is made up of four parts:</p>
+<ul>
+<li>The keyword <code>function</code></li>
+<li>An <strong>optional</strong> function name</li>
+<li>A set of parameters wrapped in parentheses</li>
+<li>A block of statements wrapped in curly braces</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Writing a function</h2>
+                <h3></h3>
+            </hgroup>
+            <article><pre><code class="javascript">foo(1, 2, 3); // Works fine because we declared function using
+              //  the function literal at the bottom
+bar(1, 2, 3); // =&gt; ReferenceError: bar is not defined
+
+// The functions name is optional
+// Here we are storing an anonymous function in a variable bar
+var bar = function (a, b, c) {
+  // ...
+};
+
+// functions can be stored
+var obj = {
+  baz: function () {
+  },
+  // you may use the optional name if recursion is needed
+  fib: function fibbinator (n) {
+    // ...
+    return fibbinator(n-1) + fibbinator(n-2);
+  }
+};
+
+function foo (a, b, c) {
+  // You can nest functions
+  function innerFoo() {
+    // ...
+  }
+  return innerFoo();
+}
+
+</code></pre></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Inner functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>You may write a function literal anywhere an expression may appear.</p>
+<p>This means they may appear inside another function; these are called <strong>inner functions</strong>.</p>
+<p>An inner function has access to the outer functions parameters and variables.</p>
+<p>The collective of the outer function and inner function form a very expressive construct called a <strong>closure</strong>. We will cover closures in a bit.</p>
+<pre><code class="javascript">foo(4, 5);
+function foo (a, b) {
+  var x = a + b;  // a = 4, b = 5, x = 9
+  function bar (c) {  // c = 9
+    return a + b + c + x; // returns 18
+  }
+  return (14 * bar(a + b) / x) || 42;
+}
+</code></pre></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Invoking a function</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>When invoking a function, there are two special parameters that are always included: <code>this</code> and <code>arguments</code>.</p>
+<p><code>this</code> gives the context of a functions invocation</p>
+<p><code>this</code> is often a common source of error because it changes based on how a function is invoked.</p>
+<p><strong>invocation</strong> as determined by a parser is a pair of parentheses following an expression that produces a function.</p>
+<p>There are four ways to invoke a function:</p>
+<ul>
+<li>Method invocation</li>
+<li>Function invocation</li>
+<li>Constructor invocation</li>
+<li>Apply/call invocation</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Invoking a function</h2>
+                <h3></h3>
+            </hgroup>
+            <article><pre><code class="javascript">// Using method invocation
+// this refers to the containing object's context
+var obj = {
+  value: 0,
+  increment: function (inc) {
+    inc = inc || 1;
+    this.value += inc;
+  }
+};
+obj.increment();    // obj.value = 1
+obj.increment(2);   // obj.value = 3
+obj['increment'](); // obj.value = 4
+
+// Function invocation
+// this refers to the global object (a mistake in the language design)
+obj.quadruple = function () {
+  var that = this;  // common idiomatic workaround for preserving context
+  var helper1 = function () {
+    that.value = that.value * 2;
+  };
+  var helper2 = function () {
+    this.value = this.value * 2;
+  };
+  helper1();
+  helper2.call(this); // Alternatively, bind this when invoking
+}
+
+// Constructor invocation
+// this refers to the newly created object returned by new
+var Counter = function (init) {
+  this.value = init || 0;
+}
+Counter.prototype.increment = function (inc) {
+  inc = inc || 1;
+  this.value += inc;
+}
+var anotherObj = new Counter();
+var bad = Counter();  // Don't do this, value gets attached to the global object
+
+// Apply/call invocation
+var incrementer = function (inc) {
+  inc = inc || 1;
+  this.value += inc;
+};
+
+var foo = { value: 5 };
+incrementer.apply(foo, [1]);  // foo.value = 6
+incrementer.call(foo, 2);     // foo.value = 8
+</code></pre></article>
             
         </slide>
         

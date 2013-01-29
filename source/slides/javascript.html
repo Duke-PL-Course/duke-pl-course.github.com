@@ -30,7 +30,7 @@
                 <h1 data-config-title><!-- populated from slide_config.json --></h1>
                 
                 
-                <h2>JavaScript</h2>
+                <h2>Javascript</h2>
                 
                 <p data-config-presenter><!-- populated from slide_config.json --></p>
             </hgroup>
@@ -40,7 +40,7 @@
         <slide>
             
             <hgroup>
-                <h2>JavaScript Overview</h2>
+                <h2>Javascript Overview</h2>
                 <h3></h3>
             </hgroup>
             <article><p>JavaScript is ...</p>
@@ -310,7 +310,7 @@
         <slide>
             
             <hgroup>
-                <h2>Writing a function</h2>
+                <h2>Writing A Function</h2>
                 <h3></h3>
             </hgroup>
             <article><p>A function is made up of four parts:</p>
@@ -326,7 +326,7 @@
         <slide>
             
             <hgroup>
-                <h2>Writing a function</h2>
+                <h2>Writing A Function</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4667863.js"></script></article>
@@ -336,7 +336,7 @@
         <slide>
             
             <hgroup>
-                <h2>Closure</h2>
+                <h2>Inner Function</h2>
                 <h3></h3>
             </hgroup>
             <article><p>You may write a function literal anywhere an expression may appear.</p>
@@ -350,7 +350,7 @@
         <slide>
             
             <hgroup>
-                <h2>Invoking a function</h2>
+                <h2>Invoking A Function</h2>
                 <h3></h3>
             </hgroup>
             <article><p>When invoking a function, there are two special parameters that are always included: <code>this</code> and <code>arguments</code>.</p>
@@ -370,7 +370,7 @@
         <slide>
             
             <hgroup>
-                <h2>Using method invocation</h2>
+                <h2>Using Method Invocation</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4667876.js"></script></article>
@@ -380,7 +380,7 @@
         <slide>
             
             <hgroup>
-                <h2>Function invocation</h2>
+                <h2>Function Invocation</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4667889.js"></script></article>
@@ -390,7 +390,7 @@
         <slide>
             
             <hgroup>
-                <h2>Constructor invocation</h2>
+                <h2>Constructor Invocation</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4667892.js"></script></article>
@@ -400,10 +400,107 @@
         <slide>
             
             <hgroup>
-                <h2>Apply/call invocation</h2>
+                <h2>Apply/call Invocation</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4667899.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>The Arguments Parameter</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>In addition to <code>this</code>, every function has access to a bonus parameter called <code>arguments</code>.</p>
+<p><code>arguments</code> is a pseudo-array: it is indexed like an array, has a <code>length</code> property, but does not inherit from <code>Array.prototype</code>, so it has no array methods</p>
+<p>Using the <code>arguments</code> parameter in combination with <code>.call()</code> or <code>.apply()</code> can be a powerful way of using reflection in JavaScript.</p>
+<p>One trick to convert arguments into an actual array is as follows:</p>
+<script src="https://gist.github.com/4667982.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Returning From A Function</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Using <code>return</code> from a function will result in the function stopping execution at that point and returning a value.</p>
+<p>If no <code>return</code> statement is used, then the function will return <code>undefined</code>.</p>
+<p>If using the <strong>constructor invocation</strong> pattern with the <code>new</code> keyword and the return value is not an object, then the returned value will be the newly created object.</p>
+<p><strong>Exceptions</strong> also cause early termination of a function. Surround exception-prone statements with a <code>try...catch</code> block.</p>
+<p>The <code>catch</code> block will be invoked with the exception as a parameter:</p>
+<script src="https://gist.github.com/4667987.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Augmenting Types</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>In JavaScript, you can augment types, just as we did in Ruby with open classes.</p>
+<p>To do this, simply modify the type's prototype.</p>
+<p>Let's reimplement the times method on <code>Number</code>, a la Ruby:</p>
+<script src="https://gist.github.com/4668007.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Function Scope</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Despite the C/Java-like syntax, JavaScript, does not have <strong>block scope</strong>; instead it <em>does</em> have <strong>function scope</strong>.</p>
+<p>With block scope, one would normally declare variables as late as possible (at their first use).</p>
+<p>When dealing with function scope, it's better practice to declare variables as early as possible.</p>
+<script src="https://gist.github.com/4667668.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Closures</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Like we talked about, inner functions have access to the parameters and variables of the outer function.</p>
+<p>This allows us to create using functions as a <strong>closure</strong>.</p>
+<p>A <strong>closure</strong> at its very essence is the combined entity of a function and a set of state. In this case, the inner function acts as the function, and the outer function's parameters and variables allow us to retain state.</p>
+<p>Here's a basic example:</p>
+<script src="https://gist.github.com/4668027.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Closures</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>The variables in a closure can live longer than the life of an inner function. This is both powerful and potentially error-prone:</p>
+<script src="https://gist.github.com/4668033.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Callbacks</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Use of callbacks in JavaScript is very predominant because of the asynchronous nature of a lot of workflows.</p>
+<p>Callback chains can get really messy. You can use libraries to provide better asynchronous control flows:</p>
+<ul>
+<li><a href="https://github.com/caolan/async">async.js</a> (uses new control flow constructs)</li>
+<li><a href="https://github.com/creationix/do">do.js</a> (uses continuations)</li>
+<li><a href="http://jquery.com">jquery.deferred.js</a> (uses promises)</li>
+</ul>
+<script src="https://gist.github.com/4668039.js"></script></article>
             
         </slide>
         

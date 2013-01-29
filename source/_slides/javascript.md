@@ -1,8 +1,8 @@
-subtitle: JavaScript
+subtitle: Javascript
 
 ---
 
-title: JavaScript Overview
+title: Javascript Overview
 build_lists: true
 
 JavaScript is ...
@@ -218,10 +218,6 @@ Usually, you should keep all your variables enclosed in a namespace that takes u
 
 title: Functions
 
----
-
-title: What are functions in JavaScript?
-
 A function is a set of statements and expressions enclosed within a special block.
 
 Functions **are objects**, having a hidden, native link to `Function.prototype`.
@@ -238,7 +234,7 @@ They are unique in the fact that they can be invoked.
 
 ---
 
-title: Writing a function
+title: Writing A Function
 
 A function is made up of four parts:
 
@@ -249,13 +245,13 @@ A function is made up of four parts:
 
 ---
 
-title: Writing a function
+title: Writing A Function
 
 <script src="https://gist.github.com/4667863.js"></script>
 
 ---
 
-title: Closure
+title: Inner Function
 
 You may write a function literal anywhere an expression may appear.
 
@@ -269,7 +265,7 @@ The collective of the outer function and inner function form a very expressive c
 
 ---
 
-title: Invoking a function
+title: Invoking A Function
 
 When invoking a function, there are two special parameters that are always included: `this` and `arguments`.
 
@@ -288,31 +284,31 @@ There are four ways to invoke a function:
 
 ---
 
-title: Using method invocation
+title: Using Method Invocation
 
 <script src="https://gist.github.com/4667876.js"></script>
 
 ---
 
-title: Function invocation
+title: Function Invocation
 
 <script src="https://gist.github.com/4667889.js"></script>
 
 ---
 
-title: Constructor invocation
+title: Constructor Invocation
 
 <script src="https://gist.github.com/4667892.js"></script>
 
 ---
 
-title: Apply/call invocation
+title: Apply/call Invocation
 
 <script src="https://gist.github.com/4667899.js"></script>
 
 ---
 
-title: The arguments parameter
+title: The Arguments Parameter
 
 In addition to `this`, every function has access to a bonus parameter called `arguments`.
 
@@ -322,21 +318,11 @@ Using the `arguments` parameter in combination with `.call()` or `.apply()` can 
 
 One trick to convert arguments into an actual array is as follows:
 
-```javascript
-function sumParams () {
-  var actualArrayOfArgs = Array.prototype.slice.call(arguments),
-      sum = 0;
-  actualArrayOfArgs.forEach(function (arg) {
-    sum += arg;
-  });
-  return sum;
-}
-sumParams(1, 2, 3); // 6
-```
+<script src="https://gist.github.com/4667982.js"></script>
 
 ---
 
-title: Returning from a function
+title: Returning From A Function
 
 Using `return` from a function will result in the function stopping execution at that point and returning a value.
 
@@ -348,26 +334,11 @@ If using the **constructor invocation** pattern with the `new` keyword and the r
 
 The `catch` block will be invoked with the exception as a parameter:
 
-```javascript
-var add = function (a, b) {
-  if (typeof a !== 'number' || typeof b !== 'number') {
-    throw {
-      name: 'TypeError',
-      message: 'add needs numbers'
-    }
-  }
-  return a + b;
-}
-try {
-  add('one', 'two');
-} catch (e) {
-  console.error('Exception thrown during add:', e);
-}
-```
+<script src="https://gist.github.com/4667987.js"></script>
 
 ---
 
-title: Augmenting types
+title: Augmenting Types
 
 In JavaScript, you can augment types, just as we did in Ruby with open classes.
 
@@ -375,27 +346,11 @@ To do this, simply modify the type's prototype.
 
 Let's reimplement the times method on `Number`, a la Ruby:
 
-```javascript
-Number.prototype.times = function (fn, params, context) {
-  var i = this;
-  while (i > 0) {
-    if (params || context) {
-      fn.apply(context || i, params);
-    } else {
-      fn.apply(context || i);
-    }
-    i--;
-  }
-};
-
-(3).times(function () {
-  console.log('hello ' + this);
-});
-```
+<script src="https://gist.github.com/4668007.js"></script>
 
 ---
 
-title: Function scope
+title: Function Scope
 
 Despite the C/Java-like syntax, JavaScript, does not have **block scope**; instead it *does* have **function scope**.
 
@@ -403,18 +358,7 @@ With block scope, one would normally declare variables as late as possible (at t
 
 When dealing with function scope, it's better practice to declare variables as early as possible.
 
-```javascript
-var x = 'initial';
-var confusing = function () {
-  // it would have been clearer to declare local x here
-  if (42) {
-    var x = 'confused';
-  }
-  return x;
-}
-confusing();  // 'confused'
-x;  // 'initial'
-```
+<script src="https://gist.github.com/4667668.js"></script>
 
 ---
 
@@ -428,42 +372,7 @@ A **closure** at its very essence is the combined entity of a function and a set
 
 Here's a basic example:
 
-```javascript
-function counter (init) {
-  // each time counter is called, i is local to each closure
-  var i = init || 0;
-  var incrementer = function (inc) {
-    inc = inc || 1;
-    i += inc;
-    return i;
-  }
-  return incrementer;
-}
-var a = counter();
-a();  // 1
-var b = counter(9000);
-a();  // 2
-console.log('Vegeta, what does the scouter say about his power level?');
-var powerLevel = b();  // 9001
-if (powerLevel > 9000) {
-  console.log("IT'S OVER 9000!");
-}
-
-// Alternatively, we don't have to return a function from the outer function
-funtion counter (init) {
-  var i = init || 0;
-  return {
-    increment: function (inc) {
-      //...
-    },
-    // Note we have to specify a getter if we want to ever access the value
-    // One of the powerful things about closures is the ability to hide information
-    getValue: function (inc) {
-      return i;
-    }
-  };
-}
-```
+<script src="https://gist.github.com/4668027.js"></script>
 
 ---
 
@@ -471,30 +380,7 @@ title: Closures
 
 The variables in a closure can live longer than the life of an inner function. This is both powerful and potentially error-prone:
 
-```javascript
-document.write('<html><body><h1><p>1</p></h1><h2><p>2</p></h2><h3><p>3</p></h3></body></html>');
-var badHandlers = function (nodes) {
-  var i;
-  for (i = 0; i < nodes.length; i++) {
-    nodes[i].onclick = function (e) {
-      alert(i); // always returns nodes.length?!
-    }
-  }
-};
-var goodHandlers = function (nodes) {
-  var closure = function (i) {
-    return function (e) {
-      alert(i);
-    }
-  }
-  var i;
-  for (i = 0; i < nodes.length; i++) {
-    nodes[i].onclick = closure(i);
-  }
-};
-badHandlers(document.getElementsByTagName('p'));
-// goodHandlers(document.getElementsByTagName('p'));
-```
+<script src="https://gist.github.com/4668033.js"></script>
 
 ---
 
@@ -508,24 +394,4 @@ Callback chains can get really messy. You can use libraries to provide better as
 * [do.js](https://github.com/creationix/do) (uses continuations)
 * [jquery.deferred.js](http://jquery.com) (uses promises)
 
-```javascript
-// Synchronously
-var req = preparePayload();
-var res = sendRequestSync(req); // This will block!
-displayResponse(res);
-
-// Asynchronously
-var req = preparePayload();
-sendRequestAsync(req, displayResponse);
-
-function preparePayload() { // ... }
-function sendRequestSync(request) { // ... }
-function sendRequestAsync(request, callback) {
-  // Let's say there's a transmission object that will call
-  // the function passed to onComplete when done transmitting
-  transmission.onComplete(function (data) {
-    callback(data);
-  })
-}
-function displayResponse = function (response) { // ... }
-```
+<script src="https://gist.github.com/4668039.js"></script>

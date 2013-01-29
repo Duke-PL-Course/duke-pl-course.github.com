@@ -495,3 +495,37 @@ var goodHandlers = function (nodes) {
 badHandlers(document.getElementsByTagName('p'));
 // goodHandlers(document.getElementsByTagName('p'));
 ```
+
+---
+
+title: Callbacks
+
+Use of callbacks in JavaScript is very predominant because of the asynchronous nature of a lot of workflows.
+
+Callback chains can get really messy. You can use libraries to provide better asynchronous control flows:
+
+* [async.js](https://github.com/caolan/async) (uses new control flow constructs)
+* [do.js](https://github.com/creationix/do) (uses continuations)
+* [jquery.deferred.js](http://jquery.com) (uses promises)
+
+```javascript
+// Synchronously
+var req = preparePayload();
+var res = sendRequestSync(req); // This will block!
+displayResponse(res);
+
+// Asynchronously
+var req = preparePayload();
+sendRequestAsync(req, displayResponse);
+
+function preparePayload() { // ... }
+function sendRequestSync(request) { // ... }
+function sendRequestAsync(request, callback) {
+  // Let's say there's a transmission object that will call
+  // the function passed to onComplete when done transmitting
+  transmission.onComplete(function (data) {
+    callback(data);
+  })
+}
+function displayResponse = function (response) { // ... }
+```

@@ -330,6 +330,12 @@ If no `return` statement is used, then the function will return `undefined`.
 
 If using the **constructor invocation** pattern with the `new` keyword and the return value is not an object, then the returned value will be the newly created object.
 
+<script src="https://gist.github.com/4668082.js"></script>
+
+---
+
+title: Exceptions
+
 **Exceptions** also cause early termination of a function. Surround exception-prone statements with a `try...catch` block.
 
 The `catch` block will be invoked with the exception as a parameter:

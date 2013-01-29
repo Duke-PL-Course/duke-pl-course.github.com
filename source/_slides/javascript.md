@@ -100,8 +100,6 @@ title: Special Values
 
 ---
 
-title: Everything
-
 title: Logic Operators
 
 * and: `&&`
@@ -116,7 +114,6 @@ title: Logic Operators
 <script src="https://gist.github.com/4667305.js"></script>
 
 ---
-
 
 title: Falsy Values
 
@@ -182,11 +179,10 @@ use `[]` to index into the array and `[]=` to assign values
 
 ---
 
-title: Variables And Funjtions
+title: Variables And Functions
 class: segue dark
 
 ---
-
 
 title: Variables
 

@@ -1,8 +1,8 @@
-subtitle: JavaScript
+subtitle: Javascript
 
 ---
 
-title: JavaScript Overview
+title: Javascript Overview
 build_lists: true
 
 JavaScript is ...
@@ -131,7 +131,7 @@ title: Falsy Values
 
 ---
 
-title: Objects and Arrays
+title: Objects And Arrays
 class: segue dark
 
 ---
@@ -182,7 +182,7 @@ use `[]` to index into the array and `[]=` to assign values
 
 ---
 
-title: Variables and Funjtions
+title: Variables And Funjtions
 class: segue dark
 
 ---
@@ -412,3 +412,15 @@ Callback chains can get really messy. You can use libraries to provide better as
 * [jquery.deferred.js](http://jquery.com) (uses promises)
 
 <script src="https://gist.github.com/4668039.js"></script>
+
+---
+
+title: Module Pattern
+
+<script src="https://gist.github.com/4668091.js"></script>
+
+---
+
+title: Cascading Function Calls
+
+<script src="https://gist.github.com/4668114.js"></script>

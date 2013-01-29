@@ -218,6 +218,10 @@ Usually, you should keep all your variables enclosed in a namespace that takes u
 
 title: Functions
 
+---
+
+title: What are functions in JavaScript?
+
 A function is a set of statements and expressions enclosed within a special block.
 
 Functions **are objects**, having a hidden, native link to `Function.prototype`.
@@ -305,3 +309,189 @@ title: Constructor invocation
 title: Apply/call invocation
 
 <script src="https://gist.github.com/4667899.js"></script>
+
+---
+
+title: The arguments parameter
+
+In addition to `this`, every function has access to a bonus parameter called `arguments`.
+
+`arguments` is a pseudo-array: it is indexed like an array, has a `length` property, but does not inherit from `Array.prototype`, so it has no array methods
+
+Using the `arguments` parameter in combination with `.call()` or `.apply()` can be a powerful way of using reflection in JavaScript.
+
+One trick to convert arguments into an actual array is as follows:
+
+```javascript
+function sumParams () {
+  var actualArrayOfArgs = Array.prototype.slice.call(arguments),
+      sum = 0;
+  actualArrayOfArgs.forEach(function (arg) {
+    sum += arg;
+  });
+  return sum;
+}
+sumParams(1, 2, 3); // 6
+```
+
+---
+
+title: Returning from a function
+
+Using `return` from a function will result in the function stopping execution at that point and returning a value.
+
+If no `return` statement is used, then the function will return `undefined`.
+
+If using the **constructor invocation** pattern with the `new` keyword and the return value is not an object, then the returned value will be the newly created object.
+
+**Exceptions** also cause early termination of a function. Surround exception-prone statements with a `try...catch` block.
+
+The `catch` block will be invoked with the exception as a parameter:
+
+```javascript
+var add = function (a, b) {
+  if (typeof a !== 'number' || typeof b !== 'number') {
+    throw {
+      name: 'TypeError',
+      message: 'add needs numbers'
+    }
+  }
+  return a + b;
+}
+try {
+  add('one', 'two');
+} catch (e) {
+  console.error('Exception thrown during add:', e);
+}
+```
+
+---
+
+title: Augmenting types
+
+In JavaScript, you can augment types, just as we did in Ruby with open classes.
+
+To do this, simply modify the type's prototype.
+
+Let's reimplement the times method on `Number`, a la Ruby:
+
+```javascript
+Number.prototype.times = function (fn, params, context) {
+  var i = this;
+  while (i > 0) {
+    if (params || context) {
+      fn.apply(context || i, params);
+    } else {
+      fn.apply(context || i);
+    }
+    i--;
+  }
+};
+
+(3).times(function () {
+  console.log('hello ' + this);
+});
+```
+
+---
+
+title: Function scope
+
+Despite the C/Java-like syntax, JavaScript, does not have **block scope**; instead it *does* have **function scope**.
+
+With block scope, one would normally declare variables as late as possible (at their first use).
+
+When dealing with function scope, it's better practice to declare variables as early as possible.
+
+```javascript
+var x = 'initial';
+var confusing = function () {
+  // it would have been clearer to declare local x here
+  if (42) {
+    var x = 'confused';
+  }
+  return x;
+}
+confusing();  // 'confused'
+x;  // 'initial'
+```
+
+---
+
+title: Closures
+
+Like we talked about, inner functions have access to the parameters and variables of the outer function.
+
+This allows us to create using functions as a **closure**.
+
+A **closure** at its very essence is the combined entity of a function and a set of state. In this case, the inner function acts as the function, and the outer function's parameters and variables allow us to retain state.
+
+Here's a basic example:
+
+```javascript
+function counter (init) {
+  // each time counter is called, i is local to each closure
+  var i = init || 0;
+  var incrementer = function (inc) {
+    inc = inc || 1;
+    i += inc;
+    return i;
+  }
+  return incrementer;
+}
+var a = counter();
+a();  // 1
+var b = counter(9000);
+a();  // 2
+console.log('Vegeta, what does the scouter say about his power level?');
+var powerLevel = b();  // 9001
+if (powerLevel > 9000) {
+  console.log("IT'S OVER 9000!");
+}
+
+// Alternatively, we don't have to return a function from the outer function
+funtion counter (init) {
+  var i = init || 0;
+  return {
+    increment: function (inc) {
+      //...
+    },
+    // Note we have to specify a getter if we want to ever access the value
+    // One of the powerful things about closures is the ability to hide information
+    getValue: function (inc) {
+      return i;
+    }
+  };
+}
+```
+
+---
+
+title: Closures
+
+The variables in a closure can live longer than the life of an inner function. This is both powerful and potentially error-prone:
+
+```javascript
+document.write('<html><body><h1><p>1</p></h1><h2><p>2</p></h2><h3><p>3</p></h3></body></html>');
+var badHandlers = function (nodes) {
+  var i;
+  for (i = 0; i < nodes.length; i++) {
+    nodes[i].onclick = function (e) {
+      alert(i); // always returns nodes.length?!
+    }
+  }
+};
+var goodHandlers = function (nodes) {
+  var closure = function (i) {
+    return function (e) {
+      alert(i);
+    }
+  }
+  var i;
+  for (i = 0; i < nodes.length; i++) {
+    nodes[i].onclick = closure(i);
+  }
+};
+badHandlers(document.getElementsByTagName('p'));
+// goodHandlers(document.getElementsByTagName('p'));
+```

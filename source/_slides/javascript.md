@@ -387,7 +387,9 @@ This allows us to create using functions as a **closure**.
 
 A **closure** at its very essence is the combined entity of a function and a set of state. In this case, the inner function acts as the function, and the outer function's parameters and variables allow us to retain state.
 
-Here's a basic example:
+---
+
+title: Basic Closure Example
 
 <script src="https://gist.github.com/4668027.js"></script>
 
@@ -410,6 +412,10 @@ Callback chains can get really messy. You can use libraries to provide better as
 * [async.js](https://github.com/caolan/async) (uses new control flow constructs)
 * [do.js](https://github.com/creationix/do) (uses continuations)
 * [jquery.deferred.js](http://jquery.com) (uses promises)
+
+---
+
+title: Callbacks Example
 
 <script src="https://gist.github.com/4668039.js"></script>
 

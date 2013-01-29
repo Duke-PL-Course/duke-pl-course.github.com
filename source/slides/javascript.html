@@ -172,10 +172,11 @@
         <slide>
             
             <hgroup>
-                <h2>Falsy Values</h2>
+                <h2></h2>
                 <h3></h3>
             </hgroup>
-            <article><ul>
+            <article><p>title: Falsy Values</p>
+<ul>
 <li>0</li>
 <li>'' or ""</li>
 <li>null</li>
@@ -328,58 +329,21 @@
                 <h2>Writing a function</h2>
                 <h3></h3>
             </hgroup>
-            <article><pre><code class="javascript">foo(1, 2, 3); // Works fine because we declared function using
-              //  the function literal at the bottom
-bar(1, 2, 3); // =&gt; ReferenceError: bar is not defined
-
-// The functions name is optional
-// Here we are storing an anonymous function in a variable bar
-var bar = function (a, b, c) {
-  // ...
-};
-
-// functions can be stored
-var obj = {
-  baz: function () {
-  },
-  // you may use the optional name if recursion is needed
-  fib: function fibbinator (n) {
-    // ...
-    return fibbinator(n-1) + fibbinator(n-2);
-  }
-};
-
-function foo (a, b, c) {
-  // You can nest functions
-  function innerFoo() {
-    // ...
-  }
-  return innerFoo();
-}
-
-</code></pre></article>
+            <article><script src="https://gist.github.com/4667863.js"></script></article>
             
         </slide>
         
         <slide>
             
             <hgroup>
-                <h2>Inner functions</h2>
+                <h2>Closure</h2>
                 <h3></h3>
             </hgroup>
             <article><p>You may write a function literal anywhere an expression may appear.</p>
 <p>This means they may appear inside another function; these are called <strong>inner functions</strong>.</p>
 <p>An inner function has access to the outer functions parameters and variables.</p>
 <p>The collective of the outer function and inner function form a very expressive construct called a <strong>closure</strong>. We will cover closures in a bit.</p>
-<pre><code class="javascript">foo(4, 5);
-function foo (a, b) {
-  var x = a + b;  // a = 4, b = 5, x = 9
-  function bar (c) {  // c = 9
-    return a + b + c + x; // returns 18
-  }
-  return (14 * bar(a + b) / x) || 42;
-}
-</code></pre></article>
+<script src="https://gist.github.com/4667869.js"></script></article>
             
         </slide>
         
@@ -406,58 +370,40 @@ function foo (a, b) {
         <slide>
             
             <hgroup>
-                <h2>Invoking a function</h2>
+                <h2>Using method invocation</h2>
                 <h3></h3>
             </hgroup>
-            <article><pre><code class="javascript">// Using method invocation
-// this refers to the containing object's context
-var obj = {
-  value: 0,
-  increment: function (inc) {
-    inc = inc || 1;
-    this.value += inc;
-  }
-};
-obj.increment();    // obj.value = 1
-obj.increment(2);   // obj.value = 3
-obj['increment'](); // obj.value = 4
-
-// Function invocation
-// this refers to the global object (a mistake in the language design)
-obj.quadruple = function () {
-  var that = this;  // common idiomatic workaround for preserving context
-  var helper1 = function () {
-    that.value = that.value * 2;
-  };
-  var helper2 = function () {
-    this.value = this.value * 2;
-  };
-  helper1();
-  helper2.call(this); // Alternatively, bind this when invoking
-}
-
-// Constructor invocation
-// this refers to the newly created object returned by new
-var Counter = function (init) {
-  this.value = init || 0;
-}
-Counter.prototype.increment = function (inc) {
-  inc = inc || 1;
-  this.value += inc;
-}
-var anotherObj = new Counter();
-var bad = Counter();  // Don't do this, value gets attached to the global object
-
-// Apply/call invocation
-var incrementer = function (inc) {
-  inc = inc || 1;
-  this.value += inc;
-};
-
-var foo = { value: 5 };
-incrementer.apply(foo, [1]);  // foo.value = 6
-incrementer.call(foo, 2);     // foo.value = 8
-</code></pre></article>
+            <article><script src="https://gist.github.com/4667876.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Function invocation</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4667889.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Constructor invocation</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4667892.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Apply/call invocation</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4667899.js"></script></article>
             
         </slide>
         

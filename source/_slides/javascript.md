@@ -247,41 +247,11 @@ A function is made up of four parts:
 
 title: Writing a function
 
-```javascript
-foo(1, 2, 3); // Works fine because we declared function using
-              //  the function literal at the bottom
-bar(1, 2, 3); // => ReferenceError: bar is not defined
-
-// The functions name is optional
-// Here we are storing an anonymous function in a variable bar
-var bar = function (a, b, c) {
-  // ...
-};
-
-// functions can be stored
-var obj = {
-  baz: function () {
-  },
-  // you may use the optional name if recursion is needed
-  fib: function fibbinator (n) {
-    // ...
-    return fibbinator(n-1) + fibbinator(n-2);
-  }
-};
-
-function foo (a, b, c) {
-  // You can nest functions
-  function innerFoo() {
-    // ...
-  }
-  return innerFoo();
-}
-
-```
+<script src="https://gist.github.com/4667863.js"></script>
 
 ---
 
-title: Inner functions
+title: Closure
 
 You may write a function literal anywhere an expression may appear.
 
@@ -291,16 +261,7 @@ An inner function has access to the outer functions parameters and variables.
 
 The collective of the outer function and inner function form a very expressive construct called a **closure**. We will cover closures in a bit.
 
-```javascript
-foo(4, 5);
-function foo (a, b) {
-  var x = a + b;  // a = 4, b = 5, x = 9
-  function bar (c) {  // c = 9
-    return a + b + c + x; // returns 18
-  }
-  return (14 * bar(a + b) / x) || 42;
-}
-```
+<script src="https://gist.github.com/4667869.js"></script>
 
 ---
 
@@ -323,55 +284,24 @@ There are four ways to invoke a function:
 
 ---
 
-title: Invoking a function
+title: Using method invocation
 
-```javascript
-// Using method invocation
-// this refers to the containing object's context
-var obj = {
-  value: 0,
-  increment: function (inc) {
-    inc = inc || 1;
-    this.value += inc;
-  }
-};
-obj.increment();    // obj.value = 1
-obj.increment(2);   // obj.value = 3
-obj['increment'](); // obj.value = 4
+<script src="https://gist.github.com/4667876.js"></script>
 
-// Function invocation
-// this refers to the global object (a mistake in the language design)
-obj.quadruple = function () {
-  var that = this;  // common idiomatic workaround for preserving context
-  var helper1 = function () {
-    that.value = that.value * 2;
-  };
-  var helper2 = function () {
-    this.value = this.value * 2;
-  };
-  helper1();
-  helper2.call(this); // Alternatively, bind this when invoking
-}
+---
 
-// Constructor invocation
-// this refers to the newly created object returned by new
-var Counter = function (init) {
-  this.value = init || 0;
-}
-Counter.prototype.increment = function (inc) {
-  inc = inc || 1;
-  this.value += inc;
-}
-var anotherObj = new Counter();
-var bad = Counter();  // Don't do this, value gets attached to the global object
+title: Function invocation
 
-// Apply/call invocation
-var incrementer = function (inc) {
-  inc = inc || 1;
-  this.value += inc;
-};
+<script src="https://gist.github.com/4667889.js"></script>
 
-var foo = { value: 5 };
-incrementer.apply(foo, [1]);  // foo.value = 6
-incrementer.call(foo, 2);     // foo.value = 8
-```
+---
+
+title: Constructor invocation
+
+<script src="https://gist.github.com/4667892.js"></script>
+
+---
+
+title: Apply/call invocation
+
+<script src="https://gist.github.com/4667899.js"></script>

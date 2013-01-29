@@ -1,8 +1,8 @@
-subtitle: Javascript
+subtitle: JavaScript
 
 ---
 
-title: Javascript Overview
+title: JavaScript Overview
 build_lists: true
 
 JavaScript is ...
@@ -131,6 +131,11 @@ title: Falsy Values
 
 ---
 
+title: Objects and Arrays
+class: segue dark
+
+---
+
 title: Objects
 
 Any other data type, such as `Function`, `RegExp`, `Date`, etc., are implemented as objects
@@ -176,6 +181,12 @@ use `[]` to index into the array and `[]=` to assign values
 <script src="https://gist.github.com/4667482.js"></script>
 
 ---
+
+title: Variables and Funjtions
+class: segue dark
+
+---
+
 
 title: Variables
 

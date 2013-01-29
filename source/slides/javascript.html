@@ -92,7 +92,7 @@
                 <h3></h3>
             </hgroup>
             <article><p><code>true</code> or <code>false</code></p>
-<script src="https://gist.github.com/4667142"></script></article>
+<script src="https://gist.github.com/4667142.js"></script></article>
             
         </slide>
         
@@ -183,7 +183,7 @@
 <li>false</li>
 <li>NaN</li>
 </ul>
-<script src="https://gist.github.com/4667307.j"></script></article>
+<script src="https://gist.github.com/4667307.js"></script></article>
             
         </slide>
         
@@ -244,7 +244,47 @@
                 <h2>Variables</h2>
                 <h3></h3>
             </hgroup>
-            <article></article>
+            <article><p>You can declare variables in two ways</p>
+<ul>
+<li>With the keyword <code>var</code>. For example, <code>var x = 42</code>. This syntax can be used to declare <strong>both local and global variables</strong></li>
+<li>By simply assigning it a value. For example, <code>x = 42</code>. This always declares a global variable and generates a strict JavaScript warning. <strong>You shouldn't use this variant.</strong></li>
+</ul>
+<script src="https://gist.github.com/4667566.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Variable Scope</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>JavaScript does not have block level scope, only function scope.</p>
+<script src="https://gist.github.com/4667668.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Hoisting</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>All variables within a scope are "hoisted" or lifted to the top of the function or statement.</p>
+<script src="https://gist.github.com/4667648.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Global Variables</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>All variables declared outside of any function, as well as variables declared using direct assignment, reside in the global namespace. the keyword <code>this</code> outside side outside of any function refers to the global object.</p>
+<p>This is how JavaScript link together libraries to make them easy to uses.</p>
+<p>However, this also means that you can overwrite anything in the global scope.</p>
+<p>Usually, you should keep all your variables enclosed in a namespace that takes up only <strong>one global variable</strong></p></article>
             
         </slide>
         
@@ -252,16 +292,6 @@
             
             <hgroup>
                 <h2>Functions</h2>
-                <h3></h3>
-            </hgroup>
-            <article></article>
-            
-        </slide>
-        
-        <slide>
-            
-            <hgroup>
-                <h2>What are functions in javascript?</h2>
                 <h3></h3>
             </hgroup>
             <article><p>A function is a set of statements and expressions enclosed within a special block.</p>

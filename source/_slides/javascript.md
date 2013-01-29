@@ -44,7 +44,7 @@ title: Boolean
 
 `true` or `false`
 
-<script src="https://gist.github.com/4667142"></script>
+<script src="https://gist.github.com/4667142.js"></script>
 
 ---
 
@@ -126,7 +126,7 @@ title: Falsy Values
 * false
 * NaN
 
-<script src="https://gist.github.com/4667307.j"></script>
+<script src="https://gist.github.com/4667307.js"></script>
 
 ---
 
@@ -178,13 +178,44 @@ use `[]` to index into the array and `[]=` to assign values
 
 title: Variables
 
+You can declare variables in two ways
+
+* With the keyword `var`. For example, `var x = 42`. This syntax can be used to declare **both local and global variables**
+* By simply assigning it a value. For example, `x = 42`. This always declares a global variable and generates a strict JavaScript warning. **You shouldn't use this variant.**
+
+<script src="https://gist.github.com/4667566.js"></script>
+
+---
+
+title: Variable Scope
+
+JavaScript does not have block level scope, only function scope.
+
+<script src="https://gist.github.com/4667668.js"></script>
+
+---
+
+title: Hoisting
+
+All variables within a scope are "hoisted" or lifted to the top of the function or statement.
+
+<script src="https://gist.github.com/4667648.js"></script>
+
+---
+
+title: Global Variables
+
+All variables declared outside of any function, as well as variables declared using direct assignment, reside in the global namespace. the keyword `this` outside side outside of any function refers to the global object.
+
+This is how JavaScript link together libraries to make them easy to uses.
+
+However, this also means that you can overwrite anything in the global scope.
+
+Usually, you should keep all your variables enclosed in a namespace that takes up only **one global variable**
+
 ---
 
 title: Functions
-
----
-
-title: What are functions in javascript?
 
 A function is a set of statements and expressions enclosed within a special block.
 

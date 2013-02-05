@@ -1,8 +1,8 @@
-subtitle: Javascript
+subtitle: JavaScript
 
 ---
 
-title: Javascript Overview
+title: JavaScript Overview
 build_lists: true
 
 JavaScript is ...

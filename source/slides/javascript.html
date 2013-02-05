@@ -26,19 +26,19 @@
             <aside class="gdbar"><img src="images/logo.png"></aside>
             <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
             <hgroup class="auto-fadein">
-                
+
                 <h1 data-config-title><!-- populated from slide_config.json --></h1>
-                
-                
+
+
                 <h2>Javascript</h2>
-                
+
                 <p data-config-presenter><!-- populated from slide_config.json --></p>
             </hgroup>
         </slide>
 
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Javascript Overview</h2>
                 <h3></h3>
@@ -50,31 +50,31 @@
 <li>The first <a href="http://en.wikipedia.org/wiki/Prototype-based_programming">Prototype</a> and <a href="http://en.wikipedia.org/wiki/Lambda_(programming)">lambda</a> language to go mainstream</li>
 <li>More closely related to <a href="http://research.sun.com/self/language.html">Self</a> or <a href="http://javascript.crockford.com/little.html">Scheme</a> than C or Java, despite its name</li>
 </ul></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Code Example</h2>
                 <h3></h3>
             </hgroup>
             <article></article>
-            
+
         </slide>
-        
+
         <slide class="segue dark">
-            
+
             <aside class="gdbar"><img src="images/logo.png"></aside>
             <hgroup class="auto-fadein">
                 <h2>Data Types</h2>
                 <h3></h3>
             </hgroup>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Three Primitive Types</h2>
                 <h3></h3>
@@ -82,22 +82,22 @@
             <article><p>boolean</p>
 <p>number</p>
 <p>string</p></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Boolean</h2>
                 <h3></h3>
             </hgroup>
             <article><p><code>true</code> or <code>false</code></p>
 <script src="https://gist.github.com/4667142.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Number</h2>
                 <h3></h3>
@@ -105,11 +105,11 @@
             <article><p>All numbers in JavaScript are <strong>64 bit floating point number</strong>. There are <strong>no integers</strong>. Many constants are defined in the Number and Math classes, including <code>NaN</code>, <code>Infinity</code>, <code>Math.E</code>, <code>Math.PI</code>, <code>Number.MAX_VALUE</code>, etc.</p>
 <p>Most of the math operations you'd expect are supported natively. Many of the utility methods are included in the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/Math"><code>Math</code></a> global object.</p>
 <script src="https://gist.github.com/4666936.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>String</h2>
                 <h3></h3>
@@ -119,11 +119,11 @@
 <p>A character is simply a string of length 1</p>
 <p>There are many utility methods defined on the <a href="https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Global_Objects/String"><code>String</code></a> global object</p>
 <script src="https://gist.github.com/4667033.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Type Conversion</h2>
                 <h3></h3>
@@ -135,22 +135,22 @@
 <h3>Explicit</h3>
 <p>You can do type conversion explicitly using prefined functions: <code>Boolean</code>, <code>String</code>, <code>Number</code>, etc.</p>
 <script src="https://gist.github.com/4667212.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Special Values</h2>
                 <h3></h3>
             </hgroup>
             <article><p><code>null</code>: can be used to denote valid value that represents nothing or emptiness</p>
 <p><code>undefined</code>: default value for anything not yet defined or assigned a value</p></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Logic Operators</h2>
                 <h3></h3>
@@ -165,11 +165,11 @@
 </ul>
 <p><em>Note</em>: Use <code>!!</code> to convert any time to its equivalent boolean value</p>
 <script src="https://gist.github.com/4667305.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Falsy Values</h2>
                 <h3></h3>
@@ -183,21 +183,21 @@
 <li>NaN</li>
 </ul>
 <script src="https://gist.github.com/4667307.js"></script></article>
-            
+
         </slide>
-        
+
         <slide class="segue dark">
-            
+
             <aside class="gdbar"><img src="images/logo.png"></aside>
             <hgroup class="auto-fadein">
                 <h2>Objects And Arrays</h2>
                 <h3></h3>
             </hgroup>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Objects</h2>
                 <h3></h3>
@@ -206,11 +206,11 @@
 <p>An <strong>object</strong> is a basically a hashtable, but none of the hash-table nature (such as hash functions or rehashing methods) is visible.</p>
 <p><strong>Keys</strong> are strings, or other elements such as numbers that are converted to strings</p>
 <p><strong>Values</strong> can be any of the data types, including other objects</p></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Objects Usage</h2>
                 <h3></h3>
@@ -219,22 +219,22 @@
 <p>Use subscript notation or dot notation to add, replace, or retrieve elements in the hashtable.</p>
 <p><strong>Note</strong>: dot notation is limited as you can't look up using reserved words or names that contain dashes</p>
 <script src="https://gist.github.com/4667388.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Object References</h2>
                 <h3></h3>
             </hgroup>
             <article><p>In JavaScript objects are passed by reference, not value.</p>
 <script src="https://gist.github.com/4667415.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Arrays</h2>
                 <h3></h3>
@@ -244,21 +244,21 @@
 <p>Arrays are not typed and dynamic</p>
 <p>use <code>[]</code> to index into the array and <code>[]=</code> to assign values</p>
 <script src="https://gist.github.com/4667482.js"></script></article>
-            
+
         </slide>
-        
+
         <slide class="segue dark">
-            
+
             <aside class="gdbar"><img src="images/logo.png"></aside>
             <hgroup class="auto-fadein">
                 <h2>Variables And Functions</h2>
                 <h3></h3>
             </hgroup>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Variables</h2>
                 <h3></h3>
@@ -269,33 +269,33 @@
 <li>By simply assigning it a value. For example, <code>x = 42</code>. This always declares a global variable and generates a strict JavaScript warning. <strong>You shouldn't use this variant.</strong></li>
 </ul>
 <script src="https://gist.github.com/4667566.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Variable Scope</h2>
                 <h3></h3>
             </hgroup>
             <article><p>JavaScript does not have block level scope, only function scope.</p>
 <script src="https://gist.github.com/4667668.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Hoisting</h2>
                 <h3></h3>
             </hgroup>
             <article><p>All variables within a scope are "hoisted" or lifted to the top of the function or statement.</p>
 <script src="https://gist.github.com/4667648.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Global Variables</h2>
                 <h3></h3>
@@ -304,11 +304,11 @@
 <p>This is how JavaScript link together libraries to make them easy to uses.</p>
 <p>However, this also means that you can overwrite anything in the global scope.</p>
 <p>Usually, you should keep all your variables enclosed in a namespace that takes up only <strong>one global variable</strong></p></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Functions</h2>
                 <h3></h3>
@@ -322,11 +322,11 @@
 <em> They can be returned
 </em> They can have properties and methods</p>
 <p>They are unique in the fact that they can be invoked.</p></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Writing A Function</h2>
                 <h3></h3>
@@ -338,21 +338,21 @@
 <li>A set of parameters wrapped in parentheses</li>
 <li>A block of statements wrapped in curly braces</li>
 </ul></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Writing A Function</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4667863.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Inner Function</h2>
                 <h3></h3>
@@ -362,11 +362,11 @@
 <p>An inner function has access to the outer functions parameters and variables.</p>
 <p>The collective of the outer function and inner function form a very expressive construct called a <strong>closure</strong>. We will cover closures in a bit.</p>
 <script src="https://gist.github.com/4667869.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Invoking A Function</h2>
                 <h3></h3>
@@ -382,51 +382,51 @@
 <li>Constructor invocation</li>
 <li>Apply/call invocation</li>
 </ul></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Using Method Invocation</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4667876.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Function Invocation</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4667889.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Constructor Invocation</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4667892.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Apply/call Invocation</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4667899.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>The Arguments Parameter</h2>
                 <h3></h3>
@@ -436,11 +436,11 @@
 <p>Using the <code>arguments</code> parameter in combination with <code>.call()</code> or <code>.apply()</code> can be a powerful way of using reflection in JavaScript.</p>
 <p>One trick to convert arguments into an actual array is as follows:</p>
 <script src="https://gist.github.com/4667982.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Returning From A Function</h2>
                 <h3></h3>
@@ -449,11 +449,11 @@
 <p>If no <code>return</code> statement is used, then the function will return <code>undefined</code>.</p>
 <p>If using the <strong>constructor invocation</strong> pattern with the <code>new</code> keyword and the return value is not an object, then the returned value will be the newly created object.</p>
 <script src="https://gist.github.com/4668082.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Exceptions</h2>
                 <h3></h3>
@@ -461,11 +461,11 @@
             <article><p><strong>Exceptions</strong> also cause early termination of a function. Surround exception-prone statements with a <code>try...catch</code> block.</p>
 <p>The <code>catch</code> block will be invoked with the exception as a parameter:</p>
 <script src="https://gist.github.com/4667987.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Augmenting Types</h2>
                 <h3></h3>
@@ -474,11 +474,11 @@
 <p>To do this, simply modify the type's prototype.</p>
 <p>Let's reimplement the times method on <code>Number</code>, a la Ruby:</p>
 <script src="https://gist.github.com/4668007.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Function Scope</h2>
                 <h3></h3>
@@ -487,11 +487,11 @@
 <p>With block scope, one would normally declare variables as late as possible (at their first use).</p>
 <p>When dealing with function scope, it's better practice to declare variables as early as possible.</p>
 <script src="https://gist.github.com/4667668.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Closures</h2>
                 <h3></h3>
@@ -499,32 +499,32 @@
             <article><p>Like we talked about, inner functions have access to the parameters and variables of the outer function.</p>
 <p>This allows us to create using functions as a <strong>closure</strong>.</p>
 <p>A <strong>closure</strong> at its very essence is the combined entity of a function and a set of state. In this case, the inner function acts as the function, and the outer function's parameters and variables allow us to retain state.</p></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Basic Closure Example</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4668027.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Closures</h2>
                 <h3></h3>
             </hgroup>
             <article><p>The variables in a closure can live longer than the life of an inner function. This is both powerful and potentially error-prone:</p>
 <script src="https://gist.github.com/4668033.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Callbacks</h2>
                 <h3></h3>
@@ -536,91 +536,91 @@
 <li><a href="https://github.com/creationix/do">do.js</a> (uses continuations)</li>
 <li><a href="http://jquery.com">jquery.deferred.js</a> (uses promises)</li>
 </ul></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Callbacks Example</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4668039.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Module Pattern</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4668091.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Cascading Function Calls</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4668114.js"></script></article>
-            
+
         </slide>
-        
+
         <slide class="segue dark">
-            
+
             <aside class="gdbar"><img src="images/logo.png"></aside>
             <hgroup class="auto-fadein">
                 <h2>Inheritance</h2>
                 <h3></h3>
             </hgroup>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Prototypal Inheritance</h2>
                 <h3></h3>
             </hgroup>
             <article><p>JavaScript, being a loosely typed language, never casts. The lineage of an object is irrelevant. What matters about an object is what it can do, not what it is descended from.</p>
 <p>JavaScript is a prototypal language, which means that <strong>objects inherit directly from other objects</strong>.</p></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Pseudoclassical</h2>
                 <h3></h3>
             </hgroup>
             <article><p>We can define a constructor and augment its prototype:</p>
 <script src="https://gist.github.com/4668774.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Prototypal</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4668822.js"></script></article>
-            
+
         </slide>
-        
+
         <slide>
-            
+
             <hgroup>
                 <h2>Functional</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4668863.js"></script></article>
-            
+
         </slide>
-        
+
 
         <slide class="thank-you-slide segue nobackground">
             <aside class="gdbar right"><img src="images/logo.png"></aside>

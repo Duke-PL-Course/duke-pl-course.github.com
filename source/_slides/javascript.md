@@ -233,7 +233,7 @@ Functions also have two hidden properties (its context and set of statements tha
 
 Functions are **first-class objects**; they can be used like any other value:
 * They can be used as arguments
-* They can be stored in datastructures (arrays, objects)
+* They can be stored in data structures (arrays, objects)
 * They can be returned
 * They can have properties and methods
 

@@ -53,6 +53,12 @@ title: Building Blocks
 build_lists: true
 fade: true
 
+* Atom
+: word that begins with a *lowercase* letter
+
+* Variable
+: word that begins with a *uppercase* letter or an *underscore*
+
 * Facts
 : A basic assertion about some world
 
@@ -61,12 +67,6 @@ fade: true
 
 * Query
 : A question about that world
-
-* Atom
-: word that begins with a *lowercase* letter
-
-* Variable
-: word that begins with a *uppercase* letter or an *underscore*
 
 * **Facts** and **rules** will go into a **knowledge base**. A Prolog compiler compiles the knowledge base into a form that’s efficient for **queries**.
 

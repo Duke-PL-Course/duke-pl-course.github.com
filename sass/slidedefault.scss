@@ -408,6 +408,9 @@ ul {
   .gist-data {
     max-height: 518px;
     overflow-y: auto;
+    .line-numbers {
+      width: 20px !important;
+    }
   }
 
   .gist-meta {

@@ -8,3 +8,4 @@ footer: false
 * [Intro](/slides/intro.html)
 * [Ruby](/slides/ruby.html)
 * [JavaScript](/slides/javascript.html)
+* [Prolog](/slides/prolog.html)

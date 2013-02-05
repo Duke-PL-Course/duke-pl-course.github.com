@@ -184,26 +184,139 @@
 <li><code>;</code> for next solution</li>
 <li><code>a</code> for all solutions</li>
 <li><code>RETURN</code> to stop</li>
-</ul></article>
+</ul>
+<p><code>What</code>, <code>Who</code>, and <code>X</code> mean exactly the same thing. They are variables, signified by the capital letter at the beginning.</p></article>
             
         </slide>
         
         <slide>
             
             <hgroup>
-                <h2>Queries</h2>
+                <h2>Queries - Basic Inferences</h2>
                 <h3></h3>
             </hgroup>
             <article><p>What if I want to know who's <code>friends</code> with Bob?</p>
 <script src="https://gist.github.com/4713012.js"></script>
 
 <p>Why did we have to do that?</p>
-<ul>
+<ul class="build fade">
 <li>Prolog tries to fulfill subgoals in <strong>left-to-right</strong> order.</li>
-<li>The first subgoal: <code>\+(X = Y)</code>, </li>
-<li>It happens that the expression <code>&lt;variable&gt; = &lt;atom&gt;</code> or vice-versa evaluates to <code>yes</code>; therefore, the negation of that evaluates to <code>no</code>. </li>
-<li>So the first subgoal always fails to pass. </li>
+<li>The first subgoal: <code>\+(X = Y)</code> <strong>always</strong> fails to pass because the expression <code>&lt;variable&gt; = &lt;atom&gt;</code> or vice-versa evaluates to <code>yes</code>; therefore, the negation of that evaluates to <code>no</code>. </li>
 <li>We need Prolog to first identify possible values for the variable, which is why that subgoal has to be last.</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Example Problem - Map Coloring</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Map Coloring - Colors</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>We want to color the Southeastern states, but each bordering state must be a different color.</p>
+<p>First, let's declare our colors and state which ones are different:</p>
+<script src="https://gist.github.com/4715453.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Map Coloring - States</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Next, let's create a rule that enforces each bordering state is different.</p>
+<script src="https://gist.github.com/4715462.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Map Coloring - Queries</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Let's run a query to get all possible color combinations:</p>
+<script src="https://gist.github.com/4715482.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Map Coloring - Queries With Additional Conditions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>What if we want to enforce that Alabama must be <strong>red</strong>?</p>
+<script src="https://gist.github.com/4715488.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>When To Use Prolog?</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul class="build">
+<li>
+<p>When you have <strong>many possible choices</strong>, but only need to pick <strong>one or more combinations of values</strong> that satisfy a particular problem or constraint.</p>
+</li>
+<li>
+<p>Prolog lets you express the <strong>logic</strong> in <strong>facts</strong> and <strong>inferences</strong> and then lets you ask <strong>questions</strong>. You’re not responsible for building any step-by-step imprementation.</p>
+</li>
+<li>
+<p>Prolog is not about writing algorithms to solve logical problems. Prolog is about describing your world as it is and presenting logical problems that your computer can try to solve.</p>
+</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Unification</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Unification</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Unification is performed through the <code>=</code> operator. And it can be thought of as two-sided assignment. It is enforcing that the <strong>left</strong> and <strong>right</strong> side of the <code>=</code> operator are <strong>equivalent</strong> in the solution.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Unification Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4716675.js"></script>
+
+<ul class="build">
+<li>2 <strong>facts</strong>: <code>lions</code> and <code>tigers</code> are <code>cats</code></li>
+<li>2 <strong>rules</strong>:<ul class="build">
+<li><code>dorothy/3</code>, <code>X</code>, <code>Y</code>, and <code>Z</code> are <code>lion</code>, <code>tiger</code>, and <code>bear</code>, respectively.</li>
+<li><code>twin_cats/2</code>, <code>X</code> is a <code>cat</code>, and <code>Y</code> is a <code>cat</code>.</li>
+</ul>
+</li>
 </ul></article>
             
         </slide>
@@ -211,80 +324,362 @@
         <slide>
             
             <hgroup>
-                <h2></h2>
+                <h2>Unification Example - Queries</h2>
                 <h3></h3>
             </hgroup>
-            <article></article>
+            <article><script src="https://gist.github.com/yangsu/4716926.js"></script>
+
+<aside class="note">
+
+<section>
+
+<ul>
+<li>We issued the query <code>twin_cats(One, Two)</code>. Prolog binds <code>One</code> to <code>X</code> and <code>Two</code> to <code>Y</code>. To solve these, Prolog must start working through the goals</li>
+<li>The first goal is <code>cat(X)</code></li>
+<li>We have two facts that match, <code>cat(lion)</code> and <code>cat(tiger)</code>. Prolog tries the first fact, binding <code>X</code> to <code>lion</code>, and moves on to the next goal.</li>
+<li>Prolog now binds <code>Y</code> to <code>cat(Y)</code>. Prolog can solve this goal in exactly the same way as the first, choosing <code>lion</code>.</li>
+<li>We’ve satisfied both goals, so the rule is successful. Prolog reports the
+values of <code>One</code> and <code>Two</code> that made it successful and reports <code>yes</code>.</li>
+</ul>
+</section>
+
+</aside></article>
             
         </slide>
         
         <slide>
             
             <hgroup>
-                <h2></h2>
+                <h2>Practice Problem</h2>
                 <h3></h3>
             </hgroup>
-            <article><h3>Map Coloring</h3>
-<p>We want to color the Southeastern states, but each bordering state must be a different color.</p>
-<p>First, let's declare our colors and state which ones are different:</p>
-<pre><code class="prolog">% Notice that order matters, so we have duplicate combinations
-different(red, green). different(red, blue).
-different(green, red). different(green, blue).
-different(blue, red). different(blue, green).
-</code></pre>
-
-<p>Next, let's create a rule that enforces each bordering state is different.</p>
-<pre><code class="prolog">coloring(Alabama, Mississippi, Georgia, Tennessee, Florida) :-
-  different(Mississippi, Tennessee),
-  different(Mississippi, Alabama),
-  different(Alabama, Tennessee),
-  different(Alabama, Mississippi),  % This one is unnecessary (redundant information)
-  different(Alabama, Georgia),
-  different(Alabama, Florida),
-  different(Georgia, Florida),
-  different(Georgia, Tennessee).
-</code></pre></article>
+            <article><p><a href="https://github.com/Duke-PL-Course/Prolog/blob/master/2013-02-05-book-problems.md#day-1">Day 1 Practice Problem</a></p></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Recursion</h2>
+                <h3></h3>
+            </hgroup>
             
         </slide>
         
         <slide>
             
             <hgroup>
-                <h2></h2>
+                <h2>Recursion In Prolog</h2>
                 <h3></h3>
             </hgroup>
-            <article><pre><code class="prolog">| ?- coloring(Alabama, Mississippi, Georgia, Tennesse
-e, Florida).
-
-Alabama = blue
-Florida = green
-Georgia = red
-Mississippi = red
-Tennessee = green ? a
-...
-</code></pre>
-
-<p>What if we want to enforce that Alabama must be red?</p>
-<pre><code class="prolog">| ?- coloring(Alabama, Mississippi, Georgia, Tennesse
-e, Florida), Alabama = red.
-
-Alabama = red
-Florida = blue
-Georgia = green
-Mississippi = green
-Tennessee = blue ? a
-...
-</code></pre></article>
+            <article><p>Recursion is essential in Prolog because it's declarative, and therefore, we don't have control structures.</p>
+<p>We want to know some things about a family tree. First, let's define our <strong>knowledge base</strong> with a series of facts.</p>
+<p>We define a <code>father</code> predicate that takes two atoms, with the first atom being the father of the second.</p>
+<script src="https://gist.github.com/sudowork/4714249.js"></script></article>
             
         </slide>
         
         <slide>
             
             <hgroup>
-                <h2></h2>
+                <h2>Recursion</h2>
                 <h3></h3>
             </hgroup>
-            <article><hr /></article>
+            <article><aside class="note">
+
+<section>
+
+<ul class="build">
+<li>First clause says "X is the ancestor of Y if X is the father of Y."</li>
+<li>Second clause says "X is an ancestor of Y if we can prove that X is the father of Z and we can also prove that same Z is an ancestor of Y."</li>
+</ul>
+</section>
+
+</aside>
+
+<script src="https://gist.github.com/sudowork/4714251.js"></script>
+
+<ul class="build">
+<li>
+<p>Define a <code>ancestor/2</code> rule to determine if any 2 atoms are ancestors.</p>
+</li>
+<li>
+<p>This rule has 2 <strong>clauses</strong>: the first is the base case of a direct ancestor. The second clause will perform the recursive call.</p>
+</li>
+<li>
+<p>When you have multiple clauses that make up a rule, only <strong>1</strong> must be true for the rule to be true. Think of <code>,</code> between subgoals as <strong>and</strong> conditions and the <code>.</code> between clauses as <strong>or</strong> conditions</p>
+</li>
+<li>
+<p>Notice that we can either define the rule twice to achieve multiple clauses, or we can use the logical <strong>OR</strong> <code>;</code> to separate clauses.</p>
+</li>
+<li>
+<p>Prolog evaluates <strong>top-down</strong>, <strong>left-right</strong>.</p>
+</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Recursion - Queries</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Alright, let's run some queries against our knowledge base:</p>
+<script src="https://gist.github.com/sudowork/4714612.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Tail Recursion</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Be careful with recursive subgoals as you may end up with too many recursive calls and overflow the stack space.</p>
+<p>Declarative languages often solve this problem with a technique called <a href="http://en.wikipedia.org/wiki/Tail_recursion_optimization">tail recursion optimization</a>. </p>
+<p>If you can position the recursive subgoal at the end of a recursive rule, Prolog can optimize the call to discard the call stack, keeping the memory use constant.</p></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Tuples and Lists</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Tuples</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><strong>Tuples</strong> are containers with a <strong>fixed length</strong>.</p>
+<p>Two tuples can unify if they have the same number of elements and each element unifies.</p>
+<script src="https://gist.github.com/4717149.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Unification With Tuples</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Variables can be on either side of unification</p>
+<script src="https://gist.github.com/4717159.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Lists</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><strong>Lists</strong> are containers of <strong>variable length</strong></p>
+<script src="https://gist.github.com/4717225.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Deconstructing A List With Unification</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><strong>Lists</strong> have a capability that <strong>tuples</strong> don’t. You can deconstruct lists with <code>[Head|Tail]</code>. When you unify a list with this construct, <code>Head</code> will bind to the <strong>first element</strong> of the list, and <code>Tail</code> will bind to the <em>rest</em></p>
+<script src="https://gist.github.com/4717288.js"></script>
+
+<p>Note: <code>[Head|Tail]</code> won’t unify with an empty list <code>[]</code>, but a one-element list is fine.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Wildcards</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4717347.js"></script>
+
+<p><code>_</code> is a wildcard and unifies with anything. It basically means "I don’t care what’s in this position." </p></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Math With Lists</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Math With Lists - Count</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>The count of an empty list <code>[]</code> is <code>0</code>. The count of a list is the count of the <code>tail</code> plus <code>1</code>.</p>
+<script src="https://gist.github.com/4717401.js"></script>
+
+<ul class="build">
+<li>We issue the query <code>count(What, [1])</code>, which can’t unify with the first rule, because the list is not empty</li>
+<li>We move on to satisfying the goals for the second rule, <code>count(Count, [Head|Tail])</code>. We unify, binding <code>What</code> to <code>Count</code>, <code>Head</code> to <code>1</code>, and <code>Tail</code> to <code>[]</code>.</li>
+<li>After unification, the first goal is <code>count(TailCount, [])</code>. We try to prove that subgoal. This time, we unify with the first rule. That binds <code>TailCount</code> to <code>0</code>. The first rule is now satisfied, so we can move on to the second goal.</li>
+<li>Now, we evaluate <code>Count</code> is <code>TailCount + 1</code>. We can unify variables. <code>TailCount</code> is bound to <code>0</code>, so we bind Count to <code>0+1</code>, or <code>1</code></li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Math With Lists - Sum</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>The sum of an empty list is <code>0</code>; the sum of the rest is the <code>Head</code> plus the sum of the <code>Tail</code>.</p>
+<script src="https://gist.github.com/4717428.js"></script>
+
+<p>We haven’t really told Prolog how to compute sums. We’ve merely described sums as rules and goals.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Math with Lists - Average</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>As with logic, these rules can build on each other. For example, you can use sum and count together to compute an average</p>
+<script src="https://gist.github.com/4717460.js"></script>
+
+<p>The average of List is <code>Average</code> if you can prove that</p>
+<ul>
+<li>the sum of that List is <code>Sum</code></li>
+<li>the count of that List is <code>Count</code></li>
+<li><code>Average</code> is <code>Sum</code>/<code>Count</code></li>
+</ul></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>append(L1, L2, L3)</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Making Rules From Rules With Append</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>The rule <code>append(List1, List2, List3)</code> is <code>true</code> if <code>List3</code> is <code>List1 + List2</code></p>
+<p>You can use it to test, combine, or subtract lists, as well as computing list splits.</p>
+<script src="https://gist.github.com/4717513.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Rewriting Append - Step 1</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>To understand <code>append/3</code> better, we will write a rule <code>concatenate/3</code> to replicate the functionality.</p>
+<p>Our first step is to concatenate an empty list <code>[]</code> to <code>List1</code></p>
+<script src="https://gist.github.com/4717534.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Rewriting Append - Step 2</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Then, let’s add a rule that concatenates the <strong>first</strong> element of <code>List1</code> to the front of <code>List2</code></p>
+<script src="https://gist.github.com/4717545.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Rewriting Append - Step 3</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>We can define another couple of rules to concatenate lists of lengths 2 and 3. They work in the same way.</p>
+<script src="https://gist.github.com/4717562.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Rewriting Append - Step 4</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>We now have a base case and a strategy where <strong>each subgoal shrinks the first list and grows the third</strong>. The second stays <strong>constant</strong></p>
+<p>To generalize:</p>
+<script src="https://gist.github.com/4717589.js"></script>
+
+<p>The first clause says concatenating an empty list to List gives you that List.</p>
+<p>The second clause says concatenating <code>List1</code> to <code>List2</code> gives you <code>List3</code> if the heads of <code>List1</code> and <code>List3</code> are the same, and you can prove that concatenating the tail of <code>List1</code> with <code>List2</code> gives you the tail of <code>List3</code>. </p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Concatenate</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Let's walk through what happens when you execute <code>concat([1, 2], [3], What)</code></p>
+<ul class="build">
+<li>The first rule doesn’t apply, because <code>[1, 2]</code> is not <code>[]</code>. We unify
+to this:<br />
+<code>concat([1|[2]],[3],[1|Tail2-A]) :- concat([2],[3],[Tail2-A])</code><br />
+Everything unifies but <code>Tail2</code>. We now move on to the goals</li>
+<li>We try to apply the rule <code>concat([2], [3], [Tail2-A])</code>, which results in:<br />
+<code>concat([2|[]], [3], [2|Tail2-B]) :- concat([], [3], Tail2-B)</code><br />
+Notice that <code>Tail2-B</code> is the tail of <code>Tail2-A</code>. It’s not the same as the original <code>Tail2</code>. But now, we have to unify the right side again.</li>
+<li><code>concat([], [3], Tail2-C) :- concat([], [3], [3])</code></li>
+<li>So, we know <code>Tail2-C</code> is <code>[3]</code>. Now, we can work back up the chain. Let’s look at the third parameter, plugging in <code>Tail2</code> at each step. <code>Tail2-C</code> is <code>[3]</code>, which means <code>[2|Tail2-2]</code> is <code>[2, 3]</code>, and finally <code>[1|Tail2]</code> is <code>[1, 2, 3]</code>. <code>What</code> is <code>[1, 2, 3]</code>.</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>More Recursion And Infinite Answers</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/4715064.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Practical Prolog With Circuits</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/4715109.js"></script></article>
             
         </slide>
         

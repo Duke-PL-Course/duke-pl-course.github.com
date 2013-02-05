@@ -29,6 +29,26 @@ class: segue dark
 
 ---
 
+title: Loading Files
+
+Prolog files have the extensions `.pro` or `.pl`. We prefer `.pro` to avoid confusion with Perl files which end in `.pl`.
+
+<script src="https://gist.github.com/4717789.js"></script>
+
+Save a prolog file such as the one above in a directory. Then fire up the Prolog shell with `gprolog` in the same directory.
+
+You should see:
+
+    GNU Prolog 1.4.2
+    By Daniel Diaz
+    Copyright (C) 1999-2012 Daniel Diaz
+    | ?- 
+
+<br>
+use `['friends'].` to load the file and you are ready to make queries!
+
+---
+
 title: Building Blocks
 build_lists: true
 fade: true
@@ -49,6 +69,7 @@ fade: true
 : word that begins with a *uppercase* letter or an *underscore*
 
 * **Facts** and **rules** will go into a **knowledge base**. A Prolog compiler compiles the knowledge base into a form that’s efficient for **queries**.
+
 
 ---
 

@@ -115,6 +115,8 @@ The interpreter will show one result, then expect either `;`, `a`, or `RETURN` a
 * `a` for all solutions
 * `RETURN` to stop
 
+`What`, `Who`, and `X` mean exactly the same thing. They are variables, signified by the capital letter at the beginning.
+
 ---
 
 title: Queries
@@ -199,3 +201,80 @@ So, when should I use Prolog? Have you ever run into a situation where you have 
 **<a href="#unification">Unification</a>**: Unification is performed through the `=` operator. And it can be thought of as assignment. It is enforcing that the left and right side of the `=` operator are equivalent in the solution.
 
 ---
+
+title: Recursion in Prolog
+
+Recursion is essential in Prolog because it's declarative, and therefore, we don't have control structures.
+
+We want to know some things about a family tree. First, let's define our **knowledge base** with a series of facts.
+
+We define a `father` predicate that takes two atoms, with the first atom being the father of the second.
+
+<script src="https://gist.github.com/sudowork/4714249.js"></script>
+
+---
+
+title: Recursion
+
+Now, we want to define our `ancestor/2` rule to determine if any two atoms are ancestors.
+
+This rule will have two **clauses**: the first being the base case of being a direct ancestor. The second clause will perform the recursive call.
+
+<script src="https://gist.github.com/sudowork/4714251.js"></script>
+
+Notice that we can either define the rule twice to achieve multiple clauses, or we can use the logical **OR** `;` to separate clauses.
+
+Note that Prolog evaluates top-down, left-right.
+
+---
+
+title: Recursion - Queries
+
+Alright, let's run some queries against our knowledge base:
+
+<script src="https://gist.github.com/sudowork/4714612.js"></script>
+
+---
+
+title: Tuples
+
+---
+
+title: Unification with tuples
+
+**Unification** is like two-way pattern matching.
+
+...
+
+---
+
+title: Lists
+
+---
+
+title: Deconstructing a list with unification
+
+---
+
+title: Math with lists
+
+---
+
+title: Making rules from rules with append
+
+---
+
+title: Rewriting append
+
+---
+
+title: More recursion and infinite answers
+
+<script src="https://gist.github.com/sudowork/4715064.js"></script>
+
+---
+
+title: Practical Prolog with circuits
+
+<script src="https://gist.github.com/sudowork/4715109.js"></script>
+

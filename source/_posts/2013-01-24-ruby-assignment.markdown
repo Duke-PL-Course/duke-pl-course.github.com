@@ -29,6 +29,6 @@ Again, please feel free to post questions on [issues][].
 [assignment]: https://github.com/Duke-PL-Course/Ruby/blob/master/2013-01-23-assignment.md
 [assignments]: https://github.com/Duke-PL-Course/Ruby/tree/master/assignments
 [repo]: https://github.com/Duke-PL-Course/Ruby
-[autograder]: #
+[autograder]: http://dukeplcourse.com
 [bookproblems]: https://github.com/Duke-PL-Course/Ruby/blob/master/2013-01-22-book-problems-solution.md
 [issues]: https://github.com/Duke-PL-Course/Ruby/issues?state=open

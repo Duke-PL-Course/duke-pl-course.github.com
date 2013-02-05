@@ -459,3 +459,20 @@ title: Prototypal
 title: Functional
 
 <script src="https://gist.github.com/4668863.js"></script>
+
+---
+
+title: for...in
+
+JavaScript has support for a control structure known as [`for...in`](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Statements/for...in).
+
+It allows you to iterate through the enumerable properties of an object in *arbitrary order*.
+
+Be careful, though, because it will go all the way up the prototype chain when searching for enumerable properties. You can use the `hasOwnProperty()` function to filter out properties that belong to an object's prototype.
+
+---
+
+title: for...in Example
+
+<script src="https://gist.github.com/sudowork/4717678.js"></script>
+

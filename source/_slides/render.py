@@ -61,8 +61,11 @@ def parse_metadata(section):
 def postprocess_html(html, metadata):
     """Returns processed HTML to fit into the slide template format."""
     if metadata.get('build_lists') and metadata['build_lists'] == 'true':
-        html = html.replace('<ul>', '<ul class="build">')
-        html = html.replace('<ol>', '<ol class="build">')
+        class_attr = 'build'
+        if metadata.get('fade') and metadata['fade'] == 'true':
+            class_attr += ' fade'
+        html = html.replace('<ul>', '<ul class="' + class_attr + '">')
+        html = html.replace('<ol>', '<ol class="' + class_attr + '">')
     return html
 
 

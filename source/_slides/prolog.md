@@ -200,7 +200,7 @@ build_lists: true
 
 * When you have **many possible choices**, but only need to pick **one or more combinations of values** that satisfy a particular problem or constraint.
 
-* Prolog lets you express the **logic** in **facts** and **inferences** and then lets you ask **questions**. You’re not responsible for building any step-by-step imprementation.
+* Prolog lets you express the **logic** in **facts** and **inferences** and then lets you ask **questions**. You're not responsible for building any step-by-step implementation.
 
 * Prolog is not about writing algorithms to solve logical problems. Prolog is about describing your world as it is and presenting logical problems that your computer can try to solve.
 
@@ -355,7 +355,7 @@ title: Deconstructing A List With Unification
 
 <script src="https://gist.github.com/4717288.js"></script>
 
-Note: `[Head|Tail]` won’t unify with an empty list `[]`, but a one-element list is fine.
+Note: `[Head|Tail]` won't unify with an empty list `[]`, but a one-element list is fine.
 
 ---
 
@@ -470,7 +470,7 @@ build_lists: true
 
 Let's walk through what happens when you execute `concat([1, 2], [3], What)`
 
-* The first rule doesn’t apply, because `[1, 2]` is not `[]`. We unify
+* The first rule doesn't apply, because `[1, 2]` is not `[]`. We unify
 to this:  
 `concat([1|[2]],[3],[1|Tail2-A]) :- concat([2],[3],[Tail2-A])`  
 Everything unifies but `Tail2`. We now move on to the goals
@@ -493,3 +493,218 @@ title: Practical Prolog With Circuits
 
 <script src="https://gist.github.com/sudowork/4715109.js"></script>
 
+---
+
+title: 4 x 4 Sudoku
+class: segue dark
+
+---
+
+title: Rules
+build_lists: true
+fade: true
+
+* For a solved puzzle, the numbers in the puzzle and solution should be the same
+* A Sudoku board is a grid of 16 cells, with values from 1–4
+* The board has 4 rows, 4 columns, and 4 squares
+* A puzzle is valid if the elements in each row, column, and square has no repeated elements
+
+---
+
+title: Solving Sudoku - Step 1
+
+Rule 1: For a solved puzzle, the numbers in the puzzle and solution should be the same
+
+<script src="https://gist.github.com/4759979.js"></script>
+
+Good first step, but this rule accepts **anything** of **any length** as a solution
+
+---
+
+title: Solving Sudoku - Step 2
+
+Rule 2: A Sudoku board is a grid of 16 cells, with values from 1–4
+
+<script src="https://gist.github.com/4760027.js"></script>
+
+We've now unified Puzzle with **a list of 16 variables**.
+
+We are also using predefined predicate, `fd_domain(List, LowerBound, UpperBound)`, which returns `true` if **all** the values in `List` are between `LowerBound` and `UpperBound`, inclusive.
+
+---
+
+title: Solving Sudoku - Step 3
+
+Rule 3: The board has 4 rows, 4 columns, and 4 squares
+
+<script src="https://gist.github.com/4760064.js"></script>
+
+---
+
+title: Solving Sudoku - Step 4
+
+Rule 4: A puzzle is valid if the elements in each row, column, and square has no repeated elements
+
+<script src="https://gist.github.com/4760107.js"></script>
+
+We’ll use predefined predicate to test for repeated elements. `fd_all_different(List)` succeeds if **all** the elements in `List` are different.
+
+We will also define a `valid(List)` predicate that returns `true` if all the lists in `List` are different.
+
+---
+
+title: Full Sudoku 4x4 Solution
+
+<script src="https://gist.github.com/4760117.js"></script>
+
+---
+
+title: What Have We just Done?
+
+Where’s the program?
+
+We simply described the rules of the game and implemented no Sudoku solving strategies.
+
+This puzzle is a great example of the types of problems Prolog solves well: **problems that are easy to express but hard to solve**.
+
+---
+
+title: Eight Queens
+class: segue dark
+
+---
+
+title: Rules
+content_class: flexbox vcenter
+build_lists: true
+fade: true
+
+![Queens](images/queens.png)
+
+* A board has 8 queens.
+* Each queen has a row from 1–8 and a column from 1–8.
+* No two queens can share the same row.
+* No two queens can share the same column.
+* No two queens can share the same diagonal (southwest to northeast).
+* No two queens can share the same diagonal (northwest to southeast).
+
+---
+
+title: Eight Queens - Step 1
+
+Rules:
+
+* A board has 8 queens.
+* Each queen has a row from 1–8 and a column from 1–8.
+
+<script src="https://gist.github.com/4760302.js"></script>
+
+* `length(List, N)` succeeds if `List` has `N` elements.
+* `member(Item, List)` tests for `Item`'s membership in `List`
+* Alternatively, you can use `fd_domain(Row, 1, 8)`
+
+---
+
+title: Eight Queens - Step 2
+
+Rules:
+
+* No two queens can share the same row.
+* No two queens can share the same column.
+
+We will use the same strategy as Sudoku in using the `fd_all_different` predicate. However, first we need to extract rows and columns
+
+<script src="https://gist.github.com/4760344.js"></script>
+
+---
+
+title: Eight Queens - Step 3
+
+Rules:
+
+* No two queens can share the same diagonal (southwest to northeast).
+* No two queens can share the same diagonal (northwest to southeast).
+
+To number diagonals, we will use subtraction and addition.
+
+Diagonals that run from **northwest** to **southeast** have values of `Col – Row`.
+Diagonals that run from **northeast** to **southwest** have values of `Col + Row`.
+
+<script src="https://gist.github.com/4760404.js"></script>
+
+---
+
+title: Eight Queens - Diag1
+
+|           | Col 1 | Col 2 | Col 3 | Col 4 | Col 5 | Col 6 | Col 7 | Col 8 |
+| :-------: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Row 1** |   0   |   1   |   2   |   3   |   4   |   5   |   6   |   7   |
+| **Row 2** |   -1  |   0   |   1   |   2   |   3   |   4   |   5   |   6   |
+| **Row 3** |   -2  |   -1  |   0   |   1   |   2   |   3   |   4   |   5   |
+| **Row 4** |   -3  |   -2  |   -1  |   0   |   1   |   2   |   3   |   4   |
+| **Row 5** |   -4  |   -3  |   -2  |   -1  |   0   |   1   |   2   |   3   |
+| **Row 6** |   -5  |   -4  |   -3  |   -2  |   -1  |   0   |   1   |   2   |
+| **Row 7** |   -6  |   -5  |   -4  |   -3  |   -2  |   -1  |   0   |   1   |
+| **Row 8** |   -7  |   -6  |   -5  |   -4  |   -3  |   -2  |   -1  |   0   |
+
+---
+
+title: Eight Queens - Diag2
+
+|           | Col 1 | Col 2 | Col 3 | Col 4 | Col 5 | Col 6 | Col 7 | Col 8 |
+| :-------: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| **Row 1** |   2   |   3   |   4   |   5   |   6   |   7   |   8   |   9   |
+| **Row 2** |   3   |   4   |   5   |   6   |   7   |   8   |   9   |   10  |
+| **Row 3** |   4   |   5   |   6   |   7   |   8   |   9   |   10  |   11  |
+| **Row 4** |   5   |   6   |   7   |   8   |   9   |   10  |   11  |   12  |
+| **Row 5** |   6   |   7   |   8   |   9   |   10  |   11  |   12  |   13  |
+| **Row 6** |   7   |   8   |   9   |   10  |   11  |   12  |   13  |   14  |
+| **Row 7** |   8   |   9   |   10  |   11  |   12  |   13  |   14  |   15  |
+| **Row 8** |   9   |   10  |   11  |   12  |   13  |   14  |   15  |   16  |
+
+---
+
+title: Eight Queens Full Solution
+
+<script src="https://gist.github.com/4760415.js"></script>
+
+---
+
+title: Eight Queens Optimization
+
+<script src="https://gist.github.com/4760463.js"></script>
+
+---
+
+title: Wrapping Up
+class: segue dark
+
+---
+
+title: Recap
+
+Prolog works with knowledge bases, composed of logical facts and inferences about various problem domains.
+
+Queries can be made on the knowledge bases assertions, which will be resolved through unification that makes variables on both sides of a system match
+
+---
+
+title: Strengths
+
+Applicable for a variety of problems:
+
+* Natural-Language Processing - understand inexact language
+* Games - more complex and adaptable characters and environment
+* Semantic Web - rich user experience
+* Artificial Intelligence - model formal logic
+* Scheduling - excel in working with constrained resources
+
+---
+
+title: Weaknesses
+build_lists: true
+fade: true
+
+* Focused on niche, logic programming instead of general-purpose use, and therefore has some limitations related to language design
+* Uses a depth-first search of a decision tree, using all possible combinations matched against the set of rules. Large data sets can be particularly computationally intensive
+* Must rely on recursive rules, particularly tail-recursive rules to complete even moderately large problems. It’s relatively easy to build Prolog applications that cannot scale beyond a trivial set of data

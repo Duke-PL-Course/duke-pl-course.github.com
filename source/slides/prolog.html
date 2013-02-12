@@ -671,7 +671,7 @@ values of <code>One</code> and <code>Two</code> that made it successful and repo
             </hgroup>
             <article><p>Let's walk through what happens when you execute <code>concat([1, 2], [3], What)</code></p>
 <ul class="build">
-<li>The first rule doesn’t apply, because <code>[1, 2]</code> is not <code>[]</code>. We unify
+<li>The first rule doesn't apply, because <code>[1, 2]</code> is not <code>[]</code>. We unify
 to this:<br />
 <code>concat([1|[2]],[3],[1|Tail2-A]) :- concat([2],[3],[Tail2-A])</code><br />
 Everything unifies but <code>Tail2</code>. We now move on to the goals</li>
@@ -704,6 +704,488 @@ Notice that <code>Tail2-B</code> is the tail of <code>Tail2-A</code>. It’s not
             
         </slide>
         
+        <slide class="segue dark">
+
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>4 x 4 Sudoku</h2>
+                <h3></h3>
+            </hgroup>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Rules</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul class="build fade">
+<li>For a solved puzzle, the numbers in the puzzle and solution should be the same</li>
+<li>A Sudoku board is a grid of 16 cells, with values from 1–4</li>
+<li>The board has 4 rows, 4 columns, and 4 squares</li>
+<li>A puzzle is valid if the elements in each row, column, and square has no repeated elements</li>
+</ul></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Solving Sudoku - Step 1</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Rule 1: For a solved puzzle, the numbers in the puzzle and solution should be the same</p>
+<script src="https://gist.github.com/4759979.js"></script>
+
+<p>Good first step, but this rule accepts <strong>anything</strong> of <strong>any length</strong> as a solution</p></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Solving Sudoku - Step 2</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Rule 2: A Sudoku board is a grid of 16 cells, with values from 1–4</p>
+<script src="https://gist.github.com/4760027.js"></script>
+
+<p>We've now unified Puzzle with <strong>a list of 16 variables</strong>.</p>
+<p>We are also using predefined predicate, <code>fd_domain(List, LowerBound, UpperBound)</code>, which returns <code>true</code> if <strong>all</strong> the values in <code>List</code> are between <code>LowerBound</code> and <code>UpperBound</code>, inclusive.</p></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Solving Sudoku - Step 3</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Rule 3: The board has 4 rows, 4 columns, and 4 squares</p>
+<script src="https://gist.github.com/4760064.js"></script></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Solving Sudoku - Step 4</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Rule 4: A puzzle is valid if the elements in each row, column, and square has no repeated elements</p>
+<script src="https://gist.github.com/4760107.js"></script>
+
+<p>We’ll use predefined predicate to test for repeated elements. <code>fd_all_different(List)</code> succeeds if <strong>all</strong> the elements in <code>List</code> are different.</p>
+<p>We will also define a <code>valid(List)</code> predicate that returns <code>true</code> if all the lists in <code>List</code> are different.</p></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Full Sudoku 4x4 Solution</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4760117.js"></script></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>What Have We just Done?</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Where’s the program?</p>
+<p>We simply described the rules of the game and implemented no Sudoku solving strategies.</p>
+<p>This puzzle is a great example of the types of problems Prolog solves well: <strong>problems that are easy to express but hard to solve</strong>.</p></article>
+
+        </slide>
+
+        <slide class="segue dark">
+
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Eight Queens</h2>
+                <h3></h3>
+            </hgroup>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Rules</h2>
+                <h3></h3>
+            </hgroup>
+            <article class="flexbox vcenter"><p><img alt="Queens" src="images/queens.png" /></p>
+<ul class="build fade">
+<li>A board has 8 queens.</li>
+<li>Each queen has a row from 1–8 and a column from 1–8.</li>
+<li>No two queens can share the same row.</li>
+<li>No two queens can share the same column.</li>
+<li>No two queens can share the same diagonal (southwest to northeast). </li>
+<li>No two queens can share the same diagonal (northwest to southeast).</li>
+</ul></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Eight Queens - Step 1</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Rules:</p>
+<ul>
+<li>A board has 8 queens.</li>
+<li>Each queen has a row from 1–8 and a column from 1–8.</li>
+</ul>
+<script src="https://gist.github.com/4760302.js"></script>
+
+<ul>
+<li><code>length(List, N)</code> succeeds if <code>List</code> has <code>N</code> elements.</li>
+<li><code>member(Item, List)</code> tests for <code>Item</code>'s membership in <code>List</code></li>
+<li>Alternatively, you can use <code>fd_domain(Row, 1, 8)</code></li>
+</ul></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Eight Queens - Step 2</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Rules:</p>
+<ul>
+<li>No two queens can share the same row.</li>
+<li>No two queens can share the same column.</li>
+</ul>
+<p>We will use the same strategy as Sudoku in using the <code>fd_all_different</code> predicate. However, first we need to extract rows and columns</p>
+<script src="https://gist.github.com/4760344.js"></script></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Eight Queens - Step 3</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Rules:</p>
+<ul>
+<li>No two queens can share the same diagonal (southwest to northeast). </li>
+<li>No two queens can share the same diagonal (northwest to southeast).</li>
+</ul>
+<p>To number diagonals, we will use subtraction and addition. </p>
+<p>Diagonals that run from <strong>northwest</strong> to <strong>southeast</strong> have values of <code>Col – Row</code>.
+Diagonals that run from <strong>northeast</strong> to <strong>southwest</strong> have values of <code>Col + Row</code>.</p>
+<script src="https://gist.github.com/4760404.js"></script></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Eight Queens - Diag1</h2>
+                <h3></h3>
+            </hgroup>
+            <article><table>
+<thead>
+<tr>
+<th></th>
+<th>Col 1</th>
+<th>Col 2</th>
+<th>Col 3</th>
+<th>Col 4</th>
+<th>Col 5</th>
+<th>Col 6</th>
+<th>Col 7</th>
+<th>Col 8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Row 1</strong></td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+</tr>
+<tr>
+<td><strong>Row 2</strong></td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<td><strong>Row 3</strong></td>
+<td>-2</td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+</tr>
+<tr>
+<td><strong>Row 4</strong></td>
+<td>-3</td>
+<td>-2</td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+</tr>
+<tr>
+<td><strong>Row 5</strong></td>
+<td>-4</td>
+<td>-3</td>
+<td>-2</td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>Row 6</strong></td>
+<td>-5</td>
+<td>-4</td>
+<td>-3</td>
+<td>-2</td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td><strong>Row 7</strong></td>
+<td>-6</td>
+<td>-5</td>
+<td>-4</td>
+<td>-3</td>
+<td>-2</td>
+<td>-1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td><strong>Row 8</strong></td>
+<td>-7</td>
+<td>-6</td>
+<td>-5</td>
+<td>-4</td>
+<td>-3</td>
+<td>-2</td>
+<td>-1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Eight Queens - Diag2</h2>
+                <h3></h3>
+            </hgroup>
+            <article><table>
+<thead>
+<tr>
+<th></th>
+<th>Col 1</th>
+<th>Col 2</th>
+<th>Col 3</th>
+<th>Col 4</th>
+<th>Col 5</th>
+<th>Col 6</th>
+<th>Col 7</th>
+<th>Col 8</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Row 1</strong></td>
+<td>2</td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+</tr>
+<tr>
+<td><strong>Row 2</strong></td>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+</tr>
+<tr>
+<td><strong>Row 3</strong></td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+</tr>
+<tr>
+<td><strong>Row 4</strong></td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+</tr>
+<tr>
+<td><strong>Row 5</strong></td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+</tr>
+<tr>
+<td><strong>Row 6</strong></td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+</tr>
+<tr>
+<td><strong>Row 7</strong></td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+</tr>
+<tr>
+<td><strong>Row 8</strong></td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+<td>16</td>
+</tr>
+</tbody>
+</table></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Eight Queens Full Solution</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4760415.js"></script></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Eight Queens Optimization</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4760463.js"></script></article>
+
+        </slide>
+
+        <slide class="segue dark">
+
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Wrapping Up</h2>
+                <h3></h3>
+            </hgroup>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Recap</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Prolog works with knowledge bases, composed of logical facts and inferences about various problem domains. </p>
+<p>Queries can be made on the knowledge bases assertions, which will be resolved through unification that makes variables on both sides of a system match</p></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Strengths</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Applicable for a variety of problems:</p>
+<ul>
+<li>Natural-Language Processing - understand inexact language</li>
+<li>Games - more complex and adaptable characters and environment</li>
+<li>Semantic Web - rich user experience</li>
+<li>Artificial Intelligence - model formal logic</li>
+<li>Scheduling - excel in working with constrained resources</li>
+</ul></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Weaknesses</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul class="build fade">
+<li>Focused on niche, logic proramming instead of general-purpose use, and therefore has some limitations related to language design</li>
+<li>Uses a depth-first search of a decision tree, using all possible combinations matched against the set of rules. Large data sets can be particularly computationally intensive</li>
+<li>Must rely on recursive rules, particularly tail-recursive rules to complete even moderately large problems. It’s relatively easy to build Prolog applications that cannot scale beyond a trivial set of data</li>
+</ul></article>
+
+        </slide>
+
 
         <slide class="thank-you-slide segue nobackground">
             <aside class="gdbar right"><img src="images/logo.png"></aside>

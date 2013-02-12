@@ -495,6 +495,16 @@ title: Practical Prolog With Circuits
 
 ---
 
+title: Practice Problems
+
+[Problems](https://github.com/Duke-PL-Course/Prolog/blob/master/2013-02-05-book-problems.md#day-2):
+
+* Reverse the elements of a list
+* Find the smallest element of a list
+* Sort the elements of a list
+
+---
+
 title: 4 x 4 Sudoku
 class: segue dark
 

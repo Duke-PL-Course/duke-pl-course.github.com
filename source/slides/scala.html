@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Duke PL Course</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!--This one seems to work all the time, but really small on ipad-->
+    <!--<meta name="viewport" content="initial-scale=0.4">-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" media="all" href="/stylesheets/slidedefault.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/stylesheets/slidephone.css">
+    <base target="_blank"><!-- This amazingness opens all links in a new tab. -->
+    <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+    <slides class="layout-widescreen">
+
+        <!-- <slide class="logoslide nobackground">
+            <article class="flexbox vcenter">
+                <span><img src="images/google_developers_logo.png"></span>
+            </article>
+        </slide> -->
+        <slide class="title-slide segue nobackground">
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+            <hgroup class="auto-fadein">
+                
+                <h1 data-config-title><!-- populated from slide_config.json --></h1>
+                
+                
+                <h2>Scala</h2>
+                
+                <p data-config-presenter><!-- populated from slide_config.json --></p>
+            </hgroup>
+        </slide>
+
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Scala Overview</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Scala is ...</p>
+<ul class="build">
+<li>Created by <a href="http://en.wikipedia.org/wiki/Martin_Odersky">Martin Odersky</a></li>
+<li>A <a href="http://en.wikipedia.org/wiki/Multi-paradigm_programming_language">multi-paradigm programming language</a><ul class="build">
+<li>Object-oriented</li>
+<li>Funtional</li>
+</ul>
+</li>
+<li>Its type system is:<ul class="build">
+<li><a href="http://en.wikipedia.org/wiki/Static_typing#Static_typing">Statically</a> typed</li>
+<li><a href="http://en.wikipedia.org/wiki/Strong_typing">Strongly</a> typed</li>
+<li><a href="http://en.wikipedia.org/wiki/Structural_type_system">Structurally</a> typed</li>
+<li>Uses <a href="http://en.wikipedia.org/wiki/Type_inference">type inference</a></li>
+</ul>
+</li>
+<li>Built on top of the <a href="http://en.wikipedia.org/wiki/Jvm">Java Virtual Machine</a> (JVM)</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Why Learn Scala?</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
+<li>"General purpose" programming language</li>
+<li>Interoperates with Java</li>
+<li>Many companies are starting to switch to Scala:<ul>
+<li><a href="http://www.scala-lang.org/node/1658#Twitter">Twitter</a>'s main message queue</li>
+<li><a href="http://www.scala-lang.org/node/7806">LinkedIn</a>' Social Graph</li>
+<li>AOL</li>
+<li>Box</li>
+<li>eHarmony</li>
+<li>Foursquare</li>
+<li>Klout</li>
+<li>Quora</li>
+<li>Tumblr</li>
+<li><a href="http://www.quora.com/Startups/What-startups-or-tech-companies-are-using-Scala">more</a></li>
+</ul>
+</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Functional Programming and Concurrency</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>A major reason why companies are switching to Scala is because it is familiar (Java similarities) and easy to deploy (JVM), but more importantly, it is scalable due to its functional nature.</p>
+<p>A <strong>purely functional language</strong> asserts that:
+<em> A function always returns a value
+</em> Given the same inputs, a function will always return the same values
+* <em>Functions will avoid mutating data</em></p>
+<p>Because data is <strong>immutable</strong>, it is easy to make programs concurrent. A program simply needs to compute a value from some inputs.</p>
+<p>Scala is not a purely functional language because it does not guarantee immutability; IO, for example, invalidates the immutability.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Code Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/yangsu/4772430.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Expressions and Simple Functions</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Types</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Scala really is <strong>object-oriented</strong>; every value is an object, even what we would call primitives in Java. This includes integers, strings, etc.</p>
+<p>Scala <a href="autobox">autoboxes and unboxes</a> values as necessary.</p>
+<p>Scala uses a lot of syntactic sugar to make your life easier, despite everything being an object.</p>
+<p><strong>Infix operators</strong> are just methods in a class that take a single parameter.</p>
+<p>Common Scala types include: <code>Byte</code>, <code>Char</code>, <code>Short</code>, <code>Int</code>, <code>Long</code>, <code>Float</code>, <code>Double</code>, <code>Boolean</code>, and <code>String</code>.</p>
+<p>There are several classes that augment already existing classes. Ones such as <a href="http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html#scala.collection.immutable.StringOps"><code>StringOps</code></a>, <code>RichInt</code>, <code>RichChar</code>, etc. that add many more methods to an object. This is usually transparent thanks to <strong>implicit type conversion</strong>.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Numbers and Strings</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/4760682.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Type Coercion</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Like in Ruby, Scala is <strong>strongly</strong> typed, but Scala can also do that type checking at compile time. </p>
+<p>Unlike Java, Scala will use <a href="http://en.wikipedia.org/wiki/Type_inference">type inference</a> to understand the types of variables through syntactical clues, so you don’t have to type <code>val a : Int = 1</code>, though you can if you want.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Type Coercion Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/4760760.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Expressions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Expressions can be stored as <strong>values</strong> or <strong>variables</strong>, using the <code>val</code> or <code>var</code> keywords respectively. In Scala, it is idiomatic to avoid variables; remember, mutable state is bad.</p>
+<p>In the REPL, Scala will store unnamed expressions in a value called <code>res_</code> where <code>_</code> indicates a number.</p>
+<script src="https://gist.github.com/4773001.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Boolean Values</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Scala's strong type system means that only <code>Boolean</code> values can be evaluated in an <code>if/else</code> statement. This is much stricter than Ruby, where everything evaluates to <code>true</code> except for <code>false</code> and <code>nil</code>.</p>
+<script src="https://gist.github.com/4772536.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Control Structures</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>While Loop</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4772642.js"></script>
+
+<p>We have here defined a function that executes a while loop</p>
+<p>Note: unlike in Java, you don’t have to specify <code>public</code>. In Scala, <code>public</code> is the default visibility, meaning this function will be visible to all.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>For Loop</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4772685.js"></script>
+
+<p>The argument is a variable, followed by the <code>&lt;-</code> operator, followed by a range for the loop in the form of <code>initialValue</code> until <code>endingValue</code>.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>For Each</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/yangsu/4772707.js"></script>
+
+<p><code>args</code> is a list with the inbound command-line arguments. Scala passes each element into this block, one by one. In our case, <code>arg</code> is one argument from the inbound <code>args</code> list. In Ruby, the same code would be <code>args.each {|arg| println(arg) }.</code></p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Ranges</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
+<li><code>1 to 10</code> =&gt; <code>1..10</code></li>
+<li><code>1 until 10</code> =&gt; <code>1...10</code></li>
+</ul>
+<script src="https://gist.github.com/4772723.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Tuples</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>A <strong>tuple</strong> is a <strong>fixed-length</strong> set of objects of <strong>mixed type</strong>. You’ll find this pattern in many other functional languages as well.</p>
+<script src="https://gist.github.com/4772746.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Classes, Inheritance, Traits</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Classes</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Simple Class Definition</p>
+<script src="https://gist.github.com/4772791.js"></script>
+
+<p>The same class in Java</p>
+<script src="https://gist.github.com/4772823.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Constructor</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>The whole block of code following the class definition is actually the constructor.</p>
+<script src="https://gist.github.com/4772854.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Auxiliary Constructors</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Also known as <a href="http://en.wikipedia.org/wiki/Function_overloading#Constructor_overloading">Constructor Overloading</a> in Java</p>
+<script src="https://gist.github.com/4772835.js"></script>
+
+<p><strong>Note</strong>: the auxiliary constructor calls the primary constructor first with <code>this(firstName)</code></p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Companion Objects and Class Methods</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>In Java and Ruby, you create both <strong>class methods</strong> and <strong>instance methods</strong> within the same body. In Java, class methods have the <code>static</code> keyword. Ruby uses <code>def self.class_method</code>.</p>
+<p>When there’s something that can have only one instance, you’ll define it with the <code>object</code> keyword instead of the <code>class</code> keyword, which creates a <a href="http://en.wikipedia.org/wiki/Singleton_pattern">singleton</a> object.</p>
+<script src="https://gist.github.com/4772904.js"></script>
+
+<p>In Scala, you can define <strong>class methods</strong> within the <strong>singleton object declaration</strong> and <strong>instance methods</strong> within the <strong>class declaration</strong> of the same name.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Inheritance</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4772936.js"></script>
+
+<p>You <strong>must</strong> specify the complete parameter list for Person, though you can omit the types.</p>
+<p>The <code>override</code> keyword, both in the constructor and for any methods you want to extend from the base class, is <strong>mandatory</strong>. This keyword will keep you from inadvertently introducing new methods with misspellings.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Traits</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Every object-oriented language must solve the problem that one object can have several different roles. C++ uses multiple inheritance, Java uses interfaces, Ruby uses mixins, and Scala uses traits.</p>
+<p>A Scala trait is a partial-class implementation that deals with a particular concern, like a Ruby mixin implemented with modules or a Java interface plus an implementation.</p>
+<script src="https://gist.github.com/4772960.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2></h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>expressions and simple functions
+first class functions
+classes and objects
+apply method
+case classes
+pattern matching
+generic types and methods
+list
+for comprehensions
+lazy evaluation
+val vs var
+integers, strings are first class objects</p></article>
+            
+        </slide>
+        
+
+        <slide class="thank-you-slide segue nobackground">
+            <aside class="gdbar right"><img src="images/logo.png"></aside>
+            <article class="flexbox vleft auto-fadein">
+                <h2>&lt;Thank You!&gt;</h2>
+                <p></p>
+            </article>
+            <p class="auto-fadein" data-config-contact>
+                <!-- populated from slide_config.json -->
+            </p>
+        </slide>
+
+        <!-- <slide class="logoslide dark nobackground">
+        <article class="flexbox vcenter">
+            <span><img src="images/google_developers_logo_white.png"></span>
+        </article>
+        </slide> -->
+
+    <slide class="backdrop"></slide>
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37844085-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+<script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

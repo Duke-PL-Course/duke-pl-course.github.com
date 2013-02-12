@@ -85,7 +85,12 @@ Scala uses a lot of syntactic sugar to make your life easier, despite everything
 
 **Infix operators** are just methods in a class that take a single parameter.
 
+Common Scala types include: `Byte`, `Char`, `Short`, `Int`, `Long`, `Float`, `Double`, `Boolean`, and `String`.
+
+There are several classes that augment already existing classes. Ones such as [`StringOps`][stringops], `RichInt`, `RichChar`, etc. that add many more methods to an object. This is usually transparent thanks to **implicit type conversion**.
+
 [autobox]: http://en.wikipedia.org/wiki/Object_type_(object-oriented_programming)#Autoboxing
+[stringops]: http://www.scala-lang.org/archives/downloads/distrib/files/nightly/docs/library/index.html#scala.collection.immutable.StringOps
 
 ---
 
@@ -105,6 +110,10 @@ Like in Ruby, Scala is **strongly** typed, but does a good job of type inference
 
 title: Expressions and Conditions
 
+Expressions can be stored as **values** or **variables**, using the `val` or `var` keywords respectively. In Scala, it is idiomatic to avoid variables; remember, mutable state is bad.
+
+In the REPL, Scala will store unnamed expressions in a value called `res_` where `_` indicates a number.
+
 Scala's strong type system means that only `Boolean` values can be evaluated in an `if/else` statement. This is much stricter than Ruby, where everything evaluates to `true` except for `false` and `nil`.
 
 
@@ -113,6 +122,7 @@ Scala's strong type system means that only `Boolean` values can be evaluated in 
 expressions and simple functions
 first class functions
 classes and objects
+apply method
 case classes
 pattern matching
 generic types and methods

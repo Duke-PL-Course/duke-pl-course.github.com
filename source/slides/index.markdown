@@ -9,3 +9,4 @@ footer: false
 * [Ruby](/slides/ruby.html)
 * [JavaScript](/slides/javascript.html)
 * [Prolog](/slides/prolog.html)
+* [Scala](/slides/scala.html)

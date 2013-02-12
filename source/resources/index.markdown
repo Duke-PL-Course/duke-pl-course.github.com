@@ -17,6 +17,7 @@ footer: false
 * [Language Specific Resources](#language-specific-resources)
     * [Ruby](#ruby)
     * [Io](#io)
+    * [JavaScript](#javascript)
     * [Prolog](#prolog)
     * [Scala](#scala)
     * [Erlang](#erlang)
@@ -66,19 +67,86 @@ If you are a vim user or would like to use vim for this course, then you can fin
 
 <h3 id="ruby">Ruby</h3>
 
-[Ruby](http://www.ruby-lang.org/en/)
+* [Ruby](http://www.ruby-lang.org/en/)
+* [Ruby Docs](http://www.ruby-doc.org/)
+* [Try Ruby](http://tryruby.org/levels/1/challenges/0)
+* [Programming Ruby](http://www.ruby-doc.org/docs/ProgrammingRuby/)
+* [Learn Ruby the Hard way](http://ruby.learncodethehardway.org/)
+
+#### Rails
+* [The Intro to Rails Screencast I Wish I Had](http://net.tutsplus.com/tutorials/ruby/the-intro-to-rails-screencast-i-wish-i-had/)
+* [Code School](http://www.codeschool.com/paths/ruby)
+* [Ruby on Rails Tutorial by Michael Hartl](http://ruby.railstutorial.org/)
+
+---
 
 <h3 id="io">Io</h3>
 
-[Io](http://www.iolanguage.com/)
+* [Io](http://www.iolanguage.com/)
+* [Io Reference](http://iolanguage.org/scm/io/docs/reference/index.html)
+* [Io Programming/Io Style Guide](http://en.wikibooks.org/wiki/Io_Programming/Io_Style_Guide)
+* [Io Programming Guide](http://iolanguage.org/scm/io/docs/IoGuide.html)
+* [Io Notes](http://iota.flowsnake.org/)
+
+---
+
+<h3 id="javascript">JavaScript</h3>
+
+* [JavaScript (MDN)](https://developer.mozilla.org/en-US/docs/JavaScript)
+* [A re-introduction to JavaScript](https://developer.mozilla.org/en-US/docs/JavaScript/A_re-introduction_to_JavaScript)
+* [JavaScript Guide](https://developer.mozilla.org/en-US/docs/JavaScript/Guide)
+* [Object oriented programming in Javascript](http://www.gabordemooij.com/articles/jsoop.html)
+* [Eloquent JavaScript](http://eloquentjavascript.net/)
+* [Learning JavaScript Design Patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/)
+* [JavaScript Design Patterns](http://shichuan.github.com/javascript-patterns/)
+* [Avoiding and exploiting JavaScript's warts](http://matt.might.net/articles/javascript-warts/)
+* [JavaScript Garden](http://bonsaiden.github.com/JavaScript-Garden/)
+
+#### Node.js
+* [Mixu's Node book](http://book.mixu.net/)
+* [Node Beginner Book](http://www.nodebeginner.org/)
+* [NodeCloud](http://www.nodecloud.org/)
+
+#### Library Specific
+* [jQuery Fundamentals](http://jqfundamentals.com/)
+* [Backbone Pattern](http://ricostacruz.com/backbone-patterns/)
+* [The Little Book on CoffeeScript](http://arcturo.github.com/library/coffeescript/)
+* [Smooth CoffeeScript](http://autotelicum.github.com/Smooth-CoffeeScript/)
+
+#### Tools
+* [JSLint](http://www.jslint.com/)
+* [JSHint](http://www.jshint.com/)
+
+---
 
 <h3 id="prolog">Prolog</h3>
 
-[Prolog](http://c2.com/cgi/wiki?PrologLanguage)
+* [Prolog](http://c2.com/cgi/wiki?PrologLanguage)
+* [Prolog :- Tutorial](http://www.csupomona.edu/~jrfisher/www/prolog_tutorial/pt_framer.html)
+* [A Practical Introduction to Prolog and Computational Linguistics](http://www.ling.helsinki.fi/kit/2004k/ctl272/Bangor/clbook.html)
+* [Prolog Dictionary](http://www.cse.unsw.edu.au/~billw/prologdict.html)
+* [Constraint Programming](http://www.hakank.org/constraint_programming/)
+* [IF/Prolog V5.2 Manual](http://www.ifcomputer.co.jp/jp/manuals5.2/home.html)
+* [Prolog in JavaScript](http://ioctl.org/logic/prolog-latest)
+* [Prolog Problems](https://sites.google.com/site/prologsite/home)
+* [P-99: Ninety-Nine Prolog Problems](http://www.ic.unicamp.br/~meidanis/courses/mc336/2009s2/prolog/problemas/index.html)
+
+#### Dialects
+* [Comparison of Prolog implementations](http://en.wikipedia.org/wiki/Comparison_of_Prolog_implementations)
+* [SWI Prolog](http://www.swi-prolog.org/)
+
+---
 
 <h3 id="scala">Scala</h3>
 
-[Scala](http://www.scala-lang.org/)
+* [Scala](http://www.scala-lang.org/)
+* [Scala School](http://twitter.github.com/scala_school/)
+* [Learning Scala](http://www.scala-lang.org/node/1305)
+* [Learning Scala in small bites](http://matt.might.net/articles/learning-scala-in-small-bites/)
+* [Effective Scala](http://twitter.github.com/effectivescala/)
+* [Scala on StackOverflow](http://stackoverflow.com/tags/scala/info)
+
+---
 
 <h3 id="erlang">Erlang</h3>
 

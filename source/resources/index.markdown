@@ -53,6 +53,9 @@ You can install most of the packages using `apt-get` or its equivalent for your 
 
 Most problems can be found using google or stackoverflow. If you are still having trouble, let the instructors know.
 
+### Branching
+[Learn Git Branching](http://pcottle.github.com/learnGitBranching/)
+
 <h2 id="editors">Editors</h2>
 
 <h2 id="sublime-text-2">Sublime Text 2</h2>
@@ -107,11 +110,20 @@ If you are a vim user or would like to use vim for this course, then you can fin
 * [Node Beginner Book](http://www.nodebeginner.org/)
 * [NodeCloud](http://www.nodecloud.org/)
 
-#### Library Specific
+#### jQuery
+* [jQuery](http://jquery.com/)
 * [jQuery Fundamentals](http://jqfundamentals.com/)
+
+#### Backbone
+* [Backbone](http://backbonejs.org/)
+* [Learn Backbone.js Completely](http://javascriptissexy.com/learn-backbone-js-completely/)
+* [Backbone Tutorials](http://backbonetutorials.com/)
 * [Backbone Pattern](http://ricostacruz.com/backbone-patterns/)
+
+##### CoffeeScript
 * [The Little Book on CoffeeScript](http://arcturo.github.com/library/coffeescript/)
 * [Smooth CoffeeScript](http://autotelicum.github.com/Smooth-CoffeeScript/)
+* [CoffeeScript Ristretto Online](http://ristrettolo.gy/)
 
 #### Tools
 * [JSLint](http://www.jslint.com/)

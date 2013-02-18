@@ -159,7 +159,7 @@ The argument is a variable, followed by the `<-` operator, followed by a range f
 
 title: For Each
 
-<script src="https://gist.github.com/yangsu/4772707.js"></script>
+<script src="https://gist.github.com/4772707.js"></script>
 
 `args` is a list with the inbound command-line arguments. Scala passes each element into this block, one by one. In our case, `arg` is one argument from the inbound `args` list. In Ruby, the same code would be `args.each {|arg| println(arg) }.`
 
@@ -179,6 +179,28 @@ title: Tuples
 A **tuple** is a **fixed-length** set of objects of **mixed type**. You’ll find this pattern in many other functional languages as well.
 
 <script src="https://gist.github.com/4772746.js"></script>
+
+---
+
+title: Options
+
+An **Option** is a container that may or may not hold something.
+
+The basic interface for Option looks like:
+
+<script src="https://gist.github.com/4981583.js"></script>
+
+An **Option** itself is generic and has two subclasses: `Some[T]` or `None`
+
+---
+
+title: Options Usage
+
+`Map.get` uses `Option` for its return type. An `Option` tells you that the method might not return what you’re asking for.
+
+Use `getOrElse` to define a default value or use Pattern Matching to switch behaviors
+
+<script src="https://gist.github.com/4981579.js"></script>
 
 ---
 
@@ -269,29 +291,27 @@ A function declaration consists of 4 parts
 * An **\*optional\*** return type. Scala can often infer the return type.
 * An **expression** or a **block** on the right side of the `=` as the body
 
-To invoke the function, just use the name and the argument list. Unlike Ruby, the parentheses are **not** optional.
+To invoke the function, just use the name and the argument list.
 
 ---
 
-Functions
-You can create functions with def.
+title: When Parentheses Are Optional
 
-scala> def addOne(m: Int): Int = m + 1
-addOne: (m: Int)Int
-In Scala, you need to specify the type signature for function parameters. The interpreter happily repeats the type signature back to you.
+You can leave off parentheses on functions with *no arguments*
 
-scala> val three = addOne(2)
-three: Int = 3
-You can leave off parens on functions with no arguments
+<script src="https://gist.github.com/4978324.js"></script>
 
-scala> def three() = 1 + 2
-three: ()Int
+---
 
-scala> three()
-res2: Int = 3
+title: Anonymous Functions
 
-scala> three
-res3: Int = 3
+Create anonymous functions with `(arguments) => expression` for simple functions or `{ (arguments) => expressions }` for more complex ones.
+
+You can pass anonymous functions around or save them into `val`s or `var`s. Hence, functions are [first class][fcf] in Scala.
+
+<script src="https://gist.github.com/4978379.js"></script>
+
+[fcf]: http://en.wikipedia.org/wiki/First-class_function
 
 ---
 
@@ -331,63 +351,6 @@ Methods have one big advantage (well, two -- they can be slightly faster): they 
 
 http://stackoverflow.com/questions/2529184/difference-between-method-and-function-in-scala
 
-
-Aside: Functions vs Methods
-Functions and methods are largely interchangeable. Because functions and methods are so similar, you might not remember whether that thing you call is a function or a method. When you bump into a difference between methods and functions, it might confuse you.
-
-scala> class C {
-     |   var acc = 0
-     |   def minc = { acc += 1 }
-     |   val finc = { () => acc += 1 }
-     | }
-defined class C
-
-scala> val c = new C
-c: C = C@1af1bd6
-
-scala> c.minc // calls c.minc()
-
-scala> c.finc // returns the function as a value:
-res2: () => Unit = <function0>
-When you can call one “function” without parentheses but not another, you might think Whoops, I thought I knew how Scala functions worked, but I guess not. Maybe they sometimes need parentheses? You might understand functions, but be using a method.
-
-In practice, you can do great things in Scala while remaining hazy on the difference between methods and functions. If you’re new to Scala and read explanations of the differences, you might have trouble following them. That doesn’t mean you’re going to have trouble using Scala. It just means that the difference between functions and methods is subtle enough such that explanations tend to dig into deep parts of the language.
-
-
----
-
-title: Anonymous Functions
-
-You can create anonymous functions.
-
-scala> (x: Int) => x + 1
-res2: (Int) => Int = <function1>
-This function adds 1 to an Int named x.
-
-scala> res2(1)
-res3: Int = 2
-You can pass anonymous functions around or save them into vals.
-
-scala> val addOne = (x: Int) => x + 1
-addOne: (Int) => Int = <function1>
-
-scala> addOne(1)
-res4: Int = 2
-If your function is made up of many expressions, you can use {} to give yourself some breathing room.
-
-def timesTwo(i: Int): Int = {
-  println("hello world")
-  i * 2
-}
-This is also true of an anonymous function
-
-scala> { i: Int =>
-  println("hello world")
-  i * 2
-}
-res0: (Int) => Int = <function1>
-You will see this syntax often used when passing an anonymous function as an argument.
-
 ---
 
 title: var vs val
@@ -397,6 +360,58 @@ When you declare variables, you should make them immutable whenever you can to a
 <script src="https://gist.github.com/4974235.js"></script>
 
 This basic design philosophy is the key element that differentiates functional programming from object-oriented programming: *mutable state limits concurrency*.
+
+---
+
+title: Partially Applied Functions
+
+You can partially apply a function with an `_`, which gives you another function. 
+
+Scala uses the underscore to mean different things in different contexts, but you can usually think of it as an *unnamed magical wildcard*.
+
+You can partially apply any argument in the argument list, not just the last one.
+
+<script src="https://gist.github.com/4978480.js"></script>
+
+---
+
+title: Curried Functions
+
+Sometimes it makes sense to let people apply some arguments to your function now and others later. This is called [currying][].
+
+Here’s an example of a function that lets you build multipliers of 2 numbers together. You can call it directly with 2 parameters, or you can decide on a multiplier at one call site, and choose a multipicand at a later call site.
+
+<script src="https://gist.github.com/4978512.js"></script>
+
+[currying]: http://en.wikipedia.org/wiki/Currying
+
+---
+
+title: apply
+
+`apply` methods give you a nice syntactic sugar for when a class or object has one main use.
+
+<script src="https://gist.github.com/4980588.js"></script>
+
+---
+
+title: Functions are Objects
+
+A `Function` is *a set of traits*. Specifically, a function that takes one argument is an instance of a `Function1` trait. This trait defines the apply() syntactic sugar we learned earlier, allowing you to call an object like you would a function.
+
+<script src="https://gist.github.com/4980621.js"></script>
+
+There is `Function0` through `22`.
+
+**The syntactic sugar of `apply` helps unify the duality of object and functional programming. You can pass classes around and use them as functions and functions are just instances of classes under the covers.**
+
+---
+
+title: Function Classes
+
+Classes can also extend `Function` and those instances can be called with `()`.
+
+<script src="https://gist.github.com/4980636.js"></script>
 
 ---
 
@@ -557,7 +572,7 @@ title: Other Higher-Order Functions
 
 ---
 
-title: The same Example in Ruby
+title: The Same Example in Ruby
 
 <script src="https://gist.github.com/4975210.js"></script>
 
@@ -565,19 +580,11 @@ title: The same Example in Ruby
 
 title: foldLeft
 
-`initialValue /: codeBlock`
+In the form of `(initialValue /: list) codeBlock`
 
-val list = List(1, 2, 3)
-val sum = (0 /: list) { (sum, i) => sum + i }
+<script src="https://gist.github.com/4980434.js"></script>
 
- We invoke the operator with a value and a code block. The code block takes two arguments, sum and i.
-• Initially, /: takes the initial value, 0, and the first element of list, 1, and passes them into the code block. sum is 0, i is 1, and the result of 0 + 1 is 1.
-• Next, /: takes 1, the result returned from the code block, and folds it back into the calculation as sum. So, sum is 1; i is the next element of list, or 2; and the result of the code block is 3.
-• Finally, /: takes 3, the result returned from the code block, and folds it back into the calculation as sum. So, sum is 3; i is the next element of list, or 3; and sum+i is 6.
-
-Functional languages use currying to transform a function with multiple parameters to several functions with their own parameter lists. 
-
-list.foldLeft(0)((sum, value) => sum + value)
+Functional languages use [currying](#26) to transform a function with multiple parameters to several functions with their own parameter lists. 
 
 ---
 
@@ -587,80 +594,89 @@ Use `foldLeft` or `foldRight` to compute the total size of a list of strings.
 
 ---
 
-title: Partially Applied Functions
-
-Partial application
-You can partially apply a function with an underscore, which gives you another function. Scala uses the underscore to mean different things in different contexts, but you can usually think of it as an unnamed magical wildcard. In the context of `{ _ + 2 }` it means an unnamed parameter. You can use it like so:
-
-scala> def adder(m: Int, n: Int) = m + n
-adder: (m: Int,n: Int)Int
-scala> val add2 = adder(2, _:Int)
-add2: (Int) => Int = <function1>
-
-scala> add2(3)
-res50: Int = 5
-You can partially apply any argument in the argument list, not just the last one.
-
----
-
-title: Curried Functions
-
-Sometimes it makes sense to let people apply some arguments to your function now and others later.
-
-Here’s an example of a function that lets you build multipliers of two numbers together. At one call site, you’ll decide which is the multiplier and at a later call site, you’ll choose a multipicand.
-
-scala> def multiply(m: Int)(n: Int): Int = m * n
-multiply: (m: Int)(n: Int)Int
-You can call it directly with both arguments.
-
-scala> multiply(2)(3)
-res0: Int = 6
-You can fill in the first parameter and partially apply the second.
-
-scala> val timesTwo = multiply(2) _
-timesTwo: (Int) => Int = <function1>
-
-scala> timesTwo(3)
-res1: Int = 6
-You can take any function of multiple arguments and curry it. Let’s try with our earlier adder
-
-scala> (adder _).curried
-res1: (Int) => (Int) => Int = <function1>
-
----
-
-title: Variable Length Arguments
-
-There is a special syntax for methods that can take parameters of a repeated type. To apply String’s `capitalize` function to several strings, you might write:
-
-def capitalizeAll(args: String*) = {
-  args.map { arg =>
-    arg.capitalize
-  }
-}
-
-scala> capitalizeAll("rarity", "applejack")
-res2: Seq[String] = ArrayBuffer(Rarity, Applejack)
-
-
----
-
-title: XML
-class: segue dark
-
----
-
-
 title: Pattern Matching
 class: segue dark
 
 ---
 
-first class functions
-classes and objects
-apply method
-case classes
-generic types and methods
+title: Pattern Matching
+
+[Pattern matches][pm] `(x match { ...)` are pervasive in well written Scala code: they conflate conditional execution, destructuring, and casting into one construct. Used well they enhance both clarity and safety.
+
+**One of the most useful** parts of Scala.
+
+[pm]: http://en.wikipedia.org/wiki/Pattern_matching
+
+---
+
+title: Pattern Matching - Matching On Values
+
+<script src="https://gist.github.com/4980849.js"></script>
+
+---
+
+title: Pattern Matching - Matching With Guards
+
+<script src="https://gist.github.com/4980873.js"></script>
+
+Notice how we captured the value in the variable `i`
+
+The `_` in the last case statement is a **wildcard**. It ensures that we can handle any statement. Otherwise you will suffer a runtime error if you pass in a number that doesn't match.
+
+---
+
+title: Pattern Matching - Matching On Type
+
+<script src="https://gist.github.com/4980985.js"></script>
+
+---
+
+title: Pattern Matching - Matching On Class Members
+
+<script src="https://gist.github.com/4981088.js"></script>
+
+---
+
+title: Case Classes
+
+**Case Classes** are used to conveniently store and match on the contents of a class and designed to be used with pattern matching. You can construct them **without** using `new`.
+
+They automatically have *equality* and nice `toString` methods based on the constructor arguments.
+
+They can also have methods just like normal classes.
+
+<script src="https://gist.github.com/4981144.js"></script>
+
+---
+
+title: Case Class Calculator Example
+
+<script src="https://gist.github.com/4981201.js"></script>
+
+*Note*:  `c@Calculator(_, _)` rebinds the matched value to `c`
+
+---
+
+title: Concurrency
+class: segue dark
+
+---
+
+title: Futures
+
+---
+
+title: Actors
+
+---
+
+title: Dispatch
+
+---
+
+title: Play + Akka
+
+---
+
 for comprehensions
 lazy evaluation
-integers, strings are first class objects

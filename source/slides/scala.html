@@ -235,7 +235,7 @@
                 <h2>For Each</h2>
                 <h3></h3>
             </hgroup>
-            <article><script src="https://gist.github.com/yangsu/4772707.js"></script>
+            <article><script src="https://gist.github.com/4772707.js"></script>
 
 <p><code>args</code> is a list with the inbound command-line arguments. Scala passes each element into this block, one by one. In our case, <code>arg</code> is one argument from the inbound <code>args</code> list. In Ruby, the same code would be <code>args.each {|arg| println(arg) }.</code></p></article>
             
@@ -263,6 +263,32 @@
             </hgroup>
             <article><p>A <strong>tuple</strong> is a <strong>fixed-length</strong> set of objects of <strong>mixed type</strong>. You’ll find this pattern in many other functional languages as well.</p>
 <script src="https://gist.github.com/4772746.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Options</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>An <strong>Option</strong> is a container that may or may not hold something.</p>
+<p>The basic interface for Option looks like:</p>
+<script src="https://gist.github.com/4981583.js"></script>
+
+<p>An <strong>Option</strong> itself is generic and has two subclasses: <code>Some[T]</code> or <code>None</code></p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Options Usage</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>Map.get</code> uses <code>Option</code> for its return type. An <code>Option</code> tells you that the method might not return what you’re asking for.</p>
+<p>Use <code>getOrElse</code> to define a default value or use Pattern Matching to switch behaviors</p>
+<script src="https://gist.github.com/4981579.js"></script></article>
             
         </slide>
         
@@ -378,30 +404,30 @@
 <li>An <strong>*optional*</strong> return type. Scala can often infer the return type.</li>
 <li>An <strong>expression</strong> or a <strong>block</strong> on the right side of the <code>=</code> as the body</li>
 </ul>
-<p>To invoke the function, just use the name and the argument list. Unlike Ruby, the parentheses are <strong>not</strong> optional.</p></article>
+<p>To invoke the function, just use the name and the argument list.</p></article>
             
         </slide>
         
         <slide>
             
             <hgroup>
-                <h2></h2>
+                <h2>When Parentheses Are Optional</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>Functions
-You can create functions with def.</p>
-<p>scala&gt; def addOne(m: Int): Int = m + 1
-addOne: (m: Int)Int
-In Scala, you need to specify the type signature for function parameters. The interpreter happily repeats the type signature back to you.</p>
-<p>scala&gt; val three = addOne(2)
-three: Int = 3
-You can leave off parens on functions with no arguments</p>
-<p>scala&gt; def three() = 1 + 2
-three: ()Int</p>
-<p>scala&gt; three()
-res2: Int = 3</p>
-<p>scala&gt; three
-res3: Int = 3</p></article>
+            <article><p>You can leave off parentheses on functions with <em>no arguments</em></p>
+<script src="https://gist.github.com/4978324.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Anonymous Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Create anonymous functions with <code>(arguments) =&gt; expression</code> for simple functions or <code>{ (arguments) =&gt; expressions }</code> for more complex ones.</p>
+<p>You can pass anonymous functions around or save them into <code>val</code>s or <code>var</code>s. Hence, functions are <a href="http://en.wikipedia.org/wiki/First-class_function">first class</a> in Scala.</p>
+<script src="https://gist.github.com/4978379.js"></script></article>
             
         </slide>
         
@@ -432,54 +458,7 @@ val f = new AnyRef with Function1[List[Int], AnyRef] {
   def apply(x$1: List[Int]) = this.m(x$1)
 }</p>
 <p>Methods have one big advantage (well, two -- they can be slightly faster): they can receive type parameters.</p>
-<p>http://stackoverflow.com/questions/2529184/difference-between-method-and-function-in-scala</p>
-<p>Aside: Functions vs Methods
-Functions and methods are largely interchangeable. Because functions and methods are so similar, you might not remember whether that thing you call is a function or a method. When you bump into a difference between methods and functions, it might confuse you.</p>
-<p>scala&gt; class C {
-     |   var acc = 0
-     |   def minc = { acc += 1 }
-     |   val finc = { () =&gt; acc += 1 }
-     | }
-defined class C</p>
-<p>scala&gt; val c = new C
-c: C = C@1af1bd6</p>
-<p>scala&gt; c.minc // calls c.minc()</p>
-<p>scala&gt; c.finc // returns the function as a value:
-res2: () =&gt; Unit = <function0>
-When you can call one “function” without parentheses but not another, you might think Whoops, I thought I knew how Scala functions worked, but I guess not. Maybe they sometimes need parentheses? You might understand functions, but be using a method.</p>
-<p>In practice, you can do great things in Scala while remaining hazy on the difference between methods and functions. If you’re new to Scala and read explanations of the differences, you might have trouble following them. That doesn’t mean you’re going to have trouble using Scala. It just means that the difference between functions and methods is subtle enough such that explanations tend to dig into deep parts of the language.</p></article>
-            
-        </slide>
-        
-        <slide>
-            
-            <hgroup>
-                <h2>Anonymous Functions</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>You can create anonymous functions.</p>
-<p>scala&gt; (x: Int) =&gt; x + 1
-res2: (Int) =&gt; Int = <function1>
-This function adds 1 to an Int named x.</p>
-<p>scala&gt; res2(1)
-res3: Int = 2
-You can pass anonymous functions around or save them into vals.</p>
-<p>scala&gt; val addOne = (x: Int) =&gt; x + 1
-addOne: (Int) =&gt; Int = <function1></p>
-<p>scala&gt; addOne(1)
-res4: Int = 2
-If your function is made up of many expressions, you can use {} to give yourself some breathing room.</p>
-<p>def timesTwo(i: Int): Int = {
-  println("hello world")
-  i * 2
-}
-This is also true of an anonymous function</p>
-<p>scala&gt; { i: Int =&gt;
-  println("hello world")
-  i * 2
-}
-res0: (Int) =&gt; Int = <function1>
-You will see this syntax often used when passing an anonymous function as an argument.</p></article>
+<p>http://stackoverflow.com/questions/2529184/difference-between-method-and-function-in-scala</p></article>
             
         </slide>
         
@@ -493,6 +472,67 @@ You will see this syntax often used when passing an anonymous function as an arg
 <script src="https://gist.github.com/4974235.js"></script>
 
 <p>This basic design philosophy is the key element that differentiates functional programming from object-oriented programming: <em>mutable state limits concurrency</em>.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Partially Applied Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>You can partially apply a function with an <code>_</code>, which gives you another function. </p>
+<p>Scala uses the underscore to mean different things in different contexts, but you can usually think of it as an <em>unnamed magical wildcard</em>.</p>
+<p>You can partially apply any argument in the argument list, not just the last one.</p>
+<script src="https://gist.github.com/4978480.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Curried Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Sometimes it makes sense to let people apply some arguments to your function now and others later. This is called <a href="http://en.wikipedia.org/wiki/Currying">currying</a>.</p>
+<p>Here’s an example of a function that lets you build multipliers of 2 numbers together. You can call it directly with 2 parameters, or you can decide on a multiplier at one call site, and choose a multipicand at a later call site.</p>
+<script src="https://gist.github.com/4978512.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>apply</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>apply</code> methods give you a nice syntactic sugar for when a class or object has one main use.</p>
+<script src="https://gist.github.com/4980588.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Functions are Objects</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>A <code>Function</code> is <em>a set of traits</em>. Specifically, a function that takes one argument is an instance of a <code>Function1</code> trait. This trait defines the apply() syntactic sugar we learned earlier, allowing you to call an object like you would a function.</p>
+<script src="https://gist.github.com/4980621.js"></script>
+
+<p>There is <code>Function0</code> through <code>22</code>.</p>
+<p><strong>The syntactic sugar of <code>apply</code> helps unify the duality of object and functional programming. You can pass classes around and use them as functions and functions are just instances of classes under the covers.</strong></p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Function Classes</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Classes can also extend <code>Function</code> and those instances can be called with <code>()</code>.</p>
+<script src="https://gist.github.com/4980636.js"></script></article>
             
         </slide>
         
@@ -717,7 +757,7 @@ You will see this syntax often used when passing an anonymous function as an arg
         <slide>
             
             <hgroup>
-                <h2>The same Example in Ruby</h2>
+                <h2>The Same Example in Ruby</h2>
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4975210.js"></script></article>
@@ -730,15 +770,10 @@ You will see this syntax often used when passing an anonymous function as an arg
                 <h2>foldLeft</h2>
                 <h3></h3>
             </hgroup>
-            <article><p><code>initialValue /: codeBlock</code></p>
-<p>val list = List(1, 2, 3)
-val sum = (0 /: list) { (sum, i) =&gt; sum + i }</p>
-<p>We invoke the operator with a value and a code block. The code block takes two arguments, sum and i.
-• Initially, /: takes the initial value, 0, and the first element of list, 1, and passes them into the code block. sum is 0, i is 1, and the result of 0 + 1 is 1.
-• Next, /: takes 1, the result returned from the code block, and folds it back into the calculation as sum. So, sum is 1; i is the next element of list, or 2; and the result of the code block is 3.
-• Finally, /: takes 3, the result returned from the code block, and folds it back into the calculation as sum. So, sum is 3; i is the next element of list, or 3; and sum+i is 6.</p>
-<p>Functional languages use currying to transform a function with multiple parameters to several functions with their own parameter lists. </p>
-<p>list.foldLeft(0)((sum, value) =&gt; sum + value)</p></article>
+            <article><p>In the form of <code>(initialValue /: list) codeBlock</code></p>
+<script src="https://gist.github.com/4980434.js"></script>
+
+<p>Functional languages use <a href="#26">currying</a> to transform a function with multiple parameters to several functions with their own parameter lists. </p></article>
             
         </slide>
         
@@ -752,62 +787,92 @@ val sum = (0 /: list) { (sum, i) =&gt; sum + i }</p>
             
         </slide>
         
-        <slide>
+        <slide class="segue dark">
             
-            <hgroup>
-                <h2>Partially Applied Functions</h2>
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Pattern Matching</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>Partial application
-You can partially apply a function with an underscore, which gives you another function. Scala uses the underscore to mean different things in different contexts, but you can usually think of it as an unnamed magical wildcard. In the context of <code>{ _ + 2 }</code> it means an unnamed parameter. You can use it like so:</p>
-<p>scala&gt; def adder(m: Int, n: Int) = m + n
-adder: (m: Int,n: Int)Int
-scala&gt; val add2 = adder(2, _:Int)
-add2: (Int) =&gt; Int = <function1></p>
-<p>scala&gt; add2(3)
-res50: Int = 5
-You can partially apply any argument in the argument list, not just the last one.</p></article>
             
         </slide>
         
         <slide>
             
             <hgroup>
-                <h2>Curried Functions</h2>
+                <h2>Pattern Matching</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>Sometimes it makes sense to let people apply some arguments to your function now and others later.</p>
-<p>Here’s an example of a function that lets you build multipliers of two numbers together. At one call site, you’ll decide which is the multiplier and at a later call site, you’ll choose a multipicand.</p>
-<p>scala&gt; def multiply(m: Int)(n: Int): Int = m * n
-multiply: (m: Int)(n: Int)Int
-You can call it directly with both arguments.</p>
-<p>scala&gt; multiply(2)(3)
-res0: Int = 6
-You can fill in the first parameter and partially apply the second.</p>
-<p>scala&gt; val timesTwo = multiply(2) _
-timesTwo: (Int) =&gt; Int = <function1></p>
-<p>scala&gt; timesTwo(3)
-res1: Int = 6
-You can take any function of multiple arguments and curry it. Let’s try with our earlier adder</p>
-<p>scala&gt; (adder _).curried
-res1: (Int) =&gt; (Int) =&gt; Int = <function1></p></article>
+            <article><p><a href="http://en.wikipedia.org/wiki/Pattern_matching">Pattern matches</a> <code>(x match { ...)</code> are pervasive in well written Scala code: they conflate conditional execution, destructuring, and casting into one construct. Used well they enhance both clarity and safety.</p>
+<p><strong>One of the most useful</strong> parts of Scala.</p></article>
             
         </slide>
         
         <slide>
             
             <hgroup>
-                <h2>Variable Length Arguments</h2>
+                <h2>Pattern Matching - Matching On Values</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>There is a special syntax for methods that can take parameters of a repeated type. To apply String’s <code>capitalize</code> function to several strings, you might write:</p>
-<p>def capitalizeAll(args: String*) = {
-  args.map { arg =&gt;
-    arg.capitalize
-  }
-}</p>
-<p>scala&gt; capitalizeAll("rarity", "applejack")
-res2: Seq[String] = ArrayBuffer(Rarity, Applejack)</p></article>
+            <article><script src="https://gist.github.com/4980849.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Pattern Matching - Matching With Guards</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4980873.js"></script>
+
+<p>Notice how we captured the value in the variable <code>i</code></p>
+<p>The <code>_</code> in the last case statement is a <strong>wildcard</strong>. It ensures that we can handle any statement. Otherwise you will suffer a runtime error if you pass in a number that doesn't match.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Pattern Matching - Matching On Type</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4980985.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Pattern Matching - Matching On Class Members</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4981088.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Case Classes</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><strong>Case Classes</strong> are used to conveniently store and match on the contents of a class and designed to be used with pattern matching. You can construct them <strong>without</strong> using <code>new</code>.</p>
+<p>They automatically have <em>equality</em> and nice <code>toString</code> methods based on the constructor arguments.</p>
+<p>They can also have methods just like normal classes.</p>
+<script src="https://gist.github.com/4981144.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Case Class Calculator Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4981201.js"></script>
+
+<p><em>Note</em>:  <code>c@Calculator(_, _)</code> rebinds the matched value to <code>c</code></p></article>
             
         </slide>
         
@@ -815,9 +880,49 @@ res2: Seq[String] = ArrayBuffer(Rarity, Applejack)</p></article>
             
             <aside class="gdbar"><img src="images/logo.png"></aside>
             <hgroup class="auto-fadein">
-                <h2>XML</h2>
+                <h2>Concurrency</h2>
                 <h3></h3>
             </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Futures</h2>
+                <h3></h3>
+            </hgroup>
+            <article></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Actors</h2>
+                <h3></h3>
+            </hgroup>
+            <article></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Dispatch</h2>
+                <h3></h3>
+            </hgroup>
+            <article></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Play + Akka</h2>
+                <h3></h3>
+            </hgroup>
+            <article></article>
             
         </slide>
         
@@ -827,25 +932,8 @@ res2: Seq[String] = ArrayBuffer(Rarity, Applejack)</p></article>
                 <h2></h2>
                 <h3></h3>
             </hgroup>
-            <article><p>title: Pattern Matching
-class: segue dark</p></article>
-            
-        </slide>
-        
-        <slide>
-            
-            <hgroup>
-                <h2></h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>first class functions
-classes and objects
-apply method
-case classes
-generic types and methods
-for comprehensions
-lazy evaluation
-integers, strings are first class objects</p></article>
+            <article><p>for comprehensions
+lazy evaluation</p></article>
             
         </slide>
         

@@ -253,16 +253,414 @@ A Scala trait is a partial-class implementation that deals with a particular con
 
 ---
 
+title: Functions
+class: segue dark
 
-expressions and simple functions
+---
+
+title: Declaring a Function
+
+<script src="https://gist.github.com/4974165.js"></script>
+
+A function declaration consists of 4 parts
+
+* The `def` keyword, which defines both a **function** and a **method**
+* The **parameters** and their **types**
+* An **\*optional\*** return type. Scala can often infer the return type.
+* An **expression** or a **block** on the right side of the `=` as the body
+
+To invoke the function, just use the name and the argument list. Unlike Ruby, the parentheses are **not** optional.
+
+---
+
+Functions
+You can create functions with def.
+
+scala> def addOne(m: Int): Int = m + 1
+addOne: (m: Int)Int
+In Scala, you need to specify the type signature for function parameters. The interpreter happily repeats the type signature back to you.
+
+scala> val three = addOne(2)
+three: Int = 3
+You can leave off parens on functions with no arguments
+
+scala> def three() = 1 + 2
+three: ()Int
+
+scala> three()
+res2: Int = 3
+
+scala> three
+res3: Int = 3
+
+---
+
+title: Function vs Method
+
+A **function** is an **object** with an `apply` method
+
+A **method** generally has less overhead
+
+var + val only gets evaluated once, where as def gets evaluated every time
+
+val o1 = f(List(1, 2, 3))
+val o2 = m(List(1, 2, 3))
+
+val o1 = f.apply(List(1, 2, 3))
+
+Functions:
+ function literals (two of them, actually) and (T1, T2) => R type signatures
+
+val f = (l: List[Int]) => l mkString ""
+val g: (AnyVal) => String = {
+  case i: Int => "Int"
+  case d: Double => "Double"
+  case o => "Other"
+}
+
+To convert m to f
+
+val f = m _
+
+Scala will expand that to
+val f = new AnyRef with Function1[List[Int], AnyRef] {
+  def apply(x$1: List[Int]) = this.m(x$1)
+}
+
+Methods have one big advantage (well, two -- they can be slightly faster): they can receive type parameters.
+
+http://stackoverflow.com/questions/2529184/difference-between-method-and-function-in-scala
+
+
+Aside: Functions vs Methods
+Functions and methods are largely interchangeable. Because functions and methods are so similar, you might not remember whether that thing you call is a function or a method. When you bump into a difference between methods and functions, it might confuse you.
+
+scala> class C {
+     |   var acc = 0
+     |   def minc = { acc += 1 }
+     |   val finc = { () => acc += 1 }
+     | }
+defined class C
+
+scala> val c = new C
+c: C = C@1af1bd6
+
+scala> c.minc // calls c.minc()
+
+scala> c.finc // returns the function as a value:
+res2: () => Unit = <function0>
+When you can call one “function” without parentheses but not another, you might think Whoops, I thought I knew how Scala functions worked, but I guess not. Maybe they sometimes need parentheses? You might understand functions, but be using a method.
+
+In practice, you can do great things in Scala while remaining hazy on the difference between methods and functions. If you’re new to Scala and read explanations of the differences, you might have trouble following them. That doesn’t mean you’re going to have trouble using Scala. It just means that the difference between functions and methods is subtle enough such that explanations tend to dig into deep parts of the language.
+
+
+---
+
+title: Anonymous Functions
+
+You can create anonymous functions.
+
+scala> (x: Int) => x + 1
+res2: (Int) => Int = <function1>
+This function adds 1 to an Int named x.
+
+scala> res2(1)
+res3: Int = 2
+You can pass anonymous functions around or save them into vals.
+
+scala> val addOne = (x: Int) => x + 1
+addOne: (Int) => Int = <function1>
+
+scala> addOne(1)
+res4: Int = 2
+If your function is made up of many expressions, you can use {} to give yourself some breathing room.
+
+def timesTwo(i: Int): Int = {
+  println("hello world")
+  i * 2
+}
+This is also true of an anonymous function
+
+scala> { i: Int =>
+  println("hello world")
+  i * 2
+}
+res0: (Int) => Int = <function1>
+You will see this syntax often used when passing an anonymous function as an argument.
+
+---
+
+title: var vs val
+
+When you declare variables, you should make them immutable whenever you can to avoid conflicting state. In Java, that means using the final keyword. In Scala, immutable means using val instead of var
+
+<script src="https://gist.github.com/4974235.js"></script>
+
+This basic design philosophy is the key element that differentiates functional programming from object-oriented programming: *mutable state limits concurrency*.
+
+---
+
+title: Collections: Lists, Sets, and Maps
+class: segue dark
+
+---
+
+title: Lists
+
+A **List** is *an ordered collection of like things with random access*
+
+<script src="https://gist.github.com/4974295.js"></script>
+
+<article markdown="1" class="smaller">
+  Operators:
+
+  * `(n)` to access `n`th element
+  * `:+` to append an element
+  * `++` or `++:` to append a list
+  * `::` to prepend an element
+  * `:::` to prepend a list
+  * `:\` to foldRight. `xs :\ z` is the same as `xs foldRight z`
+  * `/:` to foldLeft. `z /: xs` is the same as `xs foldLeft z`
+
+</article>
+
+---
+
+title: Lists Operations
+
+<script src="https://gist.github.com/4974467.js"></script>
+
+---
+
+title: Sets
+
+A **Set** is *an unordered collection of **unique** like things with no explicit order*
+
+<script src="https://gist.github.com/4974423.js"></script>
+
+<article markdown="1" class="smaller">
+  Operators:
+
+  * `+` to add an element
+  * `-` to remove an element
+  * `++` or `|` to compute set union
+  * `--` or `&~` to compute set difference
+  * `**` or `&` to compute set intersection
+  * `:\` to foldRight. `xs :\ z` is the same as `xs foldRight z`
+  * `/:` to foldLeft. `z /: xs` is the same as `xs foldLeft z`
+
+</article>
+
+Set operations are **not destructive**. Each set operation *builds a new set* rather than *modifying the old ones*. By default, sets are *immutable*
+
+---
+
+title: Sets Example
+
+<script src="https://gist.github.com/4974341.js"></script>
+
+---
+
+title: Map
+
+A **Map** is *a collection of key-value pairs*, like a Ruby `Hash`
+
+<script src="https://gist.github.com/4974563.js"></script>
+
+<article markdown="1" class="smaller">
+  Operators:
+
+  * `(key)` to access the value corresponding to `key`
+  * `+` to add 1 or more pairs
+  * `++` or `++:` to compute map union
+  * `-` to remove 1 or more pairs
+  * `--` to compute map difference
+  * `:\` to foldRight. `xs :\ z` is the same as `xs foldRight z`
+  * `/:` to foldLeft. `z /: xs` is the same as `xs foldLeft z`
+
+</article>
+
+---
+
+title: Map Operations
+
+<script src="https://gist.github.com/4974632.js"></script>
+
+---
+
+title: Mutable Map - HashMap
+
+<script src="https://gist.github.com/4974639.js"></script>
+
+---
+
+title: Any or Nothing
+
+<div style="float: left; margin-right: 10px;" markdown="1">
+  ![Type Hiearchy](images/type-hiearchy.png)
+</div>
+
+*Everything* inherits from `Any`, and `Nothing` inherits from *everything*.
+
+So a function can return `Nothing` to conform any return type it requires.
+
+`Null` is a `Trait`, and `null` is an instance of it that works like Java’s `null`, meaning an empty value.
+
+By contrast, `Nothing` is a trait that is a subtype of everything.
+
+`Nothing` has no instance, so you can’t dereference it like `Null`. 
+
+For example, a method that throws an Exception has the return type `Nothing`, meaning no value at all.
+
+---
+
+title: Higher-Order Functions
+class: segue dark
+
+---
+
+title: Higher-Order Functions
+
+A **higher-order function** is one that takes other *functions as input parameters* or *returns functions as output*
+
+---
+
+title: foreach
+
+The `foreach` method on a collection takes a code block as a parameter in the form of `argument => expression`, which is an *anonymous function*
+
+<script src="https://gist.github.com/4975056.js"></script>
+
+---
+
+title: foreach in Ruby
+
+<script src="https://gist.github.com/4975069.js"></script>
+
+---
+
+title: foreach in JavaScript
+
+<script src="https://gist.github.com/4975165.js"></script>
+
+---
+
+title: More List Methods
+
+<script src="https://gist.github.com/4975177.js"></script>
+
+---
+
+title: Other Higher-Order Functions
+
+<script src="https://gist.github.com/4975192.js"></script>
+
+---
+
+title: The same Example in Ruby
+
+<script src="https://gist.github.com/4975210.js"></script>
+
+---
+
+title: foldLeft
+
+`initialValue /: codeBlock`
+
+val list = List(1, 2, 3)
+val sum = (0 /: list) { (sum, i) => sum + i }
+
+ We invoke the operator with a value and a code block. The code block takes two arguments, sum and i.
+• Initially, /: takes the initial value, 0, and the first element of list, 1, and passes them into the code block. sum is 0, i is 1, and the result of 0 + 1 is 1.
+• Next, /: takes 1, the result returned from the code block, and folds it back into the calculation as sum. So, sum is 1; i is the next element of list, or 2; and the result of the code block is 3.
+• Finally, /: takes 3, the result returned from the code block, and folds it back into the calculation as sum. So, sum is 3; i is the next element of list, or 3; and sum+i is 6.
+
+Functional languages use currying to transform a function with multiple parameters to several functions with their own parameter lists. 
+
+list.foldLeft(0)((sum, value) => sum + value)
+
+---
+
+title: fold Practice Problem
+
+Use `foldLeft` or `foldRight` to compute the total size of a list of strings.
+
+---
+
+title: Partially Applied Functions
+
+Partial application
+You can partially apply a function with an underscore, which gives you another function. Scala uses the underscore to mean different things in different contexts, but you can usually think of it as an unnamed magical wildcard. In the context of `{ _ + 2 }` it means an unnamed parameter. You can use it like so:
+
+scala> def adder(m: Int, n: Int) = m + n
+adder: (m: Int,n: Int)Int
+scala> val add2 = adder(2, _:Int)
+add2: (Int) => Int = <function1>
+
+scala> add2(3)
+res50: Int = 5
+You can partially apply any argument in the argument list, not just the last one.
+
+---
+
+title: Curried Functions
+
+Sometimes it makes sense to let people apply some arguments to your function now and others later.
+
+Here’s an example of a function that lets you build multipliers of two numbers together. At one call site, you’ll decide which is the multiplier and at a later call site, you’ll choose a multipicand.
+
+scala> def multiply(m: Int)(n: Int): Int = m * n
+multiply: (m: Int)(n: Int)Int
+You can call it directly with both arguments.
+
+scala> multiply(2)(3)
+res0: Int = 6
+You can fill in the first parameter and partially apply the second.
+
+scala> val timesTwo = multiply(2) _
+timesTwo: (Int) => Int = <function1>
+
+scala> timesTwo(3)
+res1: Int = 6
+You can take any function of multiple arguments and curry it. Let’s try with our earlier adder
+
+scala> (adder _).curried
+res1: (Int) => (Int) => Int = <function1>
+
+---
+
+title: Variable Length Arguments
+
+There is a special syntax for methods that can take parameters of a repeated type. To apply String’s `capitalize` function to several strings, you might write:
+
+def capitalizeAll(args: String*) = {
+  args.map { arg =>
+    arg.capitalize
+  }
+}
+
+scala> capitalizeAll("rarity", "applejack")
+res2: Seq[String] = ArrayBuffer(Rarity, Applejack)
+
+
+---
+
+title: XML
+class: segue dark
+
+---
+
+
+title: Pattern Matching
+class: segue dark
+
+---
+
 first class functions
 classes and objects
 apply method
 case classes
-pattern matching
 generic types and methods
-list
 for comprehensions
 lazy evaluation
-val vs var
 integers, strings are first class objects

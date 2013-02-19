@@ -746,23 +746,17 @@ class: segue dark
 
 title: Futures and Promises
 
-We've discussed asynchronous computations earlier in JavaScript. We also mentioned that one of the
-ways of dealing with it is by using [`Futures`][future] and [`Promises`][promise].
+We've discussed asynchronous computations earlier in JavaScript. We also mentioned that you can deal with it using [`Futures`][future] and [`Promises`][promise].
 
-A **Future** represents a (typically long-running) asynchronous computation. In other
-words, it's work that we expect to get accomplished later that we don't have to wait on.
+A **Future** represents a (typically long-running) asynchronous computation. In other words, it's work that we expect to get accomplished later that we don't have to wait on.
 
-A **Promise** represents the underlying data that is promised to be delivered. A `Future` always has
-a one-to-one relationship with a `Promise`; typically, the `Promise` is abstracted away though (in
-Scala at least).
+A **Promise** represents the underlying data that is promised to be delivered. A `Future` always has a one-to-one relationship with a `Promise`; typically, the `Promise` is abstracted away though (in Scala at least).
 
-A future can be thought of as an *expected* return on a promise. Whereas, a promise can be thought
-of as the payload to be *delivered*.
+A **future** can be thought of as an *expected* return on a **promise**. Whereas, a **promise** can be thought of as the payload to be *delivered*.
 
-Once a promise is completed by either a success or failure, it notifies the future of its
-completion. The work of the promise is typically executed in a separate thread from the future.
+Once a **promise** is completed by either a success or failure, it notifies the future of its completion. The work of the **promise** is typically executed in a separate thread from the future.
 
-We won't cover promises explicitly, but we'll cover `scala.concurrent.Future`s.
+We won't cover promises explicitly, but we'll cover `scala.concurrent.Future`
 
 [future]: http://www.scala-lang.org/api/current/index.html#scala.concurrent.Future
 [promise]: http://www.scala-lang.org/api/current/index.html#scala.concurrent.Promise
@@ -777,14 +771,15 @@ title: Future Examples
 
 title: Actors
 
-[**Actors**][wiki-actor] are another abstraction used to achieve concurrency. Rather than using
-shared memory, actors share nothing and instead pass messages. Each actor encapsulates its own state
-and is unaware of the state of any other actors. To receive messages, each actor has an addressable
-mailbox that is based on an asynchronous, race-free, non-blocking queue.
+[**Actors**][wiki-actor] are another abstraction used to achieve concurrency. Rather than using shared memory, actors **share nothing** and instead **pass messages**. Each actor encapsulates its own state and is unaware of the state of any other actors. To receive messages, each actor has an addressable mailbox that is based on **an asynchronous, race-free, non-blocking queue**.
 
-Other forms of concurrency using shared memory have to deal with race conditions, contention, and
-deadlocks; however, actors are inherently concurrent due to the immutability of messages and
-encapsulation of behavior.
+Other forms of concurrency using shared memory have to deal with race conditions, contention, and deadlocks; however, actors are inherently concurrent due to the immutability of messages and encapsulation of behavior.
+
+[wiki-actor]: http://en.wikipedia.org/wiki/Actor_model 
+
+---
+
+title: Actors Continued
 
 Each **Actor** is responsible for:
 
@@ -794,11 +789,8 @@ Each **Actor** is responsible for:
 
 You can almost think of it as a system of distributed callbacks.
 
-The [`Actor`][scala-actor] implementation that we'll be going over is the one native to the Scala
-library; however, there are many more powerful alternatives such as [Akka actors][akka-actor] (the
-system that Akka offers is more robust).
+The [`Actor`][scala-actor] implementation that we'll be going over is the one native to the Scala library; however, there are many more powerful and robust alternatives such as [Akka actors][akka-actor].
 
-[wiki-actor]: http://en.wikipedia.org/wiki/Actor_model 
 [scala-actor]: http://www.scala-lang.org/api/current/index.html#scala.actors.Actor
 [akka-actor]: http://akka.io/
 
@@ -806,14 +798,13 @@ system that Akka offers is more robust).
 
 title: Scala Actors
 
-Scala actors are based on event objects running on Java thread pools. So they are suspendend until a
-they receive a message that matches a pattern they can react to.
+**Scala actors** are based on event objects running on Java thread pools. So they are suspended until a they receive a message that matches a pattern they can react to.
 
-Let's just take a look at an example using Rock Paper Scissors. The idea is that a coordinator will
-tell two players to throw their hands, but a race condition exists (either one could actualy throw
-first). So the coordinator must wait for both players to show their hand. We could resolve this
-using semaphores or other forms of concurrency. However, using actors is often simpler to reason
-about, and although this example is a bit small, it's much easier to manage in larger systems.
+Let's just take a look at an example using Rock Paper Scissors.
+
+The idea is that a coordinator will tell **2 players** to throw their hands, but a race condition exists (either one could actually throw first). So the coordinator must wait for both players to show their hand.
+
+We could resolve this using semaphores or other forms of concurrency. However, using actors is often simpler to reason about. Although this example is a bit small, it's much easier to manage in larger systems.
 
 ---
 
@@ -841,7 +832,7 @@ title: Typesafe Stack (Scala + Akka + Play)
 
 Both [Akka][] and [Play][] are Scala frameworks produced by a company called [Typesafe][]. Scala, Akka, and Play together make up the [Typesafe Stack][]. These technologies together make up a highly scalable, event-driven web framework.
 
-Akka, as previously mentioned, is a library that implements a more advanced actor system than what's offered in Scala's standard library. A few advantages are that: it offers better fault tolerance, distributability over many nodes, and transactional actors (transactors).
+Akka, as previously mentioned, is a library that implements a more advanced actor system than what's offered in Scala's standard library. A few advantages are that: it offers better fault tolerance, scalability over many nodes, and transactional actors (transactors).
 
 Play follows a Model-View-Controller (MVC) paradigm in terms of a web applications structure. Play scales well because it uses Akka behind the scenes, and the toolchain offers integration with many useful technologies: CoffeeScript, LESS, Websockets, Comet, NoSQL, big data.
 

@@ -204,6 +204,16 @@ Use `getOrElse` to define a default value or use Pattern Matching to switch beha
 
 ---
 
+title: var vs val
+
+When you declare variables, you should make them immutable whenever you can to avoid conflicting state. In Java, that means using the final keyword. In Scala, immutable means using val instead of var
+
+<script src="https://gist.github.com/4974235.js"></script>
+
+This basic design philosophy is the key element that differentiates functional programming from object-oriented programming: *mutable state limits concurrency*.
+
+---
+
 title: Classes, Inheritance, Traits
 class: segue dark
 
@@ -275,6 +285,93 @@ A Scala trait is a partial-class implementation that deals with a particular con
 
 ---
 
+title: Typing
+class: segue dark
+
+---
+
+title: What Are Static Types? Why Are They Useful?
+
+Types allow you to denote domain & codomains of functions and values. 
+
+Given these annotations, the compiler can now *statically*, meaning at compile time, verify that the program is *sound*. That is, compilation will fail if values (at runtime) will not comply to the constraints imposed by the program.
+
+Generally speaking, the typechecker can only guarantee that *unsound* programs do not compile. It cannot guarantee that every *sound* program will compile.
+
+Note that all type information is removed at compile time. It is no longer needed. This is called [erasure](http://en.wikipedia.org/wiki/Type_erasure).
+
+---
+
+title: Types in Scala
+
+* **Parametric polymorphism** - generic programming
+* **(local) type inference** - why you don't need to say `val i: Int = 12: Int`
+* **Existential quantification** - defining something for some unnamed type
+* **Views** -  "castability" of values of one type to another
+
+We will look at the first two.
+
+For more information, see [Scala School Advanced Types](http://twitter.github.com/scala_school/advanced-types.html)
+
+---
+
+title: Parametric Polymorphism
+
+[Polymorphism](http://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Parametric_polymorphism) is used in order to write generic code (for values of different types) without compromising static typing richness.
+
+Polymorphism is achieved through specifying type variables.
+
+<script src="https://gist.github.com/4983161.js"></script>
+
+---
+
+title: Type Inference
+
+In Scala all type inference is **local**, meaning Scala considers one expression at a time.
+
+<script src="https://gist.github.com/4983055.js"></script>
+
+---
+
+title: Variance
+
+[Variance](http://en.wikipedia.org/wiki/Variance_(computer_science)): constraints within a type system
+
+|               | Meaning                             | Scala Notation |
+| :-----------: | :---------------------------------: | :------------: |
+| covariant     | `C[T’]` is a subclass of `C[T]`     | `[+T]`         |
+| contravariant | `C[T]` is a subclass of `C[T’]`     | `[-T]`         |
+| invariant     | `C[T]` and `C[T’]` are not related  | `[T]`          |
+
+<br>
+An example of Variance used in the `Function1` trait:
+
+<script src="https://gist.github.com/4983065.js"></script>
+
+You can introduce [Bounds](http://twitter.github.com/scala_school/type-basics.html#bounds) to further constraint the polymorphism.
+
+---
+
+title: Type Hierarchy
+
+<div style="float: left; margin-right: 10px;" markdown="1">
+  ![Type Hiearchy](images/type-hiearchy.png)
+</div>
+
+*Everything* inherits from `Any`, and `Nothing` inherits from *everything*.
+
+So a function can return `Nothing` to conform any return type it requires.
+
+`Null` is a `Trait`, and `null` is an instance of it that works like Java’s `null`, meaning an empty value.
+
+By contrast, `Nothing` is a trait that is a subtype of everything.
+
+`Nothing` has no instance, so you can’t dereference it like `Null`.
+
+For example, a method that throws an Exception has the return type `Nothing`, meaning no value at all.
+
+---
+
 title: Functions
 class: segue dark
 
@@ -305,7 +402,7 @@ You can leave off parentheses on functions with *no arguments*
 
 title: Anonymous Functions
 
-Create anonymous functions with `(arguments) => expression` for simple functions or `{ (arguments) => expressions }` for more complex ones.
+Create anonymous functions with `(arguments) => expression` for simple functions or `(arguments) => { expressions }` or `{ (arguments) => expressions }` for more complex ones.
 
 You can pass anonymous functions around or save them into `val`s or `var`s. Hence, functions are [first class][fcf] in Scala.
 
@@ -317,49 +414,54 @@ You can pass anonymous functions around or save them into `val`s or `var`s. Henc
 
 title: Function vs Method
 
-A **function** is an **object** with an `apply` method
+A **function** is an **object** with the `FunctionX` with an `apply` method
 
-A **method** generally has less overhead
+A **method** is a function declared with the `def` keyword
 
-var + val only gets evaluated once, where as def gets evaluated every time
+If `f` is a **function** and `m` is a **method** local to the scope, then both can be called like this:
 
+```scala
 val o1 = f(List(1, 2, 3))
 val o2 = m(List(1, 2, 3))
+```
 
+These calls are actually different, because the first one is just a syntactic sugar. Scala expands it to:
+
+```scala
 val o1 = f.apply(List(1, 2, 3))
+```
 
-Functions:
- function literals (two of them, actually) and (T1, T2) => R type signatures
-
-val f = (l: List[Int]) => l mkString ""
-val g: (AnyVal) => String = {
-  case i: Int => "Int"
-  case d: Double => "Double"
-  case o => "Other"
-}
-
-To convert m to f
-
-val f = m _
-
-Scala will expand that to
-val f = new AnyRef with Function1[List[Int], AnyRef] {
-  def apply(x$1: List[Int]) = this.m(x$1)
-}
-
-Methods have one big advantage (well, two -- they can be slightly faster): they can receive type parameters.
-
-http://stackoverflow.com/questions/2529184/difference-between-method-and-function-in-scala
+Which, of course, is a method call on object `f`.
 
 ---
 
-title: var vs val
+title: Advantages of Functions
 
-When you declare variables, you should make them immutable whenever you can to avoid conflicting state. In Java, that means using the final keyword. In Scala, immutable means using val instead of var
+Syntactic sugars!
 
-<script src="https://gist.github.com/4974235.js"></script>
+**Function Literals**
 
-This basic design philosophy is the key element that differentiates functional programming from object-oriented programming: *mutable state limits concurrency*.
+<script src="https://gist.github.com/4982884.js"></script>
+
+**Type Signatures**
+
+<script src="https://gist.github.com/4982895.js"></script>
+
+---
+
+title: Advantages of Methods
+
+They are slightly faster, since they have less overhead (i.e. no `apply` call)
+
+They can receive type parameters. For instance, while `f` above can necessarily specify the type of List it receives (`List[Int]` in the example), `m` can parameterize it:
+
+<script src="https://gist.github.com/4982910.js"></script>
+
+To convert `m` to `f`
+
+<script src="https://gist.github.com/4982900.js"></script>
+
+[More Detailed Discussion on StackOverflow](http://stackoverflow.com/questions/2529184/difference-between-method-and-function-in-scala)
 
 ---
 
@@ -509,26 +611,6 @@ title: Mutable Map - HashMap
 
 ---
 
-title: Any or Nothing
-
-<div style="float: left; margin-right: 10px;" markdown="1">
-  ![Type Hiearchy](images/type-hiearchy.png)
-</div>
-
-*Everything* inherits from `Any`, and `Nothing` inherits from *everything*.
-
-So a function can return `Nothing` to conform any return type it requires.
-
-`Null` is a `Trait`, and `null` is an instance of it that works like Java’s `null`, meaning an empty value.
-
-By contrast, `Nothing` is a trait that is a subtype of everything.
-
-`Nothing` has no instance, so you can’t dereference it like `Null`. 
-
-For example, a method that throws an Exception has the return type `Nothing`, meaning no value at all.
-
----
-
 title: Higher-Order Functions
 class: segue dark
 
@@ -601,7 +683,7 @@ class: segue dark
 
 title: Pattern Matching
 
-[Pattern matches][pm] `(x match { ...)` are pervasive in well written Scala code: they conflate conditional execution, destructuring, and casting into one construct. Used well they enhance both clarity and safety.
+[Pattern matches][pm] `(x match { ... })` are pervasive in well written Scala code: they conflate conditional execution, destructuring, and casting into one construct. Used well they enhance both clarity and safety.
 
 **One of the most useful** parts of Scala.
 

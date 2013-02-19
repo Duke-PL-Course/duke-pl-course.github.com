@@ -292,6 +292,19 @@
             
         </slide>
         
+        <slide>
+            
+            <hgroup>
+                <h2>var vs val</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>When you declare variables, you should make them immutable whenever you can to avoid conflicting state. In Java, that means using the final keyword. In Scala, immutable means using val instead of var</p>
+<script src="https://gist.github.com/4974235.js"></script>
+
+<p>This basic design philosophy is the key element that differentiates functional programming from object-oriented programming: <em>mutable state limits concurrency</em>.</p></article>
+            
+        </slide>
+        
         <slide class="segue dark">
             
             <aside class="gdbar"><img src="images/logo.png"></aside>
@@ -383,6 +396,130 @@
             
             <aside class="gdbar"><img src="images/logo.png"></aside>
             <hgroup class="auto-fadein">
+                <h2>Typing</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>What Are Static Types? Why Are They Useful?</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Types allow you to denote domain &amp; codomains of functions and values. </p>
+<p>Given these annotations, the compiler can now <em>statically</em>, meaning at compile time, verify that the program is <em>sound</em>. That is, compilation will fail if values (at runtime) will not comply to the constraints imposed by the program.</p>
+<p>Generally speaking, the typechecker can only guarantee that <em>unsound</em> programs do not compile. It cannot guarantee that every <em>sound</em> program will compile.</p>
+<p>Note that all type information is removed at compile time. It is no longer needed. This is called <a href="http://en.wikipedia.org/wiki/Type_erasure">erasure</a>.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Types in Scala</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
+<li><strong>Parametric polymorphism</strong> - generic programming</li>
+<li><strong>(local) type inference</strong> - why you don't need to say <code>val i: Int = 12: Int</code></li>
+<li><strong>Existential quantification</strong> - defining something for some unnamed type</li>
+<li><strong>Views</strong> -  "castability" of values of one type to another</li>
+</ul>
+<p>We will look at the first two.</p>
+<p>For more information, see <a href="http://twitter.github.com/scala_school/advanced-types.html">Scala School Advanced Types</a></p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Parametric Polymorphism</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="http://en.wikipedia.org/wiki/Polymorphism_(computer_science)#Parametric_polymorphism">Polymorphism</a> is used in order to write generic code (for values of different types) without compromising static typing richness.</p>
+<p>Polymorphism is achieved through specifying type variables.</p>
+<script src="https://gist.github.com/4983161.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Type Inference</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>In Scala all type inference is <strong>local</strong>, meaning Scala considers one expression at a time.</p>
+<script src="https://gist.github.com/4983055.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Variance</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="http://en.wikipedia.org/wiki/Variance_(computer_science)">Variance</a>: constraints within a type system</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Meaning</th>
+<th>Scala Notation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>covariant</td>
+<td><code>C[T’]</code> is a subclass of <code>C[T]</code></td>
+<td><code>[+T]</code></td>
+</tr>
+<tr>
+<td>contravariant</td>
+<td><code>C[T]</code> is a subclass of <code>C[T’]</code></td>
+<td><code>[-T]</code></td>
+</tr>
+<tr>
+<td>invariant</td>
+<td><code>C[T]</code> and <code>C[T’]</code> are not related</td>
+<td><code>[T]</code></td>
+</tr>
+</tbody>
+</table>
+<p><br>
+An example of Variance used in the <code>Function1</code> trait:</p>
+<script src="https://gist.github.com/4983065.js"></script>
+
+<p>You can introduce <a href="http://twitter.github.com/scala_school/type-basics.html#bounds">Bounds</a> to further constraint the polymorphism.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Type Hierarchy</h2>
+                <h3></h3>
+            </hgroup>
+            <article><div style="float: left; margin-right: 10px;">
+
+<p><img alt="Type Hiearchy" src="images/type-hiearchy.png" /></p>
+</div>
+
+<p><em>Everything</em> inherits from <code>Any</code>, and <code>Nothing</code> inherits from <em>everything</em>.</p>
+<p>So a function can return <code>Nothing</code> to conform any return type it requires.</p>
+<p><code>Null</code> is a <code>Trait</code>, and <code>null</code> is an instance of it that works like Java’s <code>null</code>, meaning an empty value.</p>
+<p>By contrast, <code>Nothing</code> is a trait that is a subtype of everything.</p>
+<p><code>Nothing</code> has no instance, so you can’t dereference it like <code>Null</code>.</p>
+<p>For example, a method that throws an Exception has the return type <code>Nothing</code>, meaning no value at all.</p></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
                 <h2>Functions</h2>
                 <h3></h3>
             </hgroup>
@@ -425,7 +562,7 @@
                 <h2>Anonymous Functions</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>Create anonymous functions with <code>(arguments) =&gt; expression</code> for simple functions or <code>{ (arguments) =&gt; expressions }</code> for more complex ones.</p>
+            <article><p>Create anonymous functions with <code>(arguments) =&gt; expression</code> for simple functions or <code>(arguments) =&gt; { expressions }</code> or <code>{ (arguments) =&gt; expressions }</code> for more complex ones.</p>
 <p>You can pass anonymous functions around or save them into <code>val</code>s or <code>var</code>s. Hence, functions are <a href="http://en.wikipedia.org/wiki/First-class_function">first class</a> in Scala.</p>
 <script src="https://gist.github.com/4978379.js"></script></article>
             
@@ -437,41 +574,50 @@
                 <h2>Function vs Method</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>A <strong>function</strong> is an <strong>object</strong> with an <code>apply</code> method</p>
-<p>A <strong>method</strong> generally has less overhead</p>
-<p>var + val only gets evaluated once, where as def gets evaluated every time</p>
-<p>val o1 = f(List(1, 2, 3))
-val o2 = m(List(1, 2, 3))</p>
-<p>val o1 = f.apply(List(1, 2, 3))</p>
-<p>Functions:
- function literals (two of them, actually) and (T1, T2) =&gt; R type signatures</p>
-<p>val f = (l: List[Int]) =&gt; l mkString ""
-val g: (AnyVal) =&gt; String = {
-  case i: Int =&gt; "Int"
-  case d: Double =&gt; "Double"
-  case o =&gt; "Other"
-}</p>
-<p>To convert m to f</p>
-<p>val f = m _</p>
-<p>Scala will expand that to
-val f = new AnyRef with Function1[List[Int], AnyRef] {
-  def apply(x$1: List[Int]) = this.m(x$1)
-}</p>
-<p>Methods have one big advantage (well, two -- they can be slightly faster): they can receive type parameters.</p>
-<p>http://stackoverflow.com/questions/2529184/difference-between-method-and-function-in-scala</p></article>
+            <article><p>A <strong>function</strong> is an <strong>object</strong> with the <code>FunctionX</code> with an <code>apply</code> method</p>
+<p>A <strong>method</strong> is a function declared with the <code>def</code> keyword</p>
+<p>If <code>f</code> is a <strong>function</strong> and <code>m</code> is a <strong>method</strong> local to the scope, then both can be called like this:</p>
+<pre><code class="scala">val o1 = f(List(1, 2, 3))
+val o2 = m(List(1, 2, 3))
+</code></pre>
+
+<p>These calls are actually different, because the first one is just a syntactic sugar. Scala expands it to:</p>
+<pre><code class="scala">val o1 = f.apply(List(1, 2, 3))
+</code></pre>
+
+<p>Which, of course, is a method call on object <code>f</code>.</p></article>
             
         </slide>
         
         <slide>
             
             <hgroup>
-                <h2>var vs val</h2>
+                <h2>Advantages of Functions</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>When you declare variables, you should make them immutable whenever you can to avoid conflicting state. In Java, that means using the final keyword. In Scala, immutable means using val instead of var</p>
-<script src="https://gist.github.com/4974235.js"></script>
+            <article><p>Syntactic sugars!</p>
+<p><strong>Function Literals</strong></p>
+<script src="https://gist.github.com/4982884.js"></script>
 
-<p>This basic design philosophy is the key element that differentiates functional programming from object-oriented programming: <em>mutable state limits concurrency</em>.</p></article>
+<p><strong>Type Signatures</strong></p>
+<script src="https://gist.github.com/4982895.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Advantages of Methods</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>They are slightly faster, since they have less overhead (i.e. no <code>apply</code> call)</p>
+<p>They can receive type parameters. For instance, while <code>f</code> above can necessarily specify the type of List it receives (<code>List[Int]</code> in the example), <code>m</code> can parameterize it:</p>
+<script src="https://gist.github.com/4982910.js"></script>
+
+<p>To convert <code>m</code> to <code>f</code></p>
+<script src="https://gist.github.com/4982900.js"></script>
+
+<p><a href="http://stackoverflow.com/questions/2529184/difference-between-method-and-function-in-scala">More Detailed Discussion on StackOverflow</a></p></article>
             
         </slide>
         
@@ -663,26 +809,6 @@ val f = new AnyRef with Function1[List[Int], AnyRef] {
             
         </slide>
         
-        <slide>
-            
-            <hgroup>
-                <h2>Any or Nothing</h2>
-                <h3></h3>
-            </hgroup>
-            <article><div style="float: left; margin-right: 10px;">
-
-<p><img alt="Type Hiearchy" src="images/type-hiearchy.png" /></p>
-</div>
-
-<p><em>Everything</em> inherits from <code>Any</code>, and <code>Nothing</code> inherits from <em>everything</em>.</p>
-<p>So a function can return <code>Nothing</code> to conform any return type it requires.</p>
-<p><code>Null</code> is a <code>Trait</code>, and <code>null</code> is an instance of it that works like Java’s <code>null</code>, meaning an empty value.</p>
-<p>By contrast, <code>Nothing</code> is a trait that is a subtype of everything.</p>
-<p><code>Nothing</code> has no instance, so you can’t dereference it like <code>Null</code>. </p>
-<p>For example, a method that throws an Exception has the return type <code>Nothing</code>, meaning no value at all.</p></article>
-            
-        </slide>
-        
         <slide class="segue dark">
             
             <aside class="gdbar"><img src="images/logo.png"></aside>
@@ -803,7 +929,7 @@ val f = new AnyRef with Function1[List[Int], AnyRef] {
                 <h2>Pattern Matching</h2>
                 <h3></h3>
             </hgroup>
-            <article><p><a href="http://en.wikipedia.org/wiki/Pattern_matching">Pattern matches</a> <code>(x match { ...)</code> are pervasive in well written Scala code: they conflate conditional execution, destructuring, and casting into one construct. Used well they enhance both clarity and safety.</p>
+            <article><p><a href="http://en.wikipedia.org/wiki/Pattern_matching">Pattern matches</a> <code>(x match { ... })</code> are pervasive in well written Scala code: they conflate conditional execution, destructuring, and casting into one construct. Used well they enhance both clarity and safety.</p>
 <p><strong>One of the most useful</strong> parts of Scala.</p></article>
             
         </slide>

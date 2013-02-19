@@ -777,6 +777,41 @@ title: Future Examples
 
 title: Actors
 
+[**Actors**][wiki-actor] are another abstraction used to achieve concurrency. Rather than using
+shared memory, actors share nothing and instead pass messages. Each actor encapsulates its own state
+and is unaware of the state of any other actors. To receive messages, each actor has an addressable
+mailbox that is based on an asynchronous, race-free, non-blocking queue.
+
+Other forms of concurrency using shared memory have to deal with race conditions, contention, and
+deadlocks; however, actors are inherently concurrent due to the immutability of messages and
+encapsulation of behavior.
+
+Each **Actor** is responsible for:
+
+* sending a finite number of messages to other actors
+* spawning a finite number of new actors
+* Designating behaviors to execute in response to messages
+
+You can almost think of it as a system of distributed callbacks.
+
+The [`Actor`][scala-actor] implementation that we'll be going over is the one native to the Scala
+library; however, there are many more powerful alternatives such as [Akka actors][akka-actor] (the
+system that Akka offers is more robust).
+
+[wiki-actor]: http://en.wikipedia.org/wiki/Actor_model 
+[scala-actor]: http://www.scala-lang.org/api/current/index.html#scala.actors.Actor
+[akka-actor]: http://akka.io/
+
+---
+
+title: Scala Actors
+
+Scala actors are based on event objects running on Java thread pools. So they are suspendend until a
+they receive a message that matches a pattern they can react to.
+
+Let's just take a look at an example:
+<script src="https://gist.github.com/sudowork/4987931.js"></script>
+
 ---
 
 title: Dispatch

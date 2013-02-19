@@ -809,7 +809,16 @@ title: Scala Actors
 Scala actors are based on event objects running on Java thread pools. So they are suspendend until a
 they receive a message that matches a pattern they can react to.
 
-Let's just take a look at an example:
+Let's just take a look at an example using Rock Paper Scissors. The idea is that a coordinator will
+tell two players to throw their hands, but a race condition exists (either one could actualy throw
+first). So the coordinator must wait for both players to show their hand. We could resolve this
+using semaphores or other forms of concurrency. However, using actors is often simpler to reason
+about, and although this example is a bit small, it's much easier to manage in larger systems.
+
+---
+
+title: Rock Paper Scissors with Actors
+
 <script src="https://gist.github.com/sudowork/4987931.js"></script>
 
 ---
@@ -828,7 +837,18 @@ More notably, it's incredibly hard to read due to its [cryptic operators](http:/
 
 ---
 
-title: Play + Akka
+title: Typesafe Stack (Scala + Akka + Play)
+
+Both [Akka][] and [Play][] are Scala frameworks produced by a company called [Typesafe][]. Scala, Akka, and Play together make up the [Typesafe Stack][]. These technologies together make up a highly scalable, event-driven web framework.
+
+Akka, as previously mentioned, is a library that implements a more advanced actor system than what's offered in Scala's standard library. A few advantages are that: it offers better fault tolerance, distributability over many nodes, and transactional actors (transactors).
+
+Play follows a Model-View-Controller (MVC) paradigm in terms of a web applications structure. Play scales well because it uses Akka behind the scenes, and the toolchain offers integration with many useful technologies: CoffeeScript, LESS, Websockets, Comet, NoSQL, big data.
+
+[Play]: http://playframework.com
+[Akka]: http://akka.io
+[Typesafe]: http://typesafe.com/
+[Typesafe Stack]: http://typesafe.com/stack
 
 ---
 

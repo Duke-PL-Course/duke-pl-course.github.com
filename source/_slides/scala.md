@@ -182,28 +182,6 @@ A **tuple** is a **fixed-length** set of objects of **mixed type**. You’ll fin
 
 ---
 
-title: Options
-
-An **Option** is a container that may or may not hold something.
-
-The basic interface for Option looks like:
-
-<script src="https://gist.github.com/4981583.js"></script>
-
-An **Option** itself is generic and has two subclasses: `Some[T]` or `None`
-
----
-
-title: Options Usage
-
-`Map.get` uses `Option` for its return type. An `Option` tells you that the method might not return what you’re asking for.
-
-Use `getOrElse` to define a default value or use Pattern Matching to switch behaviors
-
-<script src="https://gist.github.com/4981579.js"></script>
-
----
-
 title: var vs val
 
 When you declare variables, you should make them immutable whenever you can to avoid conflicting state. In Java, that means using the final keyword. In Scala, immutable means using val instead of var
@@ -608,6 +586,26 @@ title: Map Operations
 title: Mutable Map - HashMap
 
 <script src="https://gist.github.com/4974639.js"></script>
+
+---
+
+title: Options
+
+An **Option** is a container that may or may not hold something.
+
+The basic interface for Option looks like:
+
+<script src="https://gist.github.com/4981583.js"></script>
+
+An **Option** itself is generic and has two subclasses: `Some[T]` or `None`
+
+Use `getOrElse` to define a default value or use Pattern Matching to switch behaviors
+
+---
+
+title: Options Usage
+
+<script src="https://gist.github.com/4981579.js"></script>
 
 ---
 

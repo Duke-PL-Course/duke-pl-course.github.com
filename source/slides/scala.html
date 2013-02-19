@@ -269,32 +269,6 @@
         <slide>
             
             <hgroup>
-                <h2>Options</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>An <strong>Option</strong> is a container that may or may not hold something.</p>
-<p>The basic interface for Option looks like:</p>
-<script src="https://gist.github.com/4981583.js"></script>
-
-<p>An <strong>Option</strong> itself is generic and has two subclasses: <code>Some[T]</code> or <code>None</code></p></article>
-            
-        </slide>
-        
-        <slide>
-            
-            <hgroup>
-                <h2>Options Usage</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p><code>Map.get</code> uses <code>Option</code> for its return type. An <code>Option</code> tells you that the method might not return what you’re asking for.</p>
-<p>Use <code>getOrElse</code> to define a default value or use Pattern Matching to switch behaviors</p>
-<script src="https://gist.github.com/4981579.js"></script></article>
-            
-        </slide>
-        
-        <slide>
-            
-            <hgroup>
                 <h2>var vs val</h2>
                 <h3></h3>
             </hgroup>
@@ -806,6 +780,31 @@ val o2 = m(List(1, 2, 3))
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/4974639.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Options</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>An <strong>Option</strong> is a container that may or may not hold something.</p>
+<p>The basic interface for Option looks like:</p>
+<script src="https://gist.github.com/4981583.js"></script>
+
+<p>An <strong>Option</strong> itself is generic and has two subclasses: <code>Some[T]</code> or <code>None</code></p>
+<p>Use <code>getOrElse</code> to define a default value or use Pattern Matching to switch behaviors</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Options Usage</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/4981579.js"></script></article>
             
         </slide>
         

@@ -1015,10 +1015,31 @@ val o2 = m(List(1, 2, 3))
         <slide>
             
             <hgroup>
-                <h2>Futures</h2>
+                <h2>Futures and Promises</h2>
                 <h3></h3>
             </hgroup>
-            <article></article>
+            <article><p>We've discussed asynchronous computations earlier in JavaScript. We also mentioned that one of the
+ways of dealing with it is by using <a href="http://www.scala-lang.org/api/current/index.html#scala.concurrent.Future"><code>Futures</code></a> and <a href="http://www.scala-lang.org/api/current/index.html#scala.concurrent.Promise"><code>Promises</code></a>.</p>
+<p>A <strong>Future</strong> represents a (typically long-running) asynchronous computation. In other
+words, it's work that we expect to get accomplished later that we don't have to wait on.</p>
+<p>A <strong>Promise</strong> represents the underlying data that is promised to be delivered. A <code>Future</code> always has
+a one-to-one relationship with a <code>Promise</code>; typically, the <code>Promise</code> is abstracted away though (in
+Scala at least).</p>
+<p>A future can be thought of as an <em>expected</em> return on a promise. Whereas, a promise can be thought
+of as the payload to be <em>delivered</em>.</p>
+<p>Once a promise is completed by either a success or failure, it notifies the future of its
+completion. The work of the promise is typically executed in a separate thread from the future.</p>
+<p>We won't cover promises explicitly, but we'll cover <code>scala.concurrent.Future</code>s.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Future Examples</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/4984088.js"></script></article>
             
         </slide>
         
@@ -1028,7 +1049,49 @@ val o2 = m(List(1, 2, 3))
                 <h2>Actors</h2>
                 <h3></h3>
             </hgroup>
-            <article></article>
+            <article><p><a href="http://en.wikipedia.org/wiki/Actor_model"><strong>Actors</strong></a> are another abstraction used to achieve concurrency. Rather than using
+shared memory, actors share nothing and instead pass messages. Each actor encapsulates its own state
+and is unaware of the state of any other actors. To receive messages, each actor has an addressable
+mailbox that is based on an asynchronous, race-free, non-blocking queue.</p>
+<p>Other forms of concurrency using shared memory have to deal with race conditions, contention, and
+deadlocks; however, actors are inherently concurrent due to the immutability of messages and
+encapsulation of behavior.</p>
+<p>Each <strong>Actor</strong> is responsible for:</p>
+<ul>
+<li>sending a finite number of messages to other actors</li>
+<li>spawning a finite number of new actors</li>
+<li>Designating behaviors to execute in response to messages</li>
+</ul>
+<p>You can almost think of it as a system of distributed callbacks.</p>
+<p>The <a href="http://www.scala-lang.org/api/current/index.html#scala.actors.Actor"><code>Actor</code></a> implementation that we'll be going over is the one native to the Scala
+library; however, there are many more powerful alternatives such as <a href="http://akka.io/">Akka actors</a> (the
+system that Akka offers is more robust).</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Scala Actors</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Scala actors are based on event objects running on Java thread pools. So they are suspendend until a
+they receive a message that matches a pattern they can react to.</p>
+<p>Let's just take a look at an example using Rock Paper Scissors. The idea is that a coordinator will
+tell two players to throw their hands, but a race condition exists (either one could actualy throw
+first). So the coordinator must wait for both players to show their hand. We could resolve this
+using semaphores or other forms of concurrency. However, using actors is often simpler to reason
+about, and although this example is a bit small, it's much easier to manage in larger systems.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Rock Paper Scissors with Actors</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/4987931.js"></script></article>
             
         </slide>
         
@@ -1038,28 +1101,93 @@ val o2 = m(List(1, 2, 3))
                 <h2>Dispatch</h2>
                 <h3></h3>
             </hgroup>
-            <article></article>
+            <article><p><a href="http://dispatch.databinder.net/Dispatch.html">Dispatch</a> is a popular HTTP client library for Scala.</p>
+<p>It makes heavy use of <a href="http://dispatch.databinder.net/Bargaining+with+promises.html">promises</a>.</p>
+<p>More notably, it's incredibly hard to read due to its <a href="http://www.flotsam.nl/dispatch-periodic-table.html">cryptic operators</a></p>
+<script src="https://gist.github.com/sudowork/4984249.js"></script></article>
             
         </slide>
         
         <slide>
             
             <hgroup>
-                <h2>Play + Akka</h2>
+                <h2>Typesafe Stack (Scala + Akka + Play)</h2>
                 <h3></h3>
             </hgroup>
-            <article></article>
+            <article><p>Both <a href="http://akka.io">Akka</a> and <a href="http://playframework.com">Play</a> are Scala frameworks produced by a company called <a href="http://typesafe.com/">Typesafe</a>. Scala, Akka, and Play together make up the <a href="http://typesafe.com/stack">Typesafe Stack</a>. These technologies together make up a highly scalable, event-driven web framework.</p>
+<p>Akka, as previously mentioned, is a library that implements a more advanced actor system than what's offered in Scala's standard library. A few advantages are that: it offers better fault tolerance, distributability over many nodes, and transactional actors (transactors).</p>
+<p>Play follows a Model-View-Controller (MVC) paradigm in terms of a web applications structure. Play scales well because it uses Akka behind the scenes, and the toolchain offers integration with many useful technologies: CoffeeScript, LESS, Websockets, Comet, NoSQL, big data.</p></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Wrapping Up</h2>
+                <h3></h3>
+            </hgroup>
             
         </slide>
         
         <slide>
             
             <hgroup>
-                <h2></h2>
+                <h2>Recap</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>for comprehensions
-lazy evaluation</p></article>
+            <article><p>Scala is a <strong>general purpose programming language</strong> designed to express common programming patterns in a concise, elegant, and type-safe way. It smoothly integrates features of <strong>object-oriented</strong> and <strong>functional languages</strong>. It's a statically and strongly typed language that compiles to Java Byte Code to run on the JVM.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Strengths</h2>
+                <h3></h3>
+            </hgroup>
+            <article><h3>Concurrency</h3>
+<ul>
+<li>The Actor model</li>
+<li>Immutable Constructs</li>
+<li>Message Passing Syntax and Mechanism</li>
+</ul>
+<h3>A Better Java</h3>
+<ul>
+<li>Java Interoperability and the Java community</li>
+<li>Functional Paradigms and Constructs</li>
+</ul>
+<h3>Robust Flexible Syntax</h3>
+<ul>
+<li>Easy to create Domain Specific Languages</li>
+</ul>
+<h3>Bridge to Functional Programming</h3>
+<ul>
+<li>Well suited to bridge Object Oriented Paradigms with Functional ones</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Weaknesses</h2>
+                <h3></h3>
+            </hgroup>
+            <article><h3>Static Typing</h3>
+<ul>
+<li>Scala's compiler puts more burden on developers to satisfy its requirements</li>
+</ul>
+<h3>Syntax</h3>
+<ul>
+<li>Scala's syntax is more academic and demanding, particularly when switching between Java and Scala</li>
+<li>Too many way to do the same thing leads to inconsistent conventions</li>
+<li>Syntax can be a bit crytic at times, especially with operator overloading</li>
+</ul>
+<h3>Mutability</h3>
+<ul>
+<li>Compromises due to the inclusion of mutable states</li>
+</ul></article>
             
         </slide>
         

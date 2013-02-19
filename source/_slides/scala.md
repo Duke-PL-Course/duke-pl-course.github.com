@@ -852,5 +852,45 @@ Play follows a Model-View-Controller (MVC) paradigm in terms of a web applicatio
 
 ---
 
-for comprehensions
-lazy evaluation
+title: Wrapping Up
+class: segue dark
+
+---
+
+title: Recap
+
+Scala is a **general purpose programming language** designed to express common programming patterns in a concise, elegant, and type-safe way. It smoothly integrates features of **object-oriented** and **functional languages**. It's a statically and strongly typed language that compiles to Java Byte Code to run on the JVM.
+
+---
+
+title: Strengths
+
+### Concurrency
+* The Actor model
+* Immutable Constructs
+* Message Passing Syntax and Mechanism
+
+### A Better Java
+* Java Interoperability and the Java community
+* Functional Paradigms and Constructs
+
+### Robust Flexible Syntax
+* Easy to create Domain Specific Languages
+
+### Bridge to Functional Programming
+* Well suited to bridge Object Oriented Paradigms with Functional ones
+
+---
+
+title: Weaknesses
+
+### Static Typing
+* Scala's compiler puts more burden on developers to satisfy its requirements
+
+### Syntax
+* Scala's syntax is more academic and demanding, particularly when switching between Java and Scala
+* Too many way to do the same thing leads to inconsistent conventions
+* Syntax can be a bit cryptic at times, especially with operator overloading
+
+### Mutability
+* Compromises due to the inclusion of mutable states

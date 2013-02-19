@@ -744,7 +744,34 @@ class: segue dark
 
 ---
 
-title: Futures
+title: Futures and Promises
+
+We've discussed asynchronous computations earlier in JavaScript. We also mentioned that one of the
+ways of dealing with it is by using [`Futures`][future] and [`Promises`][promise].
+
+A **Future** represents a (typically long-running) asynchronous computation. In other
+words, it's work that we expect to get accomplished later that we don't have to wait on.
+
+A **Promise** represents the underlying data that is promised to be delivered. A `Future` always has
+a one-to-one relationship with a `Promise`; typically, the `Promise` is abstracted away though (in
+Scala at least).
+
+A future can be thought of as an *expected* return on a promise. Whereas, a promise can be thought
+of as the payload to be *delivered*.
+
+Once a promise is completed by either a success or failure, it notifies the future of its
+completion. The work of the promise is typically executed in a separate thread from the future.
+
+We won't cover promises explicitly, but we'll cover `scala.concurrent.Future`s.
+
+[future]: http://www.scala-lang.org/api/current/index.html#scala.concurrent.Future
+[promise]: http://www.scala-lang.org/api/current/index.html#scala.concurrent.Promise
+
+---
+
+title: Future Examples
+
+<script src="https://gist.github.com/sudowork/4984088.js"></script>
 
 ---
 
@@ -753,6 +780,16 @@ title: Actors
 ---
 
 title: Dispatch
+
+[Dispatch][] is a popular HTTP client library for Scala.
+
+It makes heavy use of [promises](http://dispatch.databinder.net/Bargaining+with+promises.html).
+
+More notably, it's incredibly hard to read due to its [cryptic operators](http://www.flotsam.nl/dispatch-periodic-table.html)
+
+<script src="https://gist.github.com/sudowork/4984249.js"></script>
+
+[Dispatch]: http://dispatch.databinder.net/Dispatch.html
 
 ---
 

@@ -10,3 +10,4 @@ footer: false
 * [JavaScript](/slides/javascript.html)
 * [Prolog](/slides/prolog.html)
 * [Scala](/slides/scala.html)
+* [Erlang](/slides/erlang.html)

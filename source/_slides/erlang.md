@@ -294,6 +294,18 @@ title: Examples of Higher-order Functions
 
 ---
 
+title: List Construction
+
+We already know that we can use `[Head|Tail]` to destructure lists. Here we show that you can use the same syntax to construct lists.
+
+<script src="https://gist.github.com/5247713.js"></script>
+
+Here's an example of a duplicate function in Erlang
+
+<script src="https://gist.github.com/5247736.js"></script>
+
+---
+
 title: List Comprehensions
 
 **List comprehensions** are a powerful construct for iterating/acting over a list. These are similar to the *for comprehensions* that we saw in Scala.

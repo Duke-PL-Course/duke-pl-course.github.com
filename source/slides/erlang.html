@@ -408,10 +408,11 @@
             <article><p>Given what you know right now, using pattern matching and list destructuring, implement the map function.</p>
 <div id="hiddenmap" style="display: none;">
   <h4>Solution</h4>
+  <br>
   <script src="https://gist.github.com/5247602.js"></script>
 </div>
 
-<script>$('body').keyup(function(e) { if (e.which == 83) {$('#hiddenmap').show('slow');} });</script></article>
+<script>$('body').keyup(function(e) { if (e.which == 83 /* 's' */) {$('#hiddenmap').show('slow');} });</script></article>
             
         </slide>
         
@@ -422,6 +423,20 @@
                 <h3></h3>
             </hgroup>
             <article><script src="https://gist.github.com/sudowork/5244677.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>List Construction</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>We already know that we can use <code>[Head|Tail]</code> to destructure lists. Here we show that you can use the same syntax to construct lists.</p>
+<script src="https://gist.github.com/5247713.js"></script>
+
+<p>Here's an example of a duplicate function in Erlang</p>
+<script src="https://gist.github.com/5247736.js"></script></article>
             
         </slide>
         

@@ -385,6 +385,73 @@
             
         </slide>
         
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Concurrency in Erlang</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Naive Concurrency</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Here's a simple test to show parallelism using <code>spawn/1</code>, but without any synchronization:</p>
+<script src="https://gist.github.com/sudowork/5244848.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Actors</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>The preferred concurrency model in Erlang is the <a href="http://en.wikipedia.org/wiki/Actor_model">Actor Model</a>.</p>
+<p>Actors in Erlang are similarly to Scala. However, we really don't care much about how they work, as most of it is hidden away.</p>
+<p>Each actor has a mailbox, and responds to incoming messages. They are able to <code>send</code> and <code>receive</code> messages.</p>
+<p>To demonstrate actors, we'll redo the <a href="https://gist.github.com/sudowork/4987931">rock paper scissors example from Scala</a> in the next slide.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>The Rock Paper Scissor Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5245138.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Linking Processes</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>In real-world situations, we should expect for code to fail.</p>
+<p>Erlang allows us to monitor processes for failures by using the <code>process_flag/2</code>. When the <code>trap_exit</code> flag is set to <code>true</code>, future exit signals are converted to a <code>{'EXIT', From, Reason}</code> message.</p>
+<p>In addition, we can link existent processes explicitly using <code>link/1</code>, or we can spawn a new process and link it using <code>spawn_link/2</code>.</p>
+<p>For even more power, we can register a process under a name (an atom) using <code>register/2</code>. This allows us to call upon the process easily.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Russian Roulette</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5245581.js"></script></article>
+            
+        </slide>
+        
 
         <slide class="thank-you-slide segue nobackground">
             <aside class="gdbar right"><img src="images/logo.png"></aside>

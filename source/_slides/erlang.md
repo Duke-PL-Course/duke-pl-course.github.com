@@ -259,3 +259,54 @@ title: List Comprehensions
 **List comprehensions** are a powerful construct for iterating/acting over a list. These are similar to the *for comprehensions* that we saw in Scala.
 
 <script src="https://gist.github.com/sudowork/5244478.js"></script>
+
+---
+
+title: Concurrency in Erlang
+class: segue dark
+
+---
+
+title: Naive Concurrency
+
+Here's a simple test to show parallelism using `spawn/1`, but without any synchronization:
+
+<script src="https://gist.github.com/sudowork/5244848.js"></script>
+
+---
+
+title: Actors
+
+The preferred concurrency model in Erlang is the [Actor Model][actor].
+
+Actors in Erlang are similarly to Scala. However, we really don't care much about how they work, as most of it is hidden away.
+
+Each actor has a mailbox, and responds to incoming messages. They are able to `send` and `receive` messages.
+
+To demonstrate actors, we'll redo the [rock paper scissors example from Scala](https://gist.github.com/sudowork/4987931) in the next slide.
+
+[actor]: http://en.wikipedia.org/wiki/Actor_model
+
+---
+
+title: The Rock Paper Scissor Example
+
+<script src="https://gist.github.com/sudowork/5245138.js"></script>
+
+---
+
+title: Linking Processes
+
+In real-world situations, we should expect for code to fail.
+
+Erlang allows us to monitor processes for failures by using the `process_flag/2`. When the `trap_exit` flag is set to `true`, future exit signals are converted to a `{'EXIT', From, Reason}` message.
+
+In addition, we can link existent processes explicitly using `link/1`, or we can spawn a new process and link it using `spawn_link/2`.
+
+For even more power, we can register a process under a name (an atom) using `register/2`. This allows us to call upon the process easily.
+
+---
+
+title: Russian Roulette
+
+<script src="https://gist.github.com/sudowork/5245581.js"></script>

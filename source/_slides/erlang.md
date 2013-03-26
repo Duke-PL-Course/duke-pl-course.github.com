@@ -196,6 +196,17 @@ Like Prolog, Erlang is also optimized for tail recursion.
 
 ---
 
+title: Exercises
+
+* Write a function that uses recursion to return the number of words in a string.
+* Write a function that uses recursion to count to ten.
+* Write a function that uses matching to selectively print `success` or
+`error: message` given input of the form `{error, Message}` or `success`.
+
+[Link](https://github.com/Duke-PL-Course/Erlang/blob/master/2013-03-19-book-problems.md#do)
+
+---
+
 title: Control Structures
 class: segue dark
 

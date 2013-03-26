@@ -341,6 +341,14 @@ Implement Map using List Comprehensions
 
 ---
 
+title: More List Comprehension Exercises
+
+* Consider a list of keyword-value tuples, such as `[{erlang, "a functional language"}, {ruby, "an OO language"}]`. Write a function that accepts the list and a keyword and returns the associated value for the keyword.
+
+* Consider a shopping list that looks like `[{item, quantity, price}, ...]`. Write a list comprehension that builds a list of items of the form `[{item, total_price}, ...]`, where `total_price` is quantity times price.
+
+---
+
 title: Concurrency in Erlang
 class: segue dark
 

@@ -12,6 +12,6 @@ This assignment is quite a bit shorter and easier than the Ruby assignment.
 
 The only tricky part to the assignment has to do with the seed values for the reduce function in [question #4][q4]. Take a look at the [solution to the problem][problem] for how to properly detect whether the optional seed value is passed in and provide the correct default seed value if it's not.
 
-[solutions]: https://github.com/Duke-PL-Course/JavaScript/tree/solutions/assignments
-[problem]: https://github.com/Duke-PL-Course/JavaScript/blob/solutions/assignments/q4-reduce.js#L3-L7
+[solutions]: https://github.com/Duke-PL-Course/JavaScript/tree/master/assignments
+[problem]: https://github.com/Duke-PL-Course/JavaScript/blob/master/assignments/q4-reduce.js#L3-L7
 [q4]: https://github.com/Duke-PL-Course/JavaScript/blob/master/assignments/q4-reduce.js

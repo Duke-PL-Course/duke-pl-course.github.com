@@ -211,9 +211,13 @@ Given an expression, you can use the `case` control structure to select the appr
 
 title: If Expression
 
-The `if` expression is used similarly to the `case` expression; however, instead of using pattern matching, [**guards**][guards] are used. Common *guard expressions* are as follows: the atom `true`, other terms, certain BIFs (see link), term comparisons, arithmetic expressions, boolean expressions, and short-circuit expressions (`andalso`, `orelse`). A full **guard** is a list of *guard expressions* separated by `,` (think of it as an **AND**). Guards can then be combined in sequence using `;` (**OR**) to form **guard sequences**.
+`if` is used similarly to `case`; however, instead of using pattern matching, [**guards**][guards] are used.
 
-Note that at least one of the branches must evaluate to `true`; otherwise, a runtime exception is thrown. It is idiomatic to have a `true -> ...` branch in order to represent `else`, which does not exist in erlang.
+Common *guard expressions*: the atom `true`, other terms, certain BIFs (see link), term comparisons, arithmetic expressions, boolean expressions, and short-circuit expressions (`andalso`, `orelse`).
+
+A full **guard** is a list of *guard expressions* separated by `,` (think of it as an **AND**). Guards can then be combined in sequence using `;` (**OR**) to form **guard sequences**.
+
+Note that at least one of the branches must evaluate to `true`; otherwise, a runtime exception is thrown. It is idiomatic to have a `true -> ...` branch in order to represent `else`, which does not exist in Erlang.
 
 [guards]: http://www.erlang.org/doc/reference_manual/expressions.html#id80039
 
@@ -224,3 +228,34 @@ title: Using If Expressions
 <script src="https://gist.github.com/sudowork/5244196.js"></script>
 
 ---
+
+title: Higher-order Functions and Advanced List Concepts
+class: segue dark
+
+---
+
+title: Anonymous Functions and Referencing Functions
+
+The `fun` keyword is used to create anonymous functions. It can also be used to reference functions from another module.
+
+<script src="https://gist.github.com/sudowork/5244544.js"></script>
+
+---
+
+title: Higher-order Functions
+
+We've been using higher order functions over and over again. It's no surprise that they exist and are highly important in a functional language such as Erlang. You will commonly use higher-order functions to operate [on lists](http://www.erlang.org/doc/man/lists.html).
+
+---
+
+title: Examples of Higher-order Functions
+
+<script src="https://gist.github.com/sudowork/5244677.js"></script>
+
+---
+
+title: List Comprehensions
+
+**List comprehensions** are a powerful construct for iterating/acting over a list. These are similar to the *for comprehensions* that we saw in Scala.
+
+<script src="https://gist.github.com/sudowork/5244478.js"></script>

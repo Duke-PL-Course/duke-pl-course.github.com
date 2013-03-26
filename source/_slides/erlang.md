@@ -310,3 +310,28 @@ For even more power, we can register a process under a name (an atom) using `reg
 title: Russian Roulette
 
 <script src="https://gist.github.com/sudowork/5245581.js"></script>
+
+---
+
+title: Overview
+class: segue dark
+
+---
+
+title: Strengths
+build_lists: true
+
+* Excels at concurrency and fault tolerance
+* Dynamically typed, yet still has high reliability
+* Light-weight processes with a powerful concurrency model (no shared-memory)
+* "Let it crash" philosophy
+* The Open Telecom Platform (OTP) framework has a lot of capabilities built in (you just have to write an OTP-compliant service)
+
+---
+
+title: Weaknesses
+build_lists: true
+
+* Awkward syntax
+* No real strings/clunky string manipulation
+* Records are pretty hackish (we didn't cover them)

@@ -284,7 +284,7 @@ Given what you know right now, using pattern matching and list destructuring, im
   <script src="https://gist.github.com/5247602.js"></script>
 </div>
 
-<script>$('body').keyup(function(e) { if (e.which == 83 /* 's' */) {$('#hiddenmap').show('slow');} });</script>
+<script>$('body').keyup(function(e) { if (e.which == 83 /* 's' */ && slidedeck.curSlide_ == 29) {$('#hiddenmap').show('slow');} });</script>
 
 ---
 
@@ -311,6 +311,21 @@ title: List Comprehensions
 **List comprehensions** are a powerful construct for iterating/acting over a list. These are similar to the *for comprehensions* that we saw in Scala.
 
 <script src="https://gist.github.com/sudowork/5244478.js"></script>
+
+---
+
+title: Map using List Comprehensions
+
+Implement Map using List Comprehensions
+
+<div id="hiddenmaplist" style="display: none;">
+  <h4>Solution</h4>
+  <br>
+  <script src="https://gist.github.com/5247769.js"></script>
+</div>
+
+<script>$('body').keyup(function(e) { if (e.which == 83 /* 's' */ && slidedeck.curSlide_ == 33) {$('#hiddenmaplist').show('slow');} });</script>
+
 
 ---
 

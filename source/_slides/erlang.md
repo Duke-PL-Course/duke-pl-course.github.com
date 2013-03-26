@@ -274,6 +274,20 @@ We've been using higher order functions over and over again. It's no surprise th
 
 ---
 
+title: Implement Map
+
+Given what you know right now, using pattern matching and list destructuring, implement the map function.
+
+<div id="hiddenmap" style="display: none;">
+  <h4>Solution</h4>
+  <br>
+  <script src="https://gist.github.com/5247602.js"></script>
+</div>
+
+<script>$('body').keyup(function(e) { if (e.which == 83 /* 's' */) {$('#hiddenmap').show('slow');} });</script>
+
+---
+
 title: Examples of Higher-order Functions
 
 <script src="https://gist.github.com/sudowork/5244677.js"></script>

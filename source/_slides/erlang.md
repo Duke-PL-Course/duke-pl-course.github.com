@@ -141,6 +141,12 @@ Erlang also makes it very easy to pack and unpack bits
 
 ---
 
+title: More Bit Pattern Matching
+
+<script src="https://gist.github.com/sudowork/5243717.js"></script>
+
+---
+
 title: Functions
 class: segue dark
 
@@ -187,3 +193,34 @@ title: Factorial and Fibonacci Function
 Like Prolog, Erlang is also optimized for tail recursion.
 
 <script src="https://gist.github.com/5199784.js"></script>
+
+---
+
+title: Control Structures
+class: segue dark
+
+---
+
+title: Case Expression
+
+Given an expression, you can use the `case` control structure to select the appropriate resulting expression. This is particularly useful because you can take advantage of pattern matching.
+
+<script src="https://gist.github.com/sudowork/5244080.js"></script>
+
+---
+
+title: If Expression
+
+The `if` expression is used similarly to the `case` expression; however, instead of using pattern matching, [**guards**][guards] are used. Common *guard expressions* are as follows: the atom `true`, other terms, certain BIFs (see link), term comparisons, arithmetic expressions, boolean expressions, and short-circuit expressions (`andalso`, `orelse`). A full **guard** is a list of *guard expressions* separated by `,` (think of it as an **AND**). Guards can then be combined in sequence using `;` (**OR**) to form **guard sequences**.
+
+Note that at least one of the branches must evaluate to `true`; otherwise, a runtime exception is thrown. It is idiomatic to have a `true -> ...` branch in order to represent `else`, which does not exist in erlang.
+
+[guards]: http://www.erlang.org/doc/reference_manual/expressions.html#id80039
+
+---
+
+title: Using If Expressions
+
+<script src="https://gist.github.com/sudowork/5244196.js"></script>
+
+---

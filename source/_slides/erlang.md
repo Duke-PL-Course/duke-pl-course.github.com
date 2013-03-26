@@ -216,7 +216,14 @@ title: Case Expression
 
 Given an expression, you can use the `case` control structure to select the appropriate resulting expression. This is particularly useful because you can take advantage of pattern matching.
 
-<script src="https://gist.github.com/sudowork/5244080.js"></script>
+<div style="width: 100%; position:relative;">
+  <span style="vertical-align:top; width: 49%; display: inline-block;">
+    <script src="https://gist.github.com/sudowork/5244080.js"></script>
+  </span>
+  <span style="vertical-align:top; width: 49%; display: inline-block;">
+    <script src="https://gist.github.com/yangsu/5247321.js"></script>
+  </span>
+</div>
 
 ---
 

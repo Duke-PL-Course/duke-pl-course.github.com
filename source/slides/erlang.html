@@ -290,7 +290,7 @@
         </slide>
         
         <slide>
-
+            
             <hgroup>
                 <h2>Exercises</h2>
                 <h3></h3>
@@ -302,9 +302,9 @@
 <code>error: message</code> given input of the form <code>{error, Message}</code> or <code>success</code>.</li>
 </ul>
 <p><a href="https://github.com/Duke-PL-Course/Erlang/blob/master/2013-03-19-book-problems.md#do">Link</a></p></article>
-
+            
         </slide>
-
+        
         <slide class="segue dark">
             
             <aside class="gdbar"><img src="images/logo.png"></aside>
@@ -323,10 +323,10 @@
             </hgroup>
             <article><p>Given an expression, you can use the <code>case</code> control structure to select the appropriate resulting expression. This is particularly useful because you can take advantage of pattern matching.</p>
 <div style="width: 100%; position:relative;">
-  <span style="vertical-align:top; width: 49%; display: inline-block;">
+  <span style="vertical-align:top; width: 49%; display: inline-block;">  
     <script src="https://gist.github.com/sudowork/5244080.js"></script>
   </span>
-  <span style="vertical-align:top; width: 49%; display: inline-block;">
+  <span style="vertical-align:top; width: 49%; display: inline-block;">  
     <script src="https://gist.github.com/yangsu/5247321.js"></script>
   </span>
 </div></article>
@@ -340,9 +340,21 @@
                 <h3></h3>
             </hgroup>
             <article><p><code>if</code> is used similarly to <code>case</code>; however, instead of using pattern matching, <a href="http://www.erlang.org/doc/reference_manual/expressions.html#id80039"><strong>guards</strong></a> are used.</p>
-<p>Common <em>guard expressions</em>: the atom <code>true</code>, other terms, certain BIFs (see link), term comparisons, arithmetic expressions, boolean expressions, and short-circuit expressions (<code>andalso</code>, <code>orelse</code>).</p>
-<p>A full <strong>guard</strong> is a list of <em>guard expressions</em> separated by <code>,</code> (think of it as an <strong>AND</strong>). Guards can then be combined in sequence using <code>;</code> (<strong>OR</strong>) to form <strong>guard sequences</strong>.</p>
-<p>Note that at least one of the branches must evaluate to <code>true</code>; otherwise, a runtime exception is thrown. It is idiomatic to have a <code>true -&gt; ...</code> branch in order to represent <code>else</code>, which does not exist in Erlang.</p></article>
+<p>Common <em>guard expressions</em>: the atom <code>true</code>, other terms, certain <a href="guards">BIFs</a>, term comparisons, arithmetic expressions, boolean expressions, and short-circuit expressions (<code>andalso</code>, <code>orelse</code>).</p>
+<p>A full <strong>guard</strong> is a list of <em>guard expressions</em> separated by <code>,</code> (think of it as an <strong>AND</strong>). Guards can then be combined in sequence using <code>;</code> (<strong>OR</strong>) to form <strong>guard sequences</strong>.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>What happens if there is no match?</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5247479.js"></script>
+
+<p>Note that at least one of the branches must evaluate to <code>true</code>; otherwise, a runtime exception is thrown. It is idiomatic to have a <code>true -&gt; ...</code> branch in order to represent <code>else</code>, which does not exist in Erlang.</p>
+<script src="https://gist.github.com/5247488.js"></script></article>
             
         </slide>
         

@@ -231,13 +231,21 @@ title: If Expression
 
 `if` is used similarly to `case`; however, instead of using pattern matching, [**guards**][guards] are used.
 
-Common *guard expressions*: the atom `true`, other terms, certain BIFs (see link), term comparisons, arithmetic expressions, boolean expressions, and short-circuit expressions (`andalso`, `orelse`).
+Common *guard expressions*: the atom `true`, other terms, certain [BIFs](guards), term comparisons, arithmetic expressions, boolean expressions, and short-circuit expressions (`andalso`, `orelse`).
 
 A full **guard** is a list of *guard expressions* separated by `,` (think of it as an **AND**). Guards can then be combined in sequence using `;` (**OR**) to form **guard sequences**.
 
+[guards]: http://www.erlang.org/doc/reference_manual/expressions.html#id80039
+
+---
+
+title: What happens if there is no match?
+
+<script src="https://gist.github.com/5247479.js"></script>
+
 Note that at least one of the branches must evaluate to `true`; otherwise, a runtime exception is thrown. It is idiomatic to have a `true -> ...` branch in order to represent `else`, which does not exist in Erlang.
 
-[guards]: http://www.erlang.org/doc/reference_manual/expressions.html#id80039
+<script src="https://gist.github.com/5247488.js"></script>
 
 ---
 

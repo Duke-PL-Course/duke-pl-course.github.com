@@ -447,7 +447,26 @@
                 <h3></h3>
             </hgroup>
             <article><p><strong>List comprehensions</strong> are a powerful construct for iterating/acting over a list. These are similar to the <em>for comprehensions</em> that we saw in Scala.</p>
-<script src="https://gist.github.com/sudowork/5244478.js"></script></article>
+<ul class="build">
+<li>A <strong>list comprehension</strong> takes the form of <code>[Expression || Clause1, Clause2, ..., ClauseN].</code></li>
+<li>List comprehensions can have an <em>arbitrary</em> number of clauses.</li>
+<li>The clauses can be <strong>generators</strong> or <strong>filters</strong>.<ul class="build">
+<li>A <strong>generator</strong>, of the form <code>Match &lt;- List</code>, matches a pattern on the left to the elements of a list on the right.</li>
+<li>A <strong>filter</strong> can be a <em>boolean</em> expression or a function returning a <em>boolean</em>.</li>
+</ul>
+</li>
+<li>Where there are multiple generators, Erlang computes a <a href="http://en.wikipedia.org/wiki/Cartesian_product">Cartesian product</a></li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>List Comprehensions Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5244478.js"></script></article>
             
         </slide>
         

@@ -307,8 +307,20 @@ Here's an example of a duplicate function in Erlang
 ---
 
 title: List Comprehensions
+build_lists: true
 
 **List comprehensions** are a powerful construct for iterating/acting over a list. These are similar to the *for comprehensions* that we saw in Scala.
+
+* A **list comprehension** takes the form of `[Expression || Clause1, Clause2, ..., ClauseN].`
+* List comprehensions can have an *arbitrary* number of clauses.
+* The clauses can be **generators** or **filters**.
+    * A **generator**, of the form `Match <- List`, matches a pattern on the left to the elements of a list on the right.
+    * A **filter** can be a *boolean* expression or a function returning a *boolean*.
+* Where there are multiple generators, Erlang computes a [Cartesian product](http://en.wikipedia.org/wiki/Cartesian_product)
+
+---
+
+title: List Comprehensions Example
 
 <script src="https://gist.github.com/sudowork/5244478.js"></script>
 

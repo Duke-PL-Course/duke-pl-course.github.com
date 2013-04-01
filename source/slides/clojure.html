@@ -65,6 +65,313 @@
             
         </slide>
         
+        <slide>
+            
+            <hgroup>
+                <h2>Installing Leiningen</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="https://github.com/technomancy/leiningen">Leiningen</a> is a simple build tool used for automatic Clojure projects.</p>
+<p>To install on OS X (with brew + bash):</p>
+<script src="https://gist.github.com/sudowork/5283665.js"></script>
+
+<p>To install on the VM running Lubuntu:</p>
+<script src="https://gist.github.com/sudowork/5283669.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Creating a New Clojure Project</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>We are going to create a new project/workspace to use for our code. It's going to make things easier, and we're also going to use the Leiningen <strong>REPL</strong>.</p>
+<script src="https://gist.github.com/sudowork/5283709.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Functions and Basic Data Types</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Forms</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>A <strong>form</strong> in Clojure is the basic building block for a Clojure program. A program can simply be thought of as a sequence of forms (and macros). Examples of forms include: function calls, booleans, characters, numbers, keywords, and strings.</p>
+<p>There also exist built-in <a href="http://clojure.org/special_forms">special forms</a> that perform core operations.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Calling Basic Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Clojure using <strong>prefix notation</strong> for calling functions/operators. There is no native way to use <strong>infix notation</strong>.</p>
+<script src="https://gist.github.com/sudowork/5283741.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Multiple Parameter Lists</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Functions in clojure can be defined to accept varying-length parameter lists (<strong>arity</strong>). We already saw an example of this using the <code>-</code> function.</p>
+<p>Behavior can vary based on the number of parameters passed to the function.</p>
+<script src="https://gist.github.com/sudowork/5283761.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Type Coercion</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Just like Ruby, the Clojure compiler will try to coerce types at runtime. Remember, Clojure is dynamically typed.</p>
+<p>Failure to perform a coercion will result in a <a href="http://docs.oracle.com/javase/1.5.0/docs/api/java/lang/ClassCastException.html">ClassCastException</a>, which is a runtime exception from the Java class hierarchy.</p>
+<script src="https://gist.github.com/sudowork/5283924.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Strings and Chars</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5283972.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Booleans and Conditional Expressions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5283985.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Core Data Structures: Lists, Maps, Sets, and Vectors</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Lists</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="http://clojure.org/data_structures#Data%20Structures-Lists%20(IPersistentList)">Lists</a> are one of the core data structures to Clojure and all dialects of Lisp. In fact, Lisp stands for <strong>lis</strong>t <strong>p</strong>rocessing.</p>
+<p>It is a <strong>sequential</strong> data structure that does not allow for random access.</p>
+<script src="https://gist.github.com/sudowork/5284130.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Vectors</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="http://clojure.org/data_structures#Data%20Structures-Vectors%20(IPersistentVector)">Vectors</a> are similar to lists; however, they are <strong>indexable</strong>, meaning you can randomly access elements in the vector.</p>
+<p>To access an element of a vector, you can either call the <code>nth</code> function or directly use the vector as a function that takes an index as the argument.</p>
+<script src="https://gist.github.com/sudowork/5284224.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Sets</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><strong>Sets</strong> are unordered collections of unique elements.</p>
+<script src="https://gist.github.com/sudowork/5284381.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2></h2>
+                <h3></h3>
+            </hgroup>
+            <article></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Maps</h2>
+                <h3></h3>
+            </hgroup>
+            <article></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Binding and Destructuring</h2>
+                <h3></h3>
+            </hgroup>
+            <article></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Using Higher-order Functions</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Anonymous Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Higher-order Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Recursion</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2></h2>
+                <h3></h3>
+            </hgroup>
+            <article><!-- TODO --></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Working with Sequences</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2></h2>
+                <h3></h3>
+            </hgroup>
+            <article><!-- TODO --></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Lazy Evaluation and Infinite Sequences</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2></h2>
+                <h3></h3>
+            </hgroup>
+            <article><!-- TODO --></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Abstractions: Datatypes and Protocols</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2></h2>
+                <h3></h3>
+            </hgroup>
+            <article><!-- TODO --></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Macros</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
 
         <slide class="thank-you-slide segue nobackground">
             <aside class="gdbar right"><img src="images/logo.png"></aside>

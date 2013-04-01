@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Duke PL Course</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!--This one seems to work all the time, but really small on ipad-->
+    <!--<meta name="viewport" content="initial-scale=0.4">-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" media="all" href="/stylesheets/slidedefault.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/stylesheets/slidephone.css">
+    <base target="_blank"><!-- This amazingness opens all links in a new tab. -->
+    <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+    <slides class="layout-widescreen">
+
+        <!-- <slide class="logoslide nobackground">
+            <article class="flexbox vcenter">
+                <span><img src="images/google_developers_logo.png"></span>
+            </article>
+        </slide> -->
+        <slide class="title-slide segue nobackground">
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+            <hgroup class="auto-fadein">
+                
+                <h1 data-config-title><!-- populated from slide_config.json --></h1>
+                
+                
+                <h2>Clojure</h2>
+                
+                <p data-config-presenter><!-- populated from slide_config.json --></p>
+            </hgroup>
+        </slide>
+
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Clojure Overview</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Clojure is ...</p>
+<ul class="build">
+<li>A modern <a href="http://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp</a> dialect</li>
+<li>Created by <a href="https://github.com/richhickey">Rich Hickey</a> in 2007</li>
+<li>A functional language, with <a href="http://en.wikipedia.org/wiki/Immutable_object">immutable values</a>, <a href="http://en.wikipedia.org/wiki/Strong_typing">strong typing</a>, <a href="http://en.wikipedia.org/wiki/Dynamic_typing">dynamic typing</a>, and <a href="http://en.wikipedia.org/wiki/Software_transactional_memory">software transactional memory</a></li>
+<li>Augmented with a powerful <a href="http://clojure.org/macros">macro system</a></li>
+<li>Made to run on the <a href="http://en.wikipedia.org/wiki/Jvm">Java Virtual Machine</a></li>
+<li>Tightly integraded with <a href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</a> applications</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Code Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5283585.js"></script></article>
+            
+        </slide>
+        
+
+        <slide class="thank-you-slide segue nobackground">
+            <aside class="gdbar right"><img src="images/logo.png"></aside>
+            <article class="flexbox vleft auto-fadein">
+                <h2>&lt;Thank You!&gt;</h2>
+                <p></p>
+            </article>
+            <p class="auto-fadein" data-config-contact>
+                <!-- populated from slide_config.json -->
+            </p>
+        </slide>
+
+        <!-- <slide class="logoslide dark nobackground">
+        <article class="flexbox vcenter">
+            <span><img src="images/google_developers_logo_white.png"></span>
+        </article>
+        </slide> -->
+
+    <slide class="backdrop"></slide>
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37844085-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+<script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

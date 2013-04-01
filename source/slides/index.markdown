@@ -11,3 +11,4 @@ footer: false
 * [Prolog](/slides/prolog.html)
 * [Scala](/slides/scala.html)
 * [Erlang](/slides/erlang.html)
+* [Clojure](/slides/clojure.html)

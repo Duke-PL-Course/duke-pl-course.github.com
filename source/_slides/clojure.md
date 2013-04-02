@@ -150,19 +150,53 @@ title: Sets
 
 ---
 
-<!-- TODO: THE SLIDES BELOW -->
-
----
-
 title: Maps
+
+**Maps** are associative data structures that associate a key to a value.
+
+For readability, Clojure introduces commas as whitespace in addition to conventional Lisp syntax.
+
+<script src="https://gist.github.com/sudowork/5293377.js"></script>
 
 ---
 
 title: Functions
 
+Don't forget, we're dealing with a functional language. We still haven't learned how to define functions!
+
+We will use the `defn` macro to define new functions. We haven't talked about macros yet, but basically, `defn` will call `def` and associate a **Var** in the current namespace with an anonymous function. Essentially, creating a new function in the current namespace.
+
+<script src="https://gist.github.com/sudowork/5293462.js"></script>
+
+---
+
+title: Multiple-arity Functions
+
+Remember the functions that accept varying length parameter lists? Let's learn how to make one of those. To clarify, the number of parameters a function accepts denotes its **arity**.
+
+We also introduce [`apply`][apply] here to reflectively call a function with a list of parameters. This example is naive, and unidiomatic. We will discuss better techniques later on.
+
+<script src="https://gist.github.com/sudowork/5293626.js"></script>
+
+[apply]: http://richhickey.github.com/clojure/clojure.core-api.html#clojure.core/apply
+
 ---
 
 title: Binding and Destructuring
+
+When a function is called with parameters, the parameters are **bound** to function's scope with a given name.
+
+In other words `(defn id [x] x), (id 42)` binds the value `42` to the alias `x` in the function's scope. `x` would be unavailable to be used outside of the function.
+
+Clojure let's you use bind aliases within arguments. This process is called **destructuring**, and it is part of pattern matching. The difference is that pattern matching is *conditional*; whereas, destructuring is simply pulling apart a value. Here's an example to clarify:
+
+<script src="https://gist.github.com/sudowork/5294320.js"></script>
+
+---
+
+title: More Destructuring and Local Bindings
+
+<script src="https://gist.github.com/sudowork/5294502.js"></script>
 
 ---
 

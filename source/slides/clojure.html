@@ -316,10 +316,24 @@
         <slide>
             
             <hgroup>
-                <h2></h2>
+                <h2>Tail Call Optimization in Clojure</h2>
                 <h3></h3>
             </hgroup>
-            <article><!-- TODO --></article>
+            <article><p>Typically, functional languages use <strong>recursion</strong> in place of loops. This leads to the dreaded <strong>stack overflow</strong> problem as we recurse deeper.</p>
+<p>Fortunately, most functional languages provide either automatic <a href="http://en.wikipedia.org/wiki/Tail_call"><strong>tail call optimization</strong></a> (TCO).</p>
+<p>Unfortunately, Clojure does not support automatic TCO because the JVM does not natively support TCO.</p>
+<p><em>Side note: Scala is able to do automatic TCO because the Scala compiler does the translation into loops</em>.</p>
+<p>To get around this, we can explicitly perform the TCO ourselves using the <code>recur</code> and <code>loop</code> special forms.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Recur and loop example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5394099.js"></script></article>
             
         </slide>
         
@@ -336,10 +350,23 @@
         <slide>
             
             <hgroup>
-                <h2></h2>
+                <h2>What is a Sequence?</h2>
                 <h3></h3>
             </hgroup>
-            <article><!-- TODO --></article>
+            <article><p>A <a href="http://clojure.org/sequences">Sequence</a> in clojure is just a wrapper interface (<code>ISeq</code>) for collections (vectors, lists, etc.).</p>
+<p>There exists a library of functions just for acting on sequences, which means that we can treat sequences pretty generically.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>List Comprehensions on Sequences</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Similar to Scala, Clojure has for/list comprehensions, that work to combine <code>map</code>, <code>filter</code>, and the concept of permutations.</p>
+<p>Binding in a for comprehension syntactically looks the same as the <code>let</code> or <code>loop</code> special forms.</p>
+<script src="https://gist.github.com/sudowork/5394282.js"></script></article>
             
         </slide>
         

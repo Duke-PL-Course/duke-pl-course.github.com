@@ -225,14 +225,52 @@ title: Recursion
 class: segue dark
 
 ---
-<!-- TODO -->
+
+title: Tail Call Optimization in Clojure
+
+Typically, functional languages use **recursion** in place of loops. This leads to the dreaded **stack overflow** problem as we recurse deeper.
+
+Fortunately, most functional languages provide either automatic [**tail call optimization**][tco] (TCO).
+
+Unfortunately, Clojure does not support automatic TCO because the JVM does not natively support TCO.
+
+*Side note: Scala is able to do automatic TCO because the Scala compiler does the translation into loops*.
+
+To get around this, we can explicitly perform the TCO ourselves using the `recur` and `loop` special forms.
+
+[tco]: http://en.wikipedia.org/wiki/Tail_call
+
+---
+
+title: Recur and loop example
+
+<script src="https://gist.github.com/sudowork/5394099.js"></script>
+
 ---
 
 title: Working with Sequences
 class: segue dark
 
 ---
-<!-- TODO -->
+
+title: What is a Sequence?
+
+A [Sequence][] in clojure is just a wrapper interface (`ISeq`) for collections (vectors, lists, etc.).
+
+There exists a library of functions just for acting on sequences, which means that we can treat sequences pretty generically.
+
+[Sequence]: http://clojure.org/sequences
+
+---
+
+title: List Comprehensions on Sequences
+
+Similar to Scala, Clojure has for/list comprehensions, that work to combine `map`, `filter`, and the concept of permutations.
+
+Binding in a for comprehension syntactically looks the same as the `let` or `loop` special forms.
+
+<script src="https://gist.github.com/sudowork/5394282.js"></script>
+
 ---
 
 title: Lazy Evaluation and Infinite Sequences

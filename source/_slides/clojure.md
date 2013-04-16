@@ -252,7 +252,6 @@ class: segue dark
 
 ---
 
-<<<<<<< HEAD
 title: Tail Call Optimization in Clojure
 
 Typically, functional languages use **recursion** in place of loops. This leads to the dreaded **stack overflow** problem as we recurse deeper.

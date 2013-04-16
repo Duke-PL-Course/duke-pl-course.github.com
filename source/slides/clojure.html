@@ -329,6 +329,19 @@
             
         </slide>
         
+        <slide>
+            
+            <hgroup>
+                <h2>Exercise</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
+<li>Implement Fibonacci</li>
+<li>Implement Factorial</li>
+</ul></article>
+            
+        </slide>
+        
         <slide class="segue dark">
             
             <aside class="gdbar"><img src="images/logo.png"></aside>
@@ -460,10 +473,10 @@
 <code>(iterate fib-pair [1 1])</code></li>
 <li>Extract the first element of the sequence of pairs to construct the infinite Fibonacci sequence<br />
 <code>(map first (iterate fib-pair [1 1]))</code></li>
-<li>Using take to compute the first 5 elements of the Fibonacci Sequence
-  <code>(take 5 (map first (iterate fib-pair [1 1])))</code></li>
-<li>Using <code>nth</code> to compute the 50th Fibonacci number
-  <code>(nth (map first (iterate fib-pair [1 1])) 50)</code></li>
+<li>Using take to compute the first 5 elements of the Fibonacci Sequence<br />
+<code>(take 5 (map first (iterate fib-pair [1 1])))</code></li>
+<li>Using <code>nth</code> to compute the 50th Fibonacci number<br />
+<code>(nth (map first (iterate fib-pair [1 1])) 50)</code></li>
 </ul></article>
             
         </slide>
@@ -477,12 +490,12 @@
             <article><ul class="build">
 <li>Generate an infinite sequence<br />
 <code>(iterate inc 1)</code></li>
-<li>Using <code>take</code> to get the sequence <code>1..N</code>
-  <code>(take n (iterate inc 1))</code></li>
-<li>Using <code>apply</code> and the operator <code>*</code> to compute the product of <code>1..N</code>
-  <code>(apply * (take n (iterate inc 1)))</code></li>
-<li>Define a function <code>factorial</code> to return the result
-  <code>(defn factorial [n] (apply * (take n (iterate inc 1))))</code></li>
+<li>Using <code>take</code> to get the sequence <code>1..N</code><br />
+<code>(take n (iterate inc 1))</code></li>
+<li>Using <code>apply</code> and the operator <code>*</code> to compute the product of <code>1..N</code><br />
+<code>(apply * (take n (iterate inc 1)))</code></li>
+<li>Define a function <code>factorial</code> to return the result<br />
+<code>(defn factorial [n] (apply * (take n (iterate inc 1))))</code></li>
 </ul></article>
             
         </slide>

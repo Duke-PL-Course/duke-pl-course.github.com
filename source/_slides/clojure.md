@@ -240,6 +240,13 @@ Of course, anonymous functions themselves aren't too useful. Let's combine them 
 
 ---
 
+title: Exercise
+
+* Implement Fibonacci
+* Implement Factorial
+
+---
+
 title: Recursion
 class: segue dark
 

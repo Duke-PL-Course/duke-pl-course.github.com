@@ -238,7 +238,10 @@ Unfortunately, Clojure does not support automatic TCO because the JVM does not n
 
 To get around this, we can explicitly perform the TCO ourselves using the `recur` and `loop` special forms.
 
+Out of the scope of this class, you can also use the [`trampoline`][trampoline] technique to optimize mutually recursive functions.
+
 [tco]: http://en.wikipedia.org/wiki/Tail_call
+[tramposine]: http://pramode.net/clojure/2010/05/08/clojure-trampoline/
 
 ---
 

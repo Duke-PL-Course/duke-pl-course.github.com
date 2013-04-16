@@ -258,6 +258,8 @@ Unfortunately, Clojure does not support automatic TCO because the JVM does not n
 
 To get around this, we can explicitly perform the TCO ourselves using the `recur` and `loop` special forms.
 
+`(loop [x initial-x, y initial-y] (do-something-with x y))`
+
 Out of the scope of this class, you can also use the [`trampoline`][trampoline] technique to optimize mutually recursive functions.
 
 [tco]: http://en.wikipedia.org/wiki/Tail_call
@@ -268,17 +270,6 @@ Out of the scope of this class, you can also use the [`trampoline`][trampoline] 
 title: Recur and loop example
 
 <script src="https://gist.github.com/sudowork/5394099.js"></script>
-=======
-title: loop and recur
-
-<script src="https://gist.github.com/5398809.js"></script>
-
-Clojure does not support implicit tail recursion optimization because of limitations of the JVM, so you must explicitly recur through the use of `loop` and `recur`
-
-`loop [x initial-x, y initial-y] (do-something-with x y))`
-
-<script src="https://gist.github.com/5398907.js"></script>
->>>>>>> Added new slides
 
 ---
 
@@ -304,17 +295,6 @@ Similar to Scala, Clojure has for/list comprehensions, that work to combine `map
 Binding in a for comprehension syntactically looks the same as the `let` or `loop` special forms.
 
 <script src="https://gist.github.com/sudowork/5394282.js"></script>
-<script src="https://gist.github.com/5398957.js"></script>
-
----
-
-title: Changing a Sequence
-
-We've seen how higher order functions such as `map`, `filter`, etc. can be used with sequences
-
-Clojure also has list comprehensions like Erlang and Scala, that combines multiple lists and filters.
-
-<script src="https://gist.github.com/5399009.js"></script>
 
 ---
 

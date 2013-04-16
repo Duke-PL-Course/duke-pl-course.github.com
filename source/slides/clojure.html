@@ -350,6 +350,7 @@
 <p>Unfortunately, Clojure does not support automatic TCO because the JVM does not natively support TCO.</p>
 <p><em>Side note: Scala is able to do automatic TCO because the Scala compiler does the translation into loops</em>.</p>
 <p>To get around this, we can explicitly perform the TCO ourselves using the <code>recur</code> and <code>loop</code> special forms.</p>
+<p><code>(loop [x initial-x, y initial-y] (do-something-with x y))</code></p>
 <p>Out of the scope of this class, you can also use the [<code>trampoline</code>][trampoline] technique to optimize mutually recursive functions.</p></article>
             
         </slide>
@@ -360,31 +361,7 @@
                 <h2>Recur and loop example</h2>
                 <h3></h3>
             </hgroup>
-            <article><script src="https://gist.github.com/sudowork/5394099.js"></script>
-
-<p>=======
-title: loop and recur</p>
-<script src="https://gist.github.com/5398809.js"></script>
-
-<p>Clojure does not support implicit tail recursion optimization because of limitations of the JVM, so you must explicitly recur through the use of <code>loop</code> and <code>recur</code></p>
-<p><code>loop [x initial-x, y initial-y] (do-something-with x y))</code></p>
-<script src="https://gist.github.com/5398907.js"></script>
-
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<blockquote>
-<p>Added new slides</p>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote>
-</blockquote></article>
+            <article><script src="https://gist.github.com/sudowork/5394099.js"></script></article>
             
         </slide>
         
@@ -417,21 +394,7 @@ title: loop and recur</p>
             </hgroup>
             <article><p>Similar to Scala, Clojure has for/list comprehensions, that work to combine <code>map</code>, <code>filter</code>, and the concept of permutations.</p>
 <p>Binding in a for comprehension syntactically looks the same as the <code>let</code> or <code>loop</code> special forms.</p>
-<script src="https://gist.github.com/sudowork/5394282.js"></script>
-
-<script src="https://gist.github.com/5398957.js"></script></article>
-            
-        </slide>
-        
-        <slide>
-            
-            <hgroup>
-                <h2>Changing a Sequence</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>We've seen how higher order functions such as <code>map</code>, <code>filter</code>, etc. can be used with sequences</p>
-<p>Clojure also has list comprehensions like Erlang and Scala, that combines multiple lists and filters.</p>
-<script src="https://gist.github.com/5399009.js"></script></article>
+<script src="https://gist.github.com/sudowork/5394282.js"></script></article>
             
         </slide>
         

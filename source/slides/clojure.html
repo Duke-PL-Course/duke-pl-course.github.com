@@ -419,6 +419,74 @@
             
         </slide>
         
+        <slide>
+            
+            <hgroup>
+                <h2>Infinite Sequences and take</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>(repeat element)</code> creates an infinite sequence of copies of <code>element</code></p>
+<p><code>(cycle list)</code> creates an infinites sequence by cycling elements in a list</p>
+<p><code>(take n infinite-sequence)</code> takes the first <code>n</code> elements of an infinite sequence</p>
+<p><code>(drop n infinite-sequence)</code> drops the first <code>n</code> elements of an infinite sequence</p>
+<p>Use <code>-&gt;&gt;</code> to apply functions left to right rather than using prefix notation</p>
+<script src="https://gist.github.com/5399232.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>More Infinite Sequence Operations</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>(interpose element seq)</code> inserts <code>element</code> between every pair of elements in <code>seq</code></p>
+<p><code>(interleave seq1 seq2)</code> interleaves the elements of the 2 sequences</p>
+<p><code>(iterate fn init)</code> creates a sequence by applying <code>fn</code> to <code>init</code> and the successive return values</p>
+<script src="https://gist.github.com/5399298.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Fibonacci using Infinite Sequences</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul class="build">
+<li>Iterator function to describe each step of Fibonacci<br />
+<code>(defn fib-pair [[a b]]  [b (+ a b)])</code></li>
+<li>Generate an infinite sequence of Fibonacci pairs<br />
+<code>(iterate fib-pair [1 1])</code></li>
+<li>Extract the first element of the sequence of pairs to construct the infinite Fibonacci sequence<br />
+<code>(map first (iterate fib-pair [1 1]))</code></li>
+<li>Using take to compute the first 5 elements of the Fibonacci Sequence
+  <code>(take 5 (map first (iterate fib-pair [1 1])))</code></li>
+<li>Using <code>nth</code> to compute the 50th Fibonacci number
+  <code>(nth (map first (iterate fib-pair [1 1])) 50)</code></li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Factorial using Infinite Sequences</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul class="build">
+<li>Generate an infinite sequence<br />
+<code>(iterate inc 1)</code></li>
+<li>Using <code>take</code> to get the sequence <code>1..N</code>
+  <code>(take n (iterate inc 1))</code></li>
+<li>Using <code>apply</code> and the operator <code>*</code> to compute the product of <code>1..N</code>
+  <code>(apply * (take n (iterate inc 1)))</code></li>
+<li>Define a function <code>factorial</code> to return the result
+  <code>(defn factorial [n] (apply * (take n (iterate inc 1))))</code></li>
+</ul></article>
+            
+        </slide>
+        
         <slide class="segue dark">
             
             <aside class="gdbar"><img src="images/logo.png"></aside>

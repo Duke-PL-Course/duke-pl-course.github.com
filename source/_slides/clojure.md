@@ -311,6 +311,64 @@ Like Ruby, Clojure supports ranges as functions
 
 ---
 
+title: Infinite Sequences and take
+
+`(repeat element)` creates an infinite sequence of copies of `element`
+
+`(cycle list)` creates an infinites sequence by cycling elements in a list
+
+`(take n infinite-sequence)` takes the first `n` elements of an infinite sequence
+
+`(drop n infinite-sequence)` drops the first `n` elements of an infinite sequence
+
+Use `->>` to apply functions left to right rather than using prefix notation
+
+<script src="https://gist.github.com/5399232.js"></script>
+
+---
+
+title: More Infinite Sequence Operations
+
+`(interpose element seq)` inserts `element` between every pair of elements in `seq`
+
+`(interleave seq1 seq2)` interleaves the elements of the 2 sequences
+
+`(iterate fn init)` creates a sequence by applying `fn` to `init` and the successive return values
+
+<script src="https://gist.github.com/5399298.js"></script>
+
+---
+
+title: Fibonacci using Infinite Sequences
+build_lists: true
+
+* Iterator function to describe each step of Fibonacci  
+  `(defn fib-pair [[a b]]  [b (+ a b)])`
+* Generate an infinite sequence of Fibonacci pairs  
+  `(iterate fib-pair [1 1])`
+* Extract the first element of the sequence of pairs to construct the infinite Fibonacci sequence  
+  `(map first (iterate fib-pair [1 1]))`
+* Using take to compute the first 5 elements of the Fibonacci Sequence  
+  `(take 5 (map first (iterate fib-pair [1 1])))`
+* Using `nth` to compute the 50th Fibonacci number  
+  `(nth (map first (iterate fib-pair [1 1])) 50)`
+
+---
+
+title: Factorial using Infinite Sequences
+build_lists: true
+
+* Generate an infinite sequence  
+  `(iterate inc 1)`
+* Using `take` to get the sequence `1..N`  
+  `(take n (iterate inc 1))`
+* Using `apply` and the operator `*` to compute the product of `1..N`  
+  `(apply * (take n (iterate inc 1)))`
+* Define a function `factorial` to return the result  
+  `(defn factorial [n] (apply * (take n (iterate inc 1))))`
+
+---
+
 title: Abstractions: Datatypes and Protocols
 class: segue dark
 

@@ -240,10 +240,17 @@ Of course, anonymous functions themselves aren't too useful. Let's combine them 
 
 ---
 
-title: Exercise
+title: Implement Fibonacci
 
-* Implement Fibonacci
-* Implement Factorial
+<script src="https://gist.github.com/yangsu/5398809.js"></script>
+<script src="https://gist.github.com/yangsu/5398907.js"></script>
+
+---
+
+title: Implement Factorial
+
+<script src="https://gist.github.com/5399832.js"></script>
+<script src="https://gist.github.com/5399874.js"></script>
 
 ---
 

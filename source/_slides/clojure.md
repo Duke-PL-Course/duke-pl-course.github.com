@@ -388,9 +388,9 @@ class: segue dark
 
 ---
 
-<!-- TODO -->
-
----
-
 title: Macros
 class: segue dark
+
+A Clojure program executes in two stages. Macro expansion translates all macros in the language to their expanded form. You can see what’s happen- ing with a command called `macroexpand`
+
+<script src="https://gist.github.com/5400017.js"></script>

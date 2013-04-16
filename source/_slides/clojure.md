@@ -303,7 +303,11 @@ class: segue dark
 
 ---
 
-<!-- TODO -->
+title: Finite Sequences with range
+
+Like Ruby, Clojure supports ranges as functions
+
+<script src="https://gist.github.com/5399172.js"></script>
 
 ---
 

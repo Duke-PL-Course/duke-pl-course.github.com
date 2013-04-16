@@ -207,9 +207,17 @@ class: segue dark
 
 title: Anonymous Functions
 
+Like the other languages we've covered, Clojure also allows for anonymous functions using the `fn` special form. In fact, when we previously defined functions using the `defn` macro, we were actually just expanding that into a `def` using an `fn`.
+
+<script src="https://gist.github.com/sudowork/5393777.js"></script>
+
 ---
 
 title: Higher-order Functions
+
+Of course, anonymous functions themselves aren't too useful. Let's combine them with some higher order functions.
+
+<script src="https://gist.github.com/sudowork/5393840.js"></script>
 
 ---
 

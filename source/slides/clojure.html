@@ -224,15 +224,27 @@
             
         </slide>
         
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Functions</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
         <slide>
             
             <hgroup>
                 <h2>Functions</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>Don't forget, we're dealing with a functional language. We still haven't learned how to define functions!</p>
-<p>We will use the <code>defn</code> macro to define new functions. We haven't talked about macros yet, but basically, <code>defn</code> will call <code>def</code> and associate a <strong>Var</strong> in the current namespace with an anonymous function. Essentially, creating a new function in the current namespace.</p>
-<script src="https://gist.github.com/sudowork/5293462.js"></script></article>
+            <article><p>Use the <code>defn</code> macro to define new functions <code>defn name doc [params] body</code></p>
+<script src="https://gist.github.com/sudowork/5293462.js"></script>
+
+<p><em>Note</em>: We haven't talked about macros yet, but basically, <code>defn</code> will call <code>def</code> and associate a <strong>Var</strong> in the current namespace with an anonymous function. Essentially, creating a new function in the current namespace.</p>
+<p><em>Note</em>: You can used <code>doc</code> on any function that specifies a documentation line</p></article>
             
         </slide>
         
@@ -256,7 +268,7 @@
             </hgroup>
             <article><p>When a function is called with parameters, the parameters are <strong>bound</strong> to function's scope with a given name.</p>
 <p>In other words <code>(defn id [x] x), (id 42)</code> binds the value <code>42</code> to the alias <code>x</code> in the function's scope. <code>x</code> would be unavailable to be used outside of the function.</p>
-<p>Clojure let's you use bind aliases within arguments. This process is called <strong>destructuring</strong>, and it is part of pattern matching. The difference is that pattern matching is <em>conditional</em>; whereas, destructuring is simply pulling apart a value. Here's an example to clarify:</p>
+<p>Clojure let's you use bind aliases within arguments. This process is called <strong>destructuring</strong>, and it is part of <em>pattern matching</em>. The difference is that pattern matching is <em>conditional</em>; whereas, destructuring is simply pulling apart a value.</p>
 <script src="https://gist.github.com/sudowork/5294320.js"></script></article>
             
         </slide>
@@ -267,7 +279,18 @@
                 <h2>More Destructuring and Local Bindings</h2>
                 <h3></h3>
             </hgroup>
-            <article><script src="https://gist.github.com/sudowork/5294502.js"></script></article>
+            <article><script src="https://gist.github.com/5398407.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Destructuring Using Let Statements</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>let</code> takes 2 arguments: a <strong>vector</strong> with symbol(s) you want to bind followed by the value you want bound, and an <strong>expression</strong> that uses the bound values</p>
+<script src="https://gist.github.com/5398437.js"></script></article>
             
         </slide>
         
@@ -287,8 +310,11 @@
                 <h2>Anonymous Functions</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>Like the other languages we've covered, Clojure also allows for anonymous functions using the <code>fn</code> special form. In fact, when we previously defined functions using the <code>defn</code> macro, we were actually just expanding that into a <code>def</code> using an <code>fn</code>.</p>
-<script src="https://gist.github.com/sudowork/5393777.js"></script></article>
+            <article><p>Clojure also allows for anonymous functions using form <code>(fn [parameters*] body)</code>. In fact, the <code>defn</code> macro just expands into a <code>def</code> using an <code>fn</code>.</p>
+<script src="https://gist.github.com/5398538.js"></script>
+
+<p>Or use <em>reader macro</em> <code>#(expression with %)</code>, which binds <code>%</code> to each item in a sequence of parameters.</p>
+<script src="https://gist.github.com/5398552.js"></script></article>
             
         </slide>
         
@@ -323,7 +349,8 @@
 <p>Fortunately, most functional languages provide either automatic <a href="http://en.wikipedia.org/wiki/Tail_call"><strong>tail call optimization</strong></a> (TCO).</p>
 <p>Unfortunately, Clojure does not support automatic TCO because the JVM does not natively support TCO.</p>
 <p><em>Side note: Scala is able to do automatic TCO because the Scala compiler does the translation into loops</em>.</p>
-<p>To get around this, we can explicitly perform the TCO ourselves using the <code>recur</code> and <code>loop</code> special forms.</p></article>
+<p>To get around this, we can explicitly perform the TCO ourselves using the <code>recur</code> and <code>loop</code> special forms.</p>
+<p>Out of the scope of this class, you can also use the [<code>trampoline</code>][trampoline] technique to optimize mutually recursive functions.</p></article>
             
         </slide>
         
@@ -333,7 +360,31 @@
                 <h2>Recur and loop example</h2>
                 <h3></h3>
             </hgroup>
-            <article><script src="https://gist.github.com/sudowork/5394099.js"></script></article>
+            <article><script src="https://gist.github.com/sudowork/5394099.js"></script>
+
+<p>=======
+title: loop and recur</p>
+<script src="https://gist.github.com/5398809.js"></script>
+
+<p>Clojure does not support implicit tail recursion optimization because of limitations of the JVM, so you must explicitly recur through the use of <code>loop</code> and <code>recur</code></p>
+<p><code>loop [x initial-x, y initial-y] (do-something-with x y))</code></p>
+<script src="https://gist.github.com/5398907.js"></script>
+
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<blockquote>
+<p>Added new slides</p>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote>
+</blockquote></article>
             
         </slide>
         
@@ -341,7 +392,7 @@
             
             <aside class="gdbar"><img src="images/logo.png"></aside>
             <hgroup class="auto-fadein">
-                <h2>Working with Sequences</h2>
+                <h2>Sequences</h2>
                 <h3></h3>
             </hgroup>
             
@@ -366,7 +417,21 @@
             </hgroup>
             <article><p>Similar to Scala, Clojure has for/list comprehensions, that work to combine <code>map</code>, <code>filter</code>, and the concept of permutations.</p>
 <p>Binding in a for comprehension syntactically looks the same as the <code>let</code> or <code>loop</code> special forms.</p>
-<script src="https://gist.github.com/sudowork/5394282.js"></script></article>
+<script src="https://gist.github.com/sudowork/5394282.js"></script>
+
+<script src="https://gist.github.com/5398957.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Changing a Sequence</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>We've seen how higher order functions such as <code>map</code>, <code>filter</code>, etc. can be used with sequences</p>
+<p>Clojure also has list comprehensions like Erlang and Scala, that combines multiple lists and filters.</p>
+<script src="https://gist.github.com/5399009.js"></script></article>
             
         </slide>
         

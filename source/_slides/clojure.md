@@ -161,12 +161,19 @@ For readability, Clojure introduces commas as whitespace in addition to conventi
 ---
 
 title: Functions
+class: segue dark
 
-Don't forget, we're dealing with a functional language. We still haven't learned how to define functions!
+---
 
-We will use the `defn` macro to define new functions. We haven't talked about macros yet, but basically, `defn` will call `def` and associate a **Var** in the current namespace with an anonymous function. Essentially, creating a new function in the current namespace.
+title: Functions
+
+Use the `defn` macro to define new functions `defn name doc [params] body`
 
 <script src="https://gist.github.com/sudowork/5293462.js"></script>
+
+*Note*: We haven't talked about macros yet, but basically, `defn` will call `def` and associate a **Var** in the current namespace with an anonymous function. Essentially, creating a new function in the current namespace.
+
+*Note*: You can used `doc` on any function that specifies a documentation line
 
 ---
 
@@ -188,7 +195,7 @@ When a function is called with parameters, the parameters are **bound** to funct
 
 In other words `(defn id [x] x), (id 42)` binds the value `42` to the alias `x` in the function's scope. `x` would be unavailable to be used outside of the function.
 
-Clojure let's you use bind aliases within arguments. This process is called **destructuring**, and it is part of pattern matching. The difference is that pattern matching is *conditional*; whereas, destructuring is simply pulling apart a value. Here's an example to clarify:
+Clojure let's you use bind aliases within arguments. This process is called **destructuring**, and it is part of *pattern matching*. The difference is that pattern matching is *conditional*; whereas, destructuring is simply pulling apart a value.
 
 <script src="https://gist.github.com/sudowork/5294320.js"></script>
 
@@ -196,7 +203,15 @@ Clojure let's you use bind aliases within arguments. This process is called **de
 
 title: More Destructuring and Local Bindings
 
-<script src="https://gist.github.com/sudowork/5294502.js"></script>
+<script src="https://gist.github.com/5398407.js"></script>
+
+---
+
+title: Destructuring Using Let Statements
+
+`let` takes 2 arguments: a **vector** with symbol(s) you want to bind followed by the value you want bound, and an **expression** that uses the bound values
+
+<script src="https://gist.github.com/5398437.js"></script>
 
 ---
 
@@ -207,9 +222,13 @@ class: segue dark
 
 title: Anonymous Functions
 
-Like the other languages we've covered, Clojure also allows for anonymous functions using the `fn` special form. In fact, when we previously defined functions using the `defn` macro, we were actually just expanding that into a `def` using an `fn`.
+Clojure also allows for anonymous functions using form `(fn [parameters*] body)`. In fact, the `defn` macro just expands into a `def` using an `fn`.
 
-<script src="https://gist.github.com/sudowork/5393777.js"></script>
+<script src="https://gist.github.com/5398538.js"></script>
+
+Or use *reader macro* `#(expression with %)`, which binds `%` to each item in a sequence of parameters.
+
+<script src="https://gist.github.com/5398552.js"></script>
 
 ---
 
@@ -226,6 +245,7 @@ class: segue dark
 
 ---
 
+<<<<<<< HEAD
 title: Tail Call Optimization in Clojure
 
 Typically, functional languages use **recursion** in place of loops. This leads to the dreaded **stack overflow** problem as we recurse deeper.
@@ -248,10 +268,21 @@ Out of the scope of this class, you can also use the [`trampoline`][trampoline] 
 title: Recur and loop example
 
 <script src="https://gist.github.com/sudowork/5394099.js"></script>
+=======
+title: loop and recur
+
+<script src="https://gist.github.com/5398809.js"></script>
+
+Clojure does not support implicit tail recursion optimization because of limitations of the JVM, so you must explicitly recur through the use of `loop` and `recur`
+
+`loop [x initial-x, y initial-y] (do-something-with x y))`
+
+<script src="https://gist.github.com/5398907.js"></script>
+>>>>>>> Added new slides
 
 ---
 
-title: Working with Sequences
+title: Sequences
 class: segue dark
 
 ---
@@ -273,6 +304,17 @@ Similar to Scala, Clojure has for/list comprehensions, that work to combine `map
 Binding in a for comprehension syntactically looks the same as the `let` or `loop` special forms.
 
 <script src="https://gist.github.com/sudowork/5394282.js"></script>
+<script src="https://gist.github.com/5398957.js"></script>
+
+---
+
+title: Changing a Sequence
+
+We've seen how higher order functions such as `map`, `filter`, etc. can be used with sequences
+
+Clojure also has list comprehensions like Erlang and Scala, that combines multiple lists and filters.
+
+<script src="https://gist.github.com/5399009.js"></script>
 
 ---
 
@@ -280,14 +322,18 @@ title: Lazy Evaluation and Infinite Sequences
 class: segue dark
 
 ---
+
 <!-- TODO -->
+
 ---
 
 title: Abstractions: Datatypes and Protocols
 class: segue dark
 
 ---
+
 <!-- TODO -->
+
 ---
 
 title: Macros

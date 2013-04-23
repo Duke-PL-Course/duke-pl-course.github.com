@@ -104,17 +104,9 @@
                 <h2>Boolean</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>Same as other languages, except for not equals, <code>/=</code></p></article>
-            
-        </slide>
-        
-        <slide>
-            
-            <hgroup>
-                <h2>Indentation</h2>
-                <h3></h3>
-            </hgroup>
-            <article></article>
+            <article><p>Same as other languages, except for not equals, <code>/=</code></p>
+<p>Boolean logic operations can be applied using infix operators or function calls</p>
+<script src="https://gist.github.com/5446318.js"></script></article>
             
         </slide>
         
@@ -293,14 +285,13 @@
             
         </slide>
         
-        <slide>
+        <slide class="segue dark">
             
-            <hgroup>
-                <h2></h2>
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Higher Order Functions</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>title: Higher Order Functions
-class: segue dark</p></article>
             
         </slide>
         
@@ -313,7 +304,7 @@ class: segue dark</p></article>
             <article><p>Anonymous functions are in the form of <code>(\param1 .. paramn -&gt; function_body)</code></p>
 <script src="https://gist.github.com/5444333.js"></script>
 
-<p><em>Note</em>: <code>(+ 1)</code> is a partially applied function, and is equal to <code>(\x -&gt; x + 1)</code>
+<p><em>Note</em>: <code>(+ 1)</code> is a partially applied function, and is equal to <code>(\x -&gt; x + 1)</code><br />
 <em>Note</em>: <code>+</code> is equal to <code>(\x y -&gt; x + y)</code></p></article>
             
         </slide>
@@ -328,10 +319,10 @@ class: segue dark</p></article>
 <script src="https://gist.github.com/5444381.js"></script>
 
 <p>When Haskell computes <code>prod 2 4</code>, it is really computing <code>(prod 2) 4</code></p>
-<ol>
-<li>apply <code>prod 2</code>. That returns the function <code>(\y -&gt; 2 * y)</code></li>
-<li>apply <code>(\y-&gt;2*y) 4</code>, or <code>2*4</code>, giving you <code>8</code></li>
-</ol></article>
+<ul>
+<li>First, apply <code>prod 2</code>. That returns the function <code>(\y -&gt; 2 * y)</code></li>
+<li>Second, apply <code>(\y -&gt; 2 * y) 4</code>, or <code>2 * 4</code>, giving you <code>8</code></li>
+</ul></article>
             
         </slide>
         
@@ -357,13 +348,13 @@ class: segue dark</p></article>
             
         </slide>
         
-        <slide>
+        <slide class="segue dark">
             
-            <hgroup>
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
                 <h2>Classes and Types</h2>
                 <h3></h3>
             </hgroup>
-            <article></article>
             
         </slide>
         
@@ -373,7 +364,8 @@ class: segue dark</p></article>
                 <h2>User-Defined Types</h2>
                 <h3></h3>
             </hgroup>
-            <article></article>
+            <article><p>Use <code>data</code> to define custom types, and <code>type</code> to create aliases of existing types</p>
+<script src="https://gist.github.com/5446467.js"></script></article>
             
         </slide>
         
@@ -383,7 +375,7 @@ class: segue dark</p></article>
                 <h2>Functions and Polymorphism</h2>
                 <h3></h3>
             </hgroup>
-            <article></article>
+            <article><p>???</p></article>
             
         </slide>
         
@@ -393,7 +385,9 @@ class: segue dark</p></article>
                 <h2>Recursive Types</h2>
                 <h3></h3>
             </hgroup>
-            <article></article>
+            <article><script src="https://gist.github.com/5446540.js"></script>
+
+<script src="https://gist.github.com/5446543.js"></script></article>
             
         </slide>
         
@@ -403,7 +397,7 @@ class: segue dark</p></article>
                 <h2>Classes</h2>
                 <h3></h3>
             </hgroup>
-            <article></article>
+            <article><p><img src="haskell-types.png" alt=""></p></article>
             
         </slide>
         
@@ -413,17 +407,75 @@ class: segue dark</p></article>
                 <h2>Monad</h2>
                 <h3></h3>
             </hgroup>
-            <article></article>
+            <article><p>A <em>Monad</em> lets us compose functions in ways that have specific properties</p>
+<p>A Monad has 3 components</p>
+<ul>
+<li>
+<p>A type constructor that’s based on some type of container. The container could be a simple variable, a list, or anything that can hold a value</p>
+</li>
+<li>
+<p>A <code>return</code> function that wraps up a function and puts it in the container</p>
+</li>
+<li>
+<p>A bind function called <code>&gt;&gt;=</code> that unwraps a function. We’ll use bind to chain functions together.</p>
+</li>
+</ul></article>
             
         </slide>
         
         <slide>
             
             <hgroup>
-                <h2>Different Computational Strategies</h2>
+                <h2>Monad Rules</h2>
                 <h3></h3>
             </hgroup>
-            <article></article>
+            <article><p>All monads will need to satisfy 3 rules. For some monad <code>m</code>, some function <code>f</code>, and some value <code>x</code>:</p>
+<ul>
+<li>You should be able to use a type constructor to create a monad that will work with some type that can hold a value.</li>
+<li>You should be able to unwrap and wrap values without loss of information.
+    <code>(monad &gt;&gt;= return) == monad</code></li>
+<li>Nesting bind functions should be the same as calling them sequentially.
+    <code>((m &gt;&gt;= f) &gt;&gt;= g) == (m &gt;&gt;= (\x -&gt; f x &gt;&gt;= g))</code></li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Building a Monad from Scratch</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><em>Note</em>: We’re using <code>&gt;&gt;==</code> and <code>rtn</code> instead of <code>&gt;&gt;=</code> and <code>return</code> to prevent collisions with Haskell’s built-in monad functions.</p>
+<script src="https://gist.github.com/5446765.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Monads and do Notation</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>do</code> notation creates syntactical sugar around monads</p>
+<script src="https://gist.github.com/5446829.js"></script>
+
+<ul>
+<li>use <code>&lt;-</code> for assignment</li>
+<li>Separate lines with <code>;</code></li>
+<li><code>let {expressions}</code></li>
+<li>Wrap your code in <code>:{</code> and <code>}:</code> with each on a separate line</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2></h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>list Monad</p></article>
             
         </slide>
         
@@ -433,7 +485,54 @@ class: segue dark</p></article>
                 <h2>Maybe Monad</h2>
                 <h3></h3>
             </hgroup>
-            <article><hr /></article>
+            <article><p>In order to deal with potential failures, </p></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Wrapping</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Strengths</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
+<li><strong>Type System</strong>
+    Unobtrusive. Extremely flexible and robust with regard to working with custom types.</li>
+<li><strong>Expressiveness</strong>
+    Powerful syntax to express ideas very concisely</li>
+<li><strong>Purity of Programming Model</strong>
+    Purely functional nature means programs are more predictable and easier to reason about, particularly with complex concurrent applications</li>
+<li><strong>Lazy Semantics</strong>
+    Easier to build more concise programs that have better performance than mere recursion </li>
+<li><strong>Academic Support</strong>
+    Strong research interest</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Weaknesses</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
+<li><strong>Inflexibility of Programming Model</strong>
+    Haskell makes some hard things easy, it also makes some easy things hard, such as sequential operations and io</li>
+<li><strong>Relatively Small Community</strong></li>
+<li><strong>Learning Curve</strong>
+    Monads and other parts of the language more intellectually demanding than many other languages</li>
+</ul></article>
             
         </slide>
         

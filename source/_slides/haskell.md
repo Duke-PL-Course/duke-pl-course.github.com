@@ -269,6 +269,20 @@ All monads will need to satisfy 3 rules. For some monad `m`, some function `f`, 
 
 ---
 
+title: Treasure Map
+
+Supposed you want to define a function called `treasure_map` that performs a series of steps.
+
+<script src="https://gist.github.com/5447811.js"></script>
+
+---
+
+title: Building a Monad from Scratch
+
+<script src="https://gist.github.com/5447819.js"></script>
+
+---
+
 title: Building a Monad from Scratch
 
 *Note*: We’re using `>>==` and `rtn` instead of `>>=` and `return` to prevent collisions with Haskell’s built-in monad functions.

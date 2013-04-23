@@ -12,3 +12,4 @@ footer: false
 * [Scala](/slides/scala.html)
 * [Erlang](/slides/erlang.html)
 * [Clojure](/slides/clojure.html)
+* [Haskell](/slides/haskell.html)

@@ -302,6 +302,13 @@ title: Monads and do Notation
 * `let {expressions}`
 * Wrap your code in `:{` and `}:` with each on a separate line
 
+
+---
+
+title: Do Notation Example
+
+<script src="https://gist.github.com/5447857.js"></script>
+
 ---
 
 title: Maybe Monad

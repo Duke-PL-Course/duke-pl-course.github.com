@@ -9,8 +9,8 @@ Haskell is ...
 
 * A **purely** functional language with special emphasis on [lazy processing][]
 * [strongly][] and [statically][] typed
-* Allows Erlang-style pattern matching and guards, Clojure-style lazy evaluation, and list comprehensions from both Clojure and Erlang.
 * Uses [monads][] to preserve state
+* Supports a wide variety of functional capabilities including list comprehensions, lazy computing strategies, partially applied functions, and currying.
 
 
 [lazy processing]: http://en.wikipedia.org/wiki/Lazy_evaluation
@@ -22,7 +22,7 @@ Haskell is ...
 
 title: Getting Started
 
-Run `ghci` to open Glasgow Haskell Compiler console.
+Run `ghci` to open the interactive console
 
 use `:load file` to load source file
 
@@ -76,31 +76,15 @@ class: segue dark
 
 ---
 
-title: Defining Functions in Console
+title: Defining Functions
 
 A function declaration consists of 2 parts: an optional type specification and the implementation.
-
-In the console, we will use `let` expressions to bind functions to the local scope.
-
-<script src="https://gist.github.com/5441258.js"></script>
-
----
-
-title: Defining Functions in Files
-
-Notice that we added a module called Main. In Haskell, modules collect related code into a similar scope. The Main module is special. It is the top-level module.
 
 <script src="https://gist.github.com/5441276.js"></script>
 
 <script src="https://gist.github.com/5441308.js"></script>
 
----
-
-title: Recursion
-
-Going back to our beloved factorial function
-
-<script src="https://gist.github.com/5441320.js"></script>
+In the console, we will use `let` expressions to bind functions to the local scope.
 
 ---
 
@@ -123,17 +107,11 @@ class: segue dark
 
 ---
 
-title: Simple Fibonacci
+title: Tuples
 
-<script src="https://gist.github.com/5441352.js"></script>
+Tuples are in the form of `(item1, item2, etc...)` where items can be of different type
 
----
-
-title: Fibonacci with Tuples
-
-Tuples are in the form of `(item1, item2, etc...)` 
-
-<script src="https://gist.github.com/5443813.js"></script>
+<script src="https://gist.github.com/5447078.js"></script>
 
 ---
 
@@ -141,8 +119,8 @@ title: Fibonacci with Pairs
 
 <script src="https://gist.github.com/5443836.js"></script>
 
-*Note*: `fst` takes the first element of a tuple
-*Note*: `.` means function composition, or `f(g(x))`
+*Note*: `fst` takes the first element of a tuple  
+*Note*: `.` means function composition, or `f(g(x))`  
 *Note*: `fib = fst . fibNthPair` is equivalent to `fib n = fst (fibNthPair n)`
 
 ---
@@ -156,7 +134,13 @@ Now use this to implement 2 functions:
 * `prod list`, computes the product of all elements in a list
 * `count list`, count the number of elements in a list
 
-<script src="https://gist.github.com/5443987.js"></script>
+<div id="hiddenfuncs" style="display: none;">
+  <h4>Solution</h4>
+  <br>
+  <script src="https://gist.github.com/5443987.js"></script>
+</div>
+
+<script>$('body').keyup(function(e) { if (e.which == 83 /* 's' */ && slidedeck.curSlide_ == 15) {$('#hiddenfuncs').show('slow');} });</script>
 
 ---
 
@@ -166,7 +150,13 @@ title: List Construction
 
 Write a function called `allEven list`
 
-<script src="https://gist.github.com/5443983.js"></script>
+<div id="hiddenalleven" style="display: none;">
+  <h4>Solution</h4>
+  <br>
+  <script src="https://gist.github.com/5443983.js"></script>
+</div>
+
+<script>$('body').keyup(function(e) { if (e.which == 83 /* 's' */ && slidedeck.curSlide_ == 16) {$('#hiddenalleven').show('slow');} });</script>
 
 ---
 
@@ -227,7 +217,7 @@ title: Conal Elliot - Functional Reactive Animation
 
 ---
 
-title: Classes and Types
+title: Types
 class: segue dark
 
 ---
@@ -240,13 +230,6 @@ Use `data` to define custom types, and `type` to create aliases of existing type
 
 ---
 
-title: Functions and Polymorphism
-
-???
-
-
----
-
 title: Recursive Types
 
 <script src="https://gist.github.com/5446540.js"></script>
@@ -255,9 +238,8 @@ title: Recursive Types
 
 ---
 
-title: Classes
-
-<img src="haskell-types.png" alt="">
+title: Monads
+class: segue dark
 
 ---
 
@@ -308,12 +290,13 @@ title: Monads and do Notation
 
 ---
 
-list Monad
----
-
 title: Maybe Monad
 
-In order to deal with potential failures, 
+Haskell uses Maybe Monads to deal with potential failures
+
+<script src="https://gist.github.com/5447170.js"></script>
+
+<script src="https://gist.github.com/5447174.js"></script>
 
 ---
 

@@ -47,8 +47,8 @@
 <ul class="build">
 <li>A <strong>purely</strong> functional language with special emphasis on <a href="http://en.wikipedia.org/wiki/Lazy_evaluation">lazy processing</a></li>
 <li><a href="http://en.wikipedia.org/wiki/Strong_typing">strongly</a> and <a href="http://en.wikipedia.org/wiki/Static_typing#Static_typing">statically</a> typed</li>
-<li>Allows Erlang-style pattern matching and guards, Clojure-style lazy evaluation, and list comprehensions from both Clojure and Erlang.</li>
 <li>Uses <a href="http://en.wikipedia.org/wiki/Monad_(functional_programming)">monads</a> to preserve state</li>
+<li>Supports a wide variety of functional capabilities including list comprehensions, lazy computing strategies, partially applied functions, and currying.</li>
 </ul></article>
             
         </slide>
@@ -59,7 +59,7 @@
                 <h2>Getting Started</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>Run <code>ghci</code> to open Glasgow Haskell Compiler console.</p>
+            <article><p>Run <code>ghci</code> to open the interactive console</p>
 <p>use <code>:load file</code> to load source file</p>
 <p>use <code>:reload</code> to reload source files</p></article>
             
@@ -134,36 +134,15 @@
         <slide>
             
             <hgroup>
-                <h2>Defining Functions in Console</h2>
+                <h2>Defining Functions</h2>
                 <h3></h3>
             </hgroup>
             <article><p>A function declaration consists of 2 parts: an optional type specification and the implementation.</p>
-<p>In the console, we will use <code>let</code> expressions to bind functions to the local scope.</p>
-<script src="https://gist.github.com/5441258.js"></script></article>
-            
-        </slide>
-        
-        <slide>
-            
-            <hgroup>
-                <h2>Defining Functions in Files</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>Notice that we added a module called Main. In Haskell, modules collect related code into a similar scope. The Main module is special. It is the top-level module.</p>
 <script src="https://gist.github.com/5441276.js"></script>
 
-<script src="https://gist.github.com/5441308.js"></script></article>
-            
-        </slide>
-        
-        <slide>
-            
-            <hgroup>
-                <h2>Recursion</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>Going back to our beloved factorial function</p>
-<script src="https://gist.github.com/5441320.js"></script></article>
+<script src="https://gist.github.com/5441308.js"></script>
+
+<p>In the console, we will use <code>let</code> expressions to bind functions to the local scope.</p></article>
             
         </slide>
         
@@ -202,21 +181,11 @@
         <slide>
             
             <hgroup>
-                <h2>Simple Fibonacci</h2>
+                <h2>Tuples</h2>
                 <h3></h3>
             </hgroup>
-            <article><script src="https://gist.github.com/5441352.js"></script></article>
-            
-        </slide>
-        
-        <slide>
-            
-            <hgroup>
-                <h2>Fibonacci with Tuples</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>Tuples are in the form of <code>(item1, item2, etc...)</code> </p>
-<script src="https://gist.github.com/5443813.js"></script></article>
+            <article><p>Tuples are in the form of <code>(item1, item2, etc...)</code> where items can be of different type</p>
+<script src="https://gist.github.com/5447078.js"></script></article>
             
         </slide>
         
@@ -228,8 +197,8 @@
             </hgroup>
             <article><script src="https://gist.github.com/5443836.js"></script>
 
-<p><em>Note</em>: <code>fst</code> takes the first element of a tuple
-<em>Note</em>: <code>.</code> means function composition, or <code>f(g(x))</code>
+<p><em>Note</em>: <code>fst</code> takes the first element of a tuple<br />
+<em>Note</em>: <code>.</code> means function composition, or <code>f(g(x))</code><br />
 <em>Note</em>: <code>fib = fst . fibNthPair</code> is equivalent to <code>fib n = fst (fibNthPair n)</code></p></article>
             
         </slide>
@@ -247,7 +216,13 @@
 <li><code>prod list</code>, computes the product of all elements in a list</li>
 <li><code>count list</code>, count the number of elements in a list</li>
 </ul>
-<script src="https://gist.github.com/5443987.js"></script></article>
+<div id="hiddenfuncs" style="display: none;">
+  <h4>Solution</h4>
+  <br>
+  <script src="https://gist.github.com/5443987.js"></script>
+</div>
+
+<script>$('body').keyup(function(e) { if (e.which == 83 /* 's' */ && slidedeck.curSlide_ == 15) {$('#hiddenfuncs').show('slow');} });</script></article>
             
         </slide>
         
@@ -260,7 +235,13 @@
             <article><script src="https://gist.github.com/5443956.js"></script>
 
 <p>Write a function called <code>allEven list</code></p>
-<script src="https://gist.github.com/5443983.js"></script></article>
+<div id="hiddenalleven" style="display: none;">
+  <h4>Solution</h4>
+  <br>
+  <script src="https://gist.github.com/5443983.js"></script>
+</div>
+
+<script>$('body').keyup(function(e) { if (e.which == 83 /* 's' */ && slidedeck.curSlide_ == 16) {$('#hiddenalleven').show('slow');} });</script></article>
             
         </slide>
         
@@ -352,7 +333,7 @@
             
             <aside class="gdbar"><img src="images/logo.png"></aside>
             <hgroup class="auto-fadein">
-                <h2>Classes and Types</h2>
+                <h2>Types</h2>
                 <h3></h3>
             </hgroup>
             
@@ -372,16 +353,6 @@
         <slide>
             
             <hgroup>
-                <h2>Functions and Polymorphism</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>???</p></article>
-            
-        </slide>
-        
-        <slide>
-            
-            <hgroup>
                 <h2>Recursive Types</h2>
                 <h3></h3>
             </hgroup>
@@ -391,13 +362,13 @@
             
         </slide>
         
-        <slide>
+        <slide class="segue dark">
             
-            <hgroup>
-                <h2>Classes</h2>
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Monads</h2>
                 <h3></h3>
             </hgroup>
-            <article><p><img src="haskell-types.png" alt=""></p></article>
             
         </slide>
         
@@ -472,20 +443,13 @@
         <slide>
             
             <hgroup>
-                <h2></h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>list Monad</p></article>
-            
-        </slide>
-        
-        <slide>
-            
-            <hgroup>
                 <h2>Maybe Monad</h2>
                 <h3></h3>
             </hgroup>
-            <article><p>In order to deal with potential failures, </p></article>
+            <article><p>Haskell uses Maybe Monads to deal with potential failures</p>
+<script src="https://gist.github.com/5447170.js"></script>
+
+<script src="https://gist.github.com/5447174.js"></script></article>
             
         </slide>
         

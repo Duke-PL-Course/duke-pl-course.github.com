@@ -1,0 +1,19 @@
+---
+layout: post
+title: "Erlang, Clojure, and Haskell Slides"
+date: 2013-04-25 20:21
+comments: true
+categories: 
+---
+
+Congratulations! We have finished the last of the seven languages, Haskell.
+
+The slides for [Erlang][], [Clojure][], and [Haskell][] can be found on the [course website][slides].
+
+Please direct any questions to the issues pages of respective language repository on [Github][].
+
+[Erlang]: /slides/erlang.html
+[Clojure]: /slides/clojure.html
+[Haskell]: /slides/haskell.html
+[slides]: /slides/
+[Github]: https://github.com/duke-pl-course/

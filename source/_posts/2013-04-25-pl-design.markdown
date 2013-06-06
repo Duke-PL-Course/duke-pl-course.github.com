@@ -1,0 +1,34 @@
+---
+layout: post
+title: "Final Assignment: Program Language Design"
+date: 2013-04-25 20:29
+comments: true
+categories: 
+---
+
+**Due Thursday, May 2, 2013**
+
+## Overview
+
+For your final assignment, you will be tasked with designing your very own programming language!
+
+Please fork this repository and modify the [`assignment.md`](/assignment.md) document. We have provided a skeleton for your design document. Each section outlines some of the key points that you should discuss. Under each section are a series of bullet points that provide some considerations you may or may not want to talk about. You shouldn't incorporate all of them - they are just suggestions to get the ball rolling.
+
+When discussing the decisions you have made in designing your language, please justify each and weigh the pros and cons. Simply stating that your programming language is an "interpreted, imperative, hybrid functional/object-oriented, dynamically-typed, generic, garbage-collected language" isn't enough.
+
+## Things to Remember
+
+In particular, you should design your language with specific goals and use cases in mind. Whether you're designing a [domain-specific language][dsl] or general purpose language, you are still going to need to optimize and make decisions with a purpose in mind.
+
+We're focusing on the [semantics][] of your language, not the [syntax][]. Syntax will show through in your code examples; however, you may want to consider how the [grammar][] of your language is going to be structured.
+
+Make sure that your language actually comes together as a whole. Don't mash together contradictory features just for the sake of doing so.
+
+Remember, there's a trade-off to everything.
+
+Sometimes less is more.
+
+[dsl]: http://en.wikipedia.org/wiki/Domain-specific_language
+[semantics]: http://en.wikipedia.org/wiki/Semantics#Computer_science
+[syntax]: http://en.wikipedia.org/wiki/Syntax_(logic)
+[grammar]: http://en.wikipedia.org/wiki/Chomsky_hierarchy

@@ -4,7 +4,7 @@
   <title><![CDATA[Category: text | Duke PL Course]]></title>
   <link href="http://Duke-PL-Course.github.com/blog/categories/text/atom.xml" rel="self"/>
   <link href="http://Duke-PL-Course.github.com/"/>
-  <updated>2013-08-27T15:48:02-04:00</updated>
+  <updated>2013-08-27T15:53:26-04:00</updated>
   <id>http://Duke-PL-Course.github.com/</id>
   <author>
     <name><![CDATA[Yang Su, Kevin Gao]]></name>
@@ -18,13 +18,13 @@
     <link href="http://Duke-PL-Course.github.com/blog/2013/01/15/setting-up-sublime-text-2/"/>
     <updated>2013-01-15T02:44:00-05:00</updated>
     <id>http://Duke-PL-Course.github.com/blog/2013/01/15/setting-up-sublime-text-2</id>
-    <content type="html"><![CDATA[<h2 id="toc_801797">Intro</h2>
+    <content type="html"><![CDATA[<h2 id="toc_818404">Intro</h2>
 
 <p><img src="/images/st2.jpg" alt="Sublime Text 2 Logo"></p>
 
 <p>Sublime Text 2 is an incredibly fast and powerful editor that&#39;s been replacing <a href="http://en.wikipedia.org/wiki/Vim_(text_editor">vim</a>), <a href="http://en.wikipedia.org/wiki/Emacs">emacs</a>, and <a href="http://macromates.com/">textmate</a> for many. The community and ecosystem is passionate and vibrant, with developers writing packages for nearly everything. It&#39;s also freely available for all three major platforms, which makes it ideal for this class. You can download Sublime Text 2 from its <a href="http://www.sublimetext.com/">website</a>.</p>
 
-<h2 id="toc_801798">Package Control</h2>
+<h2 id="toc_818405">Package Control</h2>
 
 <p>Sublime Text 2 supports Textmate Snippets, Syntax Highlighting, and other packages that made Textmate successful. However, Sublime Text 2 did not include a package manager out of the box. Developer <a href="http://wbond.net/">@wbond</a> has created <a href="http://wbond.net/sublime_packages/package_control">a full-featured package manager</a> that helps discovering, installing, updating and removing packages for Sublime Text 2.</p>
 
@@ -50,11 +50,11 @@ Please restart Sublime Text to finish installation<br>
 
 <p>A detailed description of each command can be found <a href="http://wbond.net/sublime_packages/package_control/usage">here</a>.</p>
 
-<h2 id="toc_801799">Packages</h2>
+<h2 id="toc_818406">Packages</h2>
 
 <p>Sublime Text natively supports JavaScript, Ruby, Scala, Erlang, Clojure, and Haskell.</p>
 
-<h3 id="toc_801800">Prolog</h3>
+<h3 id="toc_818407">Prolog</h3>
 
 <p>For Prolog, a syntax highlighting package has been created by <a href="https://github.com/alnkpa/sublimeprolog">@alnkpa</a>. It can be installed by using <em>Install Package</em> from the <em>Command Palette</em>, which will bring up a separate window that lists all the available packages after a few seconds. Type in <em>Prolog</em> in the search and you should be able to see the package after a few key strokes. Select the <em>Prolog</em> package and press enter to install. Then that&#39;s it. </p>
 
@@ -64,13 +64,13 @@ Please restart Sublime Text to finish installation<br>
 
 <p>As a side note, you can set the syntax of any source file at any time by using <em>Command Palette</em> &gt; <em>Set Syntax: (Language)</em> to set the syntax of the current file to the language of your choice.</p>
 
-<h3 id="toc_801801">Io</h3>
+<h3 id="toc_818408">Io</h3>
 
 <p>A package for Io has actually been created by one of the instructors <a href="https://github.com/yangsu/sublime-io">@yangsu</a>. Used <em>Install Package</em> to install a package called <em>Io Langugae</em>.</p>
 
 <p>After the installation completes, Sublime Text will recognize any file with <code>io</code> extension as <code>io</code> source files. As noted above, you can also set the syntax of any source file to io with <em>Command Palette</em> &gt; <em>Set Syntax: (Language)</em>.</p>
 
-<h3 id="toc_801802">Additional Resources</h3>
+<h3 id="toc_818409">Additional Resources</h3>
 
 <p><a href="https://tutsplus.com/">Tuts+</a> is an amazing collection of resources for almost everything related to technical or design knowledge. It&#39;s highly recommended for anyone trying to learn anything from Photoshop to <a href="http://nodejs.org/">Node.js</a>. <a href="https://tutsplus.com/">Tuts+</a> also has a whole network of sites with focuses in particular areas. Scroll to the bottom of the <a href="https://tutsplus.com/">Tuts+ page</a>, and you will be able to see all the available options.</p>
 

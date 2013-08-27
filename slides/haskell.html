@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Duke PL Course</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!--This one seems to work all the time, but really small on ipad-->
+    <!--<meta name="viewport" content="initial-scale=0.4">-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" media="all" href="/stylesheets/slidedefault.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/stylesheets/slidephone.css">
+    <base target="_blank"><!-- This amazingness opens all links in a new tab. -->
+    <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+    <slides class="layout-widescreen">
+
+        <!-- <slide class="logoslide nobackground">
+            <article class="flexbox vcenter">
+                <span><img src="images/google_developers_logo.png"></span>
+            </article>
+        </slide> -->
+        <slide class="title-slide segue nobackground">
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+            <hgroup class="auto-fadein">
+                
+                <h1 data-config-title><!-- populated from slide_config.json --></h1>
+                
+                
+                <h2>Haskell</h2>
+                
+                <p data-config-presenter><!-- populated from slide_config.json --></p>
+            </hgroup>
+        </slide>
+
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Haskell Overview</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Haskell is ...</p>
+<ul class="build">
+<li>A <strong>purely</strong> functional language with special emphasis on <a href="http://en.wikipedia.org/wiki/Lazy_evaluation">lazy processing</a></li>
+<li><a href="http://en.wikipedia.org/wiki/Strong_typing">strongly</a> and <a href="http://en.wikipedia.org/wiki/Static_typing#Static_typing">statically</a> typed</li>
+<li>Uses <a href="http://en.wikipedia.org/wiki/Monad_(functional_programming)">monads</a> to preserve state</li>
+<li>Supports a wide variety of functional capabilities including list comprehensions, lazy computing strategies, partially applied functions, and currying.</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Getting Started</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Run <code>ghci</code> to open the interactive console</p>
+<p>use <code>:load file</code> to load source file</p>
+<p>use <code>:reload</code> to reload source files</p></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Expressions and Primitive Types</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Numbers</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5441163.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Characters and Strings</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>"this is a string"</code> and <code>'c'</code>is a character.</p>
+<p>A string is just a list of characters.</p>
+<p>Use <code>++</code> for string concatenation</p>
+<script src="https://gist.github.com/5441172.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Boolean</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Same as other languages, except for not equals, <code>/=</code></p>
+<p>Boolean logic operations can be applied using infix operators or function calls</p>
+<script src="https://gist.github.com/5446318.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Type Inference</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Use <code>:set +t</code> to turn on type annotations in the console, or use <code>:t exp</code> to see the type of an expression</p>
+<script src="https://gist.github.com/5441217.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Functions</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Defining Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>A function declaration consists of 2 parts: an optional type specification and the implementation.</p>
+<script src="https://gist.github.com/5441276.js"></script>
+
+<script src="https://gist.github.com/5441308.js"></script>
+
+<p>In the console, we will use <code>let</code> expressions to bind functions to the local scope.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Recursion with Pattern Matching</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5441323.js"></script>
+
+<p><em>Note</em>: the order of the patterns is important. Haskell will take matches in order.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Recursion with Guards</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5441339.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Tuples and Lists</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Tuples</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Tuples are in the form of <code>(item1, item2, etc...)</code> where items can be of different type</p>
+<script src="https://gist.github.com/5447078.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Fibonacci with Pairs</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5443836.js"></script>
+
+<p><em>Note</em>: <code>fst</code> takes the first element of a tuple<br />
+<em>Note</em>: <code>.</code> means function composition, or <code>f(g(x))</code><br />
+<em>Note</em>: <code>fib = fst . fibNthPair</code> is equivalent to <code>fib n = fst (fibNthPair n)</code></p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>List Deconstruction</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5443908.js"></script>
+
+<p>Now use this to implement 2 functions:</p>
+<ul>
+<li><code>prod list</code>, computes the product of all elements in a list</li>
+<li><code>count list</code>, count the number of elements in a list</li>
+</ul>
+<div id="hiddenfuncs" style="display: none;">
+  <h4>Solution</h4>
+  <br>
+  <script src="https://gist.github.com/5443987.js"></script>
+</div>
+
+<script>$('body').keyup(function(e) { if (e.which == 83 /* 's' */ && slidedeck.curSlide_ == 15) {$('#hiddenfuncs').show('slow');} });</script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>List Construction</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5443956.js"></script>
+
+<p>Write a function called <code>allEven list</code></p>
+<div id="hiddenalleven" style="display: none;">
+  <h4>Solution</h4>
+  <br>
+  <script src="https://gist.github.com/5443983.js"></script>
+</div>
+
+<script>$('body').keyup(function(e) { if (e.which == 83 /* 's' */ && slidedeck.curSlide_ == 16) {$('#hiddenalleven').show('slow');} });</script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Ranges</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5443999.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>For Comprehensions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Very similar to Erlang's For Comprehensions</p>
+<script src="https://gist.github.com/5444013.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Higher Order Functions</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Anonymous Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Anonymous functions are in the form of <code>(\param1 .. paramn -&gt; function_body)</code></p>
+<script src="https://gist.github.com/5444333.js"></script>
+
+<p><em>Note</em>: <code>(+ 1)</code> is a partially applied function, and is equal to <code>(\x -&gt; x + 1)</code><br />
+<em>Note</em>: <code>+</code> is equal to <code>(\x y -&gt; x + y)</code></p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Partially Applied Functions and Currying</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Every function in Haskell has one parameter, or is automatically <a href="http://en.wikipedia.org/wiki/Currying">curried</a></p>
+<script src="https://gist.github.com/5444381.js"></script>
+
+<p>When Haskell computes <code>prod 2 4</code>, it is really computing <code>(prod 2) 4</code></p>
+<ul>
+<li>First, apply <code>prod 2</code>. That returns the function <code>(\y -&gt; 2 * y)</code></li>
+<li>Second, apply <code>(\y -&gt; 2 * y) 4</code>, or <code>2 * 4</code>, giving you <code>8</code></li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Lazy Evaluation</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5444427.js"></script>
+
+<script src="https://gist.github.com/5444431.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Conal Elliot - Functional Reactive Animation</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="http://conal.net/fran/tutorial.htm">Link</a></p></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Types</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>User-Defined Types</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Use <code>data</code> to define custom types, and <code>type</code> to create aliases of existing types</p>
+<script src="https://gist.github.com/5446467.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Recursive Types</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5446540.js"></script>
+
+<script src="https://gist.github.com/5446543.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Monads</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Monad</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>A <em>Monad</em> lets us compose functions in ways that have specific properties</p>
+<p>A Monad has 3 components</p>
+<ul>
+<li>
+<p>A type constructor that’s based on some type of container. The container could be a simple variable, a list, or anything that can hold a value</p>
+</li>
+<li>
+<p>A <code>return</code> function that wraps up a function and puts it in the container</p>
+</li>
+<li>
+<p>A bind function called <code>&gt;&gt;=</code> that unwraps a function. We’ll use bind to chain functions together.</p>
+</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Monad Rules</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>All monads will need to satisfy 3 rules. For some monad <code>m</code>, some function <code>f</code>, and some value <code>x</code>:</p>
+<ul>
+<li>You should be able to use a type constructor to create a monad that will work with some type that can hold a value.</li>
+<li>You should be able to unwrap and wrap values without loss of information.
+    <code>(monad &gt;&gt;= return) == monad</code></li>
+<li>Nesting bind functions should be the same as calling them sequentially.
+    <code>((m &gt;&gt;= f) &gt;&gt;= g) == (m &gt;&gt;= (\x -&gt; f x &gt;&gt;= g))</code></li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Treasure Map</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Supposed you want to define a function called <code>treasure_map</code> that performs a series of steps.</p>
+<script src="https://gist.github.com/5447811.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Building a Monad from Scratch</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5447819.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Building a Monad from Scratch</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><em>Note</em>: We’re using <code>&gt;&gt;==</code> and <code>rtn</code> instead of <code>&gt;&gt;=</code> and <code>return</code> to prevent collisions with Haskell’s built-in monad functions.</p>
+<script src="https://gist.github.com/5446765.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Monads and do Notation</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>do</code> notation creates syntactical sugar around monads</p>
+<script src="https://gist.github.com/5446829.js"></script>
+
+<ul>
+<li>use <code>&lt;-</code> for assignment</li>
+<li>Separate lines with <code>;</code></li>
+<li><code>let {expressions}</code></li>
+<li>Wrap your code in <code>:{</code> and <code>}:</code> with each on a separate line</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Do Notation Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5447857.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Maybe Monad</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Haskell uses Maybe Monads to deal with potential failures</p>
+<script src="https://gist.github.com/5447170.js"></script>
+
+<script src="https://gist.github.com/5447174.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Wrapping</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Strengths</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
+<li><strong>Type System</strong>
+    Unobtrusive. Extremely flexible and robust with regard to working with custom types.</li>
+<li><strong>Expressiveness</strong>
+    Powerful syntax to express ideas very concisely</li>
+<li><strong>Purity of Programming Model</strong>
+    Purely functional nature means programs are more predictable and easier to reason about, particularly with complex concurrent applications</li>
+<li><strong>Lazy Semantics</strong>
+    Easier to build more concise programs that have better performance than mere recursion </li>
+<li><strong>Academic Support</strong>
+    Strong research interest</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Weaknesses</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
+<li><strong>Inflexibility of Programming Model</strong>
+    Haskell makes some hard things easy, it also makes some easy things hard, such as sequential operations and io</li>
+<li><strong>Relatively Small Community</strong></li>
+<li><strong>Learning Curve</strong>
+    Monads and other parts of the language more intellectually demanding than many other languages</li>
+</ul></article>
+            
+        </slide>
+        
+
+        <slide class="thank-you-slide segue nobackground">
+            <aside class="gdbar right"><img src="images/logo.png"></aside>
+            <article class="flexbox vleft auto-fadein">
+                <h2>&lt;Thank You!&gt;</h2>
+                <p></p>
+            </article>
+            <p class="auto-fadein" data-config-contact>
+                <!-- populated from slide_config.json -->
+            </p>
+        </slide>
+
+        <!-- <slide class="logoslide dark nobackground">
+        <article class="flexbox vcenter">
+            <span><img src="images/google_developers_logo_white.png"></span>
+        </article>
+        </slide> -->
+
+    <slide class="backdrop"></slide>
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37844085-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+<script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

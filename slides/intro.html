@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Duke PL Course</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!--This one seems to work all the time, but really small on ipad-->
+    <!--<meta name="viewport" content="initial-scale=0.4">-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" media="all" href="/stylesheets/slidedefault.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/stylesheets/slidephone.css">
+    <base target="_blank"><!-- This amazingness opens all links in a new tab. -->
+    <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+    <slides class="layout-widescreen">
+
+        <!-- <slide class="logoslide nobackground">
+            <article class="flexbox vcenter">
+                <span><img src="images/google_developers_logo.png"></span>
+            </article>
+        </slide> -->
+        <slide class="title-slide segue nobackground">
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+            <hgroup class="auto-fadein">
+
+                <h1 data-config-title><!-- populated from slide_config.json --></h1>
+
+
+                <h2>Introduction</h2>
+
+                <p data-config-presenter><!-- populated from slide_config.json --></p>
+            </hgroup>
+        </slide>
+
+
+        <slide>
+
+            <hgroup>
+                <h2>Welcome to House Course 59.18!</h2>
+                <h3>Programming Languages</h3>
+            </hgroup>
+            <article><h3>Meeting Time: <strong>Tuesdays</strong> from <strong>4:40</strong> to <strong>7:30 PM</strong></h3>
+<h3>Location: <strong>Perkins LINK 2-087 classroom 3</strong></h3></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Instructors</h2>
+                <h3></h3>
+            </hgroup>
+            <article><h3>Yang Su</h3>
+<p><img alt="Yang Su" src="https://sphotos-a.xx.fbcdn.net/hphotos-snc7/432248_10151119162660988_1733947672_n.jpg" style="max-width: 200px; p#adding: 5px; border: 1px solid #F0F0F0;" /></p>
+<h3>Kevin Gao</h3>
+<p><img alt="Kevin Gao" src="http://i.imgur.com/epik0.png" style="max-width: 200px; p#adding: 5px; border: 1px solid #F0F0F0;" /></p></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Faculty Sponsor</h2>
+                <h3></h3>
+            </hgroup>
+            <article><h3>Robert Duvall</h3>
+<p><img alt="Robert Duvall" src="http://www.cs.duke.edu/rcd/images/rcd.jpg" /></p>
+<p>Lecturer, CS 308</p>
+<p><a href="" title="mailto:rcd@cs.duke.edu">rcd@cs.duke.edu</a></p></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Questions for You</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Mac vs Windows vs Linux?</p>
+<p>What other languages have you used?</p>
+<p>Experience with Git and Github?</p></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Website</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="http://duke-pl-course.github.com">http://duke-pl-course.github.com</a></p>
+<ul>
+<li>Course Information</li>
+<li>Discussion</li>
+<li>Announcements</li>
+<li>Assignments</li>
+<li>Other Resources</li>
+</ul></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Motivation</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Each language has its own set of idioms, its strengths, and its weaknesses.</p>
+<p>By learning several different programming languages, you will be able to see which language is best suited to the kinds of problems that interest you most. </p></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Prior Knowledge</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>This is <strong>not</strong> an introductory course to programming.</p>
+<p>We assume that everyone is familiar with concepts such as objects, classes, inheritance, polymorphism, functions, and typing. You should be at least comfortable coding in a language like C, C++, Java, or Python.</p></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Textbook</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><img alt="Seven Languages in Seven Weeks: A Pragmatic Guide to Learning Programming Languages - Bruce Tate" src="http://imagery.pragprog.com/products/195/btlang_xlargecover.jpg?1298589937" /></p>
+<p><a href="http://pragprog.com/book/btlang/seven-languages-in-seven-weeks">Seven Languages in Seven Weeks - Bruce Tate</a></p>
+<p>The weekly reading assignments are straight out of the chapters of this book. Some of the assignments will come from the book as well. We will also publish our solutions to all the self study problems after we finish each language. </p></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Overview</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Languages:</p>
+<ul>
+<li>Ruby</li>
+<li>Io</li>
+<li>Prolog</li>
+<li>Scala</li>
+<li>Erlang</li>
+<li>Clojure</li>
+<li>Haskell</li>
+</ul></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Why These Languages?</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul class="build">
+<li>Typing Model</li>
+<li>Programming Model</li>
+<li>Implementation</li>
+<li>Core Control and Data Structure</li>
+<li>Unique Features</li>
+</ul>
+<aside class="note">
+
+<p><section>
+    <strong>strong:</strong> types can't be mixed
+    <strong>weak:</strong> types can be mixed
+    <strong>static:</strong> types checked at compile time
+    <strong>dynamic:</strong> types checked during run time
+    <strong>duck:</strong> properties and methods determine valid semantics rather than classes and inheritance
+    <strong>functional:</strong> functions as basic units of computation and avoids mutable state
+    <strong>procedural:</strong> imperative style, list of commands
+    <strong>compiled:</strong> generate machine code from source code, and then the machine code gets interpreted
+    <strong>interpreted:</strong> source code is interpreted and executed directly by the language interpreter
+    <strong>vm:</strong> have a single format for machine code that can run on different machines
+  </section></p>
+</aside></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Language Comparisons</h2>
+                <h3></h3>
+            </hgroup>
+            <article class="smaller"><table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Typing Model</th>
+<th>Programming Model</th>
+<th>Implementation</th>
+<th>Core Control and Data Structure</th>
+<th>Unique Features</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Ruby</td>
+<td>strong, dynamic, duck</td>
+<td><abbr title="Object Oriented">OO</abbr></td>
+<td>interpreted</td>
+<td>classes, modules</td>
+<td>purely <abbr title="Object Oriented">OO</abbr>, rails, open classes, macros</td>
+</tr>
+<tr>
+<td>Io</td>
+<td>weak, dynamic, duck</td>
+<td>prototype</td>
+<td>interpreted</td>
+<td>messages</td>
+<td>custom syntax, message/object reflection, coroutines, futures</td>
+</tr>
+<tr>
+<td>Prolog</td>
+<td>weak, dynamic</td>
+<td>logic based</td>
+<td>compiled</td>
+<td>variables, rules/facts/queries, unification, recursion</td>
+<td>solving constraints</td>
+</tr>
+<tr>
+<td>Scala</td>
+<td>strong, static</td>
+<td>functional, <abbr title="Object Oriented">OO</abbr></td>
+<td>compiled, <abbr title="Virtual Machine">VM</abbr></td>
+<td>tuples, pattern matching</td>
+<td>actors, futures, JVM</td>
+</tr>
+<tr>
+<td>Erlang</td>
+<td>strong, dynamic</td>
+<td>functional</td>
+<td>compiled, <abbr title="Virtual Machine">VM</abbr></td>
+<td>pattern matching</td>
+<td>"Let it crash", BEAM <abbr title="Virtual Machine">VM</abbr>, hotswapping</td>
+</tr>
+<tr>
+<td>Clojure</td>
+<td>strong, dynamic</td>
+<td>functional</td>
+<td>compiled, <abbr title="Virtual Machine">VM</abbr></td>
+<td>lazy evaluation, data as code</td>
+<td>macros, versioning, JVM</td>
+</tr>
+<tr>
+<td>Haskell</td>
+<td>strong, static</td>
+<td>functional</td>
+<td>compiled</td>
+<td>user-defined types</td>
+<td>purely functional</td>
+</tr>
+</tbody>
+</table></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Git</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><img alt="Git" src="http://git-scm.com/images/logo@2x.png" style="float: right; margin-left: 10px;" /></p>
+<p>We will use Git as the version control system for all the assignments and materials for this course.</p>
+<p>Basic usage:</p>
+<ul>
+<li><code>git clone</code></li>
+<li><code>git add</code></li>
+<li><code>git commit</code></li>
+<li><code>git push</code></li>
+<li><code>git pull</code></li>
+<li><code>git fetch</code></li>
+<li><code>git rebase</code></li>
+</ul>
+<p>You can find more information and resources on git under the <a href="http://duke-pl-course.github.com/resources/#git">resources page</a> on the course website</p></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Github</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><img alt="Github Octocat" src="images/github-logo.png" style="max-height: 350px; float: left; margin-right: 10px;" /></p>
+<p>We will used <a href="http://github.com">github</a> extensively. </p>
+<p>We have a github organization <a href="https://github.com/organizations/Duke-PL-Course">Duke-PL-Course</a>, which everyone in the class should be a part of.</p>
+<p>The source code for <a href="https://github.com/Duke-PL-Course/duke-pl-course.github.com">the class website</a> and the <a href="https://github.com/Duke-PL-Course/course-materials">class notes</a> are both open sourced.</p>
+<p>Assignments will also be released and tracked through github. More on that later</p>
+<p>If you have not used github before, see <a href="https://help.github.com/">help.github.com</a> for more information.</p></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Other Tools</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Installing all the packages for all 7 languages. Follow the guide <a href="http://duke-pl-course.github.com/resources/">here</a></p>
+<p>We also recommend Sublime Text 2 for the editor. You can use <a href="http://duke-pl-course.github.com/blog/2013/01/15/setting-up-sublime-text-2/">this post</a> to set it up.</p></article>
+
+        </slide>
+
+        <slide>
+
+            <hgroup>
+                <h2>Discussion JavaScript vs Io</h2>
+                <h3></h3>
+            </hgroup>
+            <article><table>
+<thead>
+<tr>
+<th>Language</th>
+<th>Advantages</th>
+<th>Disadvantages</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JavaScript</td>
+<td>Widely Used<br>Large and rapidly growing community<br>Variety of applications and uses (node)</td>
+<td>Is not covered in the textbook<br>Is not as flexible as Io</td>
+</tr>
+<tr>
+<td>Io</td>
+<td>Extremely flexible, light weight syntax<br>Elegant implementations of coroutines, futures, and actors<br>Powerful reflection features</td>
+<td>Small community<br>Little syntactical sugar<br>More of a niche language</td>
+</tr>
+</tbody>
+</table></article>
+
+        </slide>
+
+
+        <slide class="thank-you-slide segue nobackground">
+            <aside class="gdbar right"><img src="images/logo.png"></aside>
+            <article class="flexbox vleft auto-fadein">
+                <h2>&lt;Thank You!&gt;</h2>
+                <p></p>
+            </article>
+            <p class="auto-fadein" data-config-contact>
+                <!-- populated from slide_config.json -->
+            </p>
+        </slide>
+
+        <!-- <slide class="logoslide dark nobackground">
+        <article class="flexbox vcenter">
+            <span><img src="images/google_developers_logo_white.png"></span>
+        </article>
+        </slide> -->
+
+    <slide class="backdrop"></slide>
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37844085-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+<script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

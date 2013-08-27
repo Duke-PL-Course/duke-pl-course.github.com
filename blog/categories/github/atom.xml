@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Github | Duke PL Course]]></title>
+  <link href="http://Duke-PL-Course.github.com/blog/categories/github/atom.xml" rel="self"/>
+  <link href="http://Duke-PL-Course.github.com/"/>
+  <updated>2013-08-27T15:47:21-04:00</updated>
+  <id>http://Duke-PL-Course.github.com/</id>
+  <author>
+    <name><![CDATA[Yang Su, Kevin Gao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Github Notifications]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/03/06/github-notifications/"/>
+    <updated>2013-03-06T18:05:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/03/06/github-notifications</id>
+    <content type="html"><![CDATA[<h2 id="toc_799330">Turn on your GitHub Notifications</h2>
+
+<p>Go to your <a href="https://github.com/settings/notifications">settings/notifications</a> and make sure you check the email boxes for both notification types to get our announcements in email.</p>
+
+<p><img src="/images/github-notifs.png" alt="GitHub Notifications Settings"></p>
+]]></content>
+  </entry>
+  
+</feed>

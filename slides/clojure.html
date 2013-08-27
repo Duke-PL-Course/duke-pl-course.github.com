@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Duke PL Course</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!--This one seems to work all the time, but really small on ipad-->
+    <!--<meta name="viewport" content="initial-scale=0.4">-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" media="all" href="/stylesheets/slidedefault.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/stylesheets/slidephone.css">
+    <base target="_blank"><!-- This amazingness opens all links in a new tab. -->
+    <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+    <slides class="layout-widescreen">
+
+        <!-- <slide class="logoslide nobackground">
+            <article class="flexbox vcenter">
+                <span><img src="images/google_developers_logo.png"></span>
+            </article>
+        </slide> -->
+        <slide class="title-slide segue nobackground">
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+            <hgroup class="auto-fadein">
+                
+                <h1 data-config-title><!-- populated from slide_config.json --></h1>
+                
+                
+                <h2>Clojure</h2>
+                
+                <p data-config-presenter><!-- populated from slide_config.json --></p>
+            </hgroup>
+        </slide>
+
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Clojure Overview</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Clojure is ...</p>
+<ul class="build">
+<li>A modern <a href="http://en.wikipedia.org/wiki/Lisp_(programming_language)">Lisp</a> dialect</li>
+<li>Created by <a href="https://github.com/richhickey">Rich Hickey</a> in 2007</li>
+<li>A functional language, with <a href="http://en.wikipedia.org/wiki/Immutable_object">immutable values</a>, <a href="http://en.wikipedia.org/wiki/Strong_typing">strong typing</a>, <a href="http://en.wikipedia.org/wiki/Dynamic_typing">dynamic typing</a>, and <a href="http://en.wikipedia.org/wiki/Software_transactional_memory">software transactional memory</a></li>
+<li>Augmented with a powerful <a href="http://clojure.org/macros">macro system</a></li>
+<li>Made to run on the <a href="http://en.wikipedia.org/wiki/Jvm">Java Virtual Machine</a></li>
+<li>Tightly integraded with <a href="http://en.wikipedia.org/wiki/Java_(programming_language)">Java</a> applications</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Code Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5283585.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Installing Leiningen</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="https://github.com/technomancy/leiningen">Leiningen</a> is a simple build tool used for automatic Clojure projects.</p>
+<p>To install on OS X (with brew + bash):</p>
+<script src="https://gist.github.com/sudowork/5283665.js"></script>
+
+<p>To install on the VM running Lubuntu:</p>
+<script src="https://gist.github.com/sudowork/5283669.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Creating a New Clojure Project</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>We are going to create a new project/workspace to use for our code. It's going to make things easier, and we're also going to use the Leiningen <strong>REPL</strong>.</p>
+<script src="https://gist.github.com/sudowork/5283709.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Functions and Basic Data Types</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Forms</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>A <strong>form</strong> in Clojure is the basic building block for a Clojure program. A program can simply be thought of as a sequence of forms (and macros). Examples of forms include: function calls, booleans, characters, numbers, keywords, and strings.</p>
+<p>There also exist built-in <a href="http://clojure.org/special_forms">special forms</a> that perform core operations.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Calling Basic Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Clojure using <strong>prefix notation</strong> for calling functions/operators. There is no native way to use <strong>infix notation</strong>.</p>
+<script src="https://gist.github.com/sudowork/5283741.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Multiple Parameter Lists</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Functions in clojure can be defined to accept varying-length parameter lists (<strong>arity</strong>). We already saw an example of this using the <code>-</code> function.</p>
+<p>Behavior can vary based on the number of parameters passed to the function.</p>
+<script src="https://gist.github.com/sudowork/5283761.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Type Coercion</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Just like Ruby, the Clojure compiler will try to coerce types at runtime. Remember, Clojure is dynamically typed.</p>
+<p>Failure to perform a coercion will result in a <a href="http://docs.oracle.com/javase/1.5.0/docs/api/java/lang/ClassCastException.html">ClassCastException</a>, which is a runtime exception from the Java class hierarchy.</p>
+<script src="https://gist.github.com/sudowork/5283924.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Strings and Chars</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5283972.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Booleans and Conditional Expressions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5283985.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Core Data Structures: Lists, Maps, Sets, and Vectors</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Lists</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="http://clojure.org/data_structures#Data%20Structures-Lists%20(IPersistentList)">Lists</a> are one of the core data structures to Clojure and all dialects of Lisp. In fact, Lisp stands for <strong>lis</strong>t <strong>p</strong>rocessing.</p>
+<p>It is a <strong>sequential</strong> data structure that does not allow for random access.</p>
+<script src="https://gist.github.com/sudowork/5284130.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Vectors</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><a href="http://clojure.org/data_structures#Data%20Structures-Vectors%20(IPersistentVector)">Vectors</a> are similar to lists; however, they are <strong>indexable</strong>, meaning you can randomly access elements in the vector.</p>
+<p>To access an element of a vector, you can either call the <code>nth</code> function or directly use the vector as a function that takes an index as the argument.</p>
+<script src="https://gist.github.com/sudowork/5284224.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Sets</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><strong>Sets</strong> are unordered collections of unique elements.</p>
+<script src="https://gist.github.com/sudowork/5284381.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Maps</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><strong>Maps</strong> are associative data structures that associate a key to a value.</p>
+<p>For readability, Clojure introduces commas as whitespace in addition to conventional Lisp syntax.</p>
+<script src="https://gist.github.com/sudowork/5293377.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Functions</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Use the <code>defn</code> macro to define new functions <code>defn name doc [params] body</code></p>
+<script src="https://gist.github.com/sudowork/5293462.js"></script>
+
+<p><em>Note</em>: We haven't talked about macros yet, but basically, <code>defn</code> will call <code>def</code> and associate a <strong>Var</strong> in the current namespace with an anonymous function. Essentially, creating a new function in the current namespace.</p>
+<p><em>Note</em>: You can used <code>doc</code> on any function that specifies a documentation line</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Multiple-arity Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Remember the functions that accept varying length parameter lists? Let's learn how to make one of those. To clarify, the number of parameters a function accepts denotes its <strong>arity</strong>.</p>
+<p>We also introduce <a href="http://richhickey.github.com/clojure/clojure.core-api.html#clojure.core/apply"><code>apply</code></a> here to reflectively call a function with a list of parameters. This example is naive, and unidiomatic. We will discuss better techniques later on.</p>
+<script src="https://gist.github.com/sudowork/5293626.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Binding and Destructuring</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>When a function is called with parameters, the parameters are <strong>bound</strong> to function's scope with a given name.</p>
+<p>In other words <code>(defn id [x] x), (id 42)</code> binds the value <code>42</code> to the alias <code>x</code> in the function's scope. <code>x</code> would be unavailable to be used outside of the function.</p>
+<p>Clojure let's you use bind aliases within arguments. This process is called <strong>destructuring</strong>, and it is part of <em>pattern matching</em>. The difference is that pattern matching is <em>conditional</em>; whereas, destructuring is simply pulling apart a value.</p>
+<script src="https://gist.github.com/sudowork/5294320.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>More Destructuring and Local Bindings</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5398407.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Destructuring Using Let Statements</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>let</code> takes 2 arguments: a <strong>vector</strong> with symbol(s) you want to bind followed by the value you want bound, and an <strong>expression</strong> that uses the bound values</p>
+<script src="https://gist.github.com/5398437.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Using Higher-order Functions</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Anonymous Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Clojure also allows for anonymous functions using form <code>(fn [parameters*] body)</code>. In fact, the <code>defn</code> macro just expands into a <code>def</code> using an <code>fn</code>.</p>
+<script src="https://gist.github.com/5398538.js"></script>
+
+<p>Or use <em>reader macro</em> <code>#(expression with %)</code>, which binds <code>%</code> to each item in a sequence of parameters.</p>
+<script src="https://gist.github.com/5398552.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Higher-order Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Of course, anonymous functions themselves aren't too useful. Let's combine them with some higher order functions.</p>
+<script src="https://gist.github.com/sudowork/5393840.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Implement Fibonacci</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/yangsu/5398809.js"></script>
+
+<script src="https://gist.github.com/yangsu/5398907.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Implement Factorial</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5399832.js"></script>
+
+<script src="https://gist.github.com/5399874.js"></script>
+
+<script src="https://gist.github.com/5399900.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Recursion</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Tail Call Optimization in Clojure</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Typically, functional languages use <strong>recursion</strong> in place of loops. This leads to the dreaded <strong>stack overflow</strong> problem as we recurse deeper.</p>
+<p>Fortunately, most functional languages provide either automatic <a href="http://en.wikipedia.org/wiki/Tail_call"><strong>tail call optimization</strong></a> (TCO).</p>
+<p>Unfortunately, Clojure does not support automatic TCO because the JVM does not natively support TCO.</p>
+<p><em>Side note: Scala is able to do automatic TCO because the Scala compiler does the translation into loops</em>.</p>
+<p>To get around this, we can explicitly perform the TCO ourselves using the <code>recur</code> and <code>loop</code> special forms.</p>
+<p><code>(loop [x initial-x, y initial-y] (do-something-with x y))</code></p>
+<p>Out of the scope of this class, you can also use the [<code>trampoline</code>][trampoline] technique to optimize mutually recursive functions.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Recur and loop example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5394099.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Sequences</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>What is a Sequence?</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>A <a href="http://clojure.org/sequences">Sequence</a> in clojure is just a wrapper interface (<code>ISeq</code>) for collections (vectors, lists, etc.).</p>
+<p>There exists a library of functions just for acting on sequences, which means that we can treat sequences pretty generically.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>List Comprehensions on Sequences</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Similar to Scala, Clojure has for/list comprehensions, that work to combine <code>map</code>, <code>filter</code>, and the concept of permutations.</p>
+<p>Binding in a for comprehension syntactically looks the same as the <code>let</code> or <code>loop</code> special forms.</p>
+<script src="https://gist.github.com/sudowork/5394282.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Lazy Evaluation and Infinite Sequences</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Finite Sequences with range</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Like Ruby, Clojure supports ranges as functions</p>
+<script src="https://gist.github.com/5399172.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Infinite Sequences and take</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>(repeat element)</code> creates an infinite sequence of copies of <code>element</code></p>
+<p><code>(cycle list)</code> creates an infinites sequence by cycling elements in a list</p>
+<p><code>(take n infinite-sequence)</code> takes the first <code>n</code> elements of an infinite sequence</p>
+<p><code>(drop n infinite-sequence)</code> drops the first <code>n</code> elements of an infinite sequence</p>
+<p>Use <code>-&gt;&gt;</code> to apply functions left to right rather than using prefix notation</p>
+<script src="https://gist.github.com/5399232.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>More Infinite Sequence Operations</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>(interpose element seq)</code> inserts <code>element</code> between every pair of elements in <code>seq</code></p>
+<p><code>(interleave seq1 seq2)</code> interleaves the elements of the 2 sequences</p>
+<p><code>(iterate fn init)</code> creates a sequence by applying <code>fn</code> to <code>init</code> and the successive return values</p>
+<script src="https://gist.github.com/5399298.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Fibonacci using Infinite Sequences</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul class="build">
+<li>Iterator function to describe each step of Fibonacci<br />
+<code>(defn fib-pair [[a b]]  [b (+ a b)])</code></li>
+<li>Generate an infinite sequence of Fibonacci pairs<br />
+<code>(iterate fib-pair [1 1])</code></li>
+<li>Extract the first element of the sequence of pairs to construct the infinite Fibonacci sequence<br />
+<code>(map first (iterate fib-pair [1 1]))</code></li>
+<li>Using take to compute the first 5 elements of the Fibonacci Sequence<br />
+<code>(take 5 (map first (iterate fib-pair [1 1])))</code></li>
+<li>Using <code>nth</code> to compute the 50th Fibonacci number<br />
+<code>(nth (map first (iterate fib-pair [1 1])) 50)</code></li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Factorial using Infinite Sequences</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul class="build">
+<li>Generate an infinite sequence<br />
+<code>(iterate inc 1)</code></li>
+<li>Using <code>take</code> to get the sequence <code>1..N</code><br />
+<code>(take n (iterate inc 1))</code></li>
+<li>Using <code>apply</code> and the operator <code>*</code> to compute the product of <code>1..N</code><br />
+<code>(apply * (take n (iterate inc 1)))</code></li>
+<li>Define a function <code>factorial</code> to return the result<br />
+<code>(defn factorial [n] (apply * (take n (iterate inc 1))))</code></li>
+</ul></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Abstractions: Datatypes and Protocols</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Macros</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+
+        <slide class="thank-you-slide segue nobackground">
+            <aside class="gdbar right"><img src="images/logo.png"></aside>
+            <article class="flexbox vleft auto-fadein">
+                <h2>&lt;Thank You!&gt;</h2>
+                <p></p>
+            </article>
+            <p class="auto-fadein" data-config-contact>
+                <!-- populated from slide_config.json -->
+            </p>
+        </slide>
+
+        <!-- <slide class="logoslide dark nobackground">
+        <article class="flexbox vcenter">
+            <span><img src="images/google_developers_logo_white.png"></span>
+        </article>
+        </slide> -->
+
+    <slide class="backdrop"></slide>
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37844085-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+<script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

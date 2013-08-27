@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Duke PL Course</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+    <!--This one seems to work all the time, but really small on ipad-->
+    <!--<meta name="viewport" content="initial-scale=0.4">-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" media="all" href="/stylesheets/slidedefault.css">
+    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/stylesheets/slidephone.css">
+    <base target="_blank"><!-- This amazingness opens all links in a new tab. -->
+    <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+    <slides class="layout-widescreen">
+
+        <!-- <slide class="logoslide nobackground">
+            <article class="flexbox vcenter">
+                <span><img src="images/google_developers_logo.png"></span>
+            </article>
+        </slide> -->
+        <slide class="title-slide segue nobackground">
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+            <hgroup class="auto-fadein">
+                
+                <h1 data-config-title><!-- populated from slide_config.json --></h1>
+                
+                
+                <h2>Erlang</h2>
+                
+                <p data-config-presenter><!-- populated from slide_config.json --></p>
+            </hgroup>
+        </slide>
+
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Erlang Overview</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Erlang is ...</p>
+<ul class="build">
+<li>Created by <a href="http://en.wikipedia.org/wiki/Joe_Armstrong_(programming)">Joe Armstrong</a> at Ericsson</li>
+<li>A general-purpose <a href="http://en.wikipedia.org/wiki/Concurrent_computing">concurrent</a>, <a href="http://en.wikipedia.org/wiki/Garbage_collection_(computer_science)">garbage-collected</a> programming language and runtime system</li>
+<li>A functional language, with <a href="http://en.wikipedia.org/wiki/Strict_evaluation">strict evaluation</a>, <a href="http://en.wikipedia.org/wiki/Single_assignment">single assignment</a>, and <a href="http://en.wikipedia.org/wiki/Dynamic_typing">dynamic typing</a></li>
+<li>Designed to support scalable, reliable, distributed, <a href="http://en.wikipedia.org/wiki/Fault-tolerance">fault-tolerant</a>, <a href="http://en.wikipedia.org/wiki/Soft_real-time">soft-real-time</a>, non-stop applications</li>
+<li>Runs on the <a href="http://www.erlang.org/doc/man/beam_lib.html">BEAM Virtual Machine</a></li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Code Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/yangsu/5198282.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Built for Concurrency</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
+<li>No Threading</li>
+<li>Lightweight Processes</li>
+<li>Uses actors/message passing for concurrency, similar to Scala’s message passing syntax. <ul>
+<li>In Scala, an actor represents an object, backed by a thread pool</li>
+<li>In Erlang, an actor represents a lightweight process. The actor reads inbound messages from a queue and uses <em>pattern matching</em> to decide how to process it.</li>
+</ul>
+</li>
+<li><em>"Let it crash"</em> Erlang makes it easy to monitor, kill, and spawn processes. You can also hot-swap code, meaning you can replace pieces of your application without stopping your code</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Who Uses Erlang?</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul class="build">
+<li><strong>Amazon.com</strong> uses Erlang to implement SimpleDB, providing database services as a part of the Amazon Web Services offering</li>
+<li><strong>Yahoo!</strong> uses it in its social bookmarking service, Delicious, which has more than 5 million users and 150 million bookmarked URLs</li>
+<li><strong>Facebook</strong> uses Erlang to power the backend of its chat service, handling more than 100 million active users</li>
+<li><strong>T-Mobile</strong> uses Erlang in its SMS and authentication systems</li>
+<li><strong>Motorola</strong> is using Erlang in call processing products in the public-safety industry</li>
+<li><strong>Ericsson</strong> uses Erlang in its support nodes, used in GPRS and 3G mobile networks worldwide</li>
+<li><strong>Linden Lab</strong> uses Erlang in its games</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Functional Programming</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Erlang is the first of our functional languages. (Scala is a hybrid functional/object-oriented language.). To you this means:</p>
+<ul class="build">
+<li>Your programs are going to be built entirely out of functions, with no objects anywhere.</li>
+<li>Those functions will <em>usually</em> return the same values, given the same inputs.</li>
+<li>Those functions will not <em>usually</em> have side effects, meaning they will not modify program state.</li>
+<li>You will only be able to assign any variable once.</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Getting Started</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Erlang files end with <code>.erl</code></p>
+<p>To start a Erlang shell, use the command <code>erl</code> in your terminal</p>
+<p>To compile Erlang files, refer to the <a href="#17">slide on functions</a></p></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Basic Syntax</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Expressions and Statements</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>The syntax is very similar to Prolog.</p>
+<p>All statements end with a <strong>period</strong></p>
+<script src="https://gist.github.com/5199078.js"></script>
+
+<p>Note:</p>
+<ul>
+<li><code>2 + 2.0</code> =&gt; <code>4.0</code> means that Erlang does some basic type coercion  </li>
+<li>In Erlang, strings are just syntactical sugar for a <em>list</em> of integer ASCII code</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Atoms and Variables</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Like Prolog, <strong>atoms</strong> must begin with <em>lowercase letters</em> and <strong>Variables</strong> begin with <em>uppercase letters</em></p>
+<script src="https://gist.github.com/5199206.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Lists and Tuples</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><strong>Lists</strong> are <em>heterogeneous</em> and can be <em>any</em> length</p>
+<p><strong>Tuples</strong> are <em>fixed-length</em> <em>heterogeneous</em> lists</p>
+<script src="https://gist.github.com/5199234.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Pattern Matching</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Again, very similar to Prolog's pattern matching.</p>
+<p>In Ruby, hash maps are used to associate names with values. In Erlang, you’ll often see tuples used as you would use maps or hashes.</p>
+<script src="https://gist.github.com/5199355.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>List Pattern Matching</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5199447.js"></script>
+
+<p>Note: In Prolog, <code>=</code> means unification. In Erlang, <code>=</code> is a pattern match. This is a <strong>key</strong> difference</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Bit Pattern Matching</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Erlang also makes it very easy to pack and unpack bits</p>
+<script src="https://gist.github.com/5199457.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>More Bit Pattern Matching</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5243717.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Functions</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Workflow</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>You’re going to write functions in files with the <code>.erl</code> extension.</p>
+<p>Each file contains code for a module, and you have to compile it to run it. The filename <strong>must</strong> match the module name.</p>
+<p>After you’ve compiled a file, it produces a <code>.beam</code> executable. </p>
+<p>The <code>.beam</code> compiled module will run in a virtual machine called the <code>beam</code>.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Mirror Function</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5199533.js"></script>
+
+<p>To compile this file, use <code>c(filename).</code>. You don't have to include the <code>.erl</code> extension as part of the <code>filename</code>. Once compiled, you will find a <code>filename.beam</code> file in the same directory. </p>
+<script src="https://gist.github.com/5199624.js"></script>
+
+<p>Note: You must scope the functions with their module names followed by a <code>:</code></p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Translate Number Function</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5199665.js"></script>
+
+<p>The <code>number/1</code> function contains multiple pattern match possibilities. Each possible match has the <em>function name</em>, the <em>argument to match</em>, and the <em>code to execute</em> after the <code>-&gt;</code> symbol. Terminate the last statement with <code>.</code> and all others with <code>;</code>.</p>
+<script src="https://gist.github.com/5199722.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Factorial and Fibonacci Function</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5199788.js"></script>
+
+<p>Like Prolog, Erlang is also optimized for tail recursion.</p>
+<script src="https://gist.github.com/5199784.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Exercises</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
+<li>Write a function that uses recursion to return the number of words in a string.</li>
+<li>Write a function that uses recursion to count to ten.</li>
+<li>Write a function that uses matching to selectively print <code>success</code> or
+<code>error: message</code> given input of the form <code>{error, Message}</code> or <code>success</code>.</li>
+</ul>
+<p><a href="https://github.com/Duke-PL-Course/Erlang/blob/master/2013-03-19-book-problems.md#do">Link</a></p></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Control Structures</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Case Expression</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Given an expression, you can use the <code>case</code> control structure to select the appropriate resulting expression. This is particularly useful because you can take advantage of pattern matching.</p>
+<div style="width: 100%; position:relative;">
+  <span style="vertical-align:top; width: 49%; display: inline-block;">
+    <script src="https://gist.github.com/sudowork/5244080.js"></script>
+  </span>
+  <span style="vertical-align:top; width: 49%; display: inline-block;">
+    <script src="https://gist.github.com/yangsu/5247321.js"></script>
+  </span>
+</div></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>If Expression</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><code>if</code> is used similarly to <code>case</code>; however, instead of using pattern matching, <a href="http://www.erlang.org/doc/reference_manual/expressions.html#id80039"><strong>guards</strong></a> are used.</p>
+<p>Common <em>guard expressions</em>: the atom <code>true</code>, other terms, certain <a href="guards">BIFs</a>, term comparisons, arithmetic expressions, boolean expressions, and short-circuit expressions (<code>andalso</code>, <code>orelse</code>).</p>
+<p>A full <strong>guard</strong> is a list of <em>guard expressions</em> separated by <code>,</code> (think of it as an <strong>AND</strong>). Guards can then be combined in sequence using <code>;</code> (<strong>OR</strong>) to form <strong>guard sequences</strong>.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>What happens if there is no match?</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/5247479.js"></script>
+
+<p>Note that at least one of the branches must evaluate to <code>true</code>; otherwise, a runtime exception is thrown. It is idiomatic to have a <code>true -&gt; ...</code> branch in order to represent <code>else</code>, which does not exist in Erlang.</p>
+<script src="https://gist.github.com/5247488.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Using If Expressions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5244196.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Higher-order Functions and Advanced List Concepts</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Anonymous Functions and Referencing Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>The <code>fun</code> keyword is used to create anonymous functions. It can also be used to reference functions from another module.</p>
+<script src="https://gist.github.com/sudowork/5244544.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Higher-order Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>We've been using higher order functions over and over again. It's no surprise that they exist and are highly important in a functional language such as Erlang. You will commonly use higher-order functions to operate <a href="http://www.erlang.org/doc/man/lists.html">on lists</a>.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Implement Map</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Given what you know right now, using pattern matching and list destructuring, implement the map function.</p>
+<div id="hiddenmap" style="display: none;">
+  <h4>Solution</h4>
+  <br>
+  <script src="https://gist.github.com/5247602.js"></script>
+</div>
+
+<script>$('body').keyup(function(e) { if (e.which == 83 /* 's' */ && slidedeck.curSlide_ == 29) {$('#hiddenmap').show('slow');} });</script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Examples of Higher-order Functions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5244677.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>List Construction</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>We already know that we can use <code>[Head|Tail]</code> to destructure lists. Here we show that you can use the same syntax to construct lists.</p>
+<script src="https://gist.github.com/5247713.js"></script>
+
+<p>Here's an example of a duplicate function in Erlang</p>
+<script src="https://gist.github.com/5247736.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>List Comprehensions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p><strong>List comprehensions</strong> are a powerful construct for iterating/acting over a list. These are similar to the <em>for comprehensions</em> that we saw in Scala.</p>
+<ul class="build">
+<li>A <strong>list comprehension</strong> takes the form of <code>[Expression || Clause1, Clause2, ..., ClauseN].</code></li>
+<li>List comprehensions can have an <em>arbitrary</em> number of clauses.</li>
+<li>The clauses can be <strong>generators</strong> or <strong>filters</strong>.<ul class="build">
+<li>A <strong>generator</strong>, of the form <code>Match &lt;- List</code>, matches a pattern on the left to the elements of a list on the right.</li>
+<li>A <strong>filter</strong> can be a <em>boolean</em> expression or a function returning a <em>boolean</em>.</li>
+</ul>
+</li>
+<li>Where there are multiple generators, Erlang computes a <a href="http://en.wikipedia.org/wiki/Cartesian_product">Cartesian product</a></li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>List Comprehensions Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5244478.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Map using List Comprehensions</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Implement Map using List Comprehensions</p>
+<div id="hiddenmaplist" style="display: none;">
+  <h4>Solution</h4>
+  <br>
+  <script src="https://gist.github.com/5247769.js"></script>
+</div>
+
+<script>$('body').keyup(function(e) { if (e.which == 83 /* 's' */ && slidedeck.curSlide_ == 33) {$('#hiddenmaplist').show('slow');} });</script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>More List Comprehension Exercises</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul>
+<li>
+<p>Consider a list of keyword-value tuples, such as <code>[{erlang, "a functional language"}, {ruby, "an OO language"}]</code>. Write a function that accepts the list and a keyword and returns the associated value for the keyword.</p>
+</li>
+<li>
+<p>Consider a shopping list that looks like <code>[{item, quantity, price}, ...]</code>. Write a list comprehension that builds a list of items of the form <code>[{item, total_price}, ...]</code>, where <code>total_price</code> is quantity times price.</p>
+</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Concurrency in Erlang</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Naive Concurrency</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>Here's a simple test to show parallelism using <code>spawn/1</code>, but without any synchronization:</p>
+<script src="https://gist.github.com/sudowork/5244848.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Actors</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>The preferred concurrency model in Erlang is the <a href="http://en.wikipedia.org/wiki/Actor_model">Actor Model</a>.</p>
+<p>Actors in Erlang are similarly to Scala. However, we really don't care much about how they work, as most of it is hidden away.</p>
+<p>Each actor has a mailbox, and responds to incoming messages. They are able to <code>send</code> and <code>receive</code> messages.</p>
+<p>To demonstrate actors, we'll redo the <a href="https://gist.github.com/sudowork/4987931">rock paper scissors example from Scala</a> in the next slide.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>The Rock Paper Scissor Example</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5245138.js"></script></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Linking Processes</h2>
+                <h3></h3>
+            </hgroup>
+            <article><p>In real-world situations, we should expect for code to fail.</p>
+<p>Erlang allows us to monitor processes for failures by using the <code>process_flag/2</code>. When the <code>trap_exit</code> flag is set to <code>true</code>, future exit signals are converted to a <code>{'EXIT', From, Reason}</code> message.</p>
+<p>In addition, we can link existent processes explicitly using <code>link/1</code>, or we can spawn a new process and link it using <code>spawn_link/2</code>.</p>
+<p>For even more power, we can register a process under a name (an atom) using <code>register/2</code>. This allows us to call upon the process easily.</p></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Russian Roulette</h2>
+                <h3></h3>
+            </hgroup>
+            <article><script src="https://gist.github.com/sudowork/5245581.js"></script></article>
+            
+        </slide>
+        
+        <slide class="segue dark">
+            
+            <aside class="gdbar"><img src="images/logo.png"></aside>
+            <hgroup class="auto-fadein">
+                <h2>Conclusion</h2>
+                <h3></h3>
+            </hgroup>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Strengths</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul class="build">
+<li>Excels at concurrency and fault tolerance</li>
+<li>Dynamically typed, yet still has high reliability</li>
+<li>Light-weight processes with a powerful concurrency model (no shared-memory)</li>
+<li>"Let it crash" philosophy</li>
+<li>The Open Telecom Platform (OTP) framework has a lot of capabilities built in (you just have to write an OTP-compliant service)</li>
+</ul></article>
+            
+        </slide>
+        
+        <slide>
+            
+            <hgroup>
+                <h2>Weaknesses</h2>
+                <h3></h3>
+            </hgroup>
+            <article><ul class="build">
+<li>Awkward syntax</li>
+<li>No real strings/clunky string manipulation</li>
+<li>Records are pretty hackish (we didn't cover them)</li>
+</ul></article>
+            
+        </slide>
+        
+
+        <slide class="thank-you-slide segue nobackground">
+            <aside class="gdbar right"><img src="images/logo.png"></aside>
+            <article class="flexbox vleft auto-fadein">
+                <h2>&lt;Thank You!&gt;</h2>
+                <p></p>
+            </article>
+            <p class="auto-fadein" data-config-contact>
+                <!-- populated from slide_config.json -->
+            </p>
+        </slide>
+
+        <!-- <slide class="logoslide dark nobackground">
+        <article class="flexbox vcenter">
+            <span><img src="images/google_developers_logo_white.png"></span>
+        </article>
+        </slide> -->
+
+    <slide class="backdrop"></slide>
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-37844085-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+<script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

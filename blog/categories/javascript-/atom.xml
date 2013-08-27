@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: JavaScript, | Duke PL Course]]></title>
+  <link href="http://Duke-PL-Course.github.com/blog/categories/javascript-/atom.xml" rel="self"/>
+  <link href="http://Duke-PL-Course.github.com/"/>
+  <updated>2013-08-27T15:47:21-04:00</updated>
+  <id>http://Duke-PL-Course.github.com/</id>
+  <author>
+    <name><![CDATA[Yang Su, Kevin Gao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Review Problems for Ruby, JavaScript, Prolog, and Scala]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/02/26/review-problems-for-ruby/"/>
+    <updated>2013-02-26T16:49:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/02/26/review-problems-for-ruby</id>
+    <content type="html"><![CDATA[<p>We have written 4 review problems for the lecture today, one for each of the four languages we&#39;ve covered thus far.</p>
+
+<p>The problems can be found below:</p>
+
+<ol>
+<li><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/2013-02-26-ruby-review-problem.md">Ruby Review Problem - LCD Numbers</a></li>
+<li><a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/2013-02-26-javascript-review-problem.md">JavaScript Review Problem - Identifying Child Elements</a></li>
+<li><a href="https://github.com/Duke-PL-Course/Prolog/blob/master/2013-02-26-prolog-review-problem.md">Prolog Review Problem - Partition and Partition with index</a></li>
+<li><a href="https://github.com/Duke-PL-Course/Scala/blob/master/2013-02-26-scala-review-problem.md">Scala Review Problem - Quick Sort</a></li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript Assignment]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/02/07/javascript-assignment/"/>
+    <updated>2013-02-07T17:29:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/02/07/javascript-assignment</id>
+    <content type="html"><![CDATA[<p><img src="http://Duke-PL-Course.github.com/images/jslogo.png" alt="JavaScript" style="max-height: 200px; float: left; margin-right: 10px;"></p>
+
+<p>With our last lecture, we have finished the material for JavaScript. The slides from lecture can be found <a href="/slides/javascript.html">here</a>.</p>
+
+<p>The <a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/2013-02-03-assignment.md">JavaScript Assignment</a> is now live and complete. It includes <strong>four</strong> problems, with one bonus problem. The assignment will be due <strong>next Wednesday, February 13 at 11:59PM</strong>.</p>
+
+<p>The assignment document is called <a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/2013-02-03-assignment.md">2013-02-03-assignment.md</a> and the skeleton files can be found under the <a href="https://github.com/Duke-PL-Course/JavaScript/tree/master/assignments">assignments</a> folder.</p>
+
+<p>Please remember to fork the <a href="https://github.com/Duke-PL-Course/JavaScript">JavaScript repo</a> and push your solutions to your forked repo. You can always manually submit to the <a href="http://dukeplcourse.com">autograder</a>.</p>
+
+<p>Again, please feel free to post questions on <a href="https://github.com/Duke-PL-Course/JavaScript/issues?state=open">issues</a>.</p>
+
+<p>Hope you will find this assignment to be slightly easier.</p>
+
+<h2 id="toc_799328">Note About Bonus Problem</h2>
+
+<p>The <a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/2013-02-03-assignment.md#bonus-async-waterfall">waterfall function</a> is part of a very widely used JavaScript Library called <a href="https://github.com/caolan/async">async.js</a>. It helps manage the complexity and callbacks for a series of functions that depend on the result of a previous functions.</p>
+
+<p>A similar function also available in the async library is <a href="https://github.com/caolan/async#paralleltasks-callback">parallel</a>. It allows you to fire off many requests in parallel and collect the results with a single callback function. We mentioned this function in lecture and we have published a simpler version of the parallel function that takes in a hash. Please take a look for reference and hopefully it will help you understand what&#39;s required for the waterfall function</p>
+
+<h2 id="toc_799329">Note about Earlier Forked Repos</h2>
+
+<p>If you forked the repo before we finalized the assignment. Please use the following commands to update your repo:</p>
+<div class="highlight"><pre><code class="bash">git remote add upstream git@github.com:Duke-PL-Course/JavaScript.git
+git pull --rebase upstream master
+</code></pre>
+</div>
+
+<p>Let us know if you are having trouble with git.</p>
+]]></content>
+  </entry>
+  
+</feed>

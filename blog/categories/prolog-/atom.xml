@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Prolog, | Duke PL Course]]></title>
+  <link href="http://Duke-PL-Course.github.com/blog/categories/prolog-/atom.xml" rel="self"/>
+  <link href="http://Duke-PL-Course.github.com/"/>
+  <updated>2013-08-27T15:47:21-04:00</updated>
+  <id>http://Duke-PL-Course.github.com/</id>
+  <author>
+    <name><![CDATA[Yang Su, Kevin Gao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Review Problems for Ruby, JavaScript, Prolog, and Scala]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/02/26/review-problems-for-ruby/"/>
+    <updated>2013-02-26T16:49:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/02/26/review-problems-for-ruby</id>
+    <content type="html"><![CDATA[<p>We have written 4 review problems for the lecture today, one for each of the four languages we&#39;ve covered thus far.</p>
+
+<p>The problems can be found below:</p>
+
+<ol>
+<li><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/2013-02-26-ruby-review-problem.md">Ruby Review Problem - LCD Numbers</a></li>
+<li><a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/2013-02-26-javascript-review-problem.md">JavaScript Review Problem - Identifying Child Elements</a></li>
+<li><a href="https://github.com/Duke-PL-Course/Prolog/blob/master/2013-02-26-prolog-review-problem.md">Prolog Review Problem - Partition and Partition with index</a></li>
+<li><a href="https://github.com/Duke-PL-Course/Scala/blob/master/2013-02-26-scala-review-problem.md">Scala Review Problem - Quick Sort</a></li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Prolog Assignment]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/02/26/prolog-assignment/"/>
+    <updated>2013-02-26T14:46:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/02/26/prolog-assignment</id>
+    <content type="html"><![CDATA[<p>We have finally finished writing the Prolog assignment. It includes <strong>three</strong> problems, with one optional extension and one bonus problem. The assignment will be due <strong>next Wednesday, March 6 at 11:59PM</strong>.</p>
+
+<p>The assignment document is called <a href="https://github.com/Duke-PL-Course/Prolog/blob/master/2013-02-18-assignment.md">2013-02-18-assignment.md</a> and the skeleton files can be found under the <a href="https://github.com/Duke-PL-Course/Prolog/tree/master/assignments">assignments</a> folder.</p>
+
+<p>Please remember to fork the <a href="https://github.com/Duke-PL-Course/Prolog">Prolog repo</a> and push your solutions to your forked repo. You can always manually submit to the <a href="http://dukeplcourse.com">autograder</a>.</p>
+
+<p>The slides from lecture can be found <a href="/slides/prolog.html">here</a>.</p>
+
+<p>The <a href="https://github.com/Duke-PL-Course/Prolog/blob/master/2013-02-18-assignment.md">Prolog Assignment</a> is now live and complete. </p>
+
+<p>Again, please feel free to post questions on <a href="https://github.com/Duke-PL-Course/Prolog/issues?state=open">issues</a>.</p>
+
+<p>Hope you will find this assignment to be slightly easier.</p>
+]]></content>
+  </entry>
+  
+</feed>

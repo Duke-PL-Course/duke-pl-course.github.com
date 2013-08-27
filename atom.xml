@@ -1,0 +1,419 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Duke PL Course]]></title>
+  <link href="http://Duke-PL-Course.github.com/atom.xml" rel="self"/>
+  <link href="http://Duke-PL-Course.github.com/"/>
+  <updated>2013-08-27T15:47:20-04:00</updated>
+  <id>http://Duke-PL-Course.github.com/</id>
+  <author>
+    <name><![CDATA[Yang Su, Kevin Gao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Welcome Fall 2013 Students]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/08/27/welcome-fall-2013-students/"/>
+    <updated>2013-08-27T14:35:00-04:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/08/27/welcome-fall-2013-students</id>
+    <content type="html"><![CDATA[<p><strong>Welcome Everyone</strong></p>
+
+<p>This is the main course website. The earlier posts are for the previous semester, but you may look through them if you wish. Assignments and readings will be posted weekly on the <a href="http://Duke-PL-Course.github.com/assignments">assignments</a> page (there&#39;s already one up). Instructions on setting up your programming environment for this class are on the <a href="http://Duke-PL-Course.github.com/resources">resources</a> page.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Congratulations!]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/05/06/congratulations/"/>
+    <updated>2013-05-06T11:33:00-04:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/05/06/congratulations</id>
+    <content type="html"><![CDATA[<p><strong>Congratulations!</strong></p>
+
+<p>You&#39;ve completed the Programming Languages house course. We hope that you have enjoyed the course as much as we did.</p>
+
+<p>We&#39;ve learned so much from creating and teaching the course, from spending hours and hours to prepare enough material to fill a 3 hour lecture, to trying to find many different ways to simply the explanation to a difficult concept, to creating assignments that were just difficult enough to challenge you, to stumbling sometimes during lecture to answer your questions when completely thinking on our feet. We thank you for your patience and support throughout the course, as we participated in this experiment.</p>
+
+<p>We are also happy to announce that Jim Posen, one of our students, will teach this course again in the Fall semester. We have complete confidence in Jim and his ability to master and teach the material. If you&#39;ve enjoyed the course, please help it continue!</p>
+
+<p>The materials and resources we&#39;ve created and collected for the course are now all online on this website and open source in our <a href="https://github.com/duke-pl-course/">Github Organization</a>. If you have anything to contribute, please send a pull request and we will gladly add it.</p>
+
+<p>Thank you again! And have a fantastic summer!</p>
+
+<p>Best,<br>
+<em>Kevin and Yang</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Final Assignment: Program Language Design]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/04/25/pl-design/"/>
+    <updated>2013-04-25T20:29:00-04:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/04/25/pl-design</id>
+    <content type="html"><![CDATA[<p><strong>Due Thursday, May 2, 2013</strong></p>
+
+<h2 id="toc_799313">Overview</h2>
+
+<p>For your final assignment, you will be tasked with designing your very own programming language!</p>
+
+<p>Please fork this repository and modify the <a href="http://Duke-PL-Course.github.com/assignment.md"><code>assignment.md</code></a> document. We have provided a skeleton for your design document. Each section outlines some of the key points that you should discuss. Under each section are a series of bullet points that provide some considerations you may or may not want to talk about. You shouldn&#39;t incorporate all of them - they are just suggestions to get the ball rolling.</p>
+
+<p>When discussing the decisions you have made in designing your language, please justify each and weigh the pros and cons. Simply stating that your programming language is an &quot;interpreted, imperative, hybrid functional/object-oriented, dynamically-typed, generic, garbage-collected language&quot; isn&#39;t enough.</p>
+
+<h2 id="toc_799314">Things to Remember</h2>
+
+<p>In particular, you should design your language with specific goals and use cases in mind. Whether you&#39;re designing a <a href="http://en.wikipedia.org/wiki/Domain-specific_language">domain-specific language</a> or general purpose language, you are still going to need to optimize and make decisions with a purpose in mind.</p>
+
+<p>We&#39;re focusing on the <a href="http://en.wikipedia.org/wiki/Semantics#Computer_science">semantics</a> of your language, not the <a href="http://en.wikipedia.org/wiki/Syntax_(logic)">syntax</a>. Syntax will show through in your code examples; however, you may want to consider how the <a href="http://en.wikipedia.org/wiki/Chomsky_hierarchy">grammar</a> of your language is going to be structured.</p>
+
+<p>Make sure that your language actually comes together as a whole. Don&#39;t mash together contradictory features just for the sake of doing so.</p>
+
+<p>Remember, there&#39;s a trade-off to everything.</p>
+
+<p>Sometimes less is more.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Erlang, Clojure, and Haskell Slides]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/04/25/erlang/"/>
+    <updated>2013-04-25T20:21:00-04:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/04/25/erlang</id>
+    <content type="html"><![CDATA[<p>Congratulations! We have finished the last of the seven languages, Haskell.</p>
+
+<p>The slides for <a href="http://Duke-PL-Course.github.com/slides/erlang.html">Erlang</a>, <a href="http://Duke-PL-Course.github.com/slides/clojure.html">Clojure</a>, and <a href="http://Duke-PL-Course.github.com/slides/haskell.html">Haskell</a> can be found on the <a href="http://Duke-PL-Course.github.com/slides/">course website</a>.</p>
+
+<p>Please direct any questions to the issues pages of respective language repository on <a href="https://github.com/duke-pl-course/">Github</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[In Class Exercises Solutions]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/03/26/in-class-exercises-solutions/"/>
+    <updated>2013-03-26T13:00:00-04:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/03/26/in-class-exercises-solutions</id>
+    <content type="html"><![CDATA[<p>Solutions to the <a href="blog/2013/02/26/review-problems-for-ruby/">Review Problems for Ruby, JavaScript, Prolog, and Scala</a>.</p>
+
+<ol>
+<li><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/lcd.rb">Ruby - LCD Numbers Solutions</a></li>
+<li><a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/review/review.js">JavaScript - Identifying Child Elements Solutions</a></li>
+<li><a href="https://github.com/Duke-PL-Course/Prolog/blob/master/partition.pro">Prolog - Partition and Partition with index Solutions</a></li>
+<li><a href="https://github.com/Duke-PL-Course/Scala/blob/master/qsort.scala">Scala - Quick Sort Solutions</a></li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Github Notifications]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/03/06/github-notifications/"/>
+    <updated>2013-03-06T18:05:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/03/06/github-notifications</id>
+    <content type="html"><![CDATA[<h2 id="toc_799312">Turn on your GitHub Notifications</h2>
+
+<p>Go to your <a href="https://github.com/settings/notifications">settings/notifications</a> and make sure you check the email boxes for both notification types to get our announcements in email.</p>
+
+<p><img src="http://Duke-PL-Course.github.com/images/github-notifs.png" alt="GitHub Notifications Settings"></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Review Problems for Ruby, JavaScript, Prolog, and Scala]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/02/26/review-problems-for-ruby/"/>
+    <updated>2013-02-26T16:49:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/02/26/review-problems-for-ruby</id>
+    <content type="html"><![CDATA[<p>We have written 4 review problems for the lecture today, one for each of the four languages we&#39;ve covered thus far.</p>
+
+<p>The problems can be found below:</p>
+
+<ol>
+<li><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/2013-02-26-ruby-review-problem.md">Ruby Review Problem - LCD Numbers</a></li>
+<li><a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/2013-02-26-javascript-review-problem.md">JavaScript Review Problem - Identifying Child Elements</a></li>
+<li><a href="https://github.com/Duke-PL-Course/Prolog/blob/master/2013-02-26-prolog-review-problem.md">Prolog Review Problem - Partition and Partition with index</a></li>
+<li><a href="https://github.com/Duke-PL-Course/Scala/blob/master/2013-02-26-scala-review-problem.md">Scala Review Problem - Quick Sort</a></li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Prolog Assignment]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/02/26/prolog-assignment/"/>
+    <updated>2013-02-26T14:46:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/02/26/prolog-assignment</id>
+    <content type="html"><![CDATA[<p>We have finally finished writing the Prolog assignment. It includes <strong>three</strong> problems, with one optional extension and one bonus problem. The assignment will be due <strong>next Wednesday, March 6 at 11:59PM</strong>.</p>
+
+<p>The assignment document is called <a href="https://github.com/Duke-PL-Course/Prolog/blob/master/2013-02-18-assignment.md">2013-02-18-assignment.md</a> and the skeleton files can be found under the <a href="https://github.com/Duke-PL-Course/Prolog/tree/master/assignments">assignments</a> folder.</p>
+
+<p>Please remember to fork the <a href="https://github.com/Duke-PL-Course/Prolog">Prolog repo</a> and push your solutions to your forked repo. You can always manually submit to the <a href="http://dukeplcourse.com">autograder</a>.</p>
+
+<p>The slides from lecture can be found <a href="http://Duke-PL-Course.github.com/slides/prolog.html">here</a>.</p>
+
+<p>The <a href="https://github.com/Duke-PL-Course/Prolog/blob/master/2013-02-18-assignment.md">Prolog Assignment</a> is now live and complete. </p>
+
+<p>Again, please feel free to post questions on <a href="https://github.com/Duke-PL-Course/Prolog/issues?state=open">issues</a>.</p>
+
+<p>Hope you will find this assignment to be slightly easier.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript Assignment Solutions Released]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/02/18/javascript-assignment-solutions-released/"/>
+    <updated>2013-02-18T02:15:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/02/18/javascript-assignment-solutions-released</id>
+    <content type="html"><![CDATA[<p>We have released the <a href="https://github.com/Duke-PL-Course/JavaScript/tree/master/assignments">solutions to the JavaScript assignment</a>.</p>
+
+<p>This assignment is quite a bit shorter and easier than the Ruby assignment. </p>
+
+<p>The only tricky part to the assignment has to do with the seed values for the reduce function in <a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/assignments/q4-reduce.js">question #4</a>. Take a look at the <a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/assignments/q4-reduce.js#L3-L7">solution to the problem</a> for how to properly detect whether the optional seed value is passed in and provide the correct default seed value if it&#39;s not.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Prolog In-Class Problems Solutions]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/02/18/prolog-in-class-problems-solutions/"/>
+    <updated>2013-02-18T01:56:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/02/18/prolog-in-class-problems-solutions</id>
+    <content type="html"><![CDATA[<p>In the second Prolog lecture, we posed the 3 practice problems from the textbook:</p>
+
+<ul>
+<li>Reverse the elements of a list</li>
+<li>Find the smallest element of a list</li>
+<li>Sort the elements of a list</li>
+</ul>
+
+<p>While these are not problems particularly well-suited for Prolog, at least not in the same way as <a href="http://duke-pl-course.github.com/slides/prolog.html#48">Sudoku</a> and <a href="http://duke-pl-course.github.com/slides/prolog.html#56">Queens</a> are, they aim to help you understand how to using recursion with lists. This is one of the most important and most commonly used technique to help you describe and solve problems in Prolog.</p>
+
+<p>We have posted <a href="https://github.com/Duke-PL-Course/Prolog/blob/master/2013-02-05-book-problems-solutions.md#do-1">our solutions</a> to these three problems. Please take a look and feel free to post any questions on <a href="https://github.com/Duke-PL-Course/Prolog/issues?state=open">Github</a>.</p>
+
+<p>We will also briefly go over these solutions at the beginning of our next class.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[JavaScript Assignment]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/02/07/javascript-assignment/"/>
+    <updated>2013-02-07T17:29:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/02/07/javascript-assignment</id>
+    <content type="html"><![CDATA[<p><img src="http://Duke-PL-Course.github.com/images/jslogo.png" alt="JavaScript" style="max-height: 200px; float: left; margin-right: 10px;"></p>
+
+<p>With our last lecture, we have finished the material for JavaScript. The slides from lecture can be found <a href="http://Duke-PL-Course.github.com/slides/javascript.html">here</a>.</p>
+
+<p>The <a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/2013-02-03-assignment.md">JavaScript Assignment</a> is now live and complete. It includes <strong>four</strong> problems, with one bonus problem. The assignment will be due <strong>next Wednesday, February 13 at 11:59PM</strong>.</p>
+
+<p>The assignment document is called <a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/2013-02-03-assignment.md">2013-02-03-assignment.md</a> and the skeleton files can be found under the <a href="https://github.com/Duke-PL-Course/JavaScript/tree/master/assignments">assignments</a> folder.</p>
+
+<p>Please remember to fork the <a href="https://github.com/Duke-PL-Course/JavaScript">JavaScript repo</a> and push your solutions to your forked repo. You can always manually submit to the <a href="http://dukeplcourse.com">autograder</a>.</p>
+
+<p>Again, please feel free to post questions on <a href="https://github.com/Duke-PL-Course/JavaScript/issues?state=open">issues</a>.</p>
+
+<p>Hope you will find this assignment to be slightly easier.</p>
+
+<h2 id="toc_799310">Note About Bonus Problem</h2>
+
+<p>The <a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/2013-02-03-assignment.md#bonus-async-waterfall">waterfall function</a> is part of a very widely used JavaScript Library called <a href="https://github.com/caolan/async">async.js</a>. It helps manage the complexity and callbacks for a series of functions that depend on the result of a previous functions.</p>
+
+<p>A similar function also available in the async library is <a href="https://github.com/caolan/async#paralleltasks-callback">parallel</a>. It allows you to fire off many requests in parallel and collect the results with a single callback function. We mentioned this function in lecture and we have published a simpler version of the parallel function that takes in a hash. Please take a look for reference and hopefully it will help you understand what&#39;s required for the waterfall function</p>
+
+<h2 id="toc_799311">Note about Earlier Forked Repos</h2>
+
+<p>If you forked the repo before we finalized the assignment. Please use the following commands to update your repo:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>git remote add upstream git@github.com:Duke-PL-Course/JavaScript.git
+</span><span class='line'>git pull --rebase upstream master
+</span></code></pre></td></tr></table></div></figure>
+
+<p>Let us know if you are having trouble with git.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[PLCourse Survey]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/02/07/plcourse-survey/"/>
+    <updated>2013-02-07T16:21:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/02/07/plcourse-survey</id>
+    <content type="html"><![CDATA[<p>We have created a <a href="https://docs.google.com/forms/d/1Dsg5IwqToH9YhamFilwPYKmRf5XM4WRn0jjA4cwOfK0/viewform">survey</a> for the course regarding the instruction quality so far and the difficulty of both the material and homework. Please take a moment to <a href="https://docs.google.com/forms/d/1Dsg5IwqToH9YhamFilwPYKmRf5XM4WRn0jjA4cwOfK0/viewform">fill it out</a>; we would really appreciate it, as it helps us improve the course for everyone.</p>
+
+<p>All responses are anonymous, so feel free to answer earnestly.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installing Node]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/01/27/installing-node/"/>
+    <updated>2013-01-27T19:06:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/01/27/installing-node</id>
+    <content type="html"><![CDATA[<p><img src="http://Duke-PL-Course.github.com/images/node.png" alt="Node.js"></p>
+
+<p>We will be using the <a href="http://nodejs.org/">Node.js</a> runtime as the interpreter for JavaScript. </p>
+
+<blockquote><p>Node.js is a platform built on Chrome&#8217;s JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed device</p></blockquote>
+
+<p>To install it, simply go to the <a href="http://nodejs.org/">Node Home page</a> and click on the install button.</p>
+
+<p>See you tuesday!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/01/24/ruby-assignment/"/>
+    <updated>2013-01-24T02:37:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/01/24/ruby-assignment</id>
+    <content type="html"><![CDATA[<p><img src="http://Duke-PL-Course.github.com/images/Ruby_logo.png" alt="Ruby" style="max-height: 200px; float: left; margin-right: 10px;"></p>
+
+<p>With our last lecture, we have finished the material for Ruby. The slides from lecture can be found <a href="http://duke-pl-course.github.com/slides/ruby.html#1">here</a>.</p>
+
+<p>The <a href="https://github.com/Duke-PL-Course/Ruby/blob/master/2013-01-23-assignment.md">Ruby Assignment</a> is now live. It includes five problems, two of which are from the book. The assignment will be due <strong>next Friday, February 1 at 11:59PM</strong>.</p>
+
+<p>To get started, fork the <a href="https://github.com/Duke-PL-Course/Ruby">Ruby repo</a>, which will create a repo of the same name under your github account. This allows us to keep track of everyone&#39;s progress. Then clone <strong>your own forked repo</strong> and you are ready to go. From there, you can commit and publish your changes.</p>
+
+<p>The assignment document is called <a href="https://github.com/Duke-PL-Course/Ruby/blob/master/2013-01-23-assignment.md">2013-01-23-assignment.md</a> and the skeleton files can be found under the <a href="https://github.com/Duke-PL-Course/Ruby/tree/master/assignments">assignments</a> folder.</p>
+
+<p>You can submit your solution in one of two ways. </p>
+
+<ol>
+<li>you can submit your source file directly to the <a href="http://dukeplcourse.com">autograder</a>. The directions for how to use it will be live shortly.</li>
+<li>you can keep your code in your own repos. Once the deadline passes, our automated script will get the latest versions of your code and run it against the autograder. So remember to commit often.</li>
+</ol>
+
+<p>The solutions to all the book problems except for Tree and CSV are also live. You can find them <a href="https://github.com/Duke-PL-Course/Ruby/blob/master/2013-01-22-book-problems-solution.md">here</a>. </p>
+
+<p>Again, please feel free to post questions on <a href="https://github.com/Duke-PL-Course/Ruby/issues?state=open">issues</a>.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Installing and Configuring Vim]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/01/17/configuring-vim/"/>
+    <updated>2013-01-17T15:55:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/01/17/configuring-vim</id>
+    <content type="html"><![CDATA[<h2 id="toc_799304">Installing Vim</h2>
+
+<p>Most Unix-like systems like Mac OS X or Linux distributions will come with Vim installed already. However, you may want to upgrade vim for better compatibility or new features. Here, we will cover some of the recommended ways to install <code>vim</code>.</p>
+
+<p><em>TL;DR: Here is a link to the <a href="https://www.dropbox.com/s/bka5j2rkobq0gxu/vimdotfiles.tgz">vim dotfiles</a> recommended for a base configuration.</em></p>
+
+<h3 id="toc_799305">OS X Installation</h3>
+
+<p>One option to install Vim for OS X is to use <a href="http://code.google.com/p/macvim/">MacVim</a>, a GUI version of vim. Simply download and install MacVim from its project page&#39;s <a href="http://code.google.com/p/macvim/downloads/list">Downloads</a> tab. Installation just requires unarchiving the <code>.tbz</code> file (Archive Utility should be able to do this for you by double clicking on the archive). Finally, drag and drop the <code>MacVim.app</code> bundle into your <code>/Applications/</code> folder.</p>
+
+<p>Alternatively, you can use <a href="http://mxcl.github.com/homebrew/"><code>brew</code></a> to install MacVim. If you prefer a terminal-based vim, than you can run the following commands with <code>brew</code>:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install vim --with-python --with-ruby --with-perl --with-lua --with-tcl
+</span></code></pre></td></tr></table></div></figure>
+
+<h3 id="toc_799306">Windows Installation</h3>
+
+<p>You can download the latest version of vim directly from the <a href="http://www.vim.org/download.php#pc">vim webpage</a>. This includes the binaries for the 32-bit and 64-bit version of Windows.</p>
+
+<p>Alternatively, you can install a command-line version of vim through <a href="http://www.cygwin.com/">Cygwin</a>, a Unix-like environment and CLI for Windows. First <a href="http://cygwin.com/install.html">install Cygwin</a> by downloading the <code>setup.exe</code> file. Run the <code>setup.exe</code> file with your preferred installation settings. Once reaching the &quot;Select Packages&quot; screen, scroll down to the <strong>Editors</strong> node and expand it. Finally, find <strong>vim</strong> in the list and change the <em>Skip</em> option to <em>Install</em>. Next, just finish the install ation.</p>
+
+<h2 id="toc_799307">Linux Installation</h2>
+
+<p>To install or upgrade <code>vim</code> on a Linux distribution, use the package manager of your choice (e.g. <code>apt</code>, <code>yum</code>, <code>pacman</code>, etc.). Typically the command will look something like:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install vim gvim <span class="c"># gvim is optional</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<h2 id="toc_799308">Configuring Vim</h2>
+
+<p>By default, the start of your vim configuration is found in <code>$HOME/.vimrc</code>; additional plugins, settings, etc. are found in <code>$HOME/.vim</code>. On Windows, <code>$HOME</code> is going to be <code>%userprofile%</code>, so something akin to <code>C:\Users\Your Name\</code>, and the <code>.vim</code> folder will be called <code>vimfiles</code>. This is due to the fact that NTFS directories are not supposed to start with periods.</p>
+
+<p>We have compiled a base <code>.vimrc</code> file and relevant plugins. You can download these settings files <a href="https://www.dropbox.com/s/bka5j2rkobq0gxu/vimdotfiles.tgz">here</a>. Simply place them in your $HOME directory as described above. <strong>NOTE: If you already use vim and have existing dot files, you will have to manually merge the .vimrc</strong>.</p>
+
+<p>This configuration uses <a href="https://github.com/tpope/vim-pathogen">Pathogen</a> to load bundled plugins, so you should be able to integrate this with any existing plugins relatively easily.</p>
+
+<h2 id="toc_799309">Congratulations</h2>
+
+<p>If you&#39;ve reached this point, you&#39;ve now successfully installed and configured Vim. It should look something like this:</p>
+
+<p><img src="http://Duke-PL-Course.github.com/images/vim_done.png" alt="Configured Vim"><br>
+<em>Note: The NERDTree plugin has been opened by issuing :NERDTreeToggle</em></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setting Up Sublime Text 2]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/01/15/setting-up-sublime-text-2/"/>
+    <updated>2013-01-15T02:44:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/01/15/setting-up-sublime-text-2</id>
+    <content type="html"><![CDATA[<h2 id="toc_799298">Intro</h2>
+
+<p><img src="http://Duke-PL-Course.github.com/images/st2.jpg" alt="Sublime Text 2 Logo"></p>
+
+<p>Sublime Text 2 is an incredibly fast and powerful editor that&#39;s been replacing <a href="http://en.wikipedia.org/wiki/Vim_(text_editor">vim</a>), <a href="http://en.wikipedia.org/wiki/Emacs">emacs</a>, and <a href="http://macromates.com/">textmate</a> for many. The community and ecosystem is passionate and vibrant, with developers writing packages for nearly everything. It&#39;s also freely available for all three major platforms, which makes it ideal for this class. You can download Sublime Text 2 from its <a href="http://www.sublimetext.com/">website</a>.</p>
+
+<h2 id="toc_799299">Package Control</h2>
+
+<p>Sublime Text 2 supports Textmate Snippets, Syntax Highlighting, and other packages that made Textmate successful. However, Sublime Text 2 did not include a package manager out of the box. Developer <a href="http://wbond.net/">@wbond</a> has created <a href="http://wbond.net/sublime_packages/package_control">a full-featured package manager</a> that helps discovering, installing, updating and removing packages for Sublime Text 2.</p>
+
+<p>To install <a href="http://wbond.net/sublime_packages/package_control">Package Control</a>, open up Sublime Text 2, and hit <code>ctrl+&#39;</code> or click on <strong><em>View &gt; Show Console</em></strong> to open up the Console. Once open, paste in the following command:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">urllib2</span><span class="o">,</span><span class="nn">os</span><span class="p">;</span> <span class="n">pf</span><span class="o">=</span><span class="s">&#39;Package Control.sublime-package&#39;</span><span class="p">;</span> <span class="n">ipp</span><span class="o">=</span><span class="n">sublime</span><span class="o">.</span><span class="n">installed_packages_path</span><span class="p">();</span> <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">ipp</span><span class="p">)</span> <span class="k">else</span> <span class="bp">None</span><span class="p">;</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">install_opener</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">ProxyHandler</span><span class="p">()));</span> <span class="nb">open</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">ipp</span><span class="p">,</span><span class="n">pf</span><span class="p">),</span><span class="s">&#39;wb&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;http://sublime.wbond.net/&#39;</span><span class="o">+</span><span class="n">pf</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s">&#39; &#39;</span><span class="p">,</span><span class="s">&#39;%20&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">read</span><span class="p">());</span> <span class="k">print</span> <span class="s">&#39;Please restart Sublime Text to finish installation&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+<p><img src="http://Duke-PL-Course.github.com/images/console.png" alt="Console"><br>
+<em>Note: ignore the text displayed in the console shown above.</em></p>
+
+<p>Press enter to execute the code. Sublime text should display the message </p>
+
+<blockquote><p>Please restart Sublime Text to finish installation</p></blockquote>
+
+<p>After restarting Sublime Text 2, you should be able to use Package Control. For more detailed instructions on installation, see the <a href="http://wbond.net/sublime_packages/package_control/installation">Package Control Installation Guide</a>.</p>
+
+<p>You can access all the Package Control Commands with Sublime Text&#39;s Command Palette, which you can bring up with <code>Control+Shift+P</code> or <code>Command+Shift+P</code> on Mac.</p>
+
+<p><img src="http://Duke-PL-Course.github.com/images/command-palette.png" alt="Command Palette"></p>
+
+<p>A detailed description of each command can be found <a href="http://wbond.net/sublime_packages/package_control/usage">here</a>.</p>
+
+<h2 id="toc_799300">Packages</h2>
+
+<p>Sublime Text natively supports JavaScript, Ruby, Scala, Erlang, Clojure, and Haskell.</p>
+
+<h3 id="toc_799301">Prolog</h3>
+
+<p>For Prolog, a syntax highlighting package has been created by <a href="https://github.com/alnkpa/sublimeprolog">@alnkpa</a>. It can be installed by using <em>Install Package</em> from the <em>Command Palette</em>, which will bring up a separate window that lists all the available packages after a few seconds. Type in <em>Prolog</em> in the search and you should be able to see the package after a few key strokes. Select the <em>Prolog</em> package and press enter to install. Then that&#39;s it. </p>
+
+<p>Sublime Text will recognize files that with the extensions <code>pl</code> or <code>pro</code> as Prolog source files. However, <code>pl</code> is commonly used as an extension for Perl and Sublime Text will select Perl as in the language instead of Prolog if you use a <code>pl</code> extension. As a result, we prefer to use <code>pro</code>.</p>
+
+<p><img src="http://Duke-PL-Course.github.com/images/prolog-package.png" alt="Prolog Package"></p>
+
+<p>As a side note, you can set the syntax of any source file at any time by using <em>Command Palette</em> &gt; <em>Set Syntax: (Language)</em> to set the syntax of the current file to the language of your choice.</p>
+
+<h3 id="toc_799302">Io</h3>
+
+<p>A package for Io has actually been created by one of the instructors <a href="https://github.com/yangsu/sublime-io">@yangsu</a>. Used <em>Install Package</em> to install a package called <em>Io Langugae</em>.</p>
+
+<p>After the installation completes, Sublime Text will recognize any file with <code>io</code> extension as <code>io</code> source files. As noted above, you can also set the syntax of any source file to io with <em>Command Palette</em> &gt; <em>Set Syntax: (Language)</em>.</p>
+
+<h3 id="toc_799303">Additional Resources</h3>
+
+<p><a href="https://tutsplus.com/">Tuts+</a> is an amazing collection of resources for almost everything related to technical or design knowledge. It&#39;s highly recommended for anyone trying to learn anything from Photoshop to <a href="http://nodejs.org/">Node.js</a>. <a href="https://tutsplus.com/">Tuts+</a> also has a whole network of sites with focuses in particular areas. Scroll to the bottom of the <a href="https://tutsplus.com/">Tuts+ page</a>, and you will be able to see all the available options.</p>
+
+<p><a href="http://net.tutsplus.com/tutorials/">NetTuts+</a> in particular has many great tutorials on Sublime Text. Two of the best articles are <a href="http://net.tutsplus.com/tutorials/tools-and-tips/sublime-text-2-tips-and-tricks/">Sublime Text 2 Tips and Tricks</a> and <a href="http://net.tutsplus.com/tutorials/tools-and-tips/essential-sublime-text-2-plugins-and-extensions/">Essential Sublime Text 2 Plugins and Extensions</a>.</p>
+
+<p>You can also follow <a href="https://tutsplus.com/course/improve-workflow-in-sublime-text-2/">a free video series</a> by Jeffrey Way on <a href="https://tutsplus.com/">Tuts+</a> that goes over many of the topics covered in the two articles above and more.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Welcome!]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/01/14/welcome/"/>
+    <updated>2013-01-14T00:55:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/01/14/welcome</id>
+    <content type="html"><![CDATA[<p>Welcome to Programming Languages House Course!</p>
+
+<p>We are very excited to have you in our class and look forward to meeting all of you.</p>
+
+<p>Meanwhile, please take a look at the <a href="http://Duke-PL-Course.github.com/about/">about</a> and <a href="http://Duke-PL-Course.github.com/resources/">resources</a> pages for more information on the class.</p>
+]]></content>
+  </entry>
+  
+</feed>

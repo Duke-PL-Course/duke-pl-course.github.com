@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Prolog | Duke PL Course]]></title>
+  <link href="http://Duke-PL-Course.github.com/blog/categories/prolog/atom.xml" rel="self"/>
+  <link href="http://Duke-PL-Course.github.com/"/>
+  <updated>2013-08-27T15:47:21-04:00</updated>
+  <id>http://Duke-PL-Course.github.com/</id>
+  <author>
+    <name><![CDATA[Yang Su, Kevin Gao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Prolog In-Class Problems Solutions]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/02/18/prolog-in-class-problems-solutions/"/>
+    <updated>2013-02-18T01:56:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/02/18/prolog-in-class-problems-solutions</id>
+    <content type="html"><![CDATA[<p>In the second Prolog lecture, we posed the 3 practice problems from the textbook:</p>
+
+<ul>
+<li>Reverse the elements of a list</li>
+<li>Find the smallest element of a list</li>
+<li>Sort the elements of a list</li>
+</ul>
+
+<p>While these are not problems particularly well-suited for Prolog, at least not in the same way as <a href="http://duke-pl-course.github.com/slides/prolog.html#48">Sudoku</a> and <a href="http://duke-pl-course.github.com/slides/prolog.html#56">Queens</a> are, they aim to help you understand how to using recursion with lists. This is one of the most important and most commonly used technique to help you describe and solve problems in Prolog.</p>
+
+<p>We have posted <a href="https://github.com/Duke-PL-Course/Prolog/blob/master/2013-02-05-book-problems-solutions.md#do-1">our solutions</a> to these three problems. Please take a look and feel free to post any questions on <a href="https://github.com/Duke-PL-Course/Prolog/issues?state=open">Github</a>.</p>
+
+<p>We will also briefly go over these solutions at the beginning of our next class.</p>
+]]></content>
+  </entry>
+  
+</feed>

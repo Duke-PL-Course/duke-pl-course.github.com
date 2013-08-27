@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: 
+
+Sitemap: http://Duke-PL-Course.github.com/sitemap.xml 

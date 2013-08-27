@@ -1,0 +1,271 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Resources - Duke PL Course</title>
+  <meta name="author" content="Yang Su, Kevin Gao">
+
+  
+  <meta name="description" content="Resources Jan 14th, 2013 Table of Contents Installation Virtual Machine
+Mac OS X
+Windows
+Linux Git
+Editors Sublime Text 2
+Vim Language Specific &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://Duke-PL-Course.github.com/resources/">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Duke PL Course" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37844085-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body >
+  <header role="banner" id="sidebar">
+    <!-- Logo -->
+<aside id="logo" class="clearfix">
+  <div class="clearfix">
+    <a href="/">Duke PL Course</a>
+  </div>
+</aside>
+
+<ul id="menu">
+
+  <li class="title">
+    <h1 id="title"><a href="/">Duke PL Course</a></h1>
+  </li>
+
+
+  <li class="link">
+    <a href="/about/">about</a>
+  </li>
+  <li class="link">
+    <a href="/course-information/">course info</a>
+  </li>
+  <li class="link">
+    <a href="/assignments/">assignments</a>
+  </li>
+  <li class="link">
+    <a href="/slides/">slides</a>
+  </li>
+  <li class="link">
+    <a href="/resources/">resources</a>
+  </li>
+  <li class="link">
+    <a href="http://dukeplcourse.com">autograder</a>
+  </li>
+
+
+  <li class="link">
+    <a href="http://github.com/duke-pl-course/">github</a>
+  </li>
+
+  <li class="link rss">
+    <a href="/atom.xml">rss feed</a>
+  </li>
+</ul>
+
+
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:Duke-PL-Course.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+
+
+<!-- Octopress Love -->
+<aside id="octopress_linkback">
+  <a href="http://octopress.org/">
+    <span class="unicode_square">
+      <span class="unicode_circle">
+        &nbsp;
+      </span>
+    </span>
+    <span class="octopress">Powered by Octopress</span>
+  </a>
+</aside>
+
+  </header>
+  <section id="main">
+    <div>
+<article role="article" class="post">
+  
+    <div class="sharing-box">
+  
+  
+  
+</div>
+
+  
+  
+  <header>
+    <h2 class="entry-title">Resources</h2>
+    <p class="meta">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2013-01-14T02:40:00-05:00" pubdate data-updated="true">Jan 14<span>th</span>, 2013</time></p>
+  </header>
+  
+  <h2 id="toc_799324">Table of Contents</h2>
+
+<ul>
+<li><a href="#installation">Installation</a>
+
+<ul>
+<li><a href="#virtual-machine">Virtual Machine</a></li>
+<li><a href="#mac-os-x">Mac OS X</a></li>
+<li><a href="#windows">Windows</a></li>
+<li><a href="#linux">Linux</a></li>
+</ul></li>
+<li><a href="#git">Git</a></li>
+<li><a href="#editors">Editors</a>
+
+<ul>
+<li><a href="#sublime-text-2">Sublime Text 2</a></li>
+<li><a href="#vim">Vim</a></li>
+</ul></li>
+<li><p><a href="#language-specific-resources">Language Specific Resources</a></p></li>
+<li><p><a href="#downloads">Downloads</a></p></li>
+</ul>
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="virtual-machine">Virtual Machine</h3>
+
+<p>I have created a <a href="http://www.lubuntu.net/">Lubuntu</a> virtual machine which I highly recommmend using for this class. The languages and environments are already installed and you avoid clustering your operating system with languages that you may not use again for a while. <em>If you do not have a lot of RAM on your computer, this may not be a good option.</em></p>
+
+<p>To install the virtual machine, you need virtualization software like <a href="https://www.virtualbox.org/">VirtualBox</a> or VMWare, which can be downloaded for free through <a href="http://oit.duke.edu/comp-print/software/">Duke OIT</a>. You should be able to import the <a href="https://d164gy67scumxg.cloudfront.net/plcourse.ova">this image</a> using the virtualization software. Instructions for VirtualBox are <a href="http://www.virtualbox.org/manual/ch01.html#ovf">here</a>.</p>
+
+<h3 id="mac-os-x">Mac OS X</h3>
+
+<p>Type this in your terminal:</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>curl https://gist.github.com/jimpo/6357542/raw/37c2c7a5ea99738abfb9a52d3da060af18ca397a/Duke-PL-Course-MacOSX-Install.sh | sh
+</span></code></pre></td></tr></table></div></figure>
+
+<p>You should be set after the script completes.</p>
+
+<p>If you are interested in what the install script is doing, you can view the source <a href="https://gist.github.com/jimpo/6357542">here</a>.</p>
+
+<h3 id="windows">Windows</h3>
+
+<p>Since many of the languages can&#39;t run natively on Windows, I have created a Virtual Machine for you to use. Follow the above instructions to set it up.</p>
+
+<h3 id="linux">Linux</h3>
+
+<p>You can install most of the packages using <code>apt-get</code> or its equivalent for your distribution. If you are having trouble, please let the instructors know.</p>
+
+<figure class='code'><figcaption><span></span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install racket ghc swi-prolog ruby1.9.3 scala
+</span></code></pre></td></tr></table></div></figure>
+
+<h2 id="git">Git</h2>
+
+<p><a href="http://git-scm.com/book/">Pro Git</a> is a introduction to git.</p>
+
+<p>Most problems can be found using google or stackoverflow. If you are still having trouble, let the instructors know.</p>
+
+<h3 id="toc_799325">Branching</h3>
+
+<p><a href="http://pcottle.github.com/learnGitBranching/">Learn Git Branching</a></p>
+
+<h2 id="editors">Editors</h2>
+
+<h2 id="sublime-text-2">Sublime Text 2</h2>
+
+<p>We suggest that you use <a href="http://www.sublimetext.com/">Sublime Text 2</a>, a cross platform editor that&#39;s extremely flexible. You can download and evaluate it for free indefinitely. Follow the instructions in <a href="/blog/2013/01/15/setting-up-sublime-text-2/">this post</a> to set up <a href="http://wbond.net/sublime_packages/package_control">Package Control</a> and other useful packages to make your development environment easier to work with.</p>
+
+<h2 id="emacs">Emacs</h2>
+
+<p>If are willing to put some effort into learning a terminal based editor, it will pay large dividends in the future. Both emacs and vim are very powerful and highly customizable terminal based editors. The emacs environment is the provided virtual machine image is already configured for the languages we will be using.</p>
+
+<p>Here is a good emacs <a href="http://david.rothlis.net/emacs/howtolearn.html">tutorial</a> for those interested.</p>
+
+<h2 id="vim">Vim</h2>
+
+<p>If you are a vim user or would like to use vim for this course, then you can find the recommended plugins and configuration files in <a href="https://www.dropbox.com/s/bka5j2rkobq0gxu/vimdotfiles.tgz">this archive</a>. In addition, you can find a blog post on how to install and configure vim <a href="/blog/2013/01/17/configuring-vim/">here</a>.</p>
+
+<h2 id="language-specific-resources">Language Specific Resources</h2>
+
+<h2 id="downloads">Downloads</h2>
+
+<p><a href="https://www.dropbox.com/sh/i02fg0bhisrzsx0/H2o-7DuA3G">Shared Dropbox folder with course resources</a></p>
+
+  
+</article>
+
+</div>
+
+    <nav role="navigation" id="pagination">
+
+</nav>
+  </section>
+  
+
+  
+
+<script type="text/javascript">
+      var disqus_shortname = 'dukeplcourse';
+      
+        
+        var disqus_script = 'count.js';
+      
+    (function () {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = 'http://' + disqus_shortname + '.disqus.com/' + disqus_script;
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    }());
+</script>
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

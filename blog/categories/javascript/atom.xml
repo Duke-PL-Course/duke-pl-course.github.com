@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: javascript | Duke PL Course]]></title>
+  <link href="http://Duke-PL-Course.github.com/blog/categories/javascript/atom.xml" rel="self"/>
+  <link href="http://Duke-PL-Course.github.com/"/>
+  <updated>2013-08-27T15:47:21-04:00</updated>
+  <id>http://Duke-PL-Course.github.com/</id>
+  <author>
+    <name><![CDATA[Yang Su, Kevin Gao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Installing Node]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/01/27/installing-node/"/>
+    <updated>2013-01-27T19:06:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/01/27/installing-node</id>
+    <content type="html"><![CDATA[<p><img src="/images/node.png" alt="Node.js"></p>
+
+<p>We will be using the <a href="http://nodejs.org/">Node.js</a> runtime as the interpreter for JavaScript. </p>
+
+<p>{% blockquote %}<br>
+Node.js is a platform built on Chrome&#39;s JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed device<br>
+{% endblockquote %}</p>
+
+<p>To install it, simply go to the <a href="http://nodejs.org/">Node Home page</a> and click on the install button.</p>
+
+<p>See you tuesday!</p>
+]]></content>
+  </entry>
+  
+</feed>

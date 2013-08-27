@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: Ruby, | Duke PL Course]]></title>
+  <link href="http://Duke-PL-Course.github.com/blog/categories/ruby-/atom.xml" rel="self"/>
+  <link href="http://Duke-PL-Course.github.com/"/>
+  <updated>2013-08-27T15:47:21-04:00</updated>
+  <id>http://Duke-PL-Course.github.com/</id>
+  <author>
+    <name><![CDATA[Yang Su, Kevin Gao]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Review Problems for Ruby, JavaScript, Prolog, and Scala]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/02/26/review-problems-for-ruby/"/>
+    <updated>2013-02-26T16:49:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/02/26/review-problems-for-ruby</id>
+    <content type="html"><![CDATA[<p>We have written 4 review problems for the lecture today, one for each of the four languages we&#39;ve covered thus far.</p>
+
+<p>The problems can be found below:</p>
+
+<ol>
+<li><a href="https://github.com/Duke-PL-Course/Ruby/blob/master/2013-02-26-ruby-review-problem.md">Ruby Review Problem - LCD Numbers</a></li>
+<li><a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/2013-02-26-javascript-review-problem.md">JavaScript Review Problem - Identifying Child Elements</a></li>
+<li><a href="https://github.com/Duke-PL-Course/Prolog/blob/master/2013-02-26-prolog-review-problem.md">Prolog Review Problem - Partition and Partition with index</a></li>
+<li><a href="https://github.com/Duke-PL-Course/Scala/blob/master/2013-02-26-scala-review-problem.md">Scala Review Problem - Quick Sort</a></li>
+</ol>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ruby]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/01/24/ruby-assignment/"/>
+    <updated>2013-01-24T02:37:00-05:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/01/24/ruby-assignment</id>
+    <content type="html"><![CDATA[<p><img src="http://Duke-PL-Course.github.com/images/Ruby_logo.png" alt="Ruby" style="max-height: 200px; float: left; margin-right: 10px;"></p>
+
+<p>With our last lecture, we have finished the material for Ruby. The slides from lecture can be found <a href="http://duke-pl-course.github.com/slides/ruby.html#1">here</a>.</p>
+
+<p>The <a href="https://github.com/Duke-PL-Course/Ruby/blob/master/2013-01-23-assignment.md">Ruby Assignment</a> is now live. It includes five problems, two of which are from the book. The assignment will be due <strong>next Friday, February 1 at 11:59PM</strong>.</p>
+
+<p>To get started, fork the <a href="https://github.com/Duke-PL-Course/Ruby">Ruby repo</a>, which will create a repo of the same name under your github account. This allows us to keep track of everyone&#39;s progress. Then clone <strong>your own forked repo</strong> and you are ready to go. From there, you can commit and publish your changes.</p>
+
+<p>The assignment document is called <a href="https://github.com/Duke-PL-Course/Ruby/blob/master/2013-01-23-assignment.md">2013-01-23-assignment.md</a> and the skeleton files can be found under the <a href="https://github.com/Duke-PL-Course/Ruby/tree/master/assignments">assignments</a> folder.</p>
+
+<p>You can submit your solution in one of two ways. </p>
+
+<ol>
+<li>you can submit your source file directly to the <a href="http://dukeplcourse.com">autograder</a>. The directions for how to use it will be live shortly.</li>
+<li>you can keep your code in your own repos. Once the deadline passes, our automated script will get the latest versions of your code and run it against the autograder. So remember to commit often.</li>
+</ol>
+
+<p>The solutions to all the book problems except for Tree and CSV are also live. You can find them <a href="https://github.com/Duke-PL-Course/Ruby/blob/master/2013-01-22-book-problems-solution.md">here</a>. </p>
+
+<p>Again, please feel free to post questions on <a href="https://github.com/Duke-PL-Course/Ruby/issues?state=open">issues</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

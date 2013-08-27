@@ -148,13 +148,13 @@
   </header>
 
 
-<h2 id="toc_799304">Installing Vim</h2>
+<h2 id="toc_801734">Installing Vim</h2>
 
 <p>Most Unix-like systems like Mac OS X or Linux distributions will come with Vim installed already. However, you may want to upgrade vim for better compatibility or new features. Here, we will cover some of the recommended ways to install <code>vim</code>.</p>
 
 <p><em>TL;DR: Here is a link to the <a href="https://www.dropbox.com/s/bka5j2rkobq0gxu/vimdotfiles.tgz">vim dotfiles</a> recommended for a base configuration.</em></p>
 
-<h3 id="toc_799305">OS X Installation</h3>
+<h3 id="toc_801735">OS X Installation</h3>
 
 <p>One option to install Vim for OS X is to use <a href="http://code.google.com/p/macvim/">MacVim</a>, a GUI version of vim. Simply download and install MacVim from its project page&#39;s <a href="http://code.google.com/p/macvim/downloads/list">Downloads</a> tab. Installation just requires unarchiving the <code>.tbz</code> file (Archive Utility should be able to do this for you by double clicking on the archive). Finally, drag and drop the <code>MacVim.app</code> bundle into your <code>/Applications/</code> folder.</p>
 
@@ -164,13 +164,13 @@
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install vim --with-python --with-ruby --with-perl --with-lua --with-tcl
 </span></code></pre></td></tr></table></div></figure>
 
-<h3 id="toc_799306">Windows Installation</h3>
+<h3 id="toc_801736">Windows Installation</h3>
 
 <p>You can download the latest version of vim directly from the <a href="http://www.vim.org/download.php#pc">vim webpage</a>. This includes the binaries for the 32-bit and 64-bit version of Windows.</p>
 
 <p>Alternatively, you can install a command-line version of vim through <a href="http://www.cygwin.com/">Cygwin</a>, a Unix-like environment and CLI for Windows. First <a href="http://cygwin.com/install.html">install Cygwin</a> by downloading the <code>setup.exe</code> file. Run the <code>setup.exe</code> file with your preferred installation settings. Once reaching the &quot;Select Packages&quot; screen, scroll down to the <strong>Editors</strong> node and expand it. Finally, find <strong>vim</strong> in the list and change the <em>Skip</em> option to <em>Install</em>. Next, just finish the install ation.</p>
 
-<h2 id="toc_799307">Linux Installation</h2>
+<h2 id="toc_801737">Linux Installation</h2>
 
 <p>To install or upgrade <code>vim</code> on a Linux distribution, use the package manager of your choice (e.g. <code>apt</code>, <code>yum</code>, <code>pacman</code>, etc.). Typically the command will look something like:</p>
 
@@ -178,7 +178,7 @@
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install vim gvim <span class="c"># gvim is optional</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<h2 id="toc_799308">Configuring Vim</h2>
+<h2 id="toc_801738">Configuring Vim</h2>
 
 <p>By default, the start of your vim configuration is found in <code>$HOME/.vimrc</code>; additional plugins, settings, etc. are found in <code>$HOME/.vim</code>. On Windows, <code>$HOME</code> is going to be <code>%userprofile%</code>, so something akin to <code>C:\Users\Your Name\</code>, and the <code>.vim</code> folder will be called <code>vimfiles</code>. This is due to the fact that NTFS directories are not supposed to start with periods.</p>
 
@@ -186,7 +186,7 @@
 
 <p>This configuration uses <a href="https://github.com/tpope/vim-pathogen">Pathogen</a> to load bundled plugins, so you should be able to integrate this with any existing plugins relatively easily.</p>
 
-<h2 id="toc_799309">Congratulations</h2>
+<h2 id="toc_801739">Congratulations</h2>
 
 <p>If you&#39;ve reached this point, you&#39;ve now successfully installed and configured Vim. It should look something like this:</p>
 

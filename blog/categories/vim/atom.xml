@@ -4,7 +4,7 @@
   <title><![CDATA[Category: vim | Duke PL Course]]></title>
   <link href="http://Duke-PL-Course.github.com/blog/categories/vim/atom.xml" rel="self"/>
   <link href="http://Duke-PL-Course.github.com/"/>
-  <updated>2013-08-27T15:47:21-04:00</updated>
+  <updated>2013-08-27T15:48:02-04:00</updated>
   <id>http://Duke-PL-Course.github.com/</id>
   <author>
     <name><![CDATA[Yang Su, Kevin Gao]]></name>
@@ -18,13 +18,13 @@
     <link href="http://Duke-PL-Course.github.com/blog/2013/01/17/configuring-vim/"/>
     <updated>2013-01-17T15:55:00-05:00</updated>
     <id>http://Duke-PL-Course.github.com/blog/2013/01/17/configuring-vim</id>
-    <content type="html"><![CDATA[<h2 id="toc_799355">Installing Vim</h2>
+    <content type="html"><![CDATA[<h2 id="toc_801785">Installing Vim</h2>
 
 <p>Most Unix-like systems like Mac OS X or Linux distributions will come with Vim installed already. However, you may want to upgrade vim for better compatibility or new features. Here, we will cover some of the recommended ways to install <code>vim</code>.</p>
 
 <p><em>TL;DR: Here is a link to the <a href="https://www.dropbox.com/s/bka5j2rkobq0gxu/vimdotfiles.tgz">vim dotfiles</a> recommended for a base configuration.</em></p>
 
-<h3 id="toc_799356">OS X Installation</h3>
+<h3 id="toc_801786">OS X Installation</h3>
 
 <p>One option to install Vim for OS X is to use <a href="http://code.google.com/p/macvim/">MacVim</a>, a GUI version of vim. Simply download and install MacVim from its project page&#39;s <a href="http://code.google.com/p/macvim/downloads/list">Downloads</a> tab. Installation just requires unarchiving the <code>.tbz</code> file (Archive Utility should be able to do this for you by double clicking on the archive). Finally, drag and drop the <code>MacVim.app</code> bundle into your <code>/Applications/</code> folder.</p>
 
@@ -33,20 +33,20 @@
 </code></pre>
 </div>
 
-<h3 id="toc_799357">Windows Installation</h3>
+<h3 id="toc_801787">Windows Installation</h3>
 
 <p>You can download the latest version of vim directly from the <a href="http://www.vim.org/download.php#pc">vim webpage</a>. This includes the binaries for the 32-bit and 64-bit version of Windows.</p>
 
 <p>Alternatively, you can install a command-line version of vim through <a href="http://www.cygwin.com/">Cygwin</a>, a Unix-like environment and CLI for Windows. First <a href="http://cygwin.com/install.html">install Cygwin</a> by downloading the <code>setup.exe</code> file. Run the <code>setup.exe</code> file with your preferred installation settings. Once reaching the &quot;Select Packages&quot; screen, scroll down to the <strong>Editors</strong> node and expand it. Finally, find <strong>vim</strong> in the list and change the <em>Skip</em> option to <em>Install</em>. Next, just finish the install ation.</p>
 
-<h2 id="toc_799358">Linux Installation</h2>
+<h2 id="toc_801788">Linux Installation</h2>
 
 <p>To install or upgrade <code>vim</code> on a Linux distribution, use the package manager of your choice (e.g. <code>apt</code>, <code>yum</code>, <code>pacman</code>, etc.). Typically the command will look something like:</p>
 <div class="highlight"><pre><code class="bash">sudo apt-get install vim gvim <span class="c"># gvim is optional</span>
 </code></pre>
 </div>
 
-<h2 id="toc_799359">Configuring Vim</h2>
+<h2 id="toc_801789">Configuring Vim</h2>
 
 <p>By default, the start of your vim configuration is found in <code>$HOME/.vimrc</code>; additional plugins, settings, etc. are found in <code>$HOME/.vim</code>. On Windows, <code>$HOME</code> is going to be <code>%userprofile%</code>, so something akin to <code>C:\Users\Your Name\</code>, and the <code>.vim</code> folder will be called <code>vimfiles</code>. This is due to the fact that NTFS directories are not supposed to start with periods.</p>
 
@@ -54,7 +54,7 @@
 
 <p>This configuration uses <a href="https://github.com/tpope/vim-pathogen">Pathogen</a> to load bundled plugins, so you should be able to integrate this with any existing plugins relatively easily.</p>
 
-<h2 id="toc_799360">Congratulations</h2>
+<h2 id="toc_801790">Congratulations</h2>
 
 <p>If you&#39;ve reached this point, you&#39;ve now successfully installed and configured Vim. It should look something like this:</p>
 

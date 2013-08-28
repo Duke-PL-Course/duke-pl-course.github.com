@@ -4,7 +4,7 @@
   <title><![CDATA[Category: node, | Duke PL Course]]></title>
   <link href="http://Duke-PL-Course.github.com/blog/categories/node-/atom.xml" rel="self"/>
   <link href="http://Duke-PL-Course.github.com/"/>
-  <updated>2013-08-27T15:53:26-04:00</updated>
+  <updated>2013-08-28T18:14:49-04:00</updated>
   <id>http://Duke-PL-Course.github.com/</id>
   <author>
     <name><![CDATA[Yang Su, Kevin Gao]]></name>
@@ -22,9 +22,7 @@
 
 <p>We will be using the <a href="http://nodejs.org/">Node.js</a> runtime as the interpreter for JavaScript. </p>
 
-<p>{% blockquote %}<br>
-Node.js is a platform built on Chrome&#39;s JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed device<br>
-{% endblockquote %}</p>
+<p><blockquote><p><br><br/>Node.js is a platform built on Chrome&#39;s JavaScript runtime for easily building fast, scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time applications that run across distributed device<br></p></blockquote></p>
 
 <p>To install it, simply go to the <a href="http://nodejs.org/">Node Home page</a> and click on the install button.</p>
 

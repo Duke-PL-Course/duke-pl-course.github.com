@@ -4,7 +4,7 @@
   <title><![CDATA[Duke PL Course]]></title>
   <link href="http://Duke-PL-Course.github.com/atom.xml" rel="self"/>
   <link href="http://Duke-PL-Course.github.com/"/>
-  <updated>2013-08-27T15:53:25-04:00</updated>
+  <updated>2013-08-28T18:14:49-04:00</updated>
   <id>http://Duke-PL-Course.github.com/</id>
   <author>
     <name><![CDATA[Yang Su, Kevin Gao]]></name>
@@ -12,6 +12,33 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Week One]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/08/28/week-one/"/>
+    <updated>2013-08-28T18:08:00-04:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/08/28/week-one</id>
+    <content type="html"><![CDATA[<p>Next week we are going to go over the Bash assignment and then dive into Lisp. For next week, please make sure you have your development environment installed (most likely the VM) and you were able to fork and clone the Assignments repository. I posted instructions below for setting up GitHub. For next week, please go through a short Linux introduction and the first two chapters of Pro Git if you have not used these tools before. See the <a href="http://Duke-PL-Course.github.com/assignments">assignments</a> page for links. I&#39;ll see everyone next week!</p>
+
+<p>PS: The projector now works.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Setting up GitHub]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/08/28/setting-up-github/"/>
+    <updated>2013-08-28T17:45:00-04:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/08/28/setting-up-github</id>
+    <content type="html"><![CDATA[<p>In this class, we will be using GitHub to submit assignments. The reason is to give the class exposure to a tool that will greatly help you to collaborate on projects in the future. The first step is to set up a GitHub account. If you haven&#39;t done so already, here is how you can get set up to submit assignments.</p>
+
+<ol>
+<li>Create an account on <a href="https://github.com/">GitHub</a>.</li>
+<li>Add the public key for your VM. This will allow you to push to your repository without entering your password. See <a href="https://help.github.com/articles/generating-ssh-keys">here</a> for instructions.</li>
+<li><a href="https://help.github.com/articles/fork-a-repo">Fork</a> the <a href="https://github.com/Duke-PL-Course/Assignments">Assignments</a> repository.</li>
+<li>Clone your repository onto your VM. You will now be able to work on the exercises posted.</li>
+</ol>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Welcome Fall 2013 Students]]></title>
@@ -53,7 +80,7 @@
     <id>http://Duke-PL-Course.github.com/blog/2013/04/25/pl-design</id>
     <content type="html"><![CDATA[<p><strong>Due Thursday, May 2, 2013</strong></p>
 
-<h2 id="toc_818350">Overview</h2>
+<h2 id="toc_68">Overview</h2>
 
 <p>For your final assignment, you will be tasked with designing your very own programming language!</p>
 
@@ -61,7 +88,7 @@
 
 <p>When discussing the decisions you have made in designing your language, please justify each and weigh the pros and cons. Simply stating that your programming language is an &quot;interpreted, imperative, hybrid functional/object-oriented, dynamically-typed, generic, garbage-collected language&quot; isn&#39;t enough.</p>
 
-<h2 id="toc_818351">Things to Remember</h2>
+<h2 id="toc_69">Things to Remember</h2>
 
 <p>In particular, you should design your language with specific goals and use cases in mind. Whether you&#39;re designing a <a href="http://en.wikipedia.org/wiki/Domain-specific_language">domain-specific language</a> or general purpose language, you are still going to need to optimize and make decisions with a purpose in mind.</p>
 
@@ -109,7 +136,7 @@
     <link href="http://Duke-PL-Course.github.com/blog/2013/03/06/github-notifications/"/>
     <updated>2013-03-06T18:05:00-05:00</updated>
     <id>http://Duke-PL-Course.github.com/blog/2013/03/06/github-notifications</id>
-    <content type="html"><![CDATA[<h2 id="toc_818349">Turn on your GitHub Notifications</h2>
+    <content type="html"><![CDATA[<h2 id="toc_67">Turn on your GitHub Notifications</h2>
 
 <p>Go to your <a href="https://github.com/settings/notifications">settings/notifications</a> and make sure you check the email boxes for both notification types to get our announcements in email.</p>
 
@@ -209,13 +236,13 @@
 
 <p>Hope you will find this assignment to be slightly easier.</p>
 
-<h2 id="toc_818347">Note About Bonus Problem</h2>
+<h2 id="toc_65">Note About Bonus Problem</h2>
 
 <p>The <a href="https://github.com/Duke-PL-Course/JavaScript/blob/master/2013-02-03-assignment.md#bonus-async-waterfall">waterfall function</a> is part of a very widely used JavaScript Library called <a href="https://github.com/caolan/async">async.js</a>. It helps manage the complexity and callbacks for a series of functions that depend on the result of a previous functions.</p>
 
 <p>A similar function also available in the async library is <a href="https://github.com/caolan/async#paralleltasks-callback">parallel</a>. It allows you to fire off many requests in parallel and collect the results with a single callback function. We mentioned this function in lecture and we have published a simpler version of the parallel function that takes in a hash. Please take a look for reference and hopefully it will help you understand what&#39;s required for the waterfall function</p>
 
-<h2 id="toc_818348">Note about Earlier Forked Repos</h2>
+<h2 id="toc_66">Note about Earlier Forked Repos</h2>
 
 <p>If you forked the repo before we finalized the assignment. Please use the following commands to update your repo:</p>
 
@@ -290,13 +317,13 @@
     <link href="http://Duke-PL-Course.github.com/blog/2013/01/17/configuring-vim/"/>
     <updated>2013-01-17T15:55:00-05:00</updated>
     <id>http://Duke-PL-Course.github.com/blog/2013/01/17/configuring-vim</id>
-    <content type="html"><![CDATA[<h2 id="toc_818341">Installing Vim</h2>
+    <content type="html"><![CDATA[<h2 id="toc_59">Installing Vim</h2>
 
 <p>Most Unix-like systems like Mac OS X or Linux distributions will come with Vim installed already. However, you may want to upgrade vim for better compatibility or new features. Here, we will cover some of the recommended ways to install <code>vim</code>.</p>
 
 <p><em>TL;DR: Here is a link to the <a href="https://www.dropbox.com/s/bka5j2rkobq0gxu/vimdotfiles.tgz">vim dotfiles</a> recommended for a base configuration.</em></p>
 
-<h3 id="toc_818342">OS X Installation</h3>
+<h3 id="toc_60">OS X Installation</h3>
 
 <p>One option to install Vim for OS X is to use <a href="http://code.google.com/p/macvim/">MacVim</a>, a GUI version of vim. Simply download and install MacVim from its project page&#39;s <a href="http://code.google.com/p/macvim/downloads/list">Downloads</a> tab. Installation just requires unarchiving the <code>.tbz</code> file (Archive Utility should be able to do this for you by double clicking on the archive). Finally, drag and drop the <code>MacVim.app</code> bundle into your <code>/Applications/</code> folder.</p>
 
@@ -306,13 +333,13 @@
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>brew install vim --with-python --with-ruby --with-perl --with-lua --with-tcl
 </span></code></pre></td></tr></table></div></figure>
 
-<h3 id="toc_818343">Windows Installation</h3>
+<h3 id="toc_61">Windows Installation</h3>
 
 <p>You can download the latest version of vim directly from the <a href="http://www.vim.org/download.php#pc">vim webpage</a>. This includes the binaries for the 32-bit and 64-bit version of Windows.</p>
 
 <p>Alternatively, you can install a command-line version of vim through <a href="http://www.cygwin.com/">Cygwin</a>, a Unix-like environment and CLI for Windows. First <a href="http://cygwin.com/install.html">install Cygwin</a> by downloading the <code>setup.exe</code> file. Run the <code>setup.exe</code> file with your preferred installation settings. Once reaching the &quot;Select Packages&quot; screen, scroll down to the <strong>Editors</strong> node and expand it. Finally, find <strong>vim</strong> in the list and change the <em>Skip</em> option to <em>Install</em>. Next, just finish the install ation.</p>
 
-<h2 id="toc_818344">Linux Installation</h2>
+<h2 id="toc_62">Linux Installation</h2>
 
 <p>To install or upgrade <code>vim</code> on a Linux distribution, use the package manager of your choice (e.g. <code>apt</code>, <code>yum</code>, <code>pacman</code>, etc.). Typically the command will look something like:</p>
 
@@ -320,7 +347,7 @@
 </pre></td><td class='code'><pre><code class='bash'><span class='line'>sudo apt-get install vim gvim <span class="c"># gvim is optional</span>
 </span></code></pre></td></tr></table></div></figure>
 
-<h2 id="toc_818345">Configuring Vim</h2>
+<h2 id="toc_63">Configuring Vim</h2>
 
 <p>By default, the start of your vim configuration is found in <code>$HOME/.vimrc</code>; additional plugins, settings, etc. are found in <code>$HOME/.vim</code>. On Windows, <code>$HOME</code> is going to be <code>%userprofile%</code>, so something akin to <code>C:\Users\Your Name\</code>, and the <code>.vim</code> folder will be called <code>vimfiles</code>. This is due to the fact that NTFS directories are not supposed to start with periods.</p>
 
@@ -328,7 +355,7 @@
 
 <p>This configuration uses <a href="https://github.com/tpope/vim-pathogen">Pathogen</a> to load bundled plugins, so you should be able to integrate this with any existing plugins relatively easily.</p>
 
-<h2 id="toc_818346">Congratulations</h2>
+<h2 id="toc_64">Congratulations</h2>
 
 <p>If you&#39;ve reached this point, you&#39;ve now successfully installed and configured Vim. It should look something like this:</p>
 
@@ -342,13 +369,13 @@
     <link href="http://Duke-PL-Course.github.com/blog/2013/01/15/setting-up-sublime-text-2/"/>
     <updated>2013-01-15T02:44:00-05:00</updated>
     <id>http://Duke-PL-Course.github.com/blog/2013/01/15/setting-up-sublime-text-2</id>
-    <content type="html"><![CDATA[<h2 id="toc_818335">Intro</h2>
+    <content type="html"><![CDATA[<h2 id="toc_53">Intro</h2>
 
 <p><img src="http://Duke-PL-Course.github.com/images/st2.jpg" alt="Sublime Text 2 Logo"></p>
 
 <p>Sublime Text 2 is an incredibly fast and powerful editor that&#39;s been replacing <a href="http://en.wikipedia.org/wiki/Vim_(text_editor">vim</a>), <a href="http://en.wikipedia.org/wiki/Emacs">emacs</a>, and <a href="http://macromates.com/">textmate</a> for many. The community and ecosystem is passionate and vibrant, with developers writing packages for nearly everything. It&#39;s also freely available for all three major platforms, which makes it ideal for this class. You can download Sublime Text 2 from its <a href="http://www.sublimetext.com/">website</a>.</p>
 
-<h2 id="toc_818336">Package Control</h2>
+<h2 id="toc_54">Package Control</h2>
 
 <p>Sublime Text 2 supports Textmate Snippets, Syntax Highlighting, and other packages that made Textmate successful. However, Sublime Text 2 did not include a package manager out of the box. Developer <a href="http://wbond.net/">@wbond</a> has created <a href="http://wbond.net/sublime_packages/package_control">a full-featured package manager</a> that helps discovering, installing, updating and removing packages for Sublime Text 2.</p>
 
@@ -373,11 +400,11 @@
 
 <p>A detailed description of each command can be found <a href="http://wbond.net/sublime_packages/package_control/usage">here</a>.</p>
 
-<h2 id="toc_818337">Packages</h2>
+<h2 id="toc_55">Packages</h2>
 
 <p>Sublime Text natively supports JavaScript, Ruby, Scala, Erlang, Clojure, and Haskell.</p>
 
-<h3 id="toc_818338">Prolog</h3>
+<h3 id="toc_56">Prolog</h3>
 
 <p>For Prolog, a syntax highlighting package has been created by <a href="https://github.com/alnkpa/sublimeprolog">@alnkpa</a>. It can be installed by using <em>Install Package</em> from the <em>Command Palette</em>, which will bring up a separate window that lists all the available packages after a few seconds. Type in <em>Prolog</em> in the search and you should be able to see the package after a few key strokes. Select the <em>Prolog</em> package and press enter to install. Then that&#39;s it. </p>
 
@@ -387,13 +414,13 @@
 
 <p>As a side note, you can set the syntax of any source file at any time by using <em>Command Palette</em> &gt; <em>Set Syntax: (Language)</em> to set the syntax of the current file to the language of your choice.</p>
 
-<h3 id="toc_818339">Io</h3>
+<h3 id="toc_57">Io</h3>
 
 <p>A package for Io has actually been created by one of the instructors <a href="https://github.com/yangsu/sublime-io">@yangsu</a>. Used <em>Install Package</em> to install a package called <em>Io Langugae</em>.</p>
 
 <p>After the installation completes, Sublime Text will recognize any file with <code>io</code> extension as <code>io</code> source files. As noted above, you can also set the syntax of any source file to io with <em>Command Palette</em> &gt; <em>Set Syntax: (Language)</em>.</p>
 
-<h3 id="toc_818340">Additional Resources</h3>
+<h3 id="toc_58">Additional Resources</h3>
 
 <p><a href="https://tutsplus.com/">Tuts+</a> is an amazing collection of resources for almost everything related to technical or design knowledge. It&#39;s highly recommended for anyone trying to learn anything from Photoshop to <a href="http://nodejs.org/">Node.js</a>. <a href="https://tutsplus.com/">Tuts+</a> also has a whole network of sites with focuses in particular areas. Scroll to the bottom of the <a href="https://tutsplus.com/">Tuts+ page</a>, and you will be able to see all the available options.</p>
 

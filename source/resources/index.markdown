@@ -11,8 +11,10 @@ footer: false
     * [Mac OS X](#mac-os-x)
     * [Windows](#windows)
     * [Linux](#linux)
+* [Unix](#unix)
 * [Git](#git)
 * [Editors](#editors)
+    * [Emacs](#emacs)
     * [Sublime Text 2](#sublime-text-2)
     * [Vim](#vim)
 * [Language Specific Resources](#language-specific-resources)
@@ -50,6 +52,10 @@ You can install most of the packages using `apt-get` or its equivalent for your 
 ```bash
 sudo apt-get install racket ghc swi-prolog ruby1.9.3 scala
 ```
+
+<h2 id="unix">Unix</h2>
+
+In this class, we will be working on a Linux distribution (or OSX, which is Unix based). You should be comfortable using a command line. If you don't have much experience with Unix based systems, I recommend [this tutorial](http://linuxcommand.org/lc3_learning_the_shell.php).
 
 <h2 id="git">Git</h2>
 

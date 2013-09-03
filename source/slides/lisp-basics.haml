@@ -1,0 +1,235 @@
+---
+layout: slide
+---
+
+%section
+  %h1 Programming Languages
+  %h3 Lisp Basics
+  %small Jim Posen - ECE/CS 2014
+
+%section
+  %h1 Data Types
+  %ul
+    %li Atoms
+    %li Lists
+
+%section
+  %h2 Atoms I
+  %p Numbers, booleans, symbols, characters, strings
+  %pre
+    %code
+      :preserve
+        1
+        2.0
+        #t
+        abc
+        #\a
+        "hello"
+
+%section
+  %h2 Lists
+  %p A series of elements surrounded by parenthesis
+  %pre
+    %code
+      :preserve
+        (a b c "easy as" 1 2 3)
+
+%section
+  %p Lists may contain any S-expression
+
+%section
+  %section
+    %h2 S-expressions
+    %p An S-expression is just an atom or a list
+
+  %section
+    %p
+      %em Everything
+      in LISP is an S-expression
+    %pre
+      %code
+        :preserve
+          (i s n t (t h i s) (c () () l?))
+
+  %section
+    Yes, even code is made of S-expressions
+    %pre
+      %code
+        :preserve
+          (define (factorial n)
+            (if (zero? n)
+              1
+              (* n (factorial (- n 1)))))
+
+%section
+  %h2 Lists Revisited
+  %ul
+    %li Lisp uses linked lists made of conses
+    %li
+      A list is either
+      %strong null
+      or a
+      %strong cons
+
+%section
+  %section
+    %h2 Cons
+    %p
+      A
+      %strong cons
+      is just a pair of values
+
+  %section
+    %h3 Simple cons
+    %img{src: "http://cs.gmu.edu/~sean/lisp/cons/xb.GIF"}
+    %pre
+      %code
+        :preserve
+          (setf x (cons 'b null))
+
+  %section
+    %h3 Two element list
+    %img{src: "http://cs.gmu.edu/~sean/lisp/cons/xab.GIF"}
+    %pre
+      %code
+        :preserve
+          (setf x (cons 'a (cons 'b null)))
+
+  %section
+    %h3 Nested lists
+    %img{src: "http://cs.gmu.edu/~sean/lisp/cons/xartb.GIF"}
+    %pre
+      %code
+        :preserve
+          (setf x '(a (r t) b))
+
+%section
+  %h1 Program Structure and Evaluation
+
+%section
+  %section
+    %h2 Evaluation
+    %ul
+      %li Lisp programs are made of S-expressions
+      %li
+        %code eval
+        interprets and evaluates an S-expression
+      %li
+        The top level is called the <strong>R</strong>ead <strong>E</strong>val <strong>P</strong>rint <strong>L</strong>oop or
+        %strong REPL
+
+  %section
+    %pre
+      %code
+        :preserve
+          (eval '(+ 1 2 3))  ;; 6
+          (eval '(a b c))    ;; Crash -- a is undefined
+
+%section
+  %section
+    %h2 Function application
+    %ul
+      %li
+        Lisp uses
+        %strong prefix notation
+      %li The first element of an evaluated list is the function
+      %li foo(1, 2, 3) => (foo 1 2 3)
+      %li 1 + 2 + 3 => (+ 1 2 3)
+
+  %section
+    %pre
+      %code
+        :preserve
+          (+ 1 2 3)           ;; 6
+          (- 1 2 3)           ;; -4
+          (* (+ 1 2) (- 5 3)) ;; 6
+
+%section
+  %h2 Argument evaluation
+  %p Function arguments are evaluted in order
+
+%section
+  %section
+    %h2
+      %code quote
+    %p How to prevent evalutation of an expression?
+    %pre
+      %code
+        :preserve
+          (setf x (a b c))  ;; CRASH -- a is undefined
+
+  %section
+    %pre
+      %code
+        :preserve
+          (setf x (quote (a b c)))  ;; Aha, much better
+
+  %section
+    %ul
+      %li
+        %code quote
+        does not evaluate its argument
+      %li
+        %code quote
+        is a primitive
+
+  %section
+    %p
+      Single quotes are a shorthand for
+      %code quote
+    %pre
+      %code
+        :preserve
+          (setf x '(a b c))  ;; Even better yet
+
+%section
+  %h1 Exercises with numbers
+
+%section
+  %h1 Primitive List Operations
+  %ul
+    %li
+      %code car
+    %li
+      %code cdr
+    %li
+      %code cons
+
+%section
+  %h2
+    %code car
+  %ul
+    %li Returns the first element of the cons
+  %pre
+    %code
+      :preserve
+        (car '(a b c))          ;; 'a
+        (car '((a b c) d e f))  ;; '(a b c)
+        (car '())               ;; Oh noes -- CRASH
+
+%section
+  %h2
+    %code cdr
+  %ul
+    %li Returns the second element of the cons
+    %li Often the remainder of the list without the first element
+  %pre
+    %code
+      :preserve
+        (cdr '(a b c))          ;; '(b c)
+        (cdr '((a b c) d e f))  ;; '(d e f)
+        (cdr '((a b c)))        ;; '()
+        (cdr '())               ;; Oh noes -- CRASH
+
+%section
+  %h2
+    %code cons
+  %ul
+    %li Creates a new cons
+  %pre
+    %code
+      :preserve
+        (cons 'a '())                ;; '(a)
+        (cons 'a '(b))               ;; '(a b)
+        (cons '(a b) (cons 'c '()))  ;; '((a b) c)
+        (cons 'a 'b)                 ;; '(a . b)

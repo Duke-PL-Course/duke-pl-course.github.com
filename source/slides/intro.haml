@@ -1,0 +1,252 @@
+---
+layout: slide
+---
+
+%section
+  %h1 Programming Languages
+  %h3 Introduction
+  %small Jim Posen - ECE/CS 2014
+
+%section
+  %section
+    %h2 Classifying Languages
+    %p What properties define/differentiate languages?
+
+  %section
+    %h3 Typing Model
+    %ul
+      %li Static vs dynamic
+      %li Strong vs weak
+
+  %section
+    %h3 Programming Model
+    %ul
+      %li Functional
+      %li Procedural
+      %li Object Oriented
+
+  %section
+    %h3 Implementation
+    %ul
+      %li Compiled
+      %li Interpreted
+      %li JIT
+
+  %section
+    %h3 Unique Features
+    %ul
+      %li Macros in Lisp
+      %li Monads in Haskell
+      %li Metaprogramming in Ruby
+      %li Futures in Scala
+
+%section
+  %section
+    %h2
+      %a{href: "http://www.paulgraham.com/avg.html"} Beating the Averages
+    %ul
+      %li Essay by Paul Graham
+      %li Paul Graham is the man
+      %li How language choices directly translates to success
+      %li Caused a semi-revival of Lisp (but not really)
+
+  %section
+    %blockquote
+      "Lisp is worth learning for the profound enlightenment experience you will have when you finally get it." -Eric Raymond
+
+  %section
+    %h3 Blub Paradox
+    %blockquote
+      "As long as our hypothetical Blub programmer is looking down the power continuum, he knows he's looking down. Languages less powerful than Blub are obviously less powerful, because they're missing some feature he's used to. But when our hypothetical Blub programmer looks in the other direction, up the power continuum, he doesn't realize he's looking up."
+
+%section
+  %section
+    %h2 When to use a language?
+
+  %section
+    %h3 Platform Mandate
+    %ul
+      %li Browsers use JavaScript
+      %li iOS uses Objective-C
+      %li Android uses Java
+      %li Server programming gives you more freedom
+
+  %section
+    %h3 Language Fit
+    %ul
+      %li Statisticians use R
+      %li Engineers use Matlab
+      %li Language X may have the best library for Y
+
+  %section
+    %h3 Speed/Scalability
+    %ul
+      %li Development time and execution time are often at odds
+      %li C is faster than Java is faster than Ruby
+      %li Ruby is easier than Java is easier than C
+      %li Some languages have better concurrency models
+
+  %section
+    %blockquote
+      "If you have a choice of several languages, it is, all other things being equal, a mistake to program in anything but the most powerful one." -Paul Graham, Beating the Averages
+
+%section
+  %h2 Syllabus
+  %ul
+    %li
+      %strong Racket
+      Functional programming in Lisp
+    %li
+      %strong Haskell
+      Purely functional programming, static typing done right
+    %li
+      %strong Prolog
+      Logical/declarative programming
+    %li
+      %strong Ruby
+      Object oriented programming done right/UNIX scripting
+    %li
+      %strong Scala
+      Multiparadigm, concurrent
+
+%section
+  %h2 Getting Set Up
+  %ul
+    %li
+      Linux virtual machine available (recommended)
+      %ul
+        %li All languages and environments installed
+    %li Scripts for OSX and Ubuntu
+    %li
+      Emacs, vim, and Sublime Text installed
+      %ul
+        %li IDEs may be available for individual languages
+
+%section
+  %h1 Fundamental tools
+
+%section
+  %p Every programmer should be comfortable using:
+  %ol
+    %li.fragment A shell
+    %li.fragment A text editor
+    %li.fragment A version control system
+
+%section
+  %h2 Shells
+  %ul
+    %li A shell is a command line interface for the terminal
+    %li Popular ones include bash, zsh, csh, ksh
+    %li The shell program reads your command line input and executes it
+    %li Small utilities piped together make this a very powerful paradigm
+
+%section
+  %section
+    %h2
+      %a{href: "http://linuxcommand.org/lc3_learning_the_shell.php"} Terminal crash course
+    %ul
+      %li Builtins: cd, echo, man
+      %li Utilities: ls, pwd, mv, cp, mkdir, rmdir, rm, grep, sed, cat, file, less, head, sort
+      %li Arguments and flags used to modify behavior
+      %pre
+        %code
+          :preserve
+            $ ls
+            $ ls -a
+            $ ls -al subdirectory
+
+  %section
+    %h3 Pipes and redirection
+    %p Unix processes have IO channels: stdout, stdin, stderr
+    %pre
+      %code
+        :preserve
+          $ echo "Hello World!" > outfile.txt
+          $ cat < infile.txt
+          $ echo "Hello World!" | wc -c
+
+  %section
+    %h3 Permissions
+    %ul
+      %li Files have 9 permissions bits
+      %li 3 bits for each: owner, group, users
+      %li 1 bit for read access, 1 bit for write access, 1 bit for execute
+    %pre
+      %code
+        :preserve
+          $ ls -l file      # shows permissions
+          $ chmod u+x file  # allow owner to execute file
+          $ chmod 0644 file # read access for everyone, write access for owner
+
+  %section
+    %h3 The Unix file system
+    %ul
+      %li Tree structure made of directories and files
+      %li Links, hard and symbolic
+      %li
+        Shortcuts
+        %ul
+          %li Home directory ~
+          %li Root directory /
+          %li Current directory .
+          %li Parent directory ..
+
+%section
+  %h2 Text Editors
+  %ul
+    %li General purpose programs for writing files
+    %li Popular ones include vim, emacs, Sublime Text
+    %li Good text editors are extensible and have modes for different file types
+    %li Some are terminal based, some have a GUI
+    %li Choose whichever makes you most productive
+
+%section
+  %h2 Version Control
+  %ul
+    %li A program for managing revisions of the source code for a project
+    %li Very useful for collaboration
+    %li Code repositories are often hosted on a server
+    %li Popular ones include git, mercurial, subversion
+
+%section
+  %section
+    %h2
+      %a{href: "http://git-scm.com/book"} Git
+    %ul
+      %li Distributed version control created for the Linux kernel
+      %li
+        It’s NOT GitHub!
+        %ul
+          %li GitHub is a git hosting website
+      %li Fast, distributed, supports branching
+
+  %section
+    %h3 Distributed SCM
+    %ul
+      %li Everyone has a full copy of the source code
+      %li A main repository is often hosted on a server
+      %li Protocol to push, pull, merge branches
+      %li Easy collaboration
+
+  %section
+    %h3 Terminology
+    %ul
+      %li Repository: project tracked with git
+      %li Commit: a saved revision of the entire repository
+      %li Branch: a series of commits forming a feature
+      %li Master: often the main branch
+      %li Remote: a remote repository (often exists on a server)
+      %li Origin: default remote
+      %li Working tree: current state of all files
+
+  %section
+    %h3 Basic git commands
+    %pre
+      %code
+        :preserve
+          $ git init
+          $ touch hello_world.txt
+          $ git add hello_world.txt
+          $ git status
+          $ git commit -m “Initial commit.”
+          $ git push

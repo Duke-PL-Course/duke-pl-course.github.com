@@ -18,6 +18,7 @@ footer: false
     * [Sublime Text 2](#sublime-text-2)
     * [Vim](#vim)
 * [Language Specific Resources](#language-specific-resources)
+    * [Racket](#racket)
 
 * [Downloads](#downloads)
 
@@ -83,6 +84,10 @@ Here is a good emacs [tutorial](http://david.rothlis.net/emacs/howtolearn.html) 
 If you are a vim user or would like to use vim for this course, then you can find the recommended plugins and configuration files in [this archive](https://www.dropbox.com/s/bka5j2rkobq0gxu/vimdotfiles.tgz). In addition, you can find a blog post on how to install and configure vim [here](/blog/2013/01/17/configuring-vim/).
 
 <h2 id="language-specific-resources">Language Specific Resources</h2>
+
+<h2 id="racket">Racket</h2>
+
+[The Little Schemer](http://scottn.us/downloads/The_Little_Schemer.pdf)
 
 <h2 id="downloads">Downloads</h2>
 

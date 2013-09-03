@@ -1,385 +1,356 @@
-<!DOCTYPE html>
-<html>
-<head>
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+
     <title>Duke PL Course</title>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
-    <!--This one seems to work all the time, but really small on ipad-->
-    <!--<meta name="viewport" content="initial-scale=0.4">-->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <link rel="stylesheet" media="all" href="/stylesheets/slidedefault.css">
-    <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="/stylesheets/slidephone.css">
-    <base target="_blank"><!-- This amazingness opens all links in a new tab. -->
-    <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
-</head>
-<body style="opacity: 0">
-    <slides class="layout-widescreen">
 
-        <!-- <slide class="logoslide nobackground">
-            <article class="flexbox vcenter">
-                <span><img src="images/google_developers_logo.png"></span>
-            </article>
-        </slide> -->
-        <slide class="title-slide segue nobackground">
-            <aside class="gdbar"><img src="images/logo.png"></aside>
-            <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
-            <hgroup class="auto-fadein">
+    
+    <meta name="description" content="Programming Languages Introduction Jim Posen - ECE/CS 2014 Classifying Languages What properties define/differentiate languages? Typing Model Static &hellip;">
+    
+    <meta name="author" content="Yang Su, Kevin Gao">
 
-                <h1 data-config-title><!-- populated from slide_config.json --></h1>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/reveal.min.css">
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	  document.write( '<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <link href="/favicon.png" rel="icon">
+  </head>
+
+  <body>
+	<div class="reveal">
+	  <!-- Any section element inside of this container is displayed as a slide -->
+	  <div class="slides">
+        <section>
+  <h1>Programming Languages</h1>
+  <h3>Introduction</h3>
+  <small>Jim Posen - ECE/CS 2014</small>
+</section>
+<section>
+  <section>
+    <h2>Classifying Languages</h2>
+    <p>What properties define/differentiate languages?</p>
+  </section>
+  <section>
+    <h3>Typing Model</h3>
+    <ul>
+      <li>Static vs dynamic</li>
+      <li>Strong vs weak</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Programming Model</h3>
+    <ul>
+      <li>Functional</li>
+      <li>Procedural</li>
+      <li>Object Oriented</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Implementation</h3>
+    <ul>
+      <li>Compiled</li>
+      <li>Interpreted</li>
+      <li>JIT</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Unique Features</h3>
+    <ul>
+      <li>Macros in Lisp</li>
+      <li>Monads in Haskell</li>
+      <li>Metaprogramming in Ruby</li>
+      <li>Futures in Scala</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>
+      <a href='http://www.paulgraham.com/avg.html'>Beating the Averages</a>
+    </h2>
+    <ul>
+      <li>Essay by Paul Graham</li>
+      <li>Paul Graham is the man</li>
+      <li>How language choices directly translates to success</li>
+      <li>Caused a semi-revival of Lisp (but not really)</li>
+    </ul>
+  </section>
+  <section>
+    <blockquote>
+      &#8220;Lisp is worth learning for the profound enlightenment experience you will have when you finally get it.&#8221; -Eric Raymond
+    </blockquote>
+  </section>
+  <section>
+    <h3>Blub Paradox</h3>
+    <blockquote>
+      &#8220;As long as our hypothetical Blub programmer is looking down the power continuum, he knows he&#8217;s looking down. Languages less powerful than Blub are obviously less powerful, because they&#8217;re missing some feature he&#8217;s used to. But when our hypothetical Blub programmer looks in the other direction, up the power continuum, he doesn&#8217;t realize he&#8217;s looking up.&#8221;
+    </blockquote>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>When to use a language?</h2>
+  </section>
+  <section>
+    <h3>Platform Mandate</h3>
+    <ul>
+      <li>Browsers use JavaScript</li>
+      <li>iOS uses Objective-C</li>
+      <li>Android uses Java</li>
+      <li>Server programming gives you more freedom</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Language Fit</h3>
+    <ul>
+      <li>Statisticians use R</li>
+      <li>Engineers use Matlab</li>
+      <li>Language X may have the best library for Y</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Speed/Scalability</h3>
+    <ul>
+      <li>Development time and execution time are often at odds</li>
+      <li>C is faster than Java is faster than Ruby</li>
+      <li>Ruby is easier than Java is easier than C</li>
+      <li>Some languages have better concurrency models</li>
+    </ul>
+  </section>
+  <section>
+    <blockquote>
+      &#8220;If you have a choice of several languages, it is, all other things being equal, a mistake to program in anything but the most powerful one.&#8221; -Paul Graham, Beating the Averages
+    </blockquote>
+  </section>
+</section>
+<section>
+  <h2>Syllabus</h2>
+  <ul>
+    <li>
+      <strong>Racket</strong>
+      Functional programming in Lisp
+    </li>
+    <li>
+      <strong>Haskell</strong>
+      Purely functional programming, static typing done right
+    </li>
+    <li>
+      <strong>Prolog</strong>
+      Logical/declarative programming
+    </li>
+    <li>
+      <strong>Ruby</strong>
+      Object oriented programming done right/UNIX scripting
+    </li>
+    <li>
+      <strong>Scala</strong>
+      Multiparadigm, concurrent
+    </li>
+  </ul>
+</section>
+<section>
+  <h2>Getting Set Up</h2>
+  <ul>
+    <li>
+      Linux virtual machine available (recommended)
+      <ul>
+        <li>All languages and environments installed</li>
+      </ul>
+    </li>
+    <li>Scripts for OSX and Ubuntu</li>
+    <li>
+      Emacs, vim, and Sublime Text installed
+      <ul>
+        <li>IDEs may be available for individual languages</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+<section>
+  <h1>Fundamental tools</h1>
+</section>
+<section>
+  <p>Every programmer should be comfortable using:</p>
+  <ol>
+    <li class='fragment'>A shell</li>
+    <li class='fragment'>A text editor</li>
+    <li class='fragment'>A version control system</li>
+  </ol>
+</section>
+<section>
+  <h2>Shells</h2>
+  <ul>
+    <li>A shell is a command line interface for the terminal</li>
+    <li>Popular ones include bash, zsh, csh, ksh</li>
+    <li>The shell program reads your command line input and executes it</li>
+    <li>Small utilities piped together make this a very powerful paradigm</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>
+      <a href='http://linuxcommand.org/lc3_learning_the_shell.php'>Terminal crash course</a>
+    </h2>
+    <ul>
+      <li>Builtins: cd, echo, man</li>
+      <li>Utilities: ls, pwd, mv, cp, mkdir, rmdir, rm, grep, sed, cat, file, less, head, sort</li>
+      <li>Arguments and flags used to modify behavior</li>
+      <pre><code>$ ls&#x000A;$ ls -a&#x000A;$ ls -al subdirectory&#x000A;</code></pre>
+    </ul>
+  </section>
+  <section>
+    <h3>Pipes and redirection</h3>
+    <p>Unix processes have IO channels: stdout, stdin, stderr</p>
+    <pre><code>$ echo "Hello World!" > outfile.txt&#x000A;$ cat < infile.txt&#x000A;$ echo "Hello World!" | wc -c&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Permissions</h3>
+    <ul>
+      <li>Files have 9 permissions bits</li>
+      <li>3 bits for each: owner, group, users</li>
+      <li>1 bit for read access, 1 bit for write access, 1 bit for execute</li>
+    </ul>
+    <pre><code>$ ls -l file      # shows permissions&#x000A;$ chmod u+x file  # allow owner to execute file&#x000A;$ chmod 0644 file # read access for everyone, write access for owner&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>The Unix file system</h3>
+    <ul>
+      <li>Tree structure made of directories and files</li>
+      <li>Links, hard and symbolic</li>
+      <li>
+        Shortcuts
+        <ul>
+          <li>Home directory ~</li>
+          <li>Root directory /</li>
+          <li>Current directory .</li>
+          <li>Parent directory ..</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</section>
+<section>
+  <h2>Text Editors</h2>
+  <ul>
+    <li>General purpose programs for writing files</li>
+    <li>Popular ones include vim, emacs, Sublime Text</li>
+    <li>Good text editors are extensible and have modes for different file types</li>
+    <li>Some are terminal based, some have a GUI</li>
+    <li>Choose whichever makes you most productive</li>
+  </ul>
+</section>
+<section>
+  <h2>Version Control</h2>
+  <ul>
+    <li>A program for managing revisions of the source code for a project</li>
+    <li>Very useful for collaboration</li>
+    <li>Code repositories are often hosted on a server</li>
+    <li>Popular ones include git, mercurial, subversion</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>
+      <a href='http://git-scm.com/book'>Git</a>
+    </h2>
+    <ul>
+      <li>Distributed version control created for the Linux kernel</li>
+      <li>
+        It’s NOT GitHub!
+        <ul>
+          <li>GitHub is a git hosting website</li>
+        </ul>
+      </li>
+      <li>Fast, distributed, supports branching</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Distributed SCM</h3>
+    <ul>
+      <li>Everyone has a full copy of the source code</li>
+      <li>A main repository is often hosted on a server</li>
+      <li>Protocol to push, pull, merge branches</li>
+      <li>Easy collaboration</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Terminology</h3>
+    <ul>
+      <li>Repository: project tracked with git</li>
+      <li>Commit: a saved revision of the entire repository</li>
+      <li>Branch: a series of commits forming a feature</li>
+      <li>Master: often the main branch</li>
+      <li>Remote: a remote repository (often exists on a server)</li>
+      <li>Origin: default remote</li>
+      <li>Working tree: current state of all files</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Basic git commands</h3>
+    <pre><code>$ git init&#x000A;$ touch hello_world.txt&#x000A;$ git add hello_world.txt&#x000A;$ git status&#x000A;$ git commit -m “Initial commit.”&#x000A;$ git push</code></pre>
+  </section>
+</section>
+
+      </div>
+    </div>
+
+	<script src="/vendor/reveal.js-2.5.0/lib/js/head.min.js"></script>
+	<script src="/vendor/reveal.js-2.5.0/js/reveal.min.js"></script>
+
+	<script>
+	  // Full list of configuration options available here:
+	  // https://github.com/hakimel/reveal.js#configuration
+	  Reveal.initialize({
+	  controls: true,
+	  progress: true,
+	  history: true,
+	  center: true,
+
+	  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+	  transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+	  // Optional libraries used to extend on reveal.js
+	  dependencies: [
+	  { src: '/vendor/reveal.js-2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+	  ]
+	  });
+	</script>
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37844085-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
 
 
-                <h2>Introduction</h2>
 
-                <p data-config-presenter><!-- populated from slide_config.json --></p>
-            </hgroup>
-        </slide>
-
-
-        <slide>
-
-            <hgroup>
-                <h2>Welcome to House Course 59.18!</h2>
-                <h3>Programming Languages</h3>
-            </hgroup>
-            <article><h3>Meeting Time: <strong>Tuesdays</strong> from <strong>4:40</strong> to <strong>7:30 PM</strong></h3>
-<h3>Location: <strong>Perkins LINK 2-087 classroom 3</strong></h3></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Instructors</h2>
-                <h3></h3>
-            </hgroup>
-            <article><h3>Yang Su</h3>
-<p><img alt="Yang Su" src="https://sphotos-a.xx.fbcdn.net/hphotos-snc7/432248_10151119162660988_1733947672_n.jpg" style="max-width: 200px; p#adding: 5px; border: 1px solid #F0F0F0;" /></p>
-<h3>Kevin Gao</h3>
-<p><img alt="Kevin Gao" src="http://i.imgur.com/epik0.png" style="max-width: 200px; p#adding: 5px; border: 1px solid #F0F0F0;" /></p></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Faculty Sponsor</h2>
-                <h3></h3>
-            </hgroup>
-            <article><h3>Robert Duvall</h3>
-<p><img alt="Robert Duvall" src="http://www.cs.duke.edu/rcd/images/rcd.jpg" /></p>
-<p>Lecturer, CS 308</p>
-<p><a href="" title="mailto:rcd@cs.duke.edu">rcd@cs.duke.edu</a></p></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Questions for You</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>Mac vs Windows vs Linux?</p>
-<p>What other languages have you used?</p>
-<p>Experience with Git and Github?</p></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Website</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p><a href="http://duke-pl-course.github.com">http://duke-pl-course.github.com</a></p>
-<ul>
-<li>Course Information</li>
-<li>Discussion</li>
-<li>Announcements</li>
-<li>Assignments</li>
-<li>Other Resources</li>
-</ul></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Motivation</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>Each language has its own set of idioms, its strengths, and its weaknesses.</p>
-<p>By learning several different programming languages, you will be able to see which language is best suited to the kinds of problems that interest you most. </p></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Prior Knowledge</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>This is <strong>not</strong> an introductory course to programming.</p>
-<p>We assume that everyone is familiar with concepts such as objects, classes, inheritance, polymorphism, functions, and typing. You should be at least comfortable coding in a language like C, C++, Java, or Python.</p></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Textbook</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p><img alt="Seven Languages in Seven Weeks: A Pragmatic Guide to Learning Programming Languages - Bruce Tate" src="http://imagery.pragprog.com/products/195/btlang_xlargecover.jpg?1298589937" /></p>
-<p><a href="http://pragprog.com/book/btlang/seven-languages-in-seven-weeks">Seven Languages in Seven Weeks - Bruce Tate</a></p>
-<p>The weekly reading assignments are straight out of the chapters of this book. Some of the assignments will come from the book as well. We will also publish our solutions to all the self study problems after we finish each language. </p></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Overview</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>Languages:</p>
-<ul>
-<li>Ruby</li>
-<li>Io</li>
-<li>Prolog</li>
-<li>Scala</li>
-<li>Erlang</li>
-<li>Clojure</li>
-<li>Haskell</li>
-</ul></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Why These Languages?</h2>
-                <h3></h3>
-            </hgroup>
-            <article><ul class="build">
-<li>Typing Model</li>
-<li>Programming Model</li>
-<li>Implementation</li>
-<li>Core Control and Data Structure</li>
-<li>Unique Features</li>
-</ul>
-<aside class="note">
-
-<p><section>
-    <strong>strong:</strong> types can't be mixed
-    <strong>weak:</strong> types can be mixed
-    <strong>static:</strong> types checked at compile time
-    <strong>dynamic:</strong> types checked during run time
-    <strong>duck:</strong> properties and methods determine valid semantics rather than classes and inheritance
-    <strong>functional:</strong> functions as basic units of computation and avoids mutable state
-    <strong>procedural:</strong> imperative style, list of commands
-    <strong>compiled:</strong> generate machine code from source code, and then the machine code gets interpreted
-    <strong>interpreted:</strong> source code is interpreted and executed directly by the language interpreter
-    <strong>vm:</strong> have a single format for machine code that can run on different machines
-  </section></p>
-</aside></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Language Comparisons</h2>
-                <h3></h3>
-            </hgroup>
-            <article class="smaller"><table>
-<thead>
-<tr>
-<th>Language</th>
-<th>Typing Model</th>
-<th>Programming Model</th>
-<th>Implementation</th>
-<th>Core Control and Data Structure</th>
-<th>Unique Features</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Ruby</td>
-<td>strong, dynamic, duck</td>
-<td><abbr title="Object Oriented">OO</abbr></td>
-<td>interpreted</td>
-<td>classes, modules</td>
-<td>purely <abbr title="Object Oriented">OO</abbr>, rails, open classes, macros</td>
-</tr>
-<tr>
-<td>Io</td>
-<td>weak, dynamic, duck</td>
-<td>prototype</td>
-<td>interpreted</td>
-<td>messages</td>
-<td>custom syntax, message/object reflection, coroutines, futures</td>
-</tr>
-<tr>
-<td>Prolog</td>
-<td>weak, dynamic</td>
-<td>logic based</td>
-<td>compiled</td>
-<td>variables, rules/facts/queries, unification, recursion</td>
-<td>solving constraints</td>
-</tr>
-<tr>
-<td>Scala</td>
-<td>strong, static</td>
-<td>functional, <abbr title="Object Oriented">OO</abbr></td>
-<td>compiled, <abbr title="Virtual Machine">VM</abbr></td>
-<td>tuples, pattern matching</td>
-<td>actors, futures, JVM</td>
-</tr>
-<tr>
-<td>Erlang</td>
-<td>strong, dynamic</td>
-<td>functional</td>
-<td>compiled, <abbr title="Virtual Machine">VM</abbr></td>
-<td>pattern matching</td>
-<td>"Let it crash", BEAM <abbr title="Virtual Machine">VM</abbr>, hotswapping</td>
-</tr>
-<tr>
-<td>Clojure</td>
-<td>strong, dynamic</td>
-<td>functional</td>
-<td>compiled, <abbr title="Virtual Machine">VM</abbr></td>
-<td>lazy evaluation, data as code</td>
-<td>macros, versioning, JVM</td>
-</tr>
-<tr>
-<td>Haskell</td>
-<td>strong, static</td>
-<td>functional</td>
-<td>compiled</td>
-<td>user-defined types</td>
-<td>purely functional</td>
-</tr>
-</tbody>
-</table></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Git</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p><img alt="Git" src="http://git-scm.com/images/logo@2x.png" style="float: right; margin-left: 10px;" /></p>
-<p>We will use Git as the version control system for all the assignments and materials for this course.</p>
-<p>Basic usage:</p>
-<ul>
-<li><code>git clone</code></li>
-<li><code>git add</code></li>
-<li><code>git commit</code></li>
-<li><code>git push</code></li>
-<li><code>git pull</code></li>
-<li><code>git fetch</code></li>
-<li><code>git rebase</code></li>
-</ul>
-<p>You can find more information and resources on git under the <a href="http://duke-pl-course.github.com/resources/#git">resources page</a> on the course website</p></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Github</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p><img alt="Github Octocat" src="images/github-logo.png" style="max-height: 350px; float: left; margin-right: 10px;" /></p>
-<p>We will used <a href="http://github.com">github</a> extensively. </p>
-<p>We have a github organization <a href="https://github.com/organizations/Duke-PL-Course">Duke-PL-Course</a>, which everyone in the class should be a part of.</p>
-<p>The source code for <a href="https://github.com/Duke-PL-Course/duke-pl-course.github.com">the class website</a> and the <a href="https://github.com/Duke-PL-Course/course-materials">class notes</a> are both open sourced.</p>
-<p>Assignments will also be released and tracked through github. More on that later</p>
-<p>If you have not used github before, see <a href="https://help.github.com/">help.github.com</a> for more information.</p></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Other Tools</h2>
-                <h3></h3>
-            </hgroup>
-            <article><p>Installing all the packages for all 7 languages. Follow the guide <a href="http://duke-pl-course.github.com/resources/">here</a></p>
-<p>We also recommend Sublime Text 2 for the editor. You can use <a href="http://duke-pl-course.github.com/blog/2013/01/15/setting-up-sublime-text-2/">this post</a> to set it up.</p></article>
-
-        </slide>
-
-        <slide>
-
-            <hgroup>
-                <h2>Discussion JavaScript vs Io</h2>
-                <h3></h3>
-            </hgroup>
-            <article><table>
-<thead>
-<tr>
-<th>Language</th>
-<th>Advantages</th>
-<th>Disadvantages</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>JavaScript</td>
-<td>Widely Used<br>Large and rapidly growing community<br>Variety of applications and uses (node)</td>
-<td>Is not covered in the textbook<br>Is not as flexible as Io</td>
-</tr>
-<tr>
-<td>Io</td>
-<td>Extremely flexible, light weight syntax<br>Elegant implementations of coroutines, futures, and actors<br>Powerful reflection features</td>
-<td>Small community<br>Little syntactical sugar<br>More of a niche language</td>
-</tr>
-</tbody>
-</table></article>
-
-        </slide>
-
-
-        <slide class="thank-you-slide segue nobackground">
-            <aside class="gdbar right"><img src="images/logo.png"></aside>
-            <article class="flexbox vleft auto-fadein">
-                <h2>&lt;Thank You!&gt;</h2>
-                <p></p>
-            </article>
-            <p class="auto-fadein" data-config-contact>
-                <!-- populated from slide_config.json -->
-            </p>
-        </slide>
-
-        <!-- <slide class="logoslide dark nobackground">
-        <article class="flexbox vcenter">
-            <span><img src="images/google_developers_logo_white.png"></span>
-        </article>
-        </slide> -->
-
-    <slide class="backdrop"></slide>
-</slides>
-
-<script>
-var _gaq = _gaq || [];
-_gaq.push(['_setAccount', 'UA-37844085-1']);
-_gaq.push(['_trackPageview']);
-
-(function() {
-  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-})();
-</script>
-
-<!--[if IE]>
-<script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
-<script>CFInstall.check({mode: 'overlay'});</script>
-<![endif]-->
-</body>
+  </body>
 </html>

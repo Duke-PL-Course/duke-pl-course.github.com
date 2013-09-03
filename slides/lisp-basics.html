@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+
+    <title>Duke PL Course</title>
+
+    
+    <meta name="description" content="Programming Languages Lisp Basics Jim Posen - ECE/CS 2014 Data Types Atoms Lists Atoms I Numbers, booleans, symbols, characters, strings 1&#x000A;2. &hellip;">
+    
+    <meta name="author" content="Yang Su, Kevin Gao">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/reveal.min.css">
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	  document.write( '<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <link href="/favicon.png" rel="icon">
+  </head>
+
+  <body>
+	<div class="reveal">
+	  <!-- Any section element inside of this container is displayed as a slide -->
+	  <div class="slides">
+        <section>
+  <h1>Programming Languages</h1>
+  <h3>Lisp Basics</h3>
+  <small>Jim Posen - ECE/CS 2014</small>
+</section>
+<section>
+  <h1>Data Types</h1>
+  <ul>
+    <li>Atoms</li>
+    <li>Lists</li>
+  </ul>
+</section>
+<section>
+  <h2>Atoms I</h2>
+  <p>Numbers, booleans, symbols, characters, strings</p>
+  <pre><code>1&#x000A;2.0&#x000A;#t&#x000A;abc&#x000A;#\a&#x000A;"hello"&#x000A;</code></pre>
+</section>
+<section>
+  <h2>Lists</h2>
+  <p>A series of elements surrounded by parenthesis</p>
+  <pre><code>(a b c "easy as" 1 2 3)&#x000A;</code></pre>
+</section>
+<section>
+  <p>Lists may contain any S-expression</p>
+</section>
+<section>
+  <section>
+    <h2>S-expressions</h2>
+    <p>An S-expression is just an atom or a list</p>
+  </section>
+  <section>
+    <p>
+      <em>Everything</em>
+      in LISP is an S-expression
+    </p>
+    <pre><code>(i s n t (t h i s) (c () () l?))&#x000A;</code></pre>
+  </section>
+  <section>
+    Yes, even code is made of S-expressions
+    <pre><code>(define (factorial n)&#x000A;  (if (zero? n)&#x000A;    1&#x000A;    (* n (factorial (- n 1)))))&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>Lists Revisited</h2>
+  <ul>
+    <li>Lisp uses linked lists made of conses</li>
+    <li>
+      A list is either
+      <strong>null</strong>
+      or a
+      <strong>cons</strong>
+    </li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Cons</h2>
+    <p>
+      A
+      <strong>cons</strong>
+      is just a pair of values
+    </p>
+  </section>
+  <section>
+    <h3>Simple cons</h3>
+    <img src='http://cs.gmu.edu/~sean/lisp/cons/xb.GIF' />
+    <pre><code>(setf x (cons 'b null))&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Two element list</h3>
+    <img src='http://cs.gmu.edu/~sean/lisp/cons/xab.GIF' />
+    <pre><code>(setf x (cons 'a (cons 'b null)))&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Nested lists</h3>
+    <img src='http://cs.gmu.edu/~sean/lisp/cons/xartb.GIF' />
+    <pre><code>(setf x '(a (r t) b))&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h1>Program Structure and Evaluation</h1>
+</section>
+<section>
+  <section>
+    <h2>Evaluation</h2>
+    <ul>
+      <li>Lisp programs are made of S-expressions</li>
+      <li>
+        <code>eval</code>
+        interprets and evaluates an S-expression
+      </li>
+      <li>
+        The top level is called the <strong>R</strong>ead <strong>E</strong>val <strong>P</strong>rint <strong>L</strong>oop or
+        <strong>REPL</strong>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <pre><code>(eval '(+ 1 2 3))  ;; 6&#x000A;(eval '(a b c))    ;; Crash -- a is undefined&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Function application</h2>
+    <ul>
+      <li>
+        Lisp uses
+        <strong>prefix notation</strong>
+      </li>
+      <li>The first element of an evaluated list is the function</li>
+      <li>foo(1, 2, 3) => (foo 1 2 3)</li>
+      <li>1 + 2 + 3 => (+ 1 2 3)</li>
+    </ul>
+  </section>
+  <section>
+    <pre><code>(+ 1 2 3)           ;; 6&#x000A;(- 1 2 3)           ;; -4&#x000A;(* (+ 1 2) (- 5 3)) ;; 6&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>Argument evaluation</h2>
+  <p>Function arguments are evaluted in order</p>
+</section>
+<section>
+  <section>
+    <h2>
+      <code>quote</code>
+    </h2>
+    <p>How to prevent evalutation of an expression?</p>
+    <pre><code>(setf x (a b c))  ;; CRASH -- a is undefined&#x000A;</code></pre>
+  </section>
+  <section>
+    <pre><code>(setf x (quote (a b c)))  ;; Aha, much better&#x000A;</code></pre>
+  </section>
+  <section>
+    <ul>
+      <li>
+        <code>quote</code>
+        does not evaluate its argument
+      </li>
+      <li>
+        <code>quote</code>
+        is a primitive
+      </li>
+    </ul>
+  </section>
+  <section>
+    <p>
+      Single quotes are a shorthand for
+      <code>quote</code>
+    </p>
+    <pre><code>(setf x '(a b c))  ;; Even better yet&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h1>Exercises with numbers</h1>
+</section>
+<section>
+  <h1>Primitive List Operations</h1>
+  <ul>
+    <li>
+      <code>car</code>
+    </li>
+    <li>
+      <code>cdr</code>
+    </li>
+    <li>
+      <code>cons</code>
+    </li>
+  </ul>
+</section>
+<section>
+  <h2>
+    <code>car</code>
+  </h2>
+  <ul>
+    <li>Returns the first element of the cons</li>
+  </ul>
+  <pre><code>(car '(a b c))          ;; 'a&#x000A;(car '((a b c) d e f))  ;; '(a b c)&#x000A;(car '())               ;; Oh noes -- CRASH&#x000A;</code></pre>
+</section>
+<section>
+  <h2>
+    <code>cdr</code>
+  </h2>
+  <ul>
+    <li>Returns the second element of the cons</li>
+    <li>Often the remainder of the list without the first element</li>
+  </ul>
+  <pre><code>(cdr '(a b c))          ;; '(b c)&#x000A;(cdr '((a b c) d e f))  ;; '(d e f)&#x000A;(cdr '((a b c)))        ;; '()&#x000A;(cdr '())               ;; Oh noes -- CRASH&#x000A;</code></pre>
+</section>
+<section>
+  <h2>
+    <code>cons</code>
+  </h2>
+  <ul>
+    <li>Creates a new cons</li>
+  </ul>
+  <pre><code>(cons 'a '())                ;; '(a)&#x000A;(cons 'a '(b))               ;; '(a b)&#x000A;(cons '(a b) (cons 'c '()))  ;; '((a b) c)&#x000A;(cons 'a 'b)                 ;; '(a . b)</code></pre>
+</section>
+
+      </div>
+    </div>
+
+	<script src="/vendor/reveal.js-2.5.0/lib/js/head.min.js"></script>
+	<script src="/vendor/reveal.js-2.5.0/js/reveal.min.js"></script>
+
+	<script>
+	  // Full list of configuration options available here:
+	  // https://github.com/hakimel/reveal.js#configuration
+	  Reveal.initialize({
+	  controls: true,
+	  progress: true,
+	  history: true,
+	  center: true,
+
+	  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+	  transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+	  // Optional libraries used to extend on reveal.js
+	  dependencies: [
+	  { src: '/vendor/reveal.js-2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+	  ]
+	  });
+	</script>
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37844085-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  </body>
+</html>

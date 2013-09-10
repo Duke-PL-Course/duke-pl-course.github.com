@@ -4,7 +4,7 @@
   <title><![CDATA[Duke PL Course]]></title>
   <link href="http://Duke-PL-Course.github.com/atom.xml" rel="self"/>
   <link href="http://Duke-PL-Course.github.com/"/>
-  <updated>2013-09-03T15:21:21-04:00</updated>
+  <updated>2013-09-10T15:42:11-04:00</updated>
   <id>http://Duke-PL-Course.github.com/</id>
   <author>
     <name><![CDATA[Yang Su, Kevin Gao]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Tech Connect]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/09/10/tech-connect/"/>
+    <updated>2013-09-10T15:39:00-04:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/09/10/tech-connect</id>
+    <content type="html"><![CDATA[<p>Hey everyone,<br>
+We are going to end class early today so that people can attend <a href="http://www.cs.duke.edu/techconnect/">Tech Connect</a>. Everyone should still come, and I promise you can leave by 5:45 if you want to.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Week One]]></title>

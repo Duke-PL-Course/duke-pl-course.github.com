@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+
+    <title>Duke PL Course</title>
+
+    
+    <meta name="description" content="Programming Languages Higher Order Structures in Lisp Jim Posen - ECE/CS 2014 Recursion Function is implemented in terms of itself Calculate answer &hellip;">
+    
+    <meta name="author" content="Yang Su, Kevin Gao">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/reveal.min.css">
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	  document.write( '<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <link href="/favicon.png" rel="icon">
+  </head>
+
+  <body>
+	<div class="reveal">
+	  <!-- Any section element inside of this container is displayed as a slide -->
+	  <div class="slides">
+        <section>
+  <h1>Programming Languages</h1>
+  <h3>Higher Order Structures in Lisp</h3>
+  <small>Jim Posen - ECE/CS 2014</small>
+</section>
+<section>
+  <h1>Recursion</h1>
+  <ul>
+    <li>Function is implemented in terms of itself</li>
+    <li>
+      Calculate answer using
+      <strong>recurrence relation</strong>
+    </li>
+    <li>You need a base case and a recursive step</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>The Call Stack</h2>
+    <ul>
+      <li>Function calls are made on stack</li>
+      <li>Local variables are pushed only the stack</li>
+      <li>Variables are popped off of the stack when function returns</li>
+    </ul>
+  </section>
+  <section>
+    <img src='http://upload.wikimedia.org/wikipedia/en/a/a7/ProgramCallStack2.png' />
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Recursion Example</h2>
+    <p>
+      Here is our recursive definition of the
+      <code>sum</code>
+      function
+    </p>
+    <pre><code>(define (sum lst)&#x000A;  (cond&#x000A;    ((null? lst) 0)&#x000A;    (else&#x000A;      (+ (car lst) (sum (cdr lst))))))&#x000A;</code></pre>
+  </section>
+  <section>
+    <h2>Recursion Evaluation</h2>
+    <pre><code>(sum '(1 4 7))&#x000A;(1 + (sum '(4 7)))&#x000A;(1 + (4 + (sum '(4 7))))&#x000A;(1 + (4 + (7 + (sum '()))))&#x000A;(1 + (4 + (7 + 0)))&#x000A;(1 + (4 + 7))&#x000A;(1 + 11)&#x000A;12&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>Tail Recursion</h2>
+  <ul>
+    <li>A recursive call where the return value is the result of the called function</li>
+    <li>This is as opposed to returning a result with an operation applied to it</li>
+    <li>Can be optimized by compiler/interpreter</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Tail Recursion Example</h2>
+    <pre><code>(define (sum lst)&#x000A;  (define (sum-helper lst n)&#x000A;    (cond&#x000A;      ((null? lst) n)&#x000A;      (else&#x000A;        (sum-helper (cdr lst) (+ (car lst) n)))))&#x000A;  (sum-helper lst 0))&#x000A;</code></pre>
+  </section>
+  <section>
+    <h2>Tail Recursive Evaluation</h2>
+    <pre><code>(sum-helper '(1 4 7) 0)&#x000A;(sum-helper '(4 7) 1)&#x000A;(sum-helper '(7) 5)&#x000A;(sum-helper '() 12)&#x000A;12&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h1>Higher Order Functions</h1>
+</section>
+<section>
+  <section>
+    <h2>First-class Functions</h2>
+    <ul>
+      <li>Functions are first class citizens</li>
+      <li>Functions can be assigned to variables</li>
+      <li>Functions can be passed as function arguments</li>
+      <li>Functions can be returned from functions</li>
+    </ul>
+  </section>
+  <section>
+    <p>Why would we ever want to do this?</p>
+    <img src='http://forums.androidcentral.com/attachments/htc-one/69494d1369540413t-ending-menu-key-argument-good-hopefully-this_is_madness-11728.jpg' />
+  </section>
+  <section>
+    <p>
+      Let&#8217;s simplify the
+      <code>sum</code>
+      function
+    </p>
+    <pre><code>(define (sum lst)&#x000A;  (apply + lst))&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>Let&#8217;s compose two functions</p>
+    <pre><code>(define (compose f1 f2)&#x000A;  (define (composed arg1)&#x000A;    (f1 (f2 arg1)))&#x000A;  composed)&#x000A;&#x000A;;; Last element of a list&#x000A;(define last (compose car reverse))&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Anonymous Functions</h2>
+    <ul>
+      <li>Lambdas are anonymous functions</li>
+      <li>Originated in Lisp (more on this next week)</li>
+    </ul>
+    <pre><code>(let ((double (lambda (x) (+ x x))))&#x000A;  (double 5))&#x000A;;; -> 10&#x000A;</code></pre>
+  </section>
+  <section>
+    <h2>
+      Expanded
+      <code>define</code>
+    </h2>
+    <pre><code>(define (double x)&#x000A;  (+ x x))&#x000A;&#x000A;(define x 5)&#x000A;&#x000A;(define double&#x000A;  (lambda (x)&#x000A;    (+ x x)))&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>Abstractions on top of recursion</h2>
+  <ul>
+    <li>We have done a lot of recursion</li>
+    <li>How do we eliminate the recursive boilerplate?</li>
+    <li>Let&#8217;s break down the operations we are doing</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Map</h2>
+    <ul>
+      <li>Map applies a transformation onto each element of a list</li>
+      <li>N element list => N element list</li>
+    </ul>
+  </section>
+  <section>
+    <p>Example Usage</p>
+    <pre><code>(map (lambda (x) (+ x x)) '(1 4 7 9))&#x000A;;; '(2 8 14 18)&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>Let&#8217;s implement it!</p>
+    <pre><code>(define (map proc lst)&#x000A;  (cond&#x000A;    ((null? lst) '())&#x000A;    (else&#x000A;      (cons (proc (car lst)) (map proc (cdr lst))))))&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Filter</h2>
+    <ul>
+      <li>Filters list to elements for which a predicate is true</li>
+      <li>N element list => (&leq; N) element list</li>
+    </ul>
+  </section>
+  <section>
+    <p>Example Usage</p>
+    <pre><code>(filter odd? '(1 4 7 9 12))&#x000A;;; '(1 7 9)&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>Let&#8217;s implement it!</p>
+    <pre><code>(define (filter pred lst)&#x000A;  (cond&#x000A;    ((null? lst) '())&#x000A;    (else&#x000A;      (let ((rest (filter pred (cdr lst))))&#x000A;        (if (pred (car lst))&#x000A;            (cons (car lst) rest)&#x000A;            rest)))))&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Foldl</h2>
+    <ul>
+      <li>
+        Often called
+        <code>reduce</code>
+        in other languages
+      </li>
+      <li>N element list => scalar</li>
+      <li>
+        Parameters
+        <ul>
+          <li>A starting value</li>
+          <li>A list of elements</li>
+          <li>A function with two arguments that returns a scalar</li>
+        </ul>
+      </li>
+      <li>Applies procedure to element and value one at a time to produce a scalar</li>
+    </ul>
+  </section>
+  <section>
+    <p>Example Usage</p>
+    <pre><code>(foldl + 0 '(1 4 7))&#x000A;;; 12&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>Let&#8217;s implement it!</p>
+    <pre><code>(define (foldl proc init lst)&#x000A;  (cond&#x000A;    ((null? lst) init)&#x000A;    (else&#x000A;      (foldl proc&#x000A;             (proc (car lst) init)&#x000A;             (cdr lst)))))</code></pre>
+  </section>
+</section>
+
+      </div>
+    </div>
+
+	<script src="/vendor/reveal.js-2.5.0/lib/js/head.min.js"></script>
+	<script src="/vendor/reveal.js-2.5.0/js/reveal.min.js"></script>
+
+	<script>
+	  // Full list of configuration options available here:
+	  // https://github.com/hakimel/reveal.js#configuration
+	  Reveal.initialize({
+	  controls: true,
+	  progress: true,
+	  history: true,
+	  center: true,
+
+	  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+	  transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+	  // Optional libraries used to extend on reveal.js
+	  dependencies: [
+	  { src: '/vendor/reveal.js-2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+	  ]
+	  });
+	</script>
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37844085-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  </body>
+</html>

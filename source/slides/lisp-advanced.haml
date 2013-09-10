@@ -1,0 +1,261 @@
+---
+layout: slide
+---
+
+%section
+  %h1 Programming Languages
+  %h3 Higher Order Structures in Lisp
+  %small Jim Posen - ECE/CS 2014
+
+%section
+  %h1 Recursion
+  %ul
+    %li Function is implemented in terms of itself
+    %li
+      Calculate answer using
+      %strong recurrence relation
+    %li You need a base case and a recursive step
+
+%section
+  %section
+    %h2 The Call Stack
+    %ul
+      %li Function calls are made on stack
+      %li Local variables are pushed only the stack
+      %li Variables are popped off of the stack when function returns
+
+  %section
+    %img{src: "http://upload.wikimedia.org/wikipedia/en/a/a7/ProgramCallStack2.png"}
+
+%section
+  %section
+    %h2 Recursion Example
+    %p
+      Here is our recursive definition of the
+      %code sum
+      function
+    %pre
+      %code
+        :preserve
+          (define (sum lst)
+            (cond
+              ((null? lst) 0)
+              (else
+                (+ (car lst) (sum (cdr lst))))))
+
+  %section
+    %h2 Recursion Evaluation
+    %pre
+      %code
+        :preserve
+          (sum '(1 4 7))
+          (1 + (sum '(4 7)))
+          (1 + (4 + (sum '(4 7))))
+          (1 + (4 + (7 + (sum '()))))
+          (1 + (4 + (7 + 0)))
+          (1 + (4 + 7))
+          (1 + 11)
+          12
+
+%section
+  %h2 Tail Recursion
+  %ul
+    %li A recursive call where the return value is the result of the called function
+    %li This is as opposed to returning a result with an operation applied to it
+    %li Can be optimized by compiler/interpreter
+
+%section
+  %section
+    %h2 Tail Recursion Example
+    %pre
+      %code
+        :preserve
+          (define (sum lst)
+            (define (sum-helper lst n)
+              (cond
+                ((null? lst) n)
+                (else
+                  (sum-helper (cdr lst) (+ (car lst) n)))))
+            (sum-helper lst 0))
+
+  %section
+    %h2 Tail Recursive Evaluation
+    %pre
+      %code
+        :preserve
+          (sum-helper '(1 4 7) 0)
+          (sum-helper '(4 7) 1)
+          (sum-helper '(7) 5)
+          (sum-helper '() 12)
+          12
+
+%section
+  %h1 Higher Order Functions
+
+%section
+  %section
+    %h2 First-class Functions
+    %ul
+      %li Functions are first class citizens
+      %li Functions can be assigned to variables
+      %li Functions can be passed as function arguments
+      %li Functions can be returned from functions
+
+  %section
+    %p Why would we ever want to do this?
+    %img{src: "http://forums.androidcentral.com/attachments/htc-one/69494d1369540413t-ending-menu-key-argument-good-hopefully-this_is_madness-11728.jpg"}
+
+  %section
+    %p
+      Let's simplify the
+      %code sum
+      function
+    %pre
+      %code
+        :preserve
+          (define (sum lst)
+            (apply + lst))
+
+  %section
+    %p Let's compose two functions
+    %pre
+      %code
+        :preserve
+          (define (compose f1 f2)
+            (define (composed arg1)
+              (f1 (f2 arg1)))
+            composed)
+
+          ;; Last element of a list
+          (define last (compose car reverse))
+
+%section
+  %section
+    %h2 Anonymous Functions
+    %ul
+      %li Lambdas are anonymous functions
+      %li Originated in Lisp (more on this next week)
+
+    %pre
+      %code
+        :preserve
+          (let ((double (lambda (x) (+ x x))))
+            (double 5))
+          ;; -> 10
+
+  %section
+    %h2
+      Expanded
+      %code define
+
+    %pre
+      %code
+        :preserve
+          (define (double x)
+            (+ x x))
+
+          (define x 5)
+
+          (define double
+            (lambda (x)
+              (+ x x)))
+
+%section
+  %h2 Abstractions on top of recursion
+  %ul
+    %li We have done a lot of recursion
+    %li How do we eliminate the recursive boilerplate?
+    %li Let's break down the operations we are doing
+
+%section
+  %section
+    %h2 Map
+    %ul
+      %li Map applies a transformation onto each element of a list
+      %li N element list => N element list
+
+  %section
+    %p Example Usage
+    %pre
+      %code
+        :preserve
+          (map (lambda (x) (+ x x)) '(1 4 7 9))
+          ;; '(2 8 14 18)
+
+  %section
+    %p Let's implement it!
+    %pre
+      %code
+        :preserve
+          (define (map proc lst)
+            (cond
+              ((null? lst) '())
+              (else
+                (cons (proc (car lst)) (map proc (cdr lst))))))
+
+%section
+  %section
+    %h2 Filter
+    %ul
+      %li Filters list to elements for which a predicate is true
+      %li N element list => (&leq; N) element list
+
+  %section
+    %p Example Usage
+    %pre
+      %code
+        :preserve
+          (filter odd? '(1 4 7 9 12))
+          ;; '(1 7 9)
+
+  %section
+    %p Let's implement it!
+    %pre
+      %code
+        :preserve
+          (define (filter pred lst)
+            (cond
+              ((null? lst) '())
+              (else
+                (let ((rest (filter pred (cdr lst))))
+                  (if (pred (car lst))
+                      (cons (car lst) rest)
+                      rest)))))
+
+%section
+  %section
+    %h2 Foldl
+    %ul
+      %li
+        Often called
+        %code reduce
+        in other languages
+      %li N element list => scalar
+      %li
+        Parameters
+        %ul
+          %li A starting value
+          %li A list of elements
+          %li A function with two arguments that returns a scalar
+      %li Applies procedure to element and value one at a time to produce a scalar
+
+  %section
+    %p Example Usage
+    %pre
+      %code
+        :preserve
+          (foldl + 0 '(1 4 7))
+          ;; 12
+
+  %section
+    %p Let's implement it!
+    %pre
+      %code
+        :preserve
+          (define (foldl proc init lst)
+            (cond
+              ((null? lst) init)
+              (else
+                (foldl proc
+                       (proc (car lst) init)
+                       (cdr lst)))))

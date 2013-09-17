@@ -12,4 +12,11 @@ footer: false
 - [Pro Git](http://git-scm.com/book/) Chapters 1-2
 - [Linux tutorial](http://linuxcommand.org/lc3_learning_the_shell.php) for those unfamiliar with the terminal
 
+**Week 2-3**
+- [The Little Schemer](http://scottn.us/downloads/The_Little_Schemer.pdf) Chapters 1-6
+
+**Week 4 (9/10/13)**
+- [The Perils of Java Schools](http://www.joelonsoftware.com/articles/ThePerilsofJavaSchools.html)
+- [The Roots of Lisp](http://lib.store.yahoo.net/lib/paulgraham/jmc.ps)
+
 ## Assignments

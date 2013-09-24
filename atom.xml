@@ -4,7 +4,7 @@
   <title><![CDATA[Duke PL Course]]></title>
   <link href="http://Duke-PL-Course.github.com/atom.xml" rel="self"/>
   <link href="http://Duke-PL-Course.github.com/"/>
-  <updated>2013-09-17T15:04:08-04:00</updated>
+  <updated>2013-09-24T11:58:28-04:00</updated>
   <id>http://Duke-PL-Course.github.com/</id>
   <author>
     <name><![CDATA[Yang Su, Kevin Gao]]></name>
@@ -12,6 +12,18 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Wrapping up Lisp]]></title>
+    <link href="http://Duke-PL-Course.github.com/blog/2013/09/24/wrapping-up-lisp/"/>
+    <updated>2013-09-24T11:55:00-04:00</updated>
+    <id>http://Duke-PL-Course.github.com/blog/2013/09/24/wrapping-up-lisp</id>
+    <content type="html"><![CDATA[<p>Hey everyone,<br>
+We are wrapping up the unit on Lisp/Racket today. There is a reading for today under the assignments tab, so please read The Roots of Lisp before class. We will be discussing some advanced language features of Lisp and some of the philosophy of functional programming. We will also talk about how to submit the exercises we&#39;ve done. I&#39;ll see everyone in class!</p>
+
+<p>-Jim</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Tech Connect]]></title>
@@ -437,19 +449,6 @@ We are going to end class early today so that people can attend <a href="http://
 <p><a href="http://net.tutsplus.com/tutorials/">NetTuts+</a> in particular has many great tutorials on Sublime Text. Two of the best articles are <a href="http://net.tutsplus.com/tutorials/tools-and-tips/sublime-text-2-tips-and-tricks/">Sublime Text 2 Tips and Tricks</a> and <a href="http://net.tutsplus.com/tutorials/tools-and-tips/essential-sublime-text-2-plugins-and-extensions/">Essential Sublime Text 2 Plugins and Extensions</a>.</p>
 
 <p>You can also follow <a href="https://tutsplus.com/course/improve-workflow-in-sublime-text-2/">a free video series</a> by Jeffrey Way on <a href="https://tutsplus.com/">Tuts+</a> that goes over many of the topics covered in the two articles above and more.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Welcome!]]></title>
-    <link href="http://Duke-PL-Course.github.com/blog/2013/01/14/welcome/"/>
-    <updated>2013-01-14T00:55:00-05:00</updated>
-    <id>http://Duke-PL-Course.github.com/blog/2013/01/14/welcome</id>
-    <content type="html"><![CDATA[<p>Welcome to Programming Languages House Course!</p>
-
-<p>We are very excited to have you in our class and look forward to meeting all of you.</p>
-
-<p>Meanwhile, please take a look at the <a href="http://Duke-PL-Course.github.com/about/">about</a> and <a href="http://Duke-PL-Course.github.com/resources/">resources</a> pages for more information on the class.</p>
 ]]></content>
   </entry>
   

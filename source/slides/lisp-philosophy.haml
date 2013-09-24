@@ -1,0 +1,336 @@
+---
+layout: slide
+---
+
+%section
+  %h1 Programming Languages
+  %h3 Lisp Philosophy
+  %small Jim Posen - ECE/CS 2014
+
+%section
+  %h2 History of Lisp
+  %ul
+    %li 1955 - John Backus invents Fortran at IBM
+    %li 1958 - John McCarthy invents Lisp at MIT
+    %li 1958 - First interpreter is written
+    %li 1962 - First compiler is written
+    %li 1972 - C is released
+    %li 1975 - Scheme
+    %li 1984 - Common Lisp
+    %li 2007 - Clojure
+
+%section
+  %h2 Applications
+  %ul
+    %li Lisp is big in AI
+    %li Lisp often used to create DSLs
+    %li Fragmented ecosystem + limited libraries = limited usage
+
+%section
+  %h2 Mathematical foundation
+  %ul
+    %li Assembly/Fortran based on Turing machine formalism
+    %li Lisp based on Lambda Calculus
+
+%section
+  %h2 Lambda Calculus
+  %ul
+    %li Invented in 1930 by Alonzo Church
+    %li Mathematical formalism for functions and function application
+    %li Variables and anonymous functions are called "lambda terms"
+    %li Introduces notion of a function as a first class variable
+    %li Lambda functions have one input and one output
+
+%section
+  %h2 Functional Programming
+  %ul
+    %li What is it and why is it different?
+    %li Lisp is the first functional programming language
+    %li Modern lisps are not purely functional
+    %li
+      Rather, Lisp encourages a
+      %strong functional style of programming
+
+%section
+  %section
+    %h2 Functions
+    %ul
+      %li
+        Functions have
+        %strong inputs, outputs, side effects, and an environment
+      %li Inputs are your function parameters
+      %li Outputs are your return values
+      %li Side effects are everything else
+
+  %section
+    %h2 An example
+    %ul
+      %li
+        Collatz sequence
+        %ul
+          %li n -> n/2 (n even)
+          %li n -> 3n + 1 (n odd)
+          %li 13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1
+      %li Collatz conjecture is that all sequences end in a 1
+
+  %section
+    %p
+      What are the inputs, outputs, and side effects of
+      %code collatz
+      ?
+    %pre
+      %code
+        :preserve
+          (define (collatz-next n)
+            (if (even? n)
+                (/ n 2)
+                (+ 1 (* 3 n))))
+
+          (define (collatz n)
+            (displayln n)
+            (cond
+              ((= n 1) 1)
+              (else (+ 1 (collatz-next n)))))
+
+  %section
+    %ul
+      %li Input is the starting number
+      %li Output is the length of the sequence
+      %li Side effect is printing to the screen every element
+      %li
+        Environment includes the definition of
+        %code collatz-next
+
+%section
+  %section
+    %h2 Functional programming benefits
+    %ul
+      %li Sides effects often include changing state of the environment
+      %li Setter methods have side effects
+      %li Side effects add lots of complexity
+      %li Side effects can be hard to debug
+
+  %section
+    %h2 Alternately...
+    %ul
+      %li Functions with no side effects can be easily tested
+      %li Functions with no side effects are less likely to cause weird bugs
+      %li Functional programming makes your code more modular and easier to understand
+
+%section
+  %h2
+    %a{href: "http://www.paulgraham.com/diff.html"} Other Lisp goodies
+  %ul
+    %li
+      %strong The following features didn't exist before Lisp
+    %li Conditionals instead of goto statements
+    %li First class functions
+    %li Recursion paradigm
+    %li Garbage collection
+    %li Program as a tree of S-expressions
+    %li REPL
+
+%section
+  %h1
+    %a{href: "http://lib.store.yahoo.net/lib/paulgraham/jmc.ps"} The Roots of Lisp
+
+%section
+  %h2 7 primitive operators
+  %ul
+    %li
+      %code quote
+    %li
+      %code atom
+      (check if atom or null)
+    %li
+      %code eq
+      (equality of atoms)
+    %li
+      %code car
+    %li
+      %code cdr
+    %li
+      %code cons
+    %li
+      %code cond
+
+%section
+  %h2 Functions
+  %ul
+    %li Functions are lambdas
+    %li May be given labels for the purpose of recursion
+
+%section
+  %h2 The Surprise
+  %ul
+    %li Paul Graham's self hosting 32 line Lisp interpreter
+    %li Pretty sweet, huh?
+
+%section
+  %h1 Advanced features of Lisp
+  %ul
+    %li Lexical closures
+    %li Macros
+
+%section
+  %h2 Variable scope
+  %ul
+    %li A scope is the context in which variables may be defined
+    %li Defines, lambdas, and let blocks create new scope in Racket
+    %li Variables defined in a scope are not accessible outside it
+
+%section
+  %section
+    %h2 Lexical closure
+    %ul
+      %li A closure is a function along with it's referencing environment
+      %li Racket and modern Lisps support closures
+      %li
+        %strong This mean a function can refer to variables in a local scope when called outside that scope
+
+  %section
+    %h2 What does this mean?
+    %p Function "remembers" out of scope variables
+    %pre
+      %code
+        :preserve
+          (define (makefilter op x)
+            (lambda (n) (op x n)))
+    %pre
+      %code
+        :preserve
+          (let ((my-filter (makefilter < 8)))
+            ... (my-filter 6) ...)
+
+%section
+  %section
+    %h2 Why are closures good?
+    %p Let's simplify our quicksort code
+
+  %section
+    %h3 Before
+    %pre
+      %code
+        :preserve
+          (define (qsort lst)
+            (cond
+             ((null? lst) '())
+             (else
+              (let* ((pivot (car lst))
+                     (less-than? (lambda (x) (<= x pivot)))
+                     (greater-than? (lambda (x) (> x pivot))))
+                (append
+                 (qsort (filter less-than? (cdr lst)))
+                 (list pivot)
+                 (qsort (filter greater-than? (cdr lst))))))))
+
+  %section
+    %h3 After
+    %pre
+      %code
+        :preserve
+          (define (qsort lst)
+            (cond
+             ((null? lst) '())
+             (else
+              (let ((pivot (car lst)))
+                (append
+                 (qsort (filter (makefilter <= pivot) (cdr lst)))
+                 (list pivot)
+                 (qsort (filter (makefilter > pivot) (cdr lst))))))))
+
+%section
+  %section
+    %h2 Custom syntax
+    %ul
+      %li Functions are cool, but we can't really add syntax
+      %li Can we write a for loop?
+
+  %section
+    %h2 The for loop
+    %p How can we implement this?
+    %pre
+      %code
+        :preserve
+          (for i '(1 2 3 4)
+            (* i 2))
+          => '(2 4 6 8)
+
+  %section
+    %p Not with a function...
+
+%section
+  %section
+    %h2 The loop functionality
+    %p We can achieve the same result with
+    %pre
+      %code
+        :preserve
+          (map (lambda (i) (* i 2)) '(1 2 3 4))
+
+  %section
+    %p
+      But I liked the
+      %code for
+      loop syntax
+    %p
+      Can we just expand the
+      %code for
+      loop into that?
+
+%section
+  %section
+    %h2 Macros
+    %p The interpreter replaces your macros with another expression defined by a syntax rule
+    %pre
+      %code
+        :preserve
+          (define-syntax-rule (for var lst body)
+            (map (lambda (var) body) lst))
+
+  %section
+    %h3 Another example
+    %pre
+      %code
+        :preserve
+          (define-syntax-rule (swap x y)
+            (let ([tmp x])
+              (set! x y)
+              (set! y tmp)))
+    %pre
+      %code
+        :preserve
+          (swap first second)
+
+%section
+  %section
+    %h2 Why can we do this?
+
+  %section
+    %p Because
+    %img{src: "http://cdn.meme.li/i/or12t.jpg"}
+
+%section
+  %h2 Beating the Averages
+  %ul
+    %li Lisp is a programmable programming language
+    %li You can write programs to write your programs for you
+    %li Customize the language to your needs with custom syntax
+    %li This is why Lisp is so good for writing DSLs
+
+%section
+  %h2 Wrapping up
+  %ul
+    %li Complete all exercises
+    %li Run all tests
+    %li Email me (jep AT duke DOT edu) if you have questions
+    %li Push code to your GitHub repository
+
+%section
+  %h2
+    Next time on
+    %em Programming Languages
+  %ul
+    %li Haskell
+    %li Purely functional programming
+    %li Typing models

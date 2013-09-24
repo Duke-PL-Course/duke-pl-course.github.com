@@ -7,4 +7,5 @@ footer: false
 
 * Week 1: [Intro](/slides/intro.html)
 * Week 2: [Lisp Basics](/slides/lisp-basics.html)
-* Week 2: [Higher Order Structures in Lisp](/slides/lisp-advanced.html)
+* Week 4: [Higher Order Structures in Lisp](/slides/lisp-advanced.html)
+* Week 5: [Lisp Philosophy](/slides/lisp-philosophy.html)

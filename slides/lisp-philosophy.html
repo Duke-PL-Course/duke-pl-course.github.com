@@ -1,0 +1,403 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+
+    <title>Duke PL Course</title>
+
+    
+    <meta name="description" content="Programming Languages Lisp Philosophy Jim Posen - ECE/CS 2014 History of Lisp 1955 - John Backus invents Fortran at IBM 1958 - John McCarthy invents &hellip;">
+    
+    <meta name="author" content="Yang Su, Kevin Gao">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/reveal.min.css">
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	  document.write( '<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <link href="/favicon.png" rel="icon">
+  </head>
+
+  <body>
+	<div class="reveal">
+	  <!-- Any section element inside of this container is displayed as a slide -->
+	  <div class="slides">
+        <section>
+  <h1>Programming Languages</h1>
+  <h3>Lisp Philosophy</h3>
+  <small>Jim Posen - ECE/CS 2014</small>
+</section>
+<section>
+  <h2>History of Lisp</h2>
+  <ul>
+    <li>1955 - John Backus invents Fortran at IBM</li>
+    <li>1958 - John McCarthy invents Lisp at MIT</li>
+    <li>1958 - First interpreter is written</li>
+    <li>1962 - First compiler is written</li>
+    <li>1972 - C is released</li>
+    <li>1975 - Scheme</li>
+    <li>1984 - Common Lisp</li>
+    <li>2007 - Clojure</li>
+  </ul>
+</section>
+<section>
+  <h2>Applications</h2>
+  <ul>
+    <li>Lisp is big in AI</li>
+    <li>Lisp often used to create DSLs</li>
+    <li>Fragmented ecosystem + limited libraries = limited usage</li>
+  </ul>
+</section>
+<section>
+  <h2>Mathematical foundation</h2>
+  <ul>
+    <li>Assembly/Fortran based on Turing machine formalism</li>
+    <li>Lisp based on Lambda Calculus</li>
+  </ul>
+</section>
+<section>
+  <h2>Lambda Calculus</h2>
+  <ul>
+    <li>Invented in 1930 by Alonzo Church</li>
+    <li>Mathematical formalism for functions and function application</li>
+    <li>Variables and anonymous functions are called &#8220;lambda terms&#8221;</li>
+    <li>Introduces notion of a function as a first class variable</li>
+    <li>Lambda functions have one input and one output</li>
+  </ul>
+</section>
+<section>
+  <h2>Functional Programming</h2>
+  <ul>
+    <li>What is it and why is it different?</li>
+    <li>Lisp is the first functional programming language</li>
+    <li>Modern lisps are not purely functional</li>
+    <li>
+      Rather, Lisp encourages a
+      <strong>functional style of programming</strong>
+    </li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Functions</h2>
+    <ul>
+      <li>
+        Functions have
+        <strong>inputs, outputs, side effects, and an environment</strong>
+      </li>
+      <li>Inputs are your function parameters</li>
+      <li>Outputs are your return values</li>
+      <li>Side effects are everything else</li>
+    </ul>
+  </section>
+  <section>
+    <h2>An example</h2>
+    <ul>
+      <li>
+        Collatz sequence
+        <ul>
+          <li>n -> n/2 (n even)</li>
+          <li>n -> 3n + 1 (n odd)</li>
+          <li>13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1</li>
+        </ul>
+      </li>
+      <li>Collatz conjecture is that all sequences end in a 1</li>
+    </ul>
+  </section>
+  <section>
+    <p>
+      What are the inputs, outputs, and side effects of
+      <code>collatz</code>
+      ?
+    </p>
+    <pre><code>(define (collatz-next n)&#x000A;  (if (even? n)&#x000A;      (/ n 2)&#x000A;      (+ 1 (* 3 n))))&#x000A;&#x000A;(define (collatz n)&#x000A;  (displayln n)&#x000A;  (cond&#x000A;    ((= n 1) 1)&#x000A;    (else (+ 1 (collatz-next n)))))&#x000A;</code></pre>
+  </section>
+  <section>
+    <ul>
+      <li>Input is the starting number</li>
+      <li>Output is the length of the sequence</li>
+      <li>Side effect is printing to the screen every element</li>
+      <li>
+        Environment includes the definition of
+        <code>collatz-next</code>
+      </li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Functional programming benefits</h2>
+    <ul>
+      <li>Sides effects often include changing state of the environment</li>
+      <li>Setter methods have side effects</li>
+      <li>Side effects add lots of complexity</li>
+      <li>Side effects can be hard to debug</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Alternately&#8230;</h2>
+    <ul>
+      <li>Functions with no side effects can be easily tested</li>
+      <li>Functions with no side effects are less likely to cause weird bugs</li>
+      <li>Functional programming makes your code more modular and easier to understand</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <h2>
+    <a href='http://www.paulgraham.com/diff.html'>Other Lisp goodies</a>
+  </h2>
+  <ul>
+    <li>
+      <strong>The following features didn&#8217;t exist before Lisp</strong>
+    </li>
+    <li>Conditionals instead of goto statements</li>
+    <li>First class functions</li>
+    <li>Recursion paradigm</li>
+    <li>Garbage collection</li>
+    <li>Program as a tree of S-expressions</li>
+    <li>REPL</li>
+  </ul>
+</section>
+<section>
+  <h1>
+    <a href='http://lib.store.yahoo.net/lib/paulgraham/jmc.ps'>The Roots of Lisp</a>
+  </h1>
+</section>
+<section>
+  <h2>7 primitive operators</h2>
+  <ul>
+    <li>
+      <code>quote</code>
+    </li>
+    <li>
+      <code>atom</code>
+      (check if atom or null)
+    </li>
+    <li>
+      <code>eq</code>
+      (equality of atoms)
+    </li>
+    <li>
+      <code>car</code>
+    </li>
+    <li>
+      <code>cdr</code>
+    </li>
+    <li>
+      <code>cons</code>
+    </li>
+    <li>
+      <code>cond</code>
+    </li>
+  </ul>
+</section>
+<section>
+  <h2>Functions</h2>
+  <ul>
+    <li>Functions are lambdas</li>
+    <li>May be given labels for the purpose of recursion</li>
+  </ul>
+</section>
+<section>
+  <h2>The Surprise</h2>
+  <ul>
+    <li>Paul Graham&#8217;s self hosting 32 line Lisp interpreter</li>
+    <li>Pretty sweet, huh?</li>
+  </ul>
+</section>
+<section>
+  <h1>Advanced features of Lisp</h1>
+  <ul>
+    <li>Lexical closures</li>
+    <li>Macros</li>
+  </ul>
+</section>
+<section>
+  <h2>Variable scope</h2>
+  <ul>
+    <li>A scope is the context in which variables may be defined</li>
+    <li>Defines, lambdas, and let blocks create new scope in Racket</li>
+    <li>Variables defined in a scope are not accessible outside it</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Lexical closure</h2>
+    <ul>
+      <li>A closure is a function along with it&#8217;s referencing environment</li>
+      <li>Racket and modern Lisps support closures</li>
+      <li>
+        <strong>This mean a function can refer to variables in a local scope when called outside that scope</strong>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h2>What does this mean?</h2>
+    <p>Function &#8220;remembers&#8221; out of scope variables</p>
+    <pre><code>(define (makefilter op x)&#x000A;  (lambda (n) (op x n)))</code></pre>
+    <pre><code>(let ((my-filter (makefilter < 8)))&#x000A;  ... (my-filter 6) ...)&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Why are closures good?</h2>
+    <p>Let&#8217;s simplify our quicksort code</p>
+  </section>
+  <section>
+    <h3>Before</h3>
+    <pre><code>(define (qsort lst)&#x000A;  (cond&#x000A;   ((null? lst) '())&#x000A;   (else&#x000A;    (let* ((pivot (car lst))&#x000A;           (less-than? (lambda (x) (<= x pivot)))&#x000A;           (greater-than? (lambda (x) (> x pivot))))&#x000A;      (append&#x000A;       (qsort (filter less-than? (cdr lst)))&#x000A;       (list pivot)&#x000A;       (qsort (filter greater-than? (cdr lst))))))))&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>After</h3>
+    <pre><code>(define (qsort lst)&#x000A;  (cond&#x000A;   ((null? lst) '())&#x000A;   (else&#x000A;    (let ((pivot (car lst)))&#x000A;      (append&#x000A;       (qsort (filter (makefilter <= pivot) (cdr lst)))&#x000A;       (list pivot)&#x000A;       (qsort (filter (makefilter > pivot) (cdr lst))))))))&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Custom syntax</h2>
+    <ul>
+      <li>Functions are cool, but we can&#8217;t really add syntax</li>
+      <li>Can we write a for loop?</li>
+    </ul>
+  </section>
+  <section>
+    <h2>The for loop</h2>
+    <p>How can we implement this?</p>
+    <pre><code>(for i '(1 2 3 4)&#x000A;  (* i 2))&#x000A;=> '(2 4 6 8)&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>Not with a function&#8230;</p>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>The loop functionality</h2>
+    <p>We can achieve the same result with</p>
+    <pre><code>(map (lambda (i) (* i 2)) '(1 2 3 4))&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>
+      But I liked the
+      <code>for</code>
+      loop syntax
+    </p>
+    <p>
+      Can we just expand the
+      <code>for</code>
+      loop into that?
+    </p>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Macros</h2>
+    <p>The interpreter replaces your macros with another expression defined by a syntax rule</p>
+    <pre><code>(define-syntax-rule (for var lst body)&#x000A;  (map (lambda (var) body) lst))&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Another example</h3>
+    <pre><code>(define-syntax-rule (swap x y)&#x000A;  (let ([tmp x])&#x000A;    (set! x y)&#x000A;    (set! y tmp)))</code></pre>
+    <pre><code>(swap first second)&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Why can we do this?</h2>
+  </section>
+  <section>
+    <p>Because</p>
+    <img src='http://cdn.meme.li/i/or12t.jpg' />
+  </section>
+</section>
+<section>
+  <h2>Beating the Averages</h2>
+  <ul>
+    <li>Lisp is a programmable programming language</li>
+    <li>You can write programs to write your programs for you</li>
+    <li>Customize the language to your needs with custom syntax</li>
+    <li>This is why Lisp is so good for writing DSLs</li>
+  </ul>
+</section>
+<section>
+  <h2>Wrapping up</h2>
+  <ul>
+    <li>Complete all exercises</li>
+    <li>Run all tests</li>
+    <li>Email me (jep AT duke DOT edu) if you have questions</li>
+    <li>Push code to your GitHub repository</li>
+  </ul>
+</section>
+<section>
+  <h2>
+    Next time on
+    <em>Programming Languages</em>
+  </h2>
+  <ul>
+    <li>Haskell</li>
+    <li>Purely functional programming</li>
+    <li>Typing models</li>
+  </ul>
+</section>
+
+      </div>
+    </div>
+
+	<script src="/vendor/reveal.js-2.5.0/lib/js/head.min.js"></script>
+	<script src="/vendor/reveal.js-2.5.0/js/reveal.min.js"></script>
+
+	<script>
+	  // Full list of configuration options available here:
+	  // https://github.com/hakimel/reveal.js#configuration
+	  Reveal.initialize({
+	  controls: true,
+	  progress: true,
+	  history: true,
+	  center: true,
+
+	  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+	  transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+	  // Optional libraries used to extend on reveal.js
+	  dependencies: [
+	  { src: '/vendor/reveal.js-2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+	  ]
+	  });
+	</script>
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37844085-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  </body>
+</html>

@@ -9,3 +9,4 @@ footer: false
 * Week 2: [Lisp Basics](/slides/lisp-basics.html)
 * Week 4: [Higher Order Structures in Lisp](/slides/lisp-advanced.html)
 * Week 5: [Lisp Philosophy](/slides/lisp-philosophy.html)
+* Week 6: [Functional Programming in Haskell](/slides/haskell-intro.html)

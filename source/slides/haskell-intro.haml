@@ -1,0 +1,392 @@
+---
+layout: slide
+---
+
+%section
+  %h1 Programming Languages
+  %h3 Functional Programming in Haskell
+  %small Jim Posen - ECE/CS 2014
+
+%section
+  %section
+    %h2 Functional Programming
+    %ul
+      %li We saw it with Racket
+      %li Recall that functional programs have limited side effects
+      %li
+        A side effect is where a function application changes state or has an observable effect
+        %ul
+          %li Modifies a free variable, performs IO, etc
+
+  %section
+    %p Side effects
+    %pre
+      %code
+        :preserve
+          def fib(n):
+            x1 = 0
+            x2 = 1
+            for i in range(n):
+              tmp = x2
+              x2 = x1 + x2
+              x1 = tmp
+            return x1
+
+  %section
+    %p No side effects
+    %pre
+      %code
+        :preserve
+          (define (fib n)
+            (if (< n 2)
+                n
+                (+ (fib (- n 1)) (fib (- n 2)))))
+
+%section
+  %h3 Functional programming benefits
+  %ul
+    %li Side effects made it difficult to analyze behavior
+    %li Functions with no side effects can be easily tested
+    %li
+      Functions are
+      %strong referentially transparent
+      %ul
+        %li An expression can be replaced with its value
+
+%section
+  %h2 Haskell
+  %ul
+    %li
+      Haskell is
+      %strong purely functional
+    %li
+      High level constructs called
+      %strong monads
+      are used to isolate side effects
+    %li This means values are immutable (with one exception)
+    %li Haskell uses lazy evaluation
+    %li Haskell is statically (and strongly) typed
+
+%section
+  %h2 Running Haskell
+  %ul
+    %li Haskell is compiled
+    %li GHC compiles to native machine code by default
+    %li GHCi is the interactive environment (REPL)
+
+%section
+  %h1 Haskell Syntax
+
+%section
+  %section
+    %h2 Basic scalar types
+    %ul
+      %li Numbers
+      %li Chars
+      %li Bools
+
+  %section
+    %h3 Numbers
+    %p Int, Integer, Rational, Float, etc
+    %pre
+      %code
+        :preserve
+          ghci> (50 * 100) - 4999
+          1
+          ghci> 50 * 100 - 4999
+          1
+          ghci> 50 * (100 - 4999)
+          -244950
+
+  %section
+    %h3 Chars
+    %p Denoted with singe quotes
+
+  %section
+    %h3 Bools
+    %p
+      %code True
+      or
+      %code False
+
+%section
+  %h2 Function application
+  %ul
+    %li Generally uses prefix notation
+    %li Parenthesis are not necessary, but may be helpful
+
+  %pre
+    %code
+      :preserve
+        ghci> min 5 6 + max 10 20
+        25
+        ghci> min 5 max 3 4
+        -- Crash!
+        ghci> min 6 (max 3 4)
+        4
+
+%section
+  %h2 Function definitions
+  %ul
+    %li Functions are defined with =
+    %li Functions are defined over some parameters
+    %li 0-arity (no parameters) functions can be thought of as constants
+    %li
+      %em
+        Must use
+        %code let
+        in GHCi
+
+  %pre
+    %code
+      :preserve
+        ghci> let pi = 3.14
+        ghci> let area r = pi * r ^ 2
+        ghci> area 5
+        78.5
+        ghci> let hypot x y = sqrt (x ^ 2 + y ^ 2)
+        ghci> hypot 3 4
+        5.0
+
+%section
+  %h2 Let and where
+  %ul
+    %li Let and where create scoped variables
+
+  %pre
+    %code
+      :preserve
+        area r =
+            let pi = 3.14
+            in pi * r ^ 2
+
+  %pre
+    %code
+      :preserve
+        area r = pi * r ^ 2
+            where pi = 3.14
+
+%section
+  %section
+    %h2 Lists
+    %ul
+      %li Lists are linked lists, like in Lisp
+      %li Lists may only contain elements of one type
+
+    %pre
+      %code
+        :preserve
+          ghci> head [1, 2, 3, 4]
+          1
+          ghci> tail [1, 2, 3, 4]
+          [2, 3, 4]
+
+  %section
+    %h3 List operations
+    %ul
+      %li
+        %code head
+        is like
+        %code car
+      %li
+        %code tail
+        is like
+        %code cdr
+      %li
+        %code :
+        is like
+        %code cons
+      %li ++ concatenates lists
+      %li !! gets the nth element (zero-indexed)
+
+    %pre
+      %code
+        :preserve
+          ghci> 1:[2, 3, 4]
+          [1, 2, 3, 4]
+          ghci> [1, 2] ++ [3, 4]
+          [1, 2, 3, 4]
+          ghci> [1, 2] ++ [3, 4]
+          [1, 2, 3, 4]
+          ghci> [1, 2, 3, 4] !! 1
+          2
+
+%section
+  %h2 Strings
+  %ul
+    %li String literals denoted with double quotes
+    %li Strings are lists of chars
+
+    %pre
+      %code
+        :preserve
+          ghci> ['h', 'e', 'l', 'l', 'o'] ++ " world"
+          "hello world"
+
+%section
+  %section
+    %h2 Ranges
+    %ul
+      %li Simple syntax for generating ranges using ..
+      %li You can specify a step
+
+    %pre
+      %code
+        :preserve
+          ghci> [1..9]
+          [1, 2, 3, 4, 5, 6, 7, 8, 9]
+          ghci> [1, 3..9]
+          [1, 3, 5, 7, 9]
+          ghci> ['a'..'e']
+          "abcde"
+
+  %section
+    %h3 Infinite ranges
+    %ul
+      %li Ranges can be infinite
+      %li Lazy evaluation makes this possible
+
+    %pre
+      %code
+        :preserve
+          ghci> let evens = [0, 2..]
+          ghci> evens !! 10
+          20
+
+%section
+  %h2 Tuples
+  %ul
+    %li Collections of elements
+    %li Fixed size
+    %li May contain different elements
+
+  %pre
+    %code
+      :preserve
+        ghci> (1, 'a', [3.0])
+        (1, 'a', [3.0])
+        ghci> zip [1, 2, 3] "abc"
+        [(1, 'a'), (2, 'b'), (3, 'c')]
+
+%section
+  %section
+    %h2 Conditionals
+    %p Let's define !! recursively
+    %pre
+      %code
+        :preserve
+          nth lst n =
+              if n == 0
+              then head lst
+              else nth (tail lst) (n - 1)
+
+  %section
+    %p Woohoo, it looks like Lisp
+    %p But we can do better...
+
+%section
+  %section
+    %h2 Pattern matching
+    %pre
+      %code
+        :preserve
+          nth lst 0 = head lst
+          nth lst n = nth (tail lst) (n - 1)
+
+  %section
+    %p Ooh, that's pretty
+    %p But we can do better...
+
+%section
+  %section
+    %h3 Even more pattern matching
+    %p
+      %em Note: _ typically means ignored variable
+    %pre
+      %code
+        :preserve
+          nth (h:_) 0 = h
+          nth (_:t) n = nth t (n - 1)
+
+  %section
+    %p We can even pattern match tuples
+    %pre
+      %code
+        :preserve
+          flipTuple (x, y) = (y, x)
+
+%section
+  %h3 Nifty syntax note
+  %p Backticks allow infix notation
+  %pre
+    %code
+      :preserve
+        ghci> nth [1, 2, 3] 1
+        ghci> [1, 2, 3] `nth` 1
+
+%section
+  %section
+    %h2 Guards
+    %ul
+      %li
+        Recall the Collatz sequence
+        %ul
+          %li n -> n/2 (n even)
+          %li n -> 3n + 1 (n odd)
+          %li 13 → 40 → 20 → 10 → 5 → 16 → 8 → 4 → 2 → 1
+      %li Can we write collatzNext with pattern matching?
+    %pre
+      %code
+        :preserve
+          (define (collatz-next n)
+            (if (even? n)
+                (/ n 2)
+                (+ 1 (* 3 n))))
+
+  %section
+    %p No, but we can use guards
+    %pre
+      %code
+        :preserve
+          collatzNext n =
+              | even n = n / 2
+              | otherwise = 3 * n + 1
+
+%section
+  %section
+    %h2 List Comprehensions
+    %ul
+      %li Really nice syntax for transformations on lists
+
+  %section
+    %p Let's double all elements in a range
+    %p Lisp
+    %pre
+      %code
+        :preserve
+          (map (lambda (x) (* x 2)) (range 1 11))
+
+    %p Haskell
+    %pre
+      %code
+        :preserve
+          [x * 2 | x <- [1..10]]
+
+  %section
+    %p Let's double all multiples of 7 less than 100
+    %p Lisp
+    %pre
+      %code
+        :preserve
+          (map (lambda (x) (* x 2))
+               (filter (lambda (x) (zero? (mod x 7)))
+                       (range 1 11)))
+
+
+    %pre
+      %code
+        :preserve
+          [x * 2 | x <- [1..10], x `mod` 7 == 0]
+
+  %section
+    %p map, filter, and foldl still exist of course

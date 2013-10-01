@@ -19,6 +19,7 @@ footer: false
     * [Vim](#vim)
 * [Language Specific Resources](#language-specific-resources)
     * [Racket](#racket)
+    * [Haskell](#haskell)
 
 * [Downloads](#downloads)
 
@@ -88,6 +89,10 @@ If you are a vim user or would like to use vim for this course, then you can fin
 <h2 id="racket">Racket</h2>
 
 [The Little Schemer](http://scottn.us/downloads/The_Little_Schemer.pdf)
+
+<h2 id="haskell">Haskell</h2>
+
+[Learn You a Haskell for Great Good](http://learnyouahaskell.com/chapters)
 
 <h2 id="downloads">Downloads</h2>
 

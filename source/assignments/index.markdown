@@ -19,4 +19,7 @@ footer: false
 - [The Perils of Java Schools](http://www.joelonsoftware.com/articles/ThePerilsofJavaSchools.html)
 - [The Roots of Lisp](http://lib.store.yahoo.net/lib/paulgraham/jmc.ps)
 
+**Week 6 (10/1/13)**
+- [Learn You a Haskell](http://learnyouahaskell.com/chapters) Chapters 2, 4, 5
+
 ## Assignments

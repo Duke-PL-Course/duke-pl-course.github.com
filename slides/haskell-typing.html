@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+
+    <title>Duke PL Course</title>
+
+    
+    <meta name="description" content="Programming Languages Typing Systems with Haskell Jim Posen - ECE/CS 2014 Type Systems A type system is the model a programming language uses to &hellip;">
+    
+    <meta name="author" content="Yang Su, Kevin Gao">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/reveal.min.css">
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	  document.write( '<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <link href="/favicon.png" rel="icon">
+  </head>
+
+  <body>
+	<div class="reveal">
+	  <!-- Any section element inside of this container is displayed as a slide -->
+	  <div class="slides">
+        <section>
+  <h1>Programming Languages</h1>
+  <h3>Typing Systems with Haskell</h3>
+  <small>Jim Posen - ECE/CS 2014</small>
+</section>
+<section>
+  <h2>Type Systems</h2>
+  <ul>
+    <li>A type system is the model a programming language uses to assign types to values or variables</li>
+    <li>Static vs dynamic typing</li>
+    <li>Strong vs weak typing</li>
+    <li>Type safety properties</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Static vs dynamic type checking</h2>
+    <ul>
+      <li>
+        Are the types known without running the program?
+        <ul>
+          <li>Type checkers perform static analysis</li>
+          <li>Are the types known during compilation?</li>
+        </ul>
+      </li>
+      <li>Do variables have types?</li>
+      <li>Languages may have optional type declarations</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Staticly typed languages</h3>
+    <ul>
+      <li>Java</li>
+      <li>C/C++</li>
+      <li>SML (functional language)</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Dynamicly typed languages</h3>
+    <ul>
+      <li>Python</li>
+      <li>Racket</li>
+      <li>JavaScript</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Hybrids</h3>
+    <ul>
+      <li>
+        Common Lisp
+        <ul>
+          <li>Dynamic by default with optional type declarations</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Strong vs weak typing</h2>
+    <ul>
+      <li>Do values/objects have types?</li>
+      <li>Higher standard of type safety</li>
+      <li>Weakly typed languages have less type safety</li>
+      <li>Not as clear cut as static/dynamic type checking</li>
+      <li>
+        <a href='http://en.wikipedia.org/wiki/I_know_it_when_I_see_it'>I know it when I see it</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h3>Strongly typed languages</h3>
+    <ul>
+      <li>
+        Java
+        <ul>
+          <li>ints can be added to Strings</li>
+          <li>Is this an exception?</li>
+        </ul>
+      </li>
+      <li>
+        Python
+        <ul>
+          <li>TypeError often thrown</li>
+        </ul>
+      </li>
+      <li>
+        Racket
+        <ul>
+          <li>Rationals vs fixnums vs booleans vs symbols</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h3>Weakly typed languages</h3>
+    <ul>
+      <li>
+        C
+        <ul>
+          <li>int a = *((int*) b);</li>
+        </ul>
+      </li>
+      <li>JavaScript</li>
+      <li>PHP</li>
+    </ul>
+  </section>
+  <section>
+    <h3>
+      <a href='https://www.destroyallsoftware.com/talks/wat'>Wat</a>
+    </h3>
+    <ul>
+      <li>Weak languages often have more unexpected behavior</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <h3>Typing Chart</h3>
+  <table>
+    <tr>
+      <td></td>
+      <td>
+        <strong>Strong</strong>
+      </td>
+      <td>
+        <strong>Weak</strong>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Static</strong>
+      </td>
+      <td>Java</td>
+      <td>C</td>
+    </tr>
+    <tr>
+      <td>
+        <strong>Dynamic</strong>
+      </td>
+      <td>Python</td>
+      <td>JavaScript</td>
+    </tr>
+  </table>
+</section>
+<section>
+  <h2>What is Haskell?</h2>
+</section>
+<section>
+  <section>
+    <h2>Back to Haskell</h2>
+    <pre><code>Prelude> "hello " ++ "world"&#x000A;"hello world"&#x000A;Prelude> "hello " ++ True&#x000A;&#x000A;<interactive>:9:13:&#x000A;    Couldn't match expected type `[Char]' with actual type `Bool'&#x000A;    In the second argument of `(++)', namely `True'&#x000A;    In the expression: "hello " ++ True&#x000A;    In an equation for `it': it = "hello " ++ True&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>OK, there is type safety, so Haskell must be strongly typed</p>
+  </section>
+  <section>
+    <ul>
+      <li>The above code won&#8217;t even compile</li>
+      <li>Haskell is staticly typed</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <h2>Type inference</h2>
+  <ul>
+    <li>
+      Haskell
+      <strong>infers</strong>
+      the types of variables
+    </li>
+    <li>If variable types can&#8217;t be inferred, you will get a compilation error</li>
+    <li>Type declarations can be used to remove ambiguity</li>
+    <li>By convention, functions types are declared</li>
+  </ul>
+</section>
+<section>
+  <h2>Haskell types</h2>
+  <ul>
+    <li>Use :t to determine type</li>
+    <li>Bool, Char, Int, Float, Integer, Double are some basic types</li>
+    <li>
+      [] denotes list
+      <ul>
+        <li>[Int] is a list of Ints</li>
+        <li>[Char] is a String</li>
+        <li>This is why you can&#8217;t mix types in lists</li>
+      </ul>
+    </li>
+    <li>(Int, Bool) is a tuple with and Int and a Bool</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Type declarations</h2>
+    <ul>
+      <li>Use :: to declare type</li>
+      <li>Type declarations can be used to remove ambiguity</li>
+    </ul>
+    <pre><code>Prelude> 5 :: Float&#x000A;5.0&#x000A;Prelude> True :: Float&#x000A;<interactive>:17:1:&#x000A;    Couldn't match expected type `Float' with actual type `Bool'&#x000A;    In the expression: True :: Float&#x000A;    In an equation for `it': it = True :: Float&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>Also declare the types of variables</p>
+    <pre><code>pi :: Double&#x000A;pi = 3.1415&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Function types</h2>
+    <ul>
+      <li>Function types are determined by parameter types and return type</li>
+      <li>Parameter and return types separated by -> arrows</li>
+    </ul>
+    <pre><code>sumThree :: Int -> Int -> Int -> Int&#x000A;sumThree x y z = x + y + z&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Let&#8217;s annotate some functions</h3>
+    <div class='fragment'>
+      <pre><code>factorial n = product [1..n]</code></pre>
+    </div>
+    <div class='fragment'>
+      <pre><code>factorial :: Int -> Integer</code></pre>
+    </div>
+    <div class='fragment'>
+      <pre><code>firstLetter (x:xs) = x</code></pre>
+    </div>
+    <div class='fragment'>
+      <pre><code>firstLetter :: [Char] -> Char</code></pre>
+    </div>
+    <div class='fragment'>
+      <pre><code>fibHelper (a, b) 0 = a&#x000A;fibHelper (a, b) 1 = b&#x000A;fibHelper (a, b) n = fibHelper (b, a + b) (n - 1)</code></pre>
+    </div>
+    <div class='fragment'>
+      <pre><code>fibHelper :: (Integer, Integer) -> Int -> Integer&#x000A;</code></pre>
+    </div>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Type variables</h2>
+    <ul>
+      <li>
+        What is the type of
+        <code>head</code>
+        ?
+        <ul>
+          <li>
+            <code>head :: [Char] -> Char</code>
+          </li>
+          <li>
+            <code>head :: [Int] -> Int</code>
+          </li>
+          <li>
+            <code>head :: [Bool] -> Bool</code>
+          </li>
+        </ul>
+      </li>
+      <li>We use a type variable for the type</li>
+      <li>head :: [a] -> a</li>
+      <li>a represents any type</li>
+      <li>Type variables are like generics in Java</li>
+    </ul>
+  </section>
+  <section>
+    <p>
+      What is the type of
+      <code>zip</code>
+      ?
+    </p>
+    <div class='fragment'>
+      <pre><code>zip :: [a] -> [b] -> [(a, b)]&#x000A;</code></pre>
+    </div>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Type classes</h2>
+    <p>How about this function that tests equality and returns 1 or 0</p>
+    <pre><code>foo :: a -> a -> Int&#x000A;foo x y = if x == y then 1 else 0&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Why won&#8217;t this compile?</h3>
+    <ul>
+      <li>What if we can&#8217;t check the equality of values of type a?</li>
+      <li>We need to impose a constraint on the type variable a</li>
+      <li>We use type classes for this</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Type classes</h2>
+    <ul>
+      <li>Types belong to type classes</li>
+      <li>Similar to interfaces in Java</li>
+      <li>Below we enforce type variable a is of typeclass Eq</li>
+    </ul>
+    <pre><code>foo :: (Eq a) => a -> a -> Int&#x000A;foo x y = if x == y then 1 else 0&#x000A;</code></pre>
+  </section>
+  <section>
+    <ul>
+      <li>Types of class Ord have comparison operators defined</li>
+      <li>
+        <code>show :: (Show a) => a -> String</code>
+        is defined on types with class
+        <code>Show</code>
+      </li>
+      <li>Int, Integer, Float, Double are Nums</li>
+      <li>Int, Integer are Integrals</li>
+      <li>Float, Double are Fractionals</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <h1>Partial Function Application</h1>
+</section>
+<section>
+  <h2>Lambdas</h2>
+  <ul>
+    <li>Haskell has nice syntax for anonymous functions</li>
+  </ul>
+  <pre><code>addThree x = x + 3&#x000A;</code></pre>
+  <pre><code>addThree = (\x -> x + 3)&#x000A;</code></pre>
+</section>
+<section>
+  <h2>Currying</h2>
+  <ul>
+    <li>In lambda calculus, functions take one parameter</li>
+    <li>How do you create a multivariable function?</li>
+    <li>Currying!</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h3>Currying</h3>
+    <ul>
+      <li>Currying is a way to convert a function with n parameters into a function returning a function with n - 1 parameters</li>
+    </ul>
+  </section>
+  <section>
+    <p>Here is an example without currying</p>
+    <pre><code>sumThree x y z = x + y + z&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>Here is the curried form</p>
+    <pre><code>sumThree = (\x -> (\y -> (\z -> x + y + z))&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Currying meets typing</h2>
+    <p>What is the type of the uncurried form?</p>
+    <pre><code>sumThree :: (Num a) => a -> a -> a -> a&#x000A;sumThree x y z = x + y + z&#x000A;</code></pre>
+    <p>What is the type of the curried form?</p>
+    <pre><code>sumThree :: (Num a) => a -> (a -> (a -> a))&#x000A;sumThree = (\x -> (\y -> (\z -> x + y + z))&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>What if I told you -> was right associative?</p>
+    <div class='fragment'>
+      <p>That would mean</p>
+      <pre><code>sumThree :: (Num a) => a -> (a -> (a -> a))&#x000A;</code></pre>
+      <p>is equivalent to</p>
+      <pre><code>sumThree :: (Num a) => a -> a -> a -> a&#x000A;</code></pre>
+    </div>
+  </section>
+</section>
+<section>
+  <h2>Mind Blowing Slide No. 1</h2>
+  <ul>
+    <li>All functions in Haskell take one parameter and are curried</li>
+    <li>Haskell syntax makes it easy to forget this sometimes</li>
+    <li>What does this mean?</li>
+    <pre><code>ghci> let sumThree x y z = x + y + z&#x000A;ghci> ((sumThree 1) 2) 3&#x000A;6&#x000A;</code></pre>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Partial function application</h2>
+    <ul>
+      <li>
+        If a function is called with fewer parameters than it takes, it is
+        <code>partially applied</code>
+      </li>
+      <li>You get back a new function that takes the remaining parameters</li>
+      <li>This is super useful</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Partial application example</h3>
+    <p>Let&#8217;s write a function that returns a number if it is positive or 0 if it&#8217;s negative</p>
+    <pre><code>makeNatural = (Num a) => a -> a&#x000A;makeNatural x = max 0 x&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Partial application example</h3>
+    <p>How about?</p>
+    <pre><code>makeNatural = (Num a) => a -> a&#x000A;makeNatural = max 0&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>You can even partially apply infix functions</p>
+    <pre><code>addThree = (Num a) => a -> a&#x000A;addThree = (+3)&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>Function composition</h2>
+  <ul>
+    <li>. operator composes functions</li>
+    <li>
+      <code>(f . g) x = f (g x)</code>
+    </li>
+  </ul>
+  <pre><code>ghci> map (negate . abs) [-1, 2, -4, 5]&#x000A;[-1, -2, -4, -5]&#x000A;</code></pre>
+</section>
+<section>
+  <h2>Function application operator</h2>
+  <ul>
+    <li>Usually function application is performed using spaces</li>
+    <li>$ is a lower precedence operator</li>
+    <pre><code>ghci> map (2*) (filter (< 5) [1..])&#x000A;[2, 4, 6, 8]&#x000A;ghci> map (2*) filter (< 5) [1..]&#x000A;-- Crash!&#x000A;ghci> map (2*) $ filter (< 5) [1..]&#x000A;-- Crash!&#x000A;</code></pre>
+  </ul>
+</section>
+<section>
+  <h2>One more example</h2>
+  <p>
+    Let&#8217;s tighten up our
+    <code>qsort</code>
+    example
+  </p>
+  <pre><code>qsort [] = []&#x000A;qsort (p:xs) = (qsort $ filter (<= p) xs) ++ [p] ++ (qsort $ filter (> p) xs)</code></pre>
+</section>
+
+      </div>
+    </div>
+
+	<script src="/vendor/reveal.js-2.5.0/lib/js/head.min.js"></script>
+	<script src="/vendor/reveal.js-2.5.0/js/reveal.min.js"></script>
+
+	<script>
+	  // Full list of configuration options available here:
+	  // https://github.com/hakimel/reveal.js#configuration
+	  Reveal.initialize({
+	  controls: true,
+	  progress: true,
+	  history: true,
+	  center: true,
+
+	  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+	  transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+	  // Optional libraries used to extend on reveal.js
+	  dependencies: [
+	  { src: '/vendor/reveal.js-2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+	  ]
+	  });
+	</script>
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37844085-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  </body>
+</html>

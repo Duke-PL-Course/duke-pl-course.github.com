@@ -1,0 +1,446 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+
+    <title>Duke PL Course</title>
+
+    
+    <meta name="description" content="Programming Languages Datatypes & IO Jim Posen - ECE/CS 2014 Last time on Programming Languages We discussed Haskell&#8217;s static type system &hellip;">
+    
+    <meta name="author" content="Yang Su, Kevin Gao">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/reveal.min.css">
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	  document.write( '<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <link href="/favicon.png" rel="icon">
+  </head>
+
+  <body>
+	<div class="reveal">
+	  <!-- Any section element inside of this container is displayed as a slide -->
+	  <div class="slides">
+        <section>
+  <h1>Programming Languages</h1>
+  <h3>Datatypes & IO</h3>
+  <small>Jim Posen - ECE/CS 2014</small>
+</section>
+<section>
+  <h2>Last time on Programming Languages</h2>
+  <ul>
+    <li>We discussed Haskell&#8217;s static type system</li>
+    <li>Values in Haskell have types</li>
+    <li>Haskell infers the types of values</li>
+    <li>Types have typeclasses</li>
+    <li>Functions have types</li>
+  </ul>
+</section>
+<section>
+  <h1>Let&#8217;s make some types</h1>
+</section>
+<section>
+  <h2>Types in other languages</h2>
+  <ul>
+    <li>Object oriented languages allow you to create types</li>
+    <li>In OOP, classes define types</li>
+    <li>In C, you can use structs and unions</li>
+  </ul>
+</section>
+<section>
+  <h2>What types have we seen?</h2>
+  <ul>
+    <li>Bool, Char, Int, Float, Integer, Double</li>
+    <li>Often these are &#8220;primitives&#8221; in other languages</li>
+  </ul>
+</section>
+<section>
+  <h2>Let&#8217;s look at Bool</h2>
+  <ul>
+    <li>A Bool is either True or False</li>
+  </ul>
+  <pre><code>data Bool = False | True&#x000A;</code></pre>
+</section>
+<section>
+  <section>
+    <h2>Points</h2>
+    <ul>
+      <li>We want a datatype for a point in the 2D plane</li>
+    </ul>
+    <pre><code>data Point = Point Float Float&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>What does that do?</h3>
+    <ul>
+      <li>Given two Floats, we can create a Point</li>
+    </ul>
+    <pre><code>let x = Point 3.0 4.0 :: Point&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Shape Types</h2>
+    <ul>
+      <li>There are some operations we want to do on 2D shapes</li>
+      <li>Let&#8217;s just consider Rectangles</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Circles</h2>
+    <ul>
+      <li>A Circle can be defined by a center and a radius</li>
+    </ul>
+    <pre><code>data Shape = Circle Point Float</code></pre>
+  </section>
+  <section>
+    <h2>Rectangles</h2>
+    <ul>
+      <li>But a rectangle is also a shape</li>
+      <li>A rectangle can be defined by the top left corner and the bottom right corner</li>
+    </ul>
+    <pre><code>data Shape = Circle Point Float | Rectangle Point Point&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>Datatypes</h2>
+  <ul>
+    <li>A datatype has one or more constructors</li>
+    <li>
+      An value of a datatype is built with
+      <strong>one of</strong>
+      the constructors
+    </li>
+    <li>
+      The value has
+      <strong>each of</strong>
+      the required parameters
+    </li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Constructors</h2>
+    <ul>
+      <li>Constructors are just functions</li>
+      <li>Constructors take arguments and return a value of a datatype</li>
+    </ul>
+    <pre><code>ghci> :t Point&#x000A;Point :: Float -> Float -> Point&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>Constructors can be partially applied</p>
+    <pre><code>ghci> let points = map (Point 0) [1 2 3]&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>Why doesn&#8217;t this work?</p>
+    <pre><code>Prelude> map (Point 1) [0, 2, 3]&#x000A;<interactive>:7:1:&#x000A;No instance for (Show Point) arising from a use of `print'&#x000A;Possible fix: add an instance declaration for (Show Point)&#x000A;In a stmt of an interactive GHCi command: print it&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>Typeclasses again</h2>
+  <ul>
+    <li>Point needs typeclass Show</li>
+    <li>
+      <code>deriving</code>
+      keyword used to give typeclasses to datatypes
+    </li>
+  </ul>
+  <pre><code>data Point = Point Float Float deriving (Show)&#x000A;</code></pre>
+</section>
+<section>
+  <section>
+    <h2>Operating on Datatypes</h2>
+    <p>How do we compute the area of a Shape?</p>
+    <pre><code>area :: Shape -> Float&#x000A;area s = ...&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>Pattern matching to the rescue!</p>
+    <pre><code>area :: Shape -> Float&#x000A;area (Circle center radius) = pi * r ^ 2&#x000A;area (Rectangle (Point x1 y1) (Point x2 y2)) = (abs $ x2 - x1) * (abs $ y2 - y1)&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>Case Expressions</h2>
+  <ul>
+    <li>Sometimes you can&#8217;t easy pattern match in the function declaration</li>
+    <li>Case statement performs pattern matching</li>
+    <pre><code>myFavoriteShape :: Shape&#x000A;...&#x000A;&#x000A;doILikeCircles =&#x000A;    case myFavoriteShape of&#x000A;    Circle _ _ -> True&#x000A;    Rectangle _ _ -> False&#x000A;</code></pre>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Let&#8217;s model a Person</h2>
+    <ul>
+      <li>A person has a first name, last name, phone number, email address, age, and height</li>
+    </ul>
+    <pre><code>data Person = Person String String String String Int Float&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>How do we get a person&#8217;s age?</h3>
+    <pre><code>age :: Person -> Int&#x000A;age (Person _ _ _ _ a _) = a&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>Oh hell no. This is bad.</p>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Record Syntax</h2>
+    <ul>
+      <li>Special syntax for named constructor parameters</li>
+      <li>You don&#8217;t need to remember the order of parameters</li>
+      <li>Haskell generates getter functions for you</li>
+    </ul>
+    <pre><code>ghci> data Person = Person {&#x000A;    firstName :: String,&#x000A;    lastName :: String,&#x000A;    phoneNumber :: String,&#x000A;    emailAddress :: String,&#x000A;    age :: Int,&#x000A;    height :: Float&#x000A;    } deriving (Show)&#x000A;&#x000A;ghci> let chuck = Person {&#x000A;    firstName = "Chuck",&#x000A;    lastName = "Norris",&#x000A;    phoneNumber = "(123) 456-7890",&#x000A;    emailAddress = "chuck@norr.is",&#x000A;    age = -5,&#x000A;    height = 200&#x000A;    }&#x000A;ghci> height chuck&#x000A;200&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Recursive Data Types</h2>
+    <ul>
+      <li>Recursive data types are often very useful</li>
+      <li>Let&#8217;s make a tree of Ints</li>
+    </ul>
+  </section>
+  <section>
+    <pre><code>data Tree = EmptyTree | Node Int Tree Tree&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Polymorphic Data Types</h2>
+    <ul>
+      <li>Sometimes we want general types</li>
+      <li>Say we want a Tree of Chars or any other type</li>
+      <li>We want to construct a new type for each type of Tree</li>
+      <li>Think of generics in Java, but better</li>
+    </ul>
+  </section>
+  <section>
+    <p>Instead of defining a type, we define a Type constructor</p>
+    <pre><code>data Tree a = EmptyTree | Node a (Tree a) (Tree a)&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>
+      One caveat:
+      <code>Tree</code>
+      is NOT a type, it is a
+      <strong>type constructor</strong>
+    </p>
+    <p>This is an invalid type declaration</p>
+    <pre><code>insert :: a -> Tree -> Tree&#x000A;</code></pre>
+    <p>This is correct</p>
+    <pre><code>insert :: a -> Tree a -> Tree a&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Lists</h2>
+    <ul>
+      <li>Let&#8217;s make a Lisp-style linked list</li>
+      <li>A list is either nil or a (cons a b)</li>
+    </ul>
+    <pre><code>data List a = Nil | Cons a (List a)</code></pre>
+  </section>
+  <section>
+    <h2>Mind blowing slide 2</h2>
+    <ul>
+      <li>The lists we have been using all along are just syntactic sugar for this type of list</li>
+      <li>
+        <code>Nil => []</code>
+      </li>
+      <li>
+        <code>Cons x xs => (x:xs)</code>
+      </li>
+      <li>
+        <code>Cons x Nil => [x]</code>
+      </li>
+      <li>The reason list pattern matching works is because pattern matching with this data type works</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <h1>Input/Output</h1>
+</section>
+<section>
+  <h2>How does Haskell do IO?</h2>
+  <ul>
+    <li>Programs are useless without IO</li>
+    <li>Without IO, everything can be computed at compile time</li>
+    <li>However, IO is a side effect</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Side effects revisited</h2>
+    <ul>
+      <li>
+        Recall the definition of
+        <strong>referential transparency</strong>
+      </li>
+      <li>A function applied to some arguments can be replaced by its value</li>
+      <li>
+        What is the behavior of
+        <code>getLine</code>
+        and
+        <code>putStrLn</code>
+        ?
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h3>Input</h3>
+    <p>
+      If we try to declare
+      <code>getLine :: String</code>
+      it must always return the same string
+    </p>
+    <p>This is not what we want</p>
+  </section>
+  <section>
+    <h3>Output</h3>
+    <p>
+      If we try to declare
+      <code>putStrLn :: String -> ()</code>
+      it is not referentially transparent as it has a side effect
+    </p>
+  </section>
+</section>
+<section>
+  <h2>IO Witchcraft</h2>
+  <ul>
+    <li>Haskell&#8217;s way around this is to use the IO type constructor</li>
+    <li>An IO String is an object that contains a string</li>
+    <li>How do we get the value out of an IO?</li>
+    <li>Pattern matching will not work</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>A Simple Greeting Program</h2>
+    <pre><code>greet :: IO ()&#x000A;greet = do&#x000A;    putStr "What is your name? "&#x000A;    name <- getLine&#x000A;    putStrLn $ "Hi " ++ name ++ "!"&#x000A;    return ()&#x000A;</code></pre>
+  </section>
+  <section>
+    <div class='fragment'>
+      <h3>What is an IO ()?</h3>
+    </div>
+    <div class='fragment'>
+      <p>It&#8217;s a () wrapped in an IO</p>
+    </div>
+    <div class='fragment'>
+      <h3>What is an IO String?</h3>
+    </div>
+    <div class='fragment'>
+      <p>It&#8217;s a String wrapped in an IO</p>
+    </div>
+  </section>
+  <section>
+    <p>This may be a bit more useful</p>
+    <pre><code>greet :: IO String&#x000A;greet = do&#x000A;    putStr "What is your name? "&#x000A;    name <- getLine&#x000A;    putStrLn $ "Hi " ++ name ++ "!"&#x000A;    return name&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Return (to a time before you knew what return was)</h2>
+    <ul>
+      <li>
+        <code>return</code>
+        in Haskell is unlike any other return you have seen before
+      </li>
+    </ul>
+    <pre><code>ghci> :t return&#x000A;return :: Monad m => a -> m a</code></pre>
+  </section>
+  <section>
+    <p>That&#8217;s scary.</p>
+  </section>
+  <section>
+    <ul>
+      <li>All return does is takes an a and returns an IO a</li>
+      <li>
+        <code>return</code>
+        wraps an object in an IO
+      </li>
+      <li>
+        The last statement in your
+        <code>do</code>
+        block is the return value of the function
+      </li>
+    </ul>
+  </section>
+  <section>
+    <p>What does this do?</p>
+    <pre><code>helloWorld :: IO ()&#x000A;helloWorld = do&#x000A;    return ()&#x000A;    putStrLn "Hello World!"&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>The main function</h2>
+  <ul>
+    <li>
+      Compiled Haskell programs execute the
+      <code>main</code>
+      function
+    </li>
+    <pre><code>main :: IO ()&#x000A;main = ...</code></pre>
+  </ul>
+</section>
+
+      </div>
+    </div>
+
+	<script src="/vendor/reveal.js-2.5.0/lib/js/head.min.js"></script>
+	<script src="/vendor/reveal.js-2.5.0/js/reveal.min.js"></script>
+
+	<script>
+	  // Full list of configuration options available here:
+	  // https://github.com/hakimel/reveal.js#configuration
+	  Reveal.initialize({
+	  controls: true,
+	  progress: true,
+	  history: true,
+	  center: true,
+
+	  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+	  transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+	  // Optional libraries used to extend on reveal.js
+	  dependencies: [
+	  { src: '/vendor/reveal.js-2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+	  ]
+	  });
+	</script>
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37844085-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  </body>
+</html>

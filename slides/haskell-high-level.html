@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+
+    <title>Duke PL Course</title>
+
+    
+    <meta name="description" content="Programming Languages Higher Order Constructs in Haskell Jim Posen - ECE/CS 2014 Defining Typeclasses class Eq a where&#x000A; (==) :: a -> a -> &hellip;">
+    
+    <meta name="author" content="Yang Su, Kevin Gao">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/reveal.min.css">
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	  document.write( '<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <link href="/favicon.png" rel="icon">
+  </head>
+
+  <body>
+	<div class="reveal">
+	  <!-- Any section element inside of this container is displayed as a slide -->
+	  <div class="slides">
+        <section>
+  <h1>Programming Languages</h1>
+  <h3>Higher Order Constructs in Haskell</h3>
+  <small>Jim Posen - ECE/CS 2014</small>
+</section>
+<section>
+  <section>
+    <h2>Defining Typeclasses</h2>
+    <pre><code>class Eq a where&#x000A;    (==) :: a -> a -> Bool&#x000A;    (/=) :: a -> a -> Bool&#x000A;    x == y = not (x /= y)&#x000A;    x /= y = not (x == y)&#x000A;</code></pre>
+  </section>
+  <section>
+    <h2>Typeclass Inheritance</h2>
+    <pre><code>class (Eq a) => Num a where&#x000A;    ...&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Implementing Typeclasses</h2>
+    <pre><code>data TrafficLight = Red | Yellow | Green&#x000A;&#x000A;instance Eq TrafficLight where&#x000A;    Red == Red = True&#x000A;    Green == Green = True&#x000A;    Yellow == Yellow = True&#x000A;    _ == _ = False&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>What if you have a type constructor instead of a type?</p>
+    <pre><code>instance (Eq m) => Eq (Maybe m) where&#x000A;    Just x == Just y = x == y&#x000A;    Nothing == Nothing = True&#x000A;    _ == _ = False&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <img src='//i.imgur.com/sYBL6AW.jpg' />
+</section>
+<section>
+  <h2>Practice</h2>
+  <p>Let&#8217;s practice interpreting function types</p>
+  <div class='fragment'>
+    <pre><code>a -> b&#x000A;</code></pre>
+  </div>
+  <div class='fragment'>
+    <pre><code>(a -> b) -> [a] -> [b]&#x000A;</code></pre>
+  </div>
+  <div class='fragment'>
+    <pre><code>(b -> c) -> (a -> b) -> a -> c&#x000A;</code></pre>
+  </div>
+</section>
+<section>
+  <section>
+    <h2>Functors</h2>
+    <pre><code>class Functor f where&#x000A;    fmap :: (a -> b) -> f a -> f b&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Lists are functors</h3>
+    <pre><code>instance Functor [] where&#x000A;    fmap = map&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>Why is the declaration not this?</p>
+    <pre><code>instance Functor [a] where&#x000A;    fmap = map</code></pre>
+    <div class='fragment'>
+      <p>
+        f is a
+        <strong>type constructor</strong>
+      </p>
+    </div>
+  </section>
+</section>
+<section>
+  <section>
+    <h3>The Maybe Functor</h3>
+    <p>
+      Can you write
+      <code>fmap</code>
+      for Maybe?
+    </p>
+    <div class='fragment'>
+      <pre><code>instance Functor Maybe where&#x000A;    fmap f (Just x) = Just (f x)&#x000A;    fmap f Nothing = Nothing&#x000A;</code></pre>
+    </div>
+  </section>
+  <section>
+    <h3>Trees</h3>
+    <p>
+      How about
+      <code>Functor Tree</code>
+      ?
+    </p>
+    <pre><code>instance Functor Tree where&#x000A;    fmap f EmptyTree = EmptyTree&#x000A;    fmap f (Node v left right) = Node (f v) (fmap f left) (fmap f right)&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>IO</h3>
+    <pre><code>instance Functor IO where&#x000A;    fmap f action = do&#x000A;        result <- action&#x000A;        return (f result)&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Function Type Constructors</h2>
+    <p>
+      What is the type constructor
+      <code>(->) r</code>
+      ?
+    </p>
+  </section>
+  <section>
+    <p>
+      Well
+      <code>((->) r) a</code>
+      is equivalent to
+      <code>(->) r a</code>
+      is equivalent to
+      <code>r -> a</code>
+    </p>
+    <p>It&#8217;s just a type constructor creating a function type</p>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Functions as Functors</h2>
+    <p>
+      How do we implement
+      <code>fmap</code>
+      over function type constructors?
+    </p>
+    <pre><code>instance Functor ((->) r) where&#x000A;    fmap = ...&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>What is the type of fmap here?</h3>
+    <p>
+      <code>(a -> b) -> (r -> a) -> (r -> b)</code>
+    </p>
+  </section>
+  <section>
+    <p>That&#8217;s our type for function composition!</p>
+    <pre><code>instance Functor ((->) r) where&#x000A;    fmap = (.)&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Functor Laws</h2>
+    <ul>
+      <li>There are two laws of Functors that cannot be enforced by the Haskell compiler</li>
+    </ul>
+  </section>
+  <section>
+    <h3>First Law</h3>
+    <pre><code>fmap id = id&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Second Functor Law</h3>
+    <pre><code>fmap (f . g) = fmap f . fmap g&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Functors</h2>
+    <ul>
+      <li>
+        So what is
+        <code>fmap</code>
+        ?
+      </li>
+      <li>
+        It is a generalized
+        <code>map</code>
+      </li>
+      <li>So what is a Functor?</li>
+      <li>A type constructor where the &#8220;contents&#8221; can be transformed</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Functors are not enough</h2>
+    <ul>
+      <li>
+        <code>fmap</code>
+        lets us operate on on Functor
+      </li>
+      <li>What if we want to operate on multiple functors?</li>
+      <li>For example, how would you add two Maybe Ints?</li>
+      <li>Clearly we need a new structure</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Sneak Peek</h3>
+    <p>It turns out we can do something like this</p>
+    <pre><code>ghci> (+) <$> Just 4 <*> Just 5&#x000A;Just 9&#x000A;ghci> (+) <$> Nothing <*> Just 5&#x000A;Nothing&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>But we need some machinery first</p>
+  </section>
+</section>
+<section>
+  <h2>Applicative Functors</h2>
+  <ul>
+    <li>
+      <code>pure</code>
+      &#8220;wraps&#8221; the argument in the functor
+    </li>
+    <li>
+      <code><*></code>
+      is like fmap but the mapping function is inside the functor
+    </li>
+  </ul>
+  <pre><code>class (Functor f) => Applicative f where&#x000A;    pure :: a -> f a&#x000A;    (<*>) :: f (a -> b) -> f a -> f b&#x000A;</code></pre>
+</section>
+<section>
+  <section>
+    <h3>Applicative Maybe</h3>
+    <pre><code>instance Applicative Maybe where&#x000A;    pure = Just&#x000A;    Nothing <*> _ = Nothing&#x000A;    (Just f) <*> something = fmap f something&#x000A;</code></pre>
+  </section>
+  <section>
+    <pre><code>ghci> Just (+3) <*> Just 9&#x000A;Just 12&#x000A;ghci> pure (+3) <*> Nothing&#x000A;Nothing&#x000A;ghci> Nothing <*> Just 5&#x000A;Nothing&#x000A;ghci> pure (+) <*> Just 5 <*> Just 7&#x000A;Just 12&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>Small shortcut</h2>
+  <ul>
+    <li>
+      What is
+      <code>pure f <*> arg</code>
+      doing?
+    </li>
+    <li>
+      It is just
+      <code>fmap f arg</code>
+    </li>
+    <li>
+      <code><$></code>
+      is a sugary infix fmap operator
+    </li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h3>Applicative []</h3>
+    <pre><code>instance Applicative [] where&#x000A;    pure x = [x]&#x000A;    fs <*> xs = [f x | f <- fs, x <- xs]</code></pre>
+    <pre><code>ghci> [(+), (*)] <*> [1, 2] <*> [3, 4]&#x000A;[4,5,5,6,3,4,6,8]&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Applicative IO</h3>
+    <pre><code>instance Applicative IO where&#x000A;    pure = return&#x000A;    a <*> b = do&#x000A;        f <- a&#x000A;        x <- b&#x000A;        return (f x)</code></pre>
+    <pre><code>ghci> (++) <*> getLine <*> getLine&#x000A;Hello&#x000A; World!&#x000A;"Hello World!"&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h1>Monads</h1>
+</section>
+<section>
+  <h2>What is a Monad?</h2>
+  <p>A monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.</p>
+  <div class='fragment'>
+    <p>Let&#8217;s start somewhere else.</p>
+  </div>
+</section>
+<section>
+  <section>
+    <h2>Side Effects</h2>
+    <ul>
+      <li>Imperative languages are expressed as a sequence of state-changing operations</li>
+      <li>Think about assembly code</li>
+      <li>The only machine instruction that does not change state is a no-op</li>
+      <li>Functional languages are based on expressions that are evaluated</li>
+      <li>There are no sequential instructions and there are no side effects</li>
+    </ul>
+  </section>
+  <section>
+    <ul>
+      <li>But we really need side effects</li>
+      <li>And we really want sequential instructions</li>
+      <li>The closest thing we have to sequential instructions is the ability to pass a value through a chain of functions</li>
+      <li>That will have to be good enough</li>
+      <li>We want to create a pipeline of functions that operate on wrapped values</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Monads</h2>
+    <pre><code>class (Applicative m) => Monad m where&#x000A;    return :: a -> m a&#x000A;&#x000A;    (>>=) :: m a -> (a -> m b) -> m b&#x000A;&#x000A;    (>>) :: m a -> m b -> m b&#x000A;    x >> y = x >>= \_ -> y&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>
+      <code>return</code>
+    </h3>
+    <ul>
+      <li>
+        <code>return</code>
+        is exactly like
+        <code>pure</code>
+      </li>
+      <li>Different for historical reasons</li>
+      <li>Just wraps its argument in a monad</li>
+      <li>Not like return in other languages</li>
+      <li>We saw it for IO (hint: IO is a monad)</li>
+    </ul>
+  </section>
+  <section>
+    <h3>
+      <code>>>=</code>
+    </h3>
+    <ul>
+      <li>How we will apply a regular function to a monad</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h3>Monad Maybe</h3>
+    <pre><code>instance Monad Maybe where&#x000A;    return x = Just x&#x000A;    Nothing >>= f = Nothing&#x000A;    Just x >>= f  = f x</code></pre>
+  </section>
+  <section>
+    <h3>How this is used</h3>
+    <ul>
+      <li>The Maybe monad is very useful</li>
+      <li>Imagine a sequence of operations, any of which may fail</li>
+      <li>Each function takes an a and returns a Maybe a because it can fail</li>
+      <li>You still want to chain your sequence of operations together and have Nothing at the end if any step failed</li>
+    </ul>
+  </section>
+  <section>
+    <h3>A truncated example</h3>
+    <p>See Learn You a Haskell for the full example</p>
+    <pre><code>return (0,0) >>= landLeft 1 >> landRight 4 >>= landLeft 2 >>= landLeft 1</code></pre>
+    <pre><code>routine = case landLeft 1 (0,0) of&#x000A;    Nothing -> Nothing&#x000A;    Just pole1 -> case landRight 4 pole1 of&#x000A;        Nothing -> Nothing&#x000A;        Just pole2 -> case landLeft 2 pole2 of&#x000A;            Nothing -> Nothing&#x000A;            Just pole3 -> landLeft 1 pole3&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>IO Revisited</h2>
+    <p>Remember our greet program?</p>
+    <pre><code>greet :: IO ()&#x000A;greet = do&#x000A;    putStr "What is your first name? "&#x000A;    firstName <- getLine&#x000A;    putStr "What is your last name? "&#x000A;    lastName <- getLine&#x000A;    putStrLn $ "Hi " ++ firstName ++ " " ++ lastName ++ "!"&#x000A;    return ()&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Greet with the IO monad</h3>
+    <pre><code>greet :: IO ()&#x000A;greet =&#x000A;    putStr "What is your first name? " >>&#x000A;    getLine >>= (\firstName ->&#x000A;        putStr "What is your last name? " >>&#x000A;        getLine >>= (\lastName ->&#x000A;            putStrLn ("Hi " ++ firstName ++ " " ++ lastName ++ "!") >>&#x000A;            return ()&#x000A;        )&#x000A;    )&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Mind Blowing Slide 3</h2>
+    <ul>
+      <li>
+        <code>do</code>
+        is just syntactic sugar for monad operations
+      </li>
+      <li>do blocks allow you to specify a sequence of operations</li>
+      <li>Under the covers, they are translated to monad operations</li>
+      <li>Monads allow us to contain side effects from sequential instructions</li>
+    </ul>
+  </section>
+  <section>
+    <h3>do blocks with Maybe</h3>
+    <pre><code>routine = case landLeft 1 (0,0) of&#x000A;    Nothing -> Nothing&#x000A;    Just pole1 -> case landRight 4 pole1 of&#x000A;        Nothing -> Nothing&#x000A;        Just pole2 -> case landLeft 2 pole2 of&#x000A;            Nothing -> Nothing&#x000A;            Just pole3 -> landLeft 1 pole3</code></pre>
+    <pre><code>routine :: Maybe (Int, Int)&#x000A;routine = do&#x000A;     start <- return (0,0)&#x000A;     pole1 <- landLeft 1 start&#x000A;     pole2 <- landRight 4 pole1&#x000A;     pole3 <- landLeft 2 start&#x000A;     return $ landLeft 1 pole3&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Monad []</h2>
+    <pre><code>instance Monad [] where&#x000A;    return x = [x]&#x000A;    xs >>= f = concat (map f xs)&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Using Monad []</h3>
+    <pre><code>ghci> [1,2] >>= \n -> ['a','b'] >>= \ch -> return (n,ch)&#x000A;[(1,'a'),(1,'b'),(2,'a'),(2,'b')]&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>In do notation</h3>
+    <pre><code>listOfTuples :: [(Int,Char)]&#x000A;listOfTuples = do&#x000A;    n <- [1,2]&#x000A;    ch <- ['a','b']&#x000A;    return (n,ch)&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Mind Blowing Slide 4</h2>
+    <ul>
+      <li>List compehensions are just syntactic sugar for the list monad</li>
+    </ul>
+    <pre><code>[(n,ch) | n <- [1,2], ch <- ['a','b']]</code></pre>
+  </section>
+</section>
+
+      </div>
+    </div>
+
+	<script src="/vendor/reveal.js-2.5.0/lib/js/head.min.js"></script>
+	<script src="/vendor/reveal.js-2.5.0/js/reveal.min.js"></script>
+
+	<script>
+	  // Full list of configuration options available here:
+	  // https://github.com/hakimel/reveal.js#configuration
+	  Reveal.initialize({
+	  controls: true,
+	  progress: true,
+	  history: true,
+	  center: true,
+
+	  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+	  transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+	  // Optional libraries used to extend on reveal.js
+	  dependencies: [
+	  { src: '/vendor/reveal.js-2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+	  ]
+	  });
+	</script>
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37844085-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  </body>
+</html>

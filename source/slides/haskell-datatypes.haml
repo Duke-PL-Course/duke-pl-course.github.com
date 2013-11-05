@@ -1,0 +1,429 @@
+---
+layout: slide
+---
+
+%section
+  %h1 Programming Languages
+  %h3 Datatypes & IO
+  %small Jim Posen - ECE/CS 2014
+
+%section
+  %h2 Last time on Programming Languages
+  %ul
+    %li We discussed Haskell's static type system
+    %li Values in Haskell have types
+    %li Haskell infers the types of values
+    %li Types have typeclasses
+    %li Functions have types
+
+%section
+  %h1 Let's make some types
+
+%section
+  %h2 Types in other languages
+  %ul
+    %li Object oriented languages allow you to create types
+    %li In OOP, classes define types
+    %li In C, you can use structs and unions
+
+%section
+  %h2 What types have we seen?
+  %ul
+    %li Bool, Char, Int, Float, Integer, Double
+    %li Often these are "primitives" in other languages
+
+%section
+  %h2 Let's look at Bool
+  %ul
+    %li A Bool is either True or False
+  %pre
+    %code
+      :preserve
+        data Bool = False | True
+
+%section
+  %section
+    %h2 Points
+    %ul
+      %li We want a datatype for a point in the 2D plane
+    %pre
+      %code
+        :preserve
+          data Point = Point Float Float
+
+  %section
+    %h3 What does that do?
+    %ul
+      %li Given two Floats, we can create a Point
+    %pre
+      %code
+        :preserve
+          let x = Point 3.0 4.0 :: Point
+
+%section
+  %section
+    %h2 Shape Types
+    %ul
+      %li There are some operations we want to do on 2D shapes
+      %li Let's just consider Rectangles
+  %section
+    %h2 Circles
+    %ul
+      %li A Circle can be defined by a center and a radius
+    %pre
+      %code
+        :preserve
+          data Shape = Circle Point Float
+  %section
+    %h2 Rectangles
+    %ul
+      %li But a rectangle is also a shape
+      %li A rectangle can be defined by the top left corner and the bottom right corner
+    %pre
+      %code
+        :preserve
+          data Shape = Circle Point Float | Rectangle Point Point
+
+%section
+  %h2 Datatypes
+  %ul
+    %li A datatype has one or more constructors
+    %li
+      An value of a datatype is built with
+      %strong one of
+      the constructors
+    %li
+      The value has
+      %strong each of
+      the required parameters
+
+%section
+  %section
+    %h2 Constructors
+    %ul
+      %li Constructors are just functions
+      %li Constructors take arguments and return a value of a datatype
+    %pre
+      %code
+        :preserve
+          ghci> :t Point
+          Point :: Float -> Float -> Point
+
+  %section
+    %p Constructors can be partially applied
+    %pre
+      %code
+        :preserve
+          ghci> let points = map (Point 0) [1 2 3]
+
+  %section
+    %p Why doesn't this work?
+    %pre
+      %code
+        :preserve
+          Prelude> map (Point 1) [0, 2, 3]
+          <interactive>:7:1:
+          No instance for (Show Point) arising from a use of `print'
+          Possible fix: add an instance declaration for (Show Point)
+          In a stmt of an interactive GHCi command: print it
+
+%section
+  %h2 Typeclasses again
+  %ul
+    %li Point needs typeclass Show
+    %li
+      %code deriving
+      keyword used to give typeclasses to datatypes
+  %pre
+    %code
+      :preserve
+        data Point = Point Float Float deriving (Show)
+
+%section
+  %section
+    %h2 Operating on Datatypes
+    %p How do we compute the area of a Shape?
+    %pre
+      %code
+        :preserve
+          area :: Shape -> Float
+          area s = ...
+
+  %section
+    %p Pattern matching to the rescue!
+    %pre
+      %code
+        :preserve
+          area :: Shape -> Float
+          area (Circle center radius) = pi * r ^ 2
+          area (Rectangle (Point x1 y1) (Point x2 y2)) = (abs $ x2 - x1) * (abs $ y2 - y1)
+
+%section
+  %h2 Case Expressions
+  %ul
+    %li Sometimes you can't easy pattern match in the function declaration
+    %li Case statement performs pattern matching
+    %pre
+      %code
+        :preserve
+          myFavoriteShape :: Shape
+          ...
+
+          doILikeCircles =
+              case myFavoriteShape of
+              Circle _ _ -> True
+              Rectangle _ _ -> False
+
+%section
+  %section
+    %h2 Let's model a Person
+    %ul
+      %li A person has a first name, last name, phone number, email address, age, and height
+    %pre
+      %code
+        :preserve
+          data Person = Person String String String String Int Float
+
+  %section
+    %h3 How do we get a person's age?
+    %pre
+      %code
+        :preserve
+          age :: Person -> Int
+          age (Person _ _ _ _ a _) = a
+
+  %section
+    %p Oh hell no. This is bad.
+
+%section
+  %section
+    %h2 Record Syntax
+    %ul
+      %li Special syntax for named constructor parameters
+      %li You don't need to remember the order of parameters
+      %li Haskell generates getter functions for you
+
+    %pre
+      %code
+        :preserve
+          ghci> data Person = Person {
+              firstName :: String,
+              lastName :: String,
+              phoneNumber :: String,
+              emailAddress :: String,
+              age :: Int,
+              height :: Float
+              } deriving (Show)
+
+          ghci> let chuck = Person {
+              firstName = "Chuck",
+              lastName = "Norris",
+              phoneNumber = "(123) 456-7890",
+              emailAddress = "chuck@norr.is",
+              age = -5,
+              height = 200
+              }
+          ghci> height chuck
+          200
+
+%section
+  %section
+    %h2 Recursive Data Types
+    %ul
+      %li Recursive data types are often very useful
+      %li Let's make a tree of Ints
+
+  %section
+    %pre
+      %code
+        :preserve
+          data Tree = EmptyTree | Node Int Tree Tree
+
+%section
+  %section
+    %h2 Polymorphic Data Types
+    %ul
+      %li Sometimes we want general types
+      %li Say we want a Tree of Chars or any other type
+      %li We want to construct a new type for each type of Tree
+      %li Think of generics in Java, but better
+
+  %section
+    %p Instead of defining a type, we define a Type constructor
+    %pre
+      %code
+        :preserve
+          data Tree a = EmptyTree | Node a (Tree a) (Tree a)
+
+  %section
+    %p
+      One caveat:
+      %code Tree
+      is NOT a type, it is a
+      %strong type constructor
+
+    %p This is an invalid type declaration
+    %pre
+      %code
+        :preserve
+          insert :: a -> Tree -> Tree
+
+    %p This is correct
+    %pre
+      %code
+        :preserve
+          insert :: a -> Tree a -> Tree a
+
+%section
+  %section
+    %h2 Lists
+    %ul
+      %li Let's make a Lisp-style linked list
+      %li A list is either nil or a (cons a b)
+    %pre
+      %code
+        :preserve
+          data List a = Nil | Cons a (List a)
+  %section
+    %h2 Mind blowing slide 2
+    %ul
+      %li The lists we have been using all along are just syntactic sugar for this type of list
+      %li
+        %code Nil => []
+      %li
+        %code Cons x xs => (x:xs)
+      %li
+        %code Cons x Nil => [x]
+      %li The reason list pattern matching works is because pattern matching with this data type works
+
+%section
+  %h1 Input/Output
+
+%section
+  %h2 How does Haskell do IO?
+  %ul
+    %li Programs are useless without IO
+    %li Without IO, everything can be computed at compile time
+    %li However, IO is a side effect
+
+%section
+  %section
+    %h2 Side effects revisited
+    %ul
+      %li
+        Recall the definition of
+        %strong referential transparency
+      %li A function applied to some arguments can be replaced by its value
+      %li
+        What is the behavior of
+        %code getLine
+        and
+        %code putStrLn
+        ?
+
+  %section
+    %h3 Input
+    %p
+      If we try to declare
+      %code getLine :: String
+      it must always return the same string
+    %p This is not what we want
+
+  %section
+    %h3 Output
+    %p
+      If we try to declare
+      %code putStrLn :: String -> ()
+      it is not referentially transparent as it has a side effect
+
+%section
+  %h2 IO Witchcraft
+  %ul
+    %li Haskell's way around this is to use the IO type constructor
+    %li An IO String is an object that contains a string
+    %li How do we get the value out of an IO?
+    %li Pattern matching will not work
+
+%section
+  %section
+    %h2 A Simple Greeting Program
+    %pre
+      %code
+        :preserve
+          greet :: IO ()
+          greet = do
+              putStr "What is your name? "
+              name <- getLine
+              putStrLn $ "Hi " ++ name ++ "!"
+              return ()
+
+  %section
+    .fragment
+      %h3 What is an IO ()?
+    .fragment
+      %p It's a () wrapped in an IO
+    .fragment
+      %h3 What is an IO String?
+    .fragment
+      %p It's a String wrapped in an IO
+
+  %section
+    %p This may be a bit more useful
+    %pre
+      %code
+        :preserve
+          greet :: IO String
+          greet = do
+              putStr "What is your name? "
+              name <- getLine
+              putStrLn $ "Hi " ++ name ++ "!"
+              return name
+
+%section
+  %section
+    %h2 Return (to a time before you knew what return was)
+    %ul
+      %li
+        %code return
+        in Haskell is unlike any other return you have seen before
+    %pre
+      %code
+        :preserve
+          ghci> :t return
+          return :: Monad m => a -> m a
+  %section
+    %p That's scary.
+
+  %section
+    %ul
+      %li All return does is takes an a and returns an IO a
+      %li
+        %code return
+        wraps an object in an IO
+      %li
+        The last statement in your
+        %code do
+        block is the return value of the function
+
+  %section
+    %p What does this do?
+    %pre
+      %code
+        :preserve
+          helloWorld :: IO ()
+          helloWorld = do
+              return ()
+              putStrLn "Hello World!"
+
+%section
+  %h2 The main function
+  %ul
+    %li
+      Compiled Haskell programs execute the
+      %code main
+      function
+    %pre
+      %code
+        :preserve
+          main :: IO ()
+          main = ...

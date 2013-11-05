@@ -1,0 +1,536 @@
+---
+layout: slide
+---
+
+%section
+  %h1 Programming Languages
+  %h3 Higher Order Constructs in Haskell
+  %small Jim Posen - ECE/CS 2014
+
+%section
+  %section
+    %h2 Defining Typeclasses
+    %pre
+      %code
+        :preserve
+          class Eq a where
+              (==) :: a -> a -> Bool
+              (/=) :: a -> a -> Bool
+              x == y = not (x /= y)
+              x /= y = not (x == y)
+
+  %section
+    %h2 Typeclass Inheritance
+    %pre
+      %code
+        :preserve
+          class (Eq a) => Num a where
+              ...
+
+%section
+  %section
+    %h2 Implementing Typeclasses
+    %pre
+      %code
+        :preserve
+          data TrafficLight = Red | Yellow | Green
+
+          instance Eq TrafficLight where
+              Red == Red = True
+              Green == Green = True
+              Yellow == Yellow = True
+              _ == _ = False
+
+  %section
+    %p What if you have a type constructor instead of a type?
+    %pre
+      %code
+        :preserve
+          instance (Eq m) => Eq (Maybe m) where
+              Just x == Just y = x == y
+              Nothing == Nothing = True
+              _ == _ = False
+
+%section
+  %img{src: "//i.imgur.com/sYBL6AW.jpg"}
+
+%section
+  %h2 Practice
+  %p Let's practice interpreting function types
+  .fragment
+    %pre
+      %code
+        :preserve
+          a -> b
+
+  .fragment
+    %pre
+      %code
+        :preserve
+          (a -> b) -> [a] -> [b]
+
+  .fragment
+    %pre
+      %code
+        :preserve
+          (b -> c) -> (a -> b) -> a -> c
+
+%section
+  %section
+    %h2 Functors
+    %pre
+      %code
+        :preserve
+          class Functor f where
+              fmap :: (a -> b) -> f a -> f b
+
+  %section
+    %h3 Lists are functors
+    %pre
+      %code
+        :preserve
+          instance Functor [] where
+              fmap = map
+
+  %section
+    %p Why is the declaration not this?
+    %pre
+      %code
+        :preserve
+          instance Functor [a] where
+              fmap = map
+    .fragment
+      %p
+        f is a
+        %strong type constructor
+
+%section
+  %section
+    %h3 The Maybe Functor
+    %p
+      Can you write
+      %code fmap
+      for Maybe?
+    .fragment
+      %pre
+        %code
+          :preserve
+            instance Functor Maybe where
+                fmap f (Just x) = Just (f x)
+                fmap f Nothing = Nothing
+
+  %section
+    %h3 Trees
+    %p
+      How about
+      %code Functor Tree
+      ?
+    %pre
+      %code
+        :preserve
+          instance Functor Tree where
+              fmap f EmptyTree = EmptyTree
+              fmap f (Node v left right) = Node (f v) (fmap f left) (fmap f right)
+
+  %section
+    %h3 IO
+    %pre
+      %code
+        :preserve
+          instance Functor IO where
+              fmap f action = do
+                  result <- action
+                  return (f result)
+
+%section
+  %section
+    %h2 Function Type Constructors
+    %p
+      What is the type constructor
+      %code (->) r
+      ?
+
+  %section
+    %p
+      Well
+      %code ((->) r) a
+      is equivalent to
+      %code (->) r a
+      is equivalent to
+      %code r -> a
+    %p It's just a type constructor creating a function type
+
+%section
+  %section
+    %h2 Functions as Functors
+    %p
+      How do we implement
+      %code fmap
+      over function type constructors?
+    %pre
+      %code
+        :preserve
+          instance Functor ((->) r) where
+              fmap = ...
+
+  %section
+    %h3 What is the type of fmap here?
+    %p
+      %code (a -> b) -> (r -> a) -> (r -> b)
+
+  %section
+    %p That's our type for function composition!
+    %pre
+      %code
+        :preserve
+          instance Functor ((->) r) where
+              fmap = (.)
+
+%section
+  %section
+    %h2 Functor Laws
+    %ul
+      %li There are two laws of Functors that cannot be enforced by the Haskell compiler
+
+  %section
+    %h3 First Law
+    %pre
+      %code
+        :preserve
+          fmap id = id
+
+  %section
+    %h3 Second Functor Law
+    %pre
+      %code
+        :preserve
+          fmap (f . g) = fmap f . fmap g
+
+%section
+  %section
+    %h2 Functors
+    %ul
+      %li
+        So what is
+        %code fmap
+        ?
+      %li
+        It is a generalized
+        %code map
+      %li So what is a Functor?
+      %li A type constructor where the "contents" can be transformed
+
+%section
+  %section
+    %h2 Functors are not enough
+    %ul
+      %li
+        %code fmap
+        lets us operate on on Functor
+      %li What if we want to operate on multiple functors?
+      %li For example, how would you add two Maybe Ints?
+      %li Clearly we need a new structure
+
+  %section
+    %h3 Sneak Peek
+    %p It turns out we can do something like this
+    %pre
+      %code
+        :preserve
+          ghci> (+) <$> Just 4 <*> Just 5
+          Just 9
+          ghci> (+) <$> Nothing <*> Just 5
+          Nothing
+
+  %section
+    %p But we need some machinery first
+
+%section
+  %h2 Applicative Functors
+  %ul
+    %li
+      %code pure
+      "wraps" the argument in the functor
+    %li
+      %code <*>
+      is like fmap but the mapping function is inside the functor
+  %pre
+    %code
+      :preserve
+        class (Functor f) => Applicative f where
+            pure :: a -> f a
+            (<*>) :: f (a -> b) -> f a -> f b
+
+%section
+  %section
+    %h3 Applicative Maybe
+    %pre
+      %code
+        :preserve
+          instance Applicative Maybe where
+              pure = Just
+              Nothing <*> _ = Nothing
+              (Just f) <*> something = fmap f something
+
+  %section
+    %pre
+      %code
+        :preserve
+          ghci> Just (+3) <*> Just 9
+          Just 12
+          ghci> pure (+3) <*> Nothing
+          Nothing
+          ghci> Nothing <*> Just 5
+          Nothing
+          ghci> pure (+) <*> Just 5 <*> Just 7
+          Just 12
+
+%section
+  %h2 Small shortcut
+  %ul
+    %li
+      What is
+      %code pure f <*> arg
+      doing?
+    %li
+      It is just
+      %code fmap f arg
+    %li
+      %code <$>
+      is a sugary infix fmap operator
+
+%section
+  %section
+    %h3 Applicative []
+    %pre
+      %code
+        :preserve
+          instance Applicative [] where
+              pure x = [x]
+              fs <*> xs = [f x | f <- fs, x <- xs]
+    %pre
+      %code
+        :preserve
+          ghci> [(+), (*)] <*> [1, 2] <*> [3, 4]
+          [4,5,5,6,3,4,6,8]
+
+  %section
+    %h3 Applicative IO
+    %pre
+      %code
+        :preserve
+          instance Applicative IO where
+              pure = return
+              a <*> b = do
+                  f <- a
+                  x <- b
+                  return (f x)
+    %pre
+      %code
+        :preserve
+          ghci> (++) <*> getLine <*> getLine
+          Hello
+           World!
+          "Hello World!"
+
+%section
+  %h1 Monads
+
+%section
+  %h2 What is a Monad?
+  %p A monad in X is just a monoid in the category of endofunctors of X, with product × replaced by composition of endofunctors and unit set by the identity endofunctor.
+  .fragment
+    %p Let's start somewhere else.
+
+%section
+  %section
+    %h2 Side Effects
+    %ul
+      %li Imperative languages are expressed as a sequence of state-changing operations
+      %li Think about assembly code
+      %li The only machine instruction that does not change state is a no-op
+      %li Functional languages are based on expressions that are evaluated
+      %li There are no sequential instructions and there are no side effects
+
+  %section
+    %ul
+      %li But we really need side effects
+      %li And we really want sequential instructions
+      %li The closest thing we have to sequential instructions is the ability to pass a value through a chain of functions
+      %li That will have to be good enough
+      %li We want to create a pipeline of functions that operate on wrapped values
+
+%section
+  %section
+    %h2 Monads
+    %pre
+      %code
+        :preserve
+          class (Applicative m) => Monad m where
+              return :: a -> m a
+
+              (>>=) :: m a -> (a -> m b) -> m b
+
+              (>>) :: m a -> m b -> m b
+              x >> y = x >>= \_ -> y
+
+  %section
+    %h3
+      %code return
+    %ul
+      %li
+        %code return
+        is exactly like
+        %code pure
+      %li Different for historical reasons
+      %li Just wraps its argument in a monad
+      %li Not like return in other languages
+      %li We saw it for IO (hint: IO is a monad)
+
+  %section
+    %h3
+      %code >>=
+    %ul
+      %li How we will apply a regular function to a monad
+
+%section
+  %section
+    %h3 Monad Maybe
+    %pre
+      %code
+        :preserve
+          instance Monad Maybe where
+              return x = Just x
+              Nothing >>= f = Nothing
+              Just x >>= f  = f x
+  %section
+    %h3 How this is used
+    %ul
+      %li The Maybe monad is very useful
+      %li Imagine a sequence of operations, any of which may fail
+      %li Each function takes an a and returns a Maybe a because it can fail
+      %li You still want to chain your sequence of operations together and have Nothing at the end if any step failed
+
+  %section
+    %h3 A truncated example
+    %p See Learn You a Haskell for the full example
+    %pre
+      %code
+        :preserve
+          return (0,0) >>= landLeft 1 >> landRight 4 >>= landLeft 2 >>= landLeft 1
+    %pre
+      %code
+        :preserve
+          routine = case landLeft 1 (0,0) of
+              Nothing -> Nothing
+              Just pole1 -> case landRight 4 pole1 of
+                  Nothing -> Nothing
+                  Just pole2 -> case landLeft 2 pole2 of
+                      Nothing -> Nothing
+                      Just pole3 -> landLeft 1 pole3
+
+%section
+  %section
+    %h2 IO Revisited
+    %p Remember our greet program?
+    %pre
+      %code
+        :preserve
+          greet :: IO ()
+          greet = do
+              putStr "What is your first name? "
+              firstName <- getLine
+              putStr "What is your last name? "
+              lastName <- getLine
+              putStrLn $ "Hi " ++ firstName ++ " " ++ lastName ++ "!"
+              return ()
+
+  %section
+    %h3 Greet with the IO monad
+    %pre
+      %code
+        :preserve
+          greet :: IO ()
+          greet =
+              putStr "What is your first name? " >>
+              getLine >>= (\firstName ->
+                  putStr "What is your last name? " >>
+                  getLine >>= (\lastName ->
+                      putStrLn ("Hi " ++ firstName ++ " " ++ lastName ++ "!") >>
+                      return ()
+                  )
+              )
+
+%section
+  %section
+    %h2 Mind Blowing Slide 3
+    %ul
+      %li
+        %code do
+        is just syntactic sugar for monad operations
+      %li do blocks allow you to specify a sequence of operations
+      %li Under the covers, they are translated to monad operations
+      %li Monads allow us to contain side effects from sequential instructions
+
+  %section
+    %h3 do blocks with Maybe
+    %pre
+      %code
+        :preserve
+          routine = case landLeft 1 (0,0) of
+              Nothing -> Nothing
+              Just pole1 -> case landRight 4 pole1 of
+                  Nothing -> Nothing
+                  Just pole2 -> case landLeft 2 pole2 of
+                      Nothing -> Nothing
+                      Just pole3 -> landLeft 1 pole3
+    %pre
+      %code
+        :preserve
+          routine :: Maybe (Int, Int)
+          routine = do
+               start <- return (0,0)
+               pole1 <- landLeft 1 start
+               pole2 <- landRight 4 pole1
+               pole3 <- landLeft 2 start
+               return $ landLeft 1 pole3
+
+%section
+  %section
+    %h2 Monad []
+    %pre
+      %code
+        :preserve
+          instance Monad [] where
+              return x = [x]
+              xs >>= f = concat (map f xs)
+
+  %section
+    %h3 Using Monad []
+    %pre
+      %code
+        :preserve
+          ghci> [1,2] >>= \n -> ['a','b'] >>= \ch -> return (n,ch)
+          [(1,'a'),(1,'b'),(2,'a'),(2,'b')]
+
+  %section
+    %h3 In do notation
+    %pre
+      %code
+        :preserve
+          listOfTuples :: [(Int,Char)]
+          listOfTuples = do
+              n <- [1,2]
+              ch <- ['a','b']
+              return (n,ch)
+
+%section
+  %section
+    %h2 Mind Blowing Slide 4
+    %ul
+      %li List compehensions are just syntactic sugar for the list monad
+    %pre
+      %code
+        :preserve
+          [(n,ch) | n <- [1,2], ch <- ['a','b']]
+

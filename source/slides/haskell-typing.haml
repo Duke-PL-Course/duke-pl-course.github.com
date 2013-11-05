@@ -1,0 +1,476 @@
+---
+layout: slide
+---
+
+%section
+  %h1 Programming Languages
+  %h3 Typing Systems with Haskell
+  %small Jim Posen - ECE/CS 2014
+
+%section
+  %h2 Type Systems
+  %ul
+    %li A type system is the model a programming language uses to assign types to values or variables
+    %li Static vs dynamic typing
+    %li Strong vs weak typing
+    %li Type safety properties
+
+%section
+  %section
+    %h2 Static vs dynamic type checking
+    %ul
+      %li
+        Are the types known without running the program?
+        %ul
+          %li Type checkers perform static analysis
+          %li Are the types known during compilation?
+      %li Do variables have types?
+      %li Languages may have optional type declarations
+
+  %section
+    %h3 Staticly typed languages
+    %ul
+      %li Java
+      %li C/C++
+      %li SML (functional language)
+
+  %section
+    %h3 Dynamicly typed languages
+    %ul
+      %li Python
+      %li Racket
+      %li JavaScript
+
+  %section
+    %h3 Hybrids
+    %ul
+      %li
+        Common Lisp
+        %ul
+          %li Dynamic by default with optional type declarations
+
+%section
+  %section
+    %h2 Strong vs weak typing
+    %ul
+      %li Do values/objects have types?
+      %li Higher standard of type safety
+      %li Weakly typed languages have less type safety
+      %li Not as clear cut as static/dynamic type checking
+      %li
+        %a{href: "http://en.wikipedia.org/wiki/I_know_it_when_I_see_it"} I know it when I see it
+
+  %section
+    %h3 Strongly typed languages
+    %ul
+      %li
+        Java
+        %ul
+          %li ints can be added to Strings
+          %li Is this an exception?
+      %li
+        Python
+        %ul
+          %li TypeError often thrown
+      %li
+        Racket
+        %ul
+          %li Rationals vs fixnums vs booleans vs symbols
+
+  %section
+    %h3 Weakly typed languages
+    %ul
+      %li
+        C
+        %ul
+          %li int a = *((int*) b);
+      %li JavaScript
+      %li PHP
+
+  %section
+    %h3
+      %a{href: "https://www.destroyallsoftware.com/talks/wat"} Wat
+    %ul
+      %li Weak languages often have more unexpected behavior
+
+%section
+  %h3 Typing Chart
+  %table
+    %tr
+      %td
+      %td
+        %strong Strong
+      %td
+        %strong Weak
+    %tr
+      %td
+        %strong Static
+      %td Java
+      %td C
+    %tr
+      %td
+        %strong Dynamic
+      %td Python
+      %td JavaScript
+
+%section
+  %h2 What is Haskell?
+
+%section
+  %section
+    %h2 Back to Haskell
+    %pre
+      %code
+        :preserve
+          Prelude> "hello " ++ "world"
+          "hello world"
+          Prelude> "hello " ++ True
+
+          <interactive>:9:13:
+              Couldn't match expected type `[Char]' with actual type `Bool'
+              In the second argument of `(++)', namely `True'
+              In the expression: "hello " ++ True
+              In an equation for `it': it = "hello " ++ True
+
+  %section
+    %p OK, there is type safety, so Haskell must be strongly typed
+
+  %section
+    %ul
+      %li The above code won't even compile
+      %li Haskell is staticly typed
+
+%section
+  %h2 Type inference
+  %ul
+    %li
+      Haskell
+      %strong infers
+      the types of variables
+    %li If variable types can't be inferred, you will get a compilation error
+    %li Type declarations can be used to remove ambiguity
+    %li By convention, functions types are declared
+
+%section
+  %h2 Haskell types
+  %ul
+    %li Use :t to determine type
+    %li Bool, Char, Int, Float, Integer, Double are some basic types
+    %li
+      [] denotes list
+      %ul
+        %li [Int] is a list of Ints
+        %li [Char] is a String
+        %li This is why you can't mix types in lists
+    %li (Int, Bool) is a tuple with and Int and a Bool
+
+%section
+  %section
+    %h2 Type declarations
+    %ul
+      %li Use :: to declare type
+      %li Type declarations can be used to remove ambiguity
+    %pre
+      %code
+        :preserve
+          Prelude> 5 :: Float
+          5.0
+          Prelude> True :: Float
+          <interactive>:17:1:
+              Couldn't match expected type `Float' with actual type `Bool'
+              In the expression: True :: Float
+              In an equation for `it': it = True :: Float
+
+  %section
+    %p Also declare the types of variables
+    %pre
+      %code
+        :preserve
+          pi :: Double
+          pi = 3.1415
+
+%section
+  %section
+    %h2 Function types
+    %ul
+      %li Function types are determined by parameter types and return type
+      %li Parameter and return types separated by -> arrows
+
+    %pre
+      %code
+        :preserve
+          sumThree :: Int -> Int -> Int -> Int
+          sumThree x y z = x + y + z
+
+  %section
+    %h3 Let's annotate some functions
+    .fragment
+      %pre
+        %code
+          :preserve
+            factorial n = product [1..n]
+    .fragment
+      %pre
+        %code
+          :preserve
+            factorial :: Int -> Integer
+    .fragment
+      %pre
+        %code
+          :preserve
+            firstLetter (x:xs) = x
+    .fragment
+      %pre
+        %code
+          :preserve
+            firstLetter :: [Char] -> Char
+    .fragment
+      %pre
+        %code
+          :preserve
+            fibHelper (a, b) 0 = a
+            fibHelper (a, b) 1 = b
+            fibHelper (a, b) n = fibHelper (b, a + b) (n - 1)
+    .fragment
+      %pre
+        %code
+          :preserve
+            fibHelper :: (Integer, Integer) -> Int -> Integer
+
+%section
+  %section
+    %h2 Type variables
+    %ul
+      %li
+        What is the type of
+        %code head
+        ?
+        %ul
+          %li
+            %code head :: [Char] -> Char
+          %li
+            %code head :: [Int] -> Int
+          %li
+            %code head :: [Bool] -> Bool
+      %li We use a type variable for the type
+      %li head :: [a] -> a
+      %li a represents any type
+      %li Type variables are like generics in Java
+
+  %section
+    %p
+      What is the type of
+      %code zip
+      ?
+    .fragment
+      %pre
+        %code
+          :preserve
+            zip :: [a] -> [b] -> [(a, b)]
+
+%section
+  %section
+    %h2 Type classes
+    %p How about this function that tests equality and returns 1 or 0
+    %pre
+      %code
+        :preserve
+          foo :: a -> a -> Int
+          foo x y = if x == y then 1 else 0
+
+  %section
+    %h3 Why won't this compile?
+    %ul
+      %li What if we can't check the equality of values of type a?
+      %li We need to impose a constraint on the type variable a
+      %li We use type classes for this
+
+%section
+  %section
+    %h2 Type classes
+    %ul
+      %li Types belong to type classes
+      %li Similar to interfaces in Java
+      %li Below we enforce type variable a is of typeclass Eq
+
+    %pre
+      %code
+        :preserve
+          foo :: (Eq a) => a -> a -> Int
+          foo x y = if x == y then 1 else 0
+
+  %section
+    %ul
+      %li Types of class Ord have comparison operators defined
+      %li
+        %code show :: (Show a) => a -> String
+        is defined on types with class
+        %code Show
+      %li Int, Integer, Float, Double are Nums
+      %li Int, Integer are Integrals
+      %li Float, Double are Fractionals
+
+%section
+  %h1 Partial Function Application
+
+%section
+  %h2 Lambdas
+  %ul
+    %li Haskell has nice syntax for anonymous functions
+  %pre
+    %code
+      :preserve
+        addThree x = x + 3
+
+  %pre
+    %code
+      :preserve
+        addThree = (\x -> x + 3)
+
+%section
+  %h2 Currying
+  %ul
+    %li In lambda calculus, functions take one parameter
+    %li How do you create a multivariable function?
+    %li Currying!
+
+%section
+  %section
+    %h3 Currying
+    %ul
+      %li Currying is a way to convert a function with n parameters into a function returning a function with n - 1 parameters
+
+  %section
+    %p Here is an example without currying
+    %pre
+      %code
+        :preserve
+          sumThree x y z = x + y + z
+
+  %section
+    %p Here is the curried form
+    %pre
+      %code
+        :preserve
+          sumThree = (\x -> (\y -> (\z -> x + y + z))
+
+%section
+  %section
+    %h2 Currying meets typing
+    %p What is the type of the uncurried form?
+    %pre
+      %code
+        :preserve
+          sumThree :: (Num a) => a -> a -> a -> a
+          sumThree x y z = x + y + z
+
+    %p What is the type of the curried form?
+    %pre
+      %code
+        :preserve
+          sumThree :: (Num a) => a -> (a -> (a -> a))
+          sumThree = (\x -> (\y -> (\z -> x + y + z))
+
+  %section
+    %p What if I told you -> was right associative?
+    .fragment
+      %p That would mean
+      %pre
+        %code
+          :preserve
+            sumThree :: (Num a) => a -> (a -> (a -> a))
+
+      %p is equivalent to
+      %pre
+        %code
+          :preserve
+            sumThree :: (Num a) => a -> a -> a -> a
+
+%section
+  %h2 Mind Blowing Slide No. 1
+  %ul
+    %li All functions in Haskell take one parameter and are curried
+    %li Haskell syntax makes it easy to forget this sometimes
+    %li What does this mean?
+
+    %pre
+      %code
+        :preserve
+          ghci> let sumThree x y z = x + y + z
+          ghci> ((sumThree 1) 2) 3
+          6
+
+%section
+  %section
+    %h2 Partial function application
+    %ul
+      %li
+        If a function is called with fewer parameters than it takes, it is
+        %code partially applied
+      %li You get back a new function that takes the remaining parameters
+      %li This is super useful
+
+  %section
+    %h3 Partial application example
+    %p Let's write a function that returns a number if it is positive or 0 if it's negative
+    %pre
+      %code
+        :preserve
+          makeNatural = (Num a) => a -> a
+          makeNatural x = max 0 x
+
+  %section
+    %h3 Partial application example
+    %p How about?
+    %pre
+      %code
+        :preserve
+          makeNatural = (Num a) => a -> a
+          makeNatural = max 0
+
+  %section
+    %p You can even partially apply infix functions
+    %pre
+      %code
+        :preserve
+          addThree = (Num a) => a -> a
+          addThree = (+3)
+
+%section
+  %h2 Function composition
+  %ul
+    %li . operator composes functions
+    %li
+      %code (f . g) x = f (g x)
+  %pre
+    %code
+      :preserve
+        ghci> map (negate . abs) [-1, 2, -4, 5]
+        [-1, -2, -4, -5]
+
+%section
+  %h2 Function application operator
+  %ul
+    %li Usually function application is performed using spaces
+    %li $ is a lower precedence operator
+    %pre
+      %code
+        :preserve
+          ghci> map (2*) (filter (< 5) [1..])
+          [2, 4, 6, 8]
+          ghci> map (2*) filter (< 5) [1..]
+          -- Crash!
+          ghci> map (2*) $ filter (< 5) [1..]
+          -- Crash!
+
+%section
+  %h2 One more example
+  %p
+    Let's tighten up our
+    %code qsort
+    example
+  %pre
+    %code
+      :preserve
+        qsort [] = []
+        qsort (p:xs) = (qsort $ filter (<= p) xs) ++ [p] ++ (qsort $ filter (> p) xs)

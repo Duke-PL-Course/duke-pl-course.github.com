@@ -10,3 +10,6 @@ footer: false
 * Week 4: [Higher Order Structures in Lisp](/slides/lisp-advanced.html)
 * Week 5: [Lisp Philosophy](/slides/lisp-philosophy.html)
 * Week 6: [Functional Programming in Haskell](/slides/haskell-intro.html)
+* Week 7: [Typing Systems with Haskell](/slides/haskell-typing.html)
+* Week 9: [Datatypes and IO in Haskell](/slides/haskell-datatypes.html)
+* Week 10: [Higher Order Constructs in Haskell](/slides/haskell-high-level.html)

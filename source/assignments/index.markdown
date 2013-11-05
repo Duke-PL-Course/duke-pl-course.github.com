@@ -22,4 +22,12 @@ footer: false
 **Week 6 (10/1/13)**
 - [Learn You a Haskell](http://learnyouahaskell.com/chapters) Chapters 2, 4, 5
 
-## Assignments
+**Week 7 (10/8/13)**
+- [Learn You a Haskell] Chapters 3, 6
+
+**Week 9 (10/29/13)**
+- [Learn You a Haskell] Chapters 8, 9
+
+**Week 10 (11/5/13)**
+- [Learn You a Haskell] Chapters 11, 12
+- [A Brief, Incomplete, and Mostly Wrong History of Programming Languages](http://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html)

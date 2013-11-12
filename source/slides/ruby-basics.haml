@@ -1,0 +1,517 @@
+---
+layout: slide
+---
+
+%section
+  %h1 Programming Languages
+  %h3 Scripting in Ruby
+  %small Jim Posen - ECE/CS 2014
+
+%section
+  %section
+    %h2 Scripting Languages
+    %ul
+      %li Dynamic
+      %li High-level
+      %li Interpreted
+      %li Integration with operating system/environment
+
+  %section
+    %h3 Examples
+    %ul
+      %li Bash
+      %li Perl
+      %li Python
+      %li Ruby
+      %li sed/awk
+      %li Tcl
+      %li JavaScript
+
+%section
+  %section
+    %h2 Scripts
+    %ul
+      %li Easy to write
+      %li Quick automation
+      %li Don't need to scale
+      %li Usually pretty hacky
+      %li Unix utilities
+
+  %section
+    %h3 Bash
+    %ul
+      %li Remember our log parsing shell script?
+
+%section
+  %section
+    %h2 Ruby
+    %ul
+      %li Ruby is multiparadigm
+      %li Originally designed as a scripting language with good object oriented principles
+      %li Dynamic/interpreted/strongly typed
+      %li Lots of syntactic sugar
+
+  %section
+    %h3 Principles
+    %ul
+      %li Extremely flexible
+      %li "I wanted a scripting language that was more powerful than Perl, and more object-oriented than Python.
+      %li Ruby is supposed to make life better for programmers
+      %li Code to be read by humans, not machines
+      %li MINSWAN
+
+%section
+  %section
+    %h2 Ruby History
+    %ul
+      %li 1993: Yukihiro Matsumoto (Matz) creates Ruby
+      %li 1995: Ruby is released to the world
+      %li 2005: David Heinemeier Hansson creates Ruby on Rails
+      %li 2006: Rails helps Ruby gain popularity
+      %li 2007: Why the Lucky Stiff creates GUI Toolkit Shoes
+
+  %section
+    %h3 The State of Ruby
+    %ul
+      %li Ruby and Rails are wildly popular
+      %li Second most popular language on GitHub after JavaScript
+      %li Ruby 2.0 released earlier this year
+
+%section
+  %h1 Parts of Speech
+  %ul
+    %li Variables
+    %li Numbers
+    %li Strings
+    %li Symbols
+    %li Constants
+    %li Methods
+    %li Blocks
+    %li Ranges
+    %li Arrays
+    %li Hashes
+    %li Regular Expressions
+
+%section
+  %h2 Variables
+  %ul
+    %li Dynamically typed
+    %li Underscored by convention
+    %li Locally scoped
+    %li
+      %code $var
+      is a global
+    %li
+      %code @var
+      is an instance variable
+    %li
+      %code @@var
+      is a class variable
+
+%section
+  %h2 Number Literals
+  %ul
+    %li 10
+    %li 10.1
+    %li 1.1e5
+
+%section
+  %section
+    %h2 Strings
+    %ul
+      %li Strings enclosed by single or double quotes
+      %li Can be multiline strings
+
+  %section
+    %h3 String Interpolation
+    %ul
+      %li Double quotes interpolate
+
+    %pre
+      %code
+        :preserve
+          name = 'Dr. Nick'
+          puts "Hi \#{name}"
+
+%section
+  %h2 Symbols
+  %ul
+    %li Lightweight strings
+    %li Preceded by colons
+    %li We saw them in Lisp
+    %li Used as identifiers
+    %li
+      %code :left, :right, :up, :down
+
+%section
+  %h2 Constants
+  %ul
+    %li Must start with uppercase letter
+    %li All uppercase by convention
+    %li Ruby will warn you if a constant is reassigned
+
+%section
+  %h2 Nil
+  %ul
+    %li
+      %code nil
+      is like
+      %code null
+      in Java
+    %li It is an object of type NilClass
+    %li Interpreted as false in a conditional
+
+%section
+  %section
+    %h2 Conditionals
+    %ul
+      %li if statements are our bread and butter conditional
+      %li
+        Use
+        %code elsif
+        keyword for multiconditionals
+      %li As in Lisp and Haskell, if statements evaluate to a value
+      %li Evaluates to nil if there is no else and the condition is false
+
+    %pre
+      %code
+        :preserve
+          irb> if 2 > 3
+          irb>   puts "Hello"
+          irb> end
+          => nil
+          irb> if 2 > 3
+          irb>   puts "Hello"
+          irb> else
+          irb>   puts "Goodbye"
+          irb>   "World"
+          irb> end
+          Goodbye
+          => "World"
+
+%section
+  %section
+    %h2 Method Invocation
+    %ul
+      %li Methods called with dot notation
+      %li Method arguments given with parenthesis
+
+    %pre
+      %code
+        :preserve
+          irb> 2.even?()
+          true
+          irb> "Hello World!".split(' ')
+          ["Hello", "World!"]
+
+  %section
+    %h3 Naming conventions
+    %ul
+      %li Method names are underscored
+      %li Boolean methods end in a ?
+      %li
+        Dangerous/destructive methods end in a !
+        %ul
+          %li
+            %code game.reset!
+
+  %section
+    %h3 Poetry mode
+    %ul
+      %li Ruby methods do not need to be invoked with parenthesis
+      %li Use responsibly
+      %li When in doubt, use parenthesis
+
+    %pre
+      %code
+        :preserve
+          irb> 2.even?
+          true
+          irb> "Hello World!".split ' '
+          ["Hello", "World!"]
+
+%section
+  %section
+    %h2 Method Definition
+    %ul
+      %li
+        %code def
+        keyword used to define methods
+      %li Functions evaluate to the last statement
+      %li Return statement stops execution
+
+    %pre
+      %code
+        :preserve
+          def fib(n)
+            if n < 2
+              return n
+            end
+            fib(n - 1) + fib(n - 2)
+          end
+
+  %section
+    %h3 Default arguments
+    %pre
+      %code
+        :preserve
+          def fib(n, x1 = 0, x2 = 1)
+            return x1 if n == 0
+            return x2 if n == 1
+            fib(n - 1, x2, x1 + x2)
+          end
+
+  %section
+    %h3 Keyword arguments
+    %pre
+      %code
+        :preserve
+          def method_with_options(takes_kittens: true, num_puppies: 3, max_puppy_size: 8)
+              ...
+          end
+
+  %section
+    %h3 Splats
+    %ul
+      %li Splats group undefined arguments into arrays and hashes
+
+    %pre
+      %code
+        :preserve
+          def method_with_splats(*args, **kwargs)
+              ...
+          end
+
+%section
+  %h2 Methods vs Functions
+  %ul
+    %li
+      Functions are operations that have inputs, outputs, and side effects
+      %ul
+        %li Everything we have seen up until now
+    %li
+      Methods are named functions defined on objects
+      %ul
+        %li Used in object oriented programming
+    %li Often used interchangably, but there is a difference
+    %li
+      Ruby has methods
+      %ul
+        %li In literature, this is called foreshadowing
+
+%section
+  %section
+    %h2 Blocks
+    %ul
+      %li Code can be passed as a method argument
+      %li This is called a block
+      %li Use curly braces or do/end
+      %li Arguments (if any) go in | |
+
+    %pre
+      %code
+        :preserve
+          10.times { |i| puts i }
+          10.times do |i|
+            puts i
+          end
+
+  %section
+    %h3 Accepting blocks
+    %ul
+      %li yield keyword to call to block argument
+      %li Alternately, explicitly accept a Proc argument
+      %li
+        Use
+        %code Proc#call
+        to call a block
+
+    %pre
+      %code
+        :preserve
+          def times(n, &proc)
+            return if n == 0
+            proc.call n
+            times(n - 1, &proc)
+          end
+
+  %section
+    %h3 Lambdas
+    %ul
+      %li
+        Create Procs explicitly with
+        %code lambda
+      %li Arrow syntax for lambdas
+
+    %pre
+      %code
+        :preserve
+          irb> double = lambda { |x| x + x }
+          irb> double = ->(x) { x + x }
+          irb> double.call 2
+          4
+
+%section
+  %section
+    %h2 Ranges
+    %ul
+      %li A range is an iterable structure
+      %li .. for inclusive range
+      %li ... for exclusive range
+
+    %pre
+      %code
+        :preserve
+          irb> (0..2).each { |i| puts i }
+          0
+          1
+          2
+          irb> (0...2).each { |i| puts i }
+          0
+          1
+
+%section
+  %section
+    %h2 Arrays
+    %ul
+      %li Not fixed size
+      %li They are like ArrayLists in Java
+      %li You can mix types
+      %li You can add arrays with +
+      %li You can add append to arrays with <<
+
+    %pre
+      %code
+        :preserve
+          irb> a = [1, 2, '3']
+          irb> a << 4
+          irb> a
+          [1, 2, '3', 4]
+          irb> a + [6, 7]
+          [1, 2, '3', 4, 6, 7]
+
+  %section
+    %h3 Our favorite functions
+    %ul
+      %li
+        %code map
+        ,
+        %code filter
+        , and
+        %code reduce
+        are defined on arrays
+
+    %pre
+      %code
+        :preserve
+          irb> [0..2].map { |x| x * 2 }
+          [0, 2, 4]
+          irb> [0..2].filter { |x| x.even? }
+          [0, 2]
+          irb> [0...3].reduce(0) { |sum, elt| sum + elt }
+          6
+
+  %section
+    %h3 Iteration
+    %ul
+      %li
+        We don't use
+        %code for
+        loops in Ruby
+      %li
+        The
+        %code each
+        method provides iteration
+
+    %pre
+      %code
+        :preserve
+          irb> ['cat', 'dog', 'mouse'].each { |animal| puts animal }
+          cat
+          dog
+          mouse
+
+%section
+  %section
+    %h2 Hashes
+    %ul
+      %li Constant time lookup structure
+      %li Like HashMaps in Java
+      %li Fat arrows for key-value pairs
+      %li Colon syntax for symbol keys
+
+    %pre
+      %code
+        :preserve
+          irb> { 'puppy' => Dog, 'kitten' => Cat, 'cub' => Bear }
+          irb> { :puppy => Dog, :kitten => Cat, cub: Bear }
+          irb> h = { :puppy => Dog, kitten: Cat, cub => Bear }
+          irb> h[:puppy]
+          Dog
+          irb> h[:puppy] = Wolf
+          irb> h[:puppy]
+          Wolf
+
+  %section
+    %h3 Iteration
+    %ul
+      %li Use each again
+      %li
+        %code map
+        ,
+        %code filter
+        , and
+        %code reduce
+        are, of course, defined on hashes
+
+    %pre
+      %code
+        :preserve
+          irb> h.each { |key, value| ... }
+
+%section
+  %section
+    %h2 Regular Expressions
+    %ul
+      %li A language for defining string patterns
+      %li Used in all languages
+      %li This is so ridiculously useful, I can't stress it enough
+      %li Regexs are delimited by forward slashes
+      %li =~ operator performs matching
+
+    %pre
+      %code
+        :preserve
+          irb> "abc def" =~ /a.c/
+          0
+          irb> "def abc" =~ /a.c/
+          4
+          irb> "abc def" =~ /adc/
+          nil
+
+  %section
+    %h3 Regex Syntax
+    %ul
+      %li
+        Let's test some out on
+        %a{href: "http://rubular.com/"} Rubular
+      %li Most characters represent themselves
+      %li * means 0 or more of the preceding pattern
+      %li + means 1 or more of the preceding pattern
+      %li ? means 0 or 1 of the preceding pattern
+
+  %section
+    %h3 Character Sets
+    %ul
+      %li [] is a character set
+      %li [bcd] is either b, c, or d
+      %li [a-z012] is any lowercase character or 0, 1, or 2
+      %li [^a] is any character that is NOT a
+
+  %section
+    %h3 Special Characters
+    %ul
+      %li \d is a digit
+      %li \w is a letter, digit, or underscore
+      %li \s is a whitespace character
+      %li \S is a non-whitespace character

@@ -1,0 +1,530 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+
+    <title>Duke PL Course</title>
+
+    
+    <meta name="description" content="Programming Languages Scripting in Ruby Jim Posen - ECE/CS 2014 Scripting Languages Dynamic High-level Interpreted Integration with operating system &hellip;">
+    
+    <meta name="author" content="Yang Su, Kevin Gao">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/reveal.min.css">
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	  document.write( '<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <link href="/favicon.png" rel="icon">
+  </head>
+
+  <body>
+	<div class="reveal">
+	  <!-- Any section element inside of this container is displayed as a slide -->
+	  <div class="slides">
+        <section>
+  <h1>Programming Languages</h1>
+  <h3>Scripting in Ruby</h3>
+  <small>Jim Posen - ECE/CS 2014</small>
+</section>
+<section>
+  <section>
+    <h2>Scripting Languages</h2>
+    <ul>
+      <li>Dynamic</li>
+      <li>High-level</li>
+      <li>Interpreted</li>
+      <li>Integration with operating system/environment</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Examples</h3>
+    <ul>
+      <li>Bash</li>
+      <li>Perl</li>
+      <li>Python</li>
+      <li>Ruby</li>
+      <li>sed/awk</li>
+      <li>Tcl</li>
+      <li>JavaScript</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Scripts</h2>
+    <ul>
+      <li>Easy to write</li>
+      <li>Quick automation</li>
+      <li>Don&#8217;t need to scale</li>
+      <li>Usually pretty hacky</li>
+      <li>Unix utilities</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Bash</h3>
+    <ul>
+      <li>Remember our log parsing shell script?</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Ruby</h2>
+    <ul>
+      <li>Ruby is multiparadigm</li>
+      <li>Originally designed as a scripting language with good object oriented principles</li>
+      <li>Dynamic/interpreted/strongly typed</li>
+      <li>Lots of syntactic sugar</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Principles</h3>
+    <ul>
+      <li>Extremely flexible</li>
+      <li>&#8220;I wanted a scripting language that was more powerful than Perl, and more object-oriented than Python.</li>
+      <li>Ruby is supposed to make life better for programmers</li>
+      <li>Code to be read by humans, not machines</li>
+      <li>MINSWAN</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Ruby History</h2>
+    <ul>
+      <li>1993: Yukihiro Matsumoto (Matz) creates Ruby</li>
+      <li>1995: Ruby is released to the world</li>
+      <li>2005: David Heinemeier Hansson creates Ruby on Rails</li>
+      <li>2006: Rails helps Ruby gain popularity</li>
+      <li>2007: Why the Lucky Stiff creates GUI Toolkit Shoes</li>
+    </ul>
+  </section>
+  <section>
+    <h3>The State of Ruby</h3>
+    <ul>
+      <li>Ruby and Rails are wildly popular</li>
+      <li>Second most popular language on GitHub after JavaScript</li>
+      <li>Ruby 2.0 released earlier this year</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <h1>Parts of Speech</h1>
+  <ul>
+    <li>Variables</li>
+    <li>Numbers</li>
+    <li>Strings</li>
+    <li>Symbols</li>
+    <li>Constants</li>
+    <li>Methods</li>
+    <li>Blocks</li>
+    <li>Ranges</li>
+    <li>Arrays</li>
+    <li>Hashes</li>
+    <li>Regular Expressions</li>
+  </ul>
+</section>
+<section>
+  <h2>Variables</h2>
+  <ul>
+    <li>Dynamically typed</li>
+    <li>Underscored by convention</li>
+    <li>Locally scoped</li>
+    <li>
+      <code>$var</code>
+      is a global
+    </li>
+    <li>
+      <code>@var</code>
+      is an instance variable
+    </li>
+    <li>
+      <code>@@var</code>
+      is a class variable
+    </li>
+  </ul>
+</section>
+<section>
+  <h2>Number Literals</h2>
+  <ul>
+    <li>10</li>
+    <li>10.1</li>
+    <li>1.1e5</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Strings</h2>
+    <ul>
+      <li>Strings enclosed by single or double quotes</li>
+      <li>Can be multiline strings</li>
+    </ul>
+  </section>
+  <section>
+    <h3>String Interpolation</h3>
+    <ul>
+      <li>Double quotes interpolate</li>
+    </ul>
+    <pre><code>name = 'Dr. Nick'&#x000A;puts "Hi #{name}"&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>Symbols</h2>
+  <ul>
+    <li>Lightweight strings</li>
+    <li>Preceded by colons</li>
+    <li>We saw them in Lisp</li>
+    <li>Used as identifiers</li>
+    <li>
+      <code>:left, :right, :up, :down</code>
+    </li>
+  </ul>
+</section>
+<section>
+  <h2>Constants</h2>
+  <ul>
+    <li>Must start with uppercase letter</li>
+    <li>All uppercase by convention</li>
+    <li>Ruby will warn you if a constant is reassigned</li>
+  </ul>
+</section>
+<section>
+  <h2>Nil</h2>
+  <ul>
+    <li>
+      <code>nil</code>
+      is like
+      <code>null</code>
+      in Java
+    </li>
+    <li>It is an object of type NilClass</li>
+    <li>Interpreted as false in a conditional</li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Conditionals</h2>
+    <ul>
+      <li>if statements are our bread and butter conditional</li>
+      <li>
+        Use
+        <code>elsif</code>
+        keyword for multiconditionals
+      </li>
+      <li>As in Lisp and Haskell, if statements evaluate to a value</li>
+      <li>Evaluates to nil if there is no else and the condition is false</li>
+    </ul>
+    <pre><code>irb> if 2 > 3&#x000A;irb>   puts "Hello"&#x000A;irb> end&#x000A;=> nil&#x000A;irb> if 2 > 3&#x000A;irb>   puts "Hello"&#x000A;irb> else&#x000A;irb>   puts "Goodbye"&#x000A;irb>   "World"&#x000A;irb> end&#x000A;Goodbye&#x000A;=> "World"&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Method Invocation</h2>
+    <ul>
+      <li>Methods called with dot notation</li>
+      <li>Method arguments given with parenthesis</li>
+    </ul>
+    <pre><code>irb> 2.even?()&#x000A;true&#x000A;irb> "Hello World!".split(' ')&#x000A;["Hello", "World!"]&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Naming conventions</h3>
+    <ul>
+      <li>Method names are underscored</li>
+      <li>Boolean methods end in a ?</li>
+      <li>
+        Dangerous/destructive methods end in a !
+        <ul>
+          <li>
+            <code>game.reset!</code>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h3>Poetry mode</h3>
+    <ul>
+      <li>Ruby methods do not need to be invoked with parenthesis</li>
+      <li>Use responsibly</li>
+      <li>When in doubt, use parenthesis</li>
+    </ul>
+    <pre><code>irb> 2.even?&#x000A;true&#x000A;irb> "Hello World!".split ' '&#x000A;["Hello", "World!"]&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Method Definition</h2>
+    <ul>
+      <li>
+        <code>def</code>
+        keyword used to define methods
+      </li>
+      <li>Functions evaluate to the last statement</li>
+      <li>Return statement stops execution</li>
+    </ul>
+    <pre><code>def fib(n)&#x000A;  if n < 2&#x000A;    return n&#x000A;  end&#x000A;  fib(n - 1) + fib(n - 2)&#x000A;end&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Default arguments</h3>
+    <pre><code>def fib(n, x1 = 0, x2 = 1)&#x000A;  return x1 if n == 0&#x000A;  return x2 if n == 1&#x000A;  fib(n - 1, x2, x1 + x2)&#x000A;end&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Keyword arguments</h3>
+    <pre><code>def method_with_options(takes_kittens: true, num_puppies: 3, max_puppy_size: 8)&#x000A;    ...&#x000A;end&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Splats</h3>
+    <ul>
+      <li>Splats group undefined arguments into arrays and hashes</li>
+    </ul>
+    <pre><code>def method_with_splats(*args, **kwargs)&#x000A;    ...&#x000A;end&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>Methods vs Functions</h2>
+  <ul>
+    <li>
+      Functions are operations that have inputs, outputs, and side effects
+      <ul>
+        <li>Everything we have seen up until now</li>
+      </ul>
+    </li>
+    <li>
+      Methods are named functions defined on objects
+      <ul>
+        <li>Used in object oriented programming</li>
+      </ul>
+    </li>
+    <li>Often used interchangably, but there is a difference</li>
+    <li>
+      Ruby has methods
+      <ul>
+        <li>In literature, this is called foreshadowing</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+<section>
+  <section>
+    <h2>Blocks</h2>
+    <ul>
+      <li>Code can be passed as a method argument</li>
+      <li>This is called a block</li>
+      <li>Use curly braces or do/end</li>
+      <li>Arguments (if any) go in |</li>
+    </ul>
+    <pre><code>10.times { |i| puts i }&#x000A;10.times do |i|&#x000A;  puts i&#x000A;end&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Accepting blocks</h3>
+    <ul>
+      <li>yield keyword to call to block argument</li>
+      <li>Alternately, explicitly accept a Proc argument</li>
+      <li>
+        Use
+        <code>Proc#call</code>
+        to call a block
+      </li>
+    </ul>
+    <pre><code>def times(n, &proc)&#x000A;  return if n == 0&#x000A;  proc.call n&#x000A;  times(n - 1, &proc)&#x000A;end&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Lambdas</h3>
+    <ul>
+      <li>
+        Create Procs explicitly with
+        <code>lambda</code>
+      </li>
+      <li>Arrow syntax for lambdas</li>
+    </ul>
+    <pre><code>irb> double = lambda { |x| x + x }&#x000A;irb> double = ->(x) { x + x }&#x000A;irb> double.call 2&#x000A;4&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Ranges</h2>
+    <ul>
+      <li>A range is an iterable structure</li>
+      <li>.. for inclusive range</li>
+      <li>&#8230; for exclusive range</li>
+    </ul>
+    <pre><code>irb> (0..2).each { |i| puts i }&#x000A;0&#x000A;1&#x000A;2&#x000A;irb> (0...2).each { |i| puts i }&#x000A;0&#x000A;1&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Arrays</h2>
+    <ul>
+      <li>Not fixed size</li>
+      <li>They are like ArrayLists in Java</li>
+      <li>You can mix types</li>
+      <li>You can add arrays with +</li>
+      <li>You can add append to arrays with <<</li>
+    </ul>
+    <pre><code>irb> a = [1, 2, '3']&#x000A;irb> a << 4&#x000A;irb> a&#x000A;[1, 2, '3', 4]&#x000A;irb> a + [6, 7]&#x000A;[1, 2, '3', 4, 6, 7]&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Our favorite functions</h3>
+    <ul>
+      <li>
+        <code>map</code>
+        ,
+        <code>filter</code>
+        , and
+        <code>reduce</code>
+        are defined on arrays
+      </li>
+    </ul>
+    <pre><code>irb> [0..2].map { |x| x * 2 }&#x000A;[0, 2, 4]&#x000A;irb> [0..2].filter { |x| x.even? }&#x000A;[0, 2]&#x000A;irb> [0...3].reduce(0) { |sum, elt| sum + elt }&#x000A;6&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Iteration</h3>
+    <ul>
+      <li>
+        We don&#8217;t use
+        <code>for</code>
+        loops in Ruby
+      </li>
+      <li>
+        The
+        <code>each</code>
+        method provides iteration
+      </li>
+    </ul>
+    <pre><code>irb> ['cat', 'dog', 'mouse'].each { |animal| puts animal }&#x000A;cat&#x000A;dog&#x000A;mouse&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Hashes</h2>
+    <ul>
+      <li>Constant time lookup structure</li>
+      <li>Like HashMaps in Java</li>
+      <li>Fat arrows for key-value pairs</li>
+      <li>Colon syntax for symbol keys</li>
+    </ul>
+    <pre><code>irb> { 'puppy' => Dog, 'kitten' => Cat, 'cub' => Bear }&#x000A;irb> { :puppy => Dog, :kitten => Cat, cub: Bear }&#x000A;irb> h = { :puppy => Dog, kitten: Cat, cub => Bear }&#x000A;irb> h[:puppy]&#x000A;Dog&#x000A;irb> h[:puppy] = Wolf&#x000A;irb> h[:puppy]&#x000A;Wolf&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Iteration</h3>
+    <ul>
+      <li>Use each again</li>
+      <li>
+        <code>map</code>
+        ,
+        <code>filter</code>
+        , and
+        <code>reduce</code>
+        are, of course, defined on hashes
+      </li>
+    </ul>
+    <pre><code>irb> h.each { |key, value| ... }&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Regular Expressions</h2>
+    <ul>
+      <li>A language for defining string patterns</li>
+      <li>Used in all languages</li>
+      <li>This is so ridiculously useful, I can&#8217;t stress it enough</li>
+      <li>Regexs are delimited by forward slashes</li>
+      <li>=~ operator performs matching</li>
+    </ul>
+    <pre><code>irb> "abc def" =~ /a.c/&#x000A;0&#x000A;irb> "def abc" =~ /a.c/&#x000A;4&#x000A;irb> "abc def" =~ /adc/&#x000A;nil&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Regex Syntax</h3>
+    <ul>
+      <li>
+        Let&#8217;s test some out on
+        <a href='http://rubular.com/'>Rubular</a>
+      </li>
+      <li>Most characters represent themselves</li>
+      <li>* means 0 or more of the preceding pattern</li>
+      <li>+ means 1 or more of the preceding pattern</li>
+      <li>? means 0 or 1 of the preceding pattern</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Character Sets</h3>
+    <ul>
+      <li>[] is a character set</li>
+      <li>[bcd] is either b, c, or d</li>
+      <li>[a-z012] is any lowercase character or 0, 1, or 2</li>
+      <li>[^a] is any character that is NOT a</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Special Characters</h3>
+    <ul>
+      <li>\d is a digit</li>
+      <li>\w is a letter, digit, or underscore</li>
+      <li>\s is a whitespace character</li>
+      <li>\S is a non-whitespace character</li>
+    </ul>
+  </section>
+</section>
+
+      </div>
+    </div>
+
+	<script src="/vendor/reveal.js-2.5.0/lib/js/head.min.js"></script>
+	<script src="/vendor/reveal.js-2.5.0/js/reveal.min.js"></script>
+
+	<script>
+	  // Full list of configuration options available here:
+	  // https://github.com/hakimel/reveal.js#configuration
+	  Reveal.initialize({
+	  controls: true,
+	  progress: true,
+	  history: true,
+	  center: true,
+
+	  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+	  transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+	  // Optional libraries used to extend on reveal.js
+	  dependencies: [
+	  { src: '/vendor/reveal.js-2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+	  ]
+	  });
+	</script>
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37844085-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  </body>
+</html>

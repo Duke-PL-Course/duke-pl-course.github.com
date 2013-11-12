@@ -130,7 +130,11 @@
     </url>
     <url>
         <loc>http://Duke-PL-Course.github.com/slides/</loc>
-        <lastmod>2013-11-05T11:55:33-05:00</lastmod>
+        <lastmod>2013-11-12T13:39:49-05:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Duke-PL-Course.github.com/slides/ruby-basics.html</loc>
+        <lastmod>2013-11-12T16:17:26-05:00</lastmod>
     </url>
     <url>
         <loc>http://Duke-PL-Course.github.com/slides/haskell-datatypes.html</loc>

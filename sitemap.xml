@@ -106,7 +106,7 @@
     </url>
     <url>
         <loc>http://Duke-PL-Course.github.com/assignments/</loc>
-        <lastmod>2013-11-05T16:21:17-05:00</lastmod>
+        <lastmod>2013-11-19T13:08:53-05:00</lastmod>
     </url>
     <url>
         <loc>http://Duke-PL-Course.github.com/resources/</loc>
@@ -130,7 +130,7 @@
     </url>
     <url>
         <loc>http://Duke-PL-Course.github.com/slides/</loc>
-        <lastmod>2013-11-12T13:39:49-05:00</lastmod>
+        <lastmod>2013-11-19T13:36:19-05:00</lastmod>
     </url>
     <url>
         <loc>http://Duke-PL-Course.github.com/slides/ruby-basics.html</loc>
@@ -139,6 +139,10 @@
     <url>
         <loc>http://Duke-PL-Course.github.com/slides/haskell-datatypes.html</loc>
         <lastmod>2013-10-29T16:21:51-04:00</lastmod>
+    </url>
+    <url>
+        <loc>http://Duke-PL-Course.github.com/slides/ruby-oop.html</loc>
+        <lastmod>2013-11-19T15:33:01-05:00</lastmod>
     </url>
     <url>
         <loc>http://Duke-PL-Course.github.com/slides/lisp-basics.html</loc>

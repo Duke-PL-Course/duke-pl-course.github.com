@@ -1,0 +1,447 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+
+    <title>Duke PL Course</title>
+
+    
+    <meta name="description" content="Programming Languages Object Oriented Programming in Ruby Jim Posen - ECE/CS 2014 Object Oriented Programming I assume everyone is familiar with it &hellip;">
+    
+    <meta name="author" content="Yang Su, Kevin Gao">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/reveal.min.css">
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	  document.write( '<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <link href="/favicon.png" rel="icon">
+  </head>
+
+  <body>
+	<div class="reveal">
+	  <!-- Any section element inside of this container is displayed as a slide -->
+	  <div class="slides">
+        <section>
+  <h1>Programming Languages</h1>
+  <h3>Object Oriented Programming in Ruby</h3>
+  <small>Jim Posen - ECE/CS 2014</small>
+</section>
+<section>
+  <section>
+    <h2>Object Oriented Programming</h2>
+    <ul>
+      <li>I assume everyone is familiar with it</li>
+      <li>What are the characteristics of OOP?</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Words used in OOP</h3>
+    <ul>
+      <li>Classes</li>
+      <li>Methods</li>
+      <li>Instance variables</li>
+      <li>Class/static variables</li>
+      <li>Inheritance</li>
+      <li>Composition</li>
+      <li>Abstraction</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Benefits of OOP</h2>
+    <ul>
+      <li>Polymorphism</li>
+      <li>Inheritance</li>
+      <li>Abstraction</li>
+      <li>Dynamic Dispatch</li>
+    </ul>
+  </section>
+  <section>
+    <h2>Non-exclusive benefits</h2>
+    <ul>
+      <li>Static typing</li>
+      <li>Code reuse</li>
+      <li>Design patterns</li>
+      <li>Encapsulation</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <h2>Classes</h2>
+  <ul>
+    <li>Definition of a type</li>
+    <li>Definition of constructors</li>
+    <li>Definition of methods</li>
+    <li>Code executed in context of class</li>
+  </ul>
+</section>
+<section>
+  <h2>Class definition</h2>
+  <ul>
+    <li>
+      Use the
+      <code>class</code>
+      keyword to define a class
+    </li>
+  </ul>
+  <pre><code>class Pokemon&#x000A;  ...&#x000A;end&#x000A;</code></pre>
+</section>
+<section>
+  <h2>Constructor definition</h2>
+  <ul>
+    <li>
+      The
+      <code>new</code>
+      method constructs/instantiates an object
+    </li>
+    <li>
+      The
+      <code>new</code>
+      method will be defined on the class already
+    </li>
+    <li>
+      <code>new</code>
+      will call the
+      <code>initialize</code>
+      method
+    </li>
+    <li>
+      <code>initialize</code>
+      takes whatever parameters you want
+    </li>
+  </ul>
+  <pre><code>class Pokemon&#x000A;  def initialize(trainer, level = 5)&#x000A;    ...&#x000A;  end&#x000A;end&#x000A;&#x000A;pikachu = Pokemon.new(ash, 7)&#x000A;staryu = Pokemon.new(misty)&#x000A;</code></pre>
+</section>
+<section>
+  <h2>Method definition</h2>
+  <ul>
+    <li>
+      Methods defined with
+      <code>def</code>
+      as always
+    </li>
+    <li>
+      <code>self</code>
+      keyword refers to the calling object
+    </li>
+  </ul>
+  <pre><code>class Pokemon&#x000A;  def initialize(trainer, level = 5)&#x000A;    ...&#x000A;  end&#x000A;&#x000A;  def lose_health(damage)&#x000A;    ...&#x000A;  end&#x000A;&#x000A;  def attack(other)&#x000A;    other.lose_health(100)&#x000A;  end&#x000A;end&#x000A;&#x000A;pikachu.attack(staryu)&#x000A;</code></pre>
+</section>
+<section>
+  <h2>Instance variables</h2>
+  <ul>
+    <li>Instance variables store state within an object</li>
+    <li>Instance variables do not need to be declared</li>
+    <li>But they are often initialized in the constructor</li>
+    <li>All instance variables begin with @</li>
+  </ul>
+  <pre><code>class Pokemon&#x000A;  def initialize(trainer, level = 5)&#x000A;    @trainer = trainer&#x000A;    @level = level&#x000A;    @health = 100&#x000A;  end&#x000A;&#x000A;  def lose_health(damage)&#x000A;    @health -= 100&#x000A;  end&#x000A;&#x000A;  def attack(other)&#x000A;    other.lose_health(100)&#x000A;  end&#x000A;end&#x000A;&#x000A;pikachu.attack(staryu)&#x000A;</code></pre>
+</section>
+<section>
+  <section>
+    <h2>Instance variable access</h2>
+    <ul>
+      <li>Need to define getters and setters for instance variables</li>
+    </ul>
+    <pre><code>class Pokemon&#x000A;  ...&#x000A;  def health&#x000A;    @health&#x000A;  end&#x000A;&#x000A;  def health=(value)&#x000A;    @health = value&#x000A;  end&#x000A;end&#x000A;&#x000A;pikachu.health = 400&#x000A;puts pikachu.health&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>
+      <code>attr_accessor</code>
+    </h3>
+    <ul>
+      <li>Helper methods for defining getter and setter methods</li>
+      <li>
+        <code>attr_reader</code>
+        defines getters
+      </li>
+      <li>
+        <code>attr_writer</code>
+        defines setters
+      </li>
+      <li>
+        <code>attr_accessor</code>
+        defines both
+      </li>
+    </ul>
+    <pre><code>class Pokemon&#x000A;  attr_accessor :health, :trainer, :level&#x000A;  ...&#x000A;end&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>Message passing</h2>
+  <ul>
+    <li>Ruby uses the message passing model of calling methods</li>
+    <li>Calling a method is like sending a message to an object with certain arguments</li>
+    <li>Calling dog.bark is like sending the &#8220;bark&#8221; message to a Dog object</li>
+    <li>Ruby lets you abstract out method invocation with the #send method</li>
+  </ul>
+  <pre><code>irb> dog = Dog.new&#x000A;irb> dog.bark&#x000A;"Woof"&#x000A;irb> dog.send :bark&#x000A;"Woof"&#x000A;irb> message = :bark&#x000A;irb> dog.send message&#x000A;"Woof"&#x000A;</code></pre>
+</section>
+<section>
+  <section>
+    <h2>OOP done right</h2>
+    <ul>
+      <li>Everything in Ruby is an object</li>
+      <li>Yes, everything</li>
+      <li>
+        We have seen the
+        <code>times</code>
+        method defined on numbers
+      </li>
+    </ul>
+  </section>
+  <section>
+    <img src='http://rubylearning.com/images/rubyclass.jpg' />
+  </section>
+  <section>
+    <h3>Literals</h3>
+    <ul>
+      <li>Integer literals are Fixnums</li>
+      <li>String literals are Strings</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <h2>Reflection</h2>
+  <ul>
+    <li>Classes are objects</li>
+    <li>
+      Call the
+      <code>class</code>
+      method on any object to get its class
+    </li>
+    <li>Classes extend the Class class (which is, of course, an object)</li>
+    <li>Classes can be assigned to variables</li>
+    <li>Far more natural than Java reflection</li>
+  </ul>
+  <pre><code># Using the #constantize method defined in ActiveSupport in Rails&#x000A;pokemon = "Pokemon".constantize.new&#x000A;</code></pre>
+</section>
+<section>
+  <section>
+    <h2>Class methods</h2>
+    <ul>
+      <li>Since each class is an object, classes can have methods defined on them</li>
+      <li>We have already seen the Class#new method</li>
+    </ul>
+    <pre><code>class Pokemon&#x000A;  def self.known?(species)&#x000A;    ...&#x000A;  end&#x000A;end&#x000A;&#x000A;Pokemon.known? :pikachu&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>As a side note, Class not only has #new defined but ::new as well</p>
+    <pre><code>my_class = Class.new do&#x000A;  def foo&#x000A;    "bar"&#x000A;  end&#x000A;&#x000A;  ...&#x000A;end&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Class variables</h2>
+    <ul>
+      <li>Class variables start with @@</li>
+      <li>Class variables are accessible from both class and instances</li>
+    </ul>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Inheritance</h2>
+    <ul>
+      <li>Rails does not support multiple inheritance</li>
+      <li>Classes inherit from Object by default</li>
+      <li>
+        <code>superclass</code>
+        method returns parent class
+      </li>
+    </ul>
+    <pre><code>class Pikachu < Pokemon&#x000A;  ...&#x000A;end&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Abstract classes</h3>
+    <ul>
+      <li>Classes do not need to be declared as abstract</li>
+      <li>They can simply make use of methods assumed to be defined in child classes</li>
+      <li>If you call the abstract method on the parent class, you will get an Exception</li>
+    </ul>
+    <pre><code>class Pokemon&#x000A;  def initialize&#x000A;    @health = initial_health&#x000A;  end&#x000A;end&#x000A;&#x000A;class Pikachu < Pokemon&#x000A;  def initial_health&#x000A;    200 * level&#x000A;  end&#x000A;end&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Interfaces</h2>
+    <ul>
+      <li>What about interfaces? Don&#8217;t we need them?</li>
+      <li>Nope, there is no static type checking</li>
+      <li>Interfaces are used to specify which objects have a certain method defined on them</li>
+    </ul>
+  </section>
+  <section>
+    <h3>Duck typing</h3>
+    <ul>
+      <li>In Ruby, we assume that if a method is implemented on an object, then it does what we want</li>
+      <li>If it quacks like a duck, it might as well be a duck</li>
+    </ul>
+    <pre><code>collection = ...&#x000A;collection.each do |element|&#x000A;  # We don't know what type of collection we are dealing with&#x000A;  # But we don't care because we assume #each will iterate over the elements&#x000A;  ...&#x000A;end&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Code reuse</h2>
+    <ul>
+      <li>What are our options for code reuse between classes?</li>
+      <li>Inheritance and composition</li>
+      <li>Single inheritance can limit code reuse</li>
+      <li>Interfaces (in Java) do not solve this problem</li>
+    </ul>
+  </section>
+  <section>
+    <h3>An example</h3>
+    <ul>
+      <li>Think about all iterable collections</li>
+      <li>As seen before, we will assume any object with the #each method defined is iterable</li>
+      <li>Every iterable collection should have map, filter, and reduce defined on them</li>
+    </ul>
+  </section>
+  <section>
+    <pre><code>class Iterable&#x000A;&#x000A;  # Abstract #each method&#x000A;&#x000A;  def map&#x000A;    results = []&#x000A;    self.each do |element|&#x000A;      results << yield element&#x000A;    end&#x000A;    results&#x000A;  end&#x000A;&#x000A;  def filter&#x000A;    results = []&#x000A;    self.each do |element|&#x000A;      results << element if yield element&#x000A;    end&#x000A;    results&#x000A;  end&#x000A;&#x000A;  def reduce(initial)&#x000A;    self.each do |element|&#x000A;      initial = yield initial, element&#x000A;    end&#x000A;    initial&#x000A;  end&#x000A;end&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>Despite being correct, there is no good way to reuse this functionality in classes that have a more logical parent class</p>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Modules</h2>
+    <ul>
+      <li>Let&#8217;s define this functionality in a module instead of a class</li>
+      <li>Modules are not directly instantiable</li>
+    </ul>
+    <pre><code>module Enumerable&#x000A;  def map&#x000A;    ...&#x000A;  end&#x000A;&#x000A;  def filter&#x000A;    ...&#x000A;  end&#x000A;&#x000A;  def reduce&#x000A;    ...&#x000A;  end&#x000A;end&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Modules</h3>
+    <ul>
+      <li>Let&#8217;s include the module in a class with each defined</li>
+      <li>Modules used in this way are called mixins</li>
+    </ul>
+    <pre><code>class CollectionOfSomeSort&#x000A;  include Enumerable&#x000A;&#x000A;  def each&#x000A;    ...&#x000A;  end&#x000A;end&#x000A;&#x000A;collection = CollectionOfSomeSort.new&#x000A;collection.map { |element| [element, element] }&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Reopening Classes</h2>
+    <ul>
+      <li>We want a utility to turn the singular form of a word into the plural form</li>
+      <li>This is used everywhere in Rails</li>
+      <li>
+        What are our options?
+        <ul>
+          <li class='fragment'>We can make a StringUtils class</li>
+          <li class='fragment'>But we would really just love if String#pluralize was defined</li>
+        </ul>
+      </li>
+    </ul>
+  </section>
+  <section>
+    <h3>Reopening Classes</h3>
+    <p>Well, we can do just that</p>
+    <pre><code>class String&#x000A;  def pluralize&#x000A;    if self =~ /s$/&#x000A;      self&#x000A;    else&#x000A;      self + "s"&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+  </section>
+  <section>
+    <p>
+      Use this only if you have a
+      <strong>very</strong>
+      good reason
+    </p>
+  </section>
+</section>
+<section>
+  <h2>OOP is good design</h2>
+  <ul>
+    <li>
+      We have finally arrived at a
+      <em>real</em>
+      programming language
+    </li>
+    <li>Now we can actually write large systems</li>
+    <li>And leverage all of our Gang of Four design patterns</li>
+  </ul>
+</section>
+<section>
+  <h1>Wrong!</h1>
+</section>
+<section>
+  <h2>The problem with CS 308</h2>
+  <ul>
+    <li>Please never think that</li>
+    <li>We have spent 11 weeks looking at various equally valid programming paradigms</li>
+    <li>
+      Object oriented programming is
+      <em>one</em>
+      way you may choose to structure your code
+    </li>
+    <li>It works well in some situations</li>
+    <li>Not so well in others</li>
+    <li>There are tradeoffs just like any other design decision</li>
+  </ul>
+</section>
+
+      </div>
+    </div>
+
+	<script src="/vendor/reveal.js-2.5.0/lib/js/head.min.js"></script>
+	<script src="/vendor/reveal.js-2.5.0/js/reveal.min.js"></script>
+
+	<script>
+	  // Full list of configuration options available here:
+	  // https://github.com/hakimel/reveal.js#configuration
+	  Reveal.initialize({
+	  controls: true,
+	  progress: true,
+	  history: true,
+	  center: true,
+
+	  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+	  transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+	  // Optional libraries used to extend on reveal.js
+	  dependencies: [
+	  { src: '/vendor/reveal.js-2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+	  ]
+	  });
+	</script>
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37844085-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  </body>
+</html>

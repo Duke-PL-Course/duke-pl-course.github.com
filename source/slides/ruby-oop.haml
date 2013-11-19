@@ -1,0 +1,510 @@
+---
+layout: slide
+---
+
+%section
+  %h1 Programming Languages
+  %h3 Object Oriented Programming in Ruby
+  %small Jim Posen - ECE/CS 2014
+
+%section
+  %section
+    %h2 Object Oriented Programming
+    %ul
+      %li I assume everyone is familiar with it
+      %li What are the characteristics of OOP?
+
+  %section
+    %h3 Words used in OOP
+    %ul
+      %li Classes
+      %li Methods
+      %li Instance variables
+      %li Class/static variables
+      %li Inheritance
+      %li Composition
+      %li Abstraction
+
+%section
+  %section
+    %h2 Benefits of OOP
+    %ul
+      %li Polymorphism
+      %li Inheritance
+      %li Abstraction
+      %li Dynamic Dispatch
+
+  %section
+    %h2 Non-exclusive benefits
+    %ul
+      %li Static typing
+      %li Code reuse
+      %li Design patterns
+      %li Encapsulation
+
+%section
+  %h2 Classes
+  %ul
+    %li Definition of a type
+    %li Definition of constructors
+    %li Definition of methods
+    %li Code executed in context of class
+
+%section
+  %h2 Class definition
+  %ul
+    %li
+      Use the
+      %code class
+      keyword to define a class
+  %pre
+    %code
+      :preserve
+        class Pokemon
+          ...
+        end
+
+%section
+  %h2 Constructor definition
+  %ul
+    %li
+      The
+      %code new
+      method constructs/instantiates an object
+    %li
+      The
+      %code new
+      method will be defined on the class already
+    %li
+      %code new
+      will call the
+      %code initialize
+      method
+    %li
+      %code initialize
+      takes whatever parameters you want
+  %pre
+    %code
+      :preserve
+        class Pokemon
+          def initialize(trainer, level = 5)
+            ...
+          end
+        end
+
+        pikachu = Pokemon.new(ash, 7)
+        staryu = Pokemon.new(misty)
+
+%section
+  %h2 Method definition
+  %ul
+    %li
+      Methods defined with
+      %code def
+      as always
+    %li
+      %code self
+      keyword refers to the calling object
+  %pre
+    %code
+      :preserve
+        class Pokemon
+          def initialize(trainer, level = 5)
+            ...
+          end
+
+          def lose_health(damage)
+            ...
+          end
+
+          def attack(other)
+            other.lose_health(100)
+          end
+        end
+
+        pikachu.attack(staryu)
+
+%section
+  %h2 Instance variables
+  %ul
+    %li Instance variables store state within an object
+    %li Instance variables do not need to be declared
+    %li But they are often initialized in the constructor
+    %li All instance variables begin with @
+  %pre
+    %code
+      :preserve
+        class Pokemon
+          def initialize(trainer, level = 5)
+            @trainer = trainer
+            @level = level
+            @health = 100
+          end
+
+          def lose_health(damage)
+            @health -= 100
+          end
+
+          def attack(other)
+            other.lose_health(100)
+          end
+        end
+
+        pikachu.attack(staryu)
+
+%section
+  %section
+    %h2 Instance variable access
+    %ul
+      %li Need to define getters and setters for instance variables
+
+    %pre
+      %code
+        :preserve
+          class Pokemon
+            ...
+            def health
+              @health
+            end
+
+            def health=(value)
+              @health = value
+            end
+          end
+
+          pikachu.health = 400
+          puts pikachu.health
+
+  %section
+    %h3
+      %code attr_accessor
+    %ul
+      %li Helper methods for defining getter and setter methods
+      %li
+        %code attr_reader
+        defines getters
+      %li
+        %code attr_writer
+        defines setters
+      %li
+        %code attr_accessor
+        defines both
+    %pre
+      %code
+        :preserve
+          class Pokemon
+            attr_accessor :health, :trainer, :level
+            ...
+          end
+
+%section
+  %h2 Message passing
+  %ul
+    %li Ruby uses the message passing model of calling methods
+    %li Calling a method is like sending a message to an object with certain arguments
+    %li Calling dog.bark is like sending the "bark" message to a Dog object
+    %li Ruby lets you abstract out method invocation with the #send method
+
+  %pre
+    %code
+      :preserve
+        irb> dog = Dog.new
+        irb> dog.bark
+        "Woof"
+        irb> dog.send :bark
+        "Woof"
+        irb> message = :bark
+        irb> dog.send message
+        "Woof"
+
+%section
+  %section
+    %h2 OOP done right
+    %ul
+      %li Everything in Ruby is an object
+      %li Yes, everything
+      %li
+        We have seen the
+        %code times
+        method defined on numbers
+
+  %section
+    %img{src: "http://rubylearning.com/images/rubyclass.jpg"}
+
+  %section
+    %h3 Literals
+    %ul
+      %li Integer literals are Fixnums
+      %li String literals are Strings
+
+%section
+  %h2 Reflection
+  %ul
+    %li Classes are objects
+    %li
+      Call the
+      %code class
+      method on any object to get its class
+    %li Classes extend the Class class (which is, of course, an object)
+    %li Classes can be assigned to variables
+    %li Far more natural than Java reflection
+
+  %pre
+    %code
+      :preserve
+        # Using the #constantize method defined in ActiveSupport in Rails
+        pokemon = "Pokemon".constantize.new
+
+%section
+  %section
+    %h2 Class methods
+    %ul
+      %li Since each class is an object, classes can have methods defined on them
+      %li We have already seen the Class#new method
+
+    %pre
+      %code
+        :preserve
+          class Pokemon
+            def self.known?(species)
+              ...
+            end
+          end
+
+          Pokemon.known? :pikachu
+
+  %section
+    %p As a side note, Class not only has #new defined but ::new as well
+    %pre
+      %code
+        :preserve
+          my_class = Class.new do
+            def foo
+              "bar"
+            end
+
+            ...
+          end
+
+%section
+  %section
+    %h2 Class variables
+    %ul
+      %li Class variables start with @@
+      %li Class variables are accessible from both class and instances
+
+%section
+  %section
+    %h2 Inheritance
+    %ul
+      %li Rails does not support multiple inheritance
+      %li Classes inherit from Object by default
+      %li
+        %code superclass
+        method returns parent class
+
+    %pre
+      %code
+        :preserve
+          class Pikachu < Pokemon
+            ...
+          end
+
+  %section
+    %h3 Abstract classes
+    %ul
+      %li Classes do not need to be declared as abstract
+      %li They can simply make use of methods assumed to be defined in child classes
+      %li If you call the abstract method on the parent class, you will get an Exception
+
+    %pre
+      %code
+        :preserve
+          class Pokemon
+            def initialize
+              @health = initial_health
+            end
+          end
+
+          class Pikachu < Pokemon
+            def initial_health
+              200 * level
+            end
+          end
+
+%section
+  %section
+    %h2 Interfaces
+    %ul
+      %li What about interfaces? Don't we need them?
+      %li Nope, there is no static type checking
+      %li Interfaces are used to specify which objects have a certain method defined on them
+
+  %section
+    %h3 Duck typing
+    %ul
+      %li In Ruby, we assume that if a method is implemented on an object, then it does what we want
+      %li If it quacks like a duck, it might as well be a duck
+    %pre
+      %code
+        :preserve
+          collection = ...
+          collection.each do |element|
+            # We don't know what type of collection we are dealing with
+            # But we don't care because we assume #each will iterate over the elements
+            ...
+          end
+
+%section
+  %section
+    %h2 Code reuse
+    %ul
+      %li What are our options for code reuse between classes?
+      %li Inheritance and composition
+      %li Single inheritance can limit code reuse
+      %li Interfaces (in Java) do not solve this problem
+
+  %section
+    %h3 An example
+    %ul
+      %li Think about all iterable collections
+      %li As seen before, we will assume any object with the #each method defined is iterable
+      %li Every iterable collection should have map, filter, and reduce defined on them
+
+  %section
+    %pre
+      %code
+        :preserve
+          class Iterable
+
+            # Abstract #each method
+
+            def map
+              results = []
+              self.each do |element|
+                results << yield element
+              end
+              results
+            end
+
+            def filter
+              results = []
+              self.each do |element|
+                results << element if yield element
+              end
+              results
+            end
+
+            def reduce(initial)
+              self.each do |element|
+                initial = yield initial, element
+              end
+              initial
+            end
+          end
+
+  %section
+    %p Despite being correct, there is no good way to reuse this functionality in classes that have a more logical parent class
+
+%section
+  %section
+    %h2 Modules
+    %ul
+      %li Let's define this functionality in a module instead of a class
+      %li Modules are not directly instantiable
+
+    %pre
+      %code
+        :preserve
+          module Enumerable
+            def map
+              ...
+            end
+
+            def filter
+              ...
+            end
+
+            def reduce
+              ...
+            end
+          end
+
+  %section
+    %h3 Modules
+    %ul
+      %li Let's include the module in a class with each defined
+      %li Modules used in this way are called mixins
+    %pre
+      %code
+        :preserve
+          class CollectionOfSomeSort
+            include Enumerable
+
+            def each
+              ...
+            end
+          end
+
+          collection = CollectionOfSomeSort.new
+          collection.map { |element| [element, element] }
+
+%section
+  %section
+    %h2 Reopening Classes
+    %ul
+      %li We want a utility to turn the singular form of a word into the plural form
+      %li This is used everywhere in Rails
+      %li
+        What are our options?
+        %ul
+          %li.fragment We can make a StringUtils class
+          %li.fragment But we would really just love if String#pluralize was defined
+
+  %section
+    %h3 Reopening Classes
+    %p Well, we can do just that
+    %pre
+      %code
+        :preserve
+          class String
+            def pluralize
+              if self =~ /s$/
+                self
+              else
+                self + "s"
+              end
+            end
+          end
+
+  %section
+    %p
+      Use this only if you have a
+      %strong very
+      good reason
+
+%section
+  %h2 OOP is good design
+  %ul
+    %li
+      We have finally arrived at a
+      %em real
+      programming language
+    %li Now we can actually write large systems
+    %li And leverage all of our Gang of Four design patterns
+
+%section
+  %h1 Wrong!
+
+%section
+  %h2 The problem with CS 308
+  %ul
+    %li Please never think that
+    %li We have spent 11 weeks looking at various equally valid programming paradigms
+    %li
+      Object oriented programming is
+      %em one
+      way you may choose to structure your code
+    %li It works well in some situations
+    %li Not so well in others
+    %li There are tradeoffs just like any other design decision

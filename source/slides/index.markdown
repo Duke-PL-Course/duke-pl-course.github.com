@@ -14,3 +14,4 @@ footer: false
 * Week 9: [Datatypes and IO in Haskell](/slides/haskell-datatypes.html)
 * Week 10: [Higher Order Constructs in Haskell](/slides/haskell-high-level.html)
 * Week 11: [Scripting in Ruby](/slides/ruby-basics.html)
+* Week 12: [Object Oriented Programming in Ruby](/slides/ruby-oop.html)

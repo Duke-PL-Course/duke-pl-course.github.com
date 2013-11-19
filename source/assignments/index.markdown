@@ -23,11 +23,17 @@ footer: false
 - [Learn You a Haskell](http://learnyouahaskell.com/chapters) Chapters 2, 4, 5
 
 **Week 7 (10/8/13)**
-- [Learn You a Haskell] Chapters 3, 6
+- [Learn You a Haskell](http://learnyouahaskell.com/chapters) Chapters 3, 6
 
 **Week 9 (10/29/13)**
-- [Learn You a Haskell] Chapters 8, 9
+- [Learn You a Haskell](http://learnyouahaskell.com/chapters) Chapters 8, 9
 
 **Week 10 (11/5/13)**
-- [Learn You a Haskell] Chapters 11, 12
+- [Learn You a Haskell](http://learnyouahaskell.com/chapters) Chapters 11, 12
 - [A Brief, Incomplete, and Mostly Wrong History of Programming Languages](http://james-iry.blogspot.com/2009/05/brief-incomplete-and-mostly-wrong.html)
+
+**Week 11 (11/12/13)**
+- [Ruby on CodeAcademy](http://www.codecademy.com/tracks/ruby) Sections 1-15
+
+**Week 12 (11/19/13)**
+- [Ruby on CodeAcademy](http://www.codecademy.com/tracks/ruby) Sections 16-19

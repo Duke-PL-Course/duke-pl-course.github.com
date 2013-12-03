@@ -106,7 +106,7 @@
     </url>
     <url>
         <loc>http://Duke-PL-Course.github.com/assignments/</loc>
-        <lastmod>2013-11-19T13:08:53-05:00</lastmod>
+        <lastmod>2013-12-03T13:47:37-05:00</lastmod>
     </url>
     <url>
         <loc>http://Duke-PL-Course.github.com/resources/</loc>
@@ -129,8 +129,12 @@
         <lastmod>2013-10-01T14:25:45-04:00</lastmod>
     </url>
     <url>
+        <loc>http://Duke-PL-Course.github.com/slides/ruby-metaprogramming.html</loc>
+        <lastmod>2013-12-03T13:59:21-05:00</lastmod>
+    </url>
+    <url>
         <loc>http://Duke-PL-Course.github.com/slides/</loc>
-        <lastmod>2013-11-19T13:36:19-05:00</lastmod>
+        <lastmod>2013-12-03T11:58:05-05:00</lastmod>
     </url>
     <url>
         <loc>http://Duke-PL-Course.github.com/slides/ruby-basics.html</loc>

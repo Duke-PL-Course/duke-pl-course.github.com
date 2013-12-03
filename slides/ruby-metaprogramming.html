@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="en">
+  <head>
+	<meta charset="utf-8">
+
+    <title>Duke PL Course</title>
+
+    
+    <meta name="description" content="Programming Languages Metaprogramming in Ruby Jim Posen - ECE/CS 2014 Ruby is Flexible Rubyists like to claim this What have we seen so far to &hellip;">
+    
+    <meta name="author" content="Yang Su, Kevin Gao">
+
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/reveal.min.css">
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/theme/beige.css" id="theme">
+
+	<!-- For syntax highlighting -->
+	<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/lib/css/zenburn.css">
+
+	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+	<script>
+	  document.write( '<link rel="stylesheet" href="/vendor/reveal.js-2.5.0/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+	</script>
+
+	<!--[if lt IE 9]>
+	<script src="lib/js/html5shiv.js"></script>
+	<![endif]-->
+
+    <link href="/favicon.png" rel="icon">
+  </head>
+
+  <body>
+	<div class="reveal">
+	  <!-- Any section element inside of this container is displayed as a slide -->
+	  <div class="slides">
+        <section>
+  <h1>Programming Languages</h1>
+  <h3>Metaprogramming in Ruby</h3>
+  <small>Jim Posen - ECE/CS 2014</small>
+</section>
+<section>
+  <h2>Ruby is Flexible</h2>
+  <ul>
+    <li>Rubyists like to claim this</li>
+    <li>
+      What have we seen so far to support this?
+      <ul>
+        <li class='fragment'>Dynamic/duck typing</li>
+        <li class='fragment'>Open classes</li>
+        <li class='fragment'>Blocks</li>
+        <li class='fragment'>Anonymous classes</li>
+      </ul>
+    </li>
+  </ul>
+</section>
+<section>
+  <h2>Method definition review</h2>
+  <ul>
+    <li>Instance methods are defined in classes</li>
+    <li>Methods are callable on instances of the class</li>
+  </ul>
+  <pre><code>class Dog&#x000A;  def bark&#x000A;    "woof"&#x000A;  end&#x000A;end&#x000A;&#x000A;dog = Dog.new&#x000A;dog.bark&#x000A;</code></pre>
+</section>
+<section>
+  <h2>Self</h2>
+  <ul>
+    <li>
+      <code>self</code>
+      is a reference to the object in scope
+    </li>
+  </ul>
+  <pre><code>class Dog&#x000A;  def speak&#x000A;    self.bark&#x000A;  end&#x000A;end&#x000A;&#x000A;dog.speak&#x000A;</code></pre>
+</section>
+<section>
+  <h2>Methods on classes</h2>
+  <ul>
+    <li>Certain methods are defined on instances of Class</li>
+    <li>
+      <code>new</code>
+      and
+      <code>superclass</code>
+      for example
+    </li>
+    <li>This is possible because classes are objects</li>
+  </ul>
+  <pre><code>Dog.superclass  # => Animal&#x000A;Dog.new  # => instance of Dog&#x000A;Dog.class  # => Class&#x000A;</code></pre>
+</section>
+<section>
+  <section>
+    <h2>Class method review</h2>
+    <ul>
+      <li>We can also define custom methods on classes</li>
+    </ul>
+    <pre><code>def Dog&#x000A;  def self.type&#x000A;    :mammal&#x000A;  end&#x000A;end&#x000A;&#x000A;Dog.type  # => :mammal&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Let&#8217;s deconstruct this</h3>
+    <ul>
+      <li>In the context of the class definition, what is self?</li>
+      <li class='fragment'>It&#8217;s the Dog object</li>
+    </ul>
+  </section>
+  <section>
+    <p>Then that should be equivalent to</p>
+    <pre><code>def Dog&#x000A;end&#x000A;&#x000A;def Dog.type&#x000A;  :mammal&#x000A;end&#x000A;&#x000A;Dog.type  # => :mammal&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>Taking this a step further</h2>
+    <ul>
+      <li>We can define methods inside classes, callable on all instances</li>
+      <li>
+        It appears that we can define methods
+        <em>on objects</em>
+      </li>
+    </ul>
+    <pre><code>dog = Dog.new&#x000A;dog.bark  # => "woof"&#x000A;&#x000A;def dog.bark&#x000A;  "meow"&#x000A;end&#x000A;&#x000A;dog.bark  # => "meow"&#x000A;&#x000A;other_dog = Dog.new&#x000A;dog.bark  # => "woof"&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Not quite</h3>
+    <ul>
+      <li>Object store instance variables</li>
+      <li>
+        <strong>Objects do not store methods, only classes can</strong>
+      </li>
+    </ul>
+  </section>
+</section>
+<section>
+  <h2>Eigenclasses</h2>
+  <ul>
+    <li>You may define methods on an object&#8217;s eigenclass</li>
+    <li>Methods defined here are only callable on the object</li>
+    <li>
+      Every object
+      <em>may</em>
+      have one
+    </li>
+    <li>Eigenclasses are also called metaclasses or singleton classes</li>
+  </ul>
+</section>
+<section>
+  <h2>Connecting with your inner eigenclass</h2>
+  <ul>
+    <li>
+      You can use
+      <code>class << object</code>
+      to open up that object&#8217;s eigenclass
+    </li>
+    <li>
+      <code>Object#singleton_class</code>
+      will return your eigenclass
+    </li>
+  </ul>
+  <pre><code>class Dog&#x000A;  class << self&#x000A;    def type&#x000A;      :mammal&#x000A;    end&#x000A;  end&#x000A;end&#x000A;&#x000A;class << Dog&#x000A;  def type&#x000A;    :mammal&#x000A;  end&#x000A;end&#x000A;</code></pre>
+</section>
+<section>
+  <h3>The moral of the story</h3>
+  <ul>
+    <li>We have a new way to add custom functionality</li>
+    <li>
+      Be aware of what
+      <code>self</code>
+      is referring to
+    </li>
+  </ul>
+</section>
+<section>
+  <h2>
+    <code>define_method</code>
+  </h2>
+  <ul>
+    <li>We can define methods programmatically</li>
+    <li>
+      <code>Class#define_method</code>
+      takes a block and defines a method on the class
+    </li>
+    <li>
+      This is how we can define
+      <code>Class#attr_accessor</code>
+    </li>
+  </ul>
+  <pre><code>class Class&#x000A;  def attr_accessor(attr)&#x000A;    define_method(attr) do&#x000A;      instance_variable_get "@#{attr}"&#x000A;    end&#x000A;&#x000A;    define_method("#{attr}=") do |val|&#x000A;      instance_variable_set "@#{attr}", val&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+</section>
+<section>
+  <section>
+    <h2>
+      <code>method_missing</code>
+    </h2>
+    <ul>
+      <li>
+        If no method definition is found, Ruby will try to call
+        <code>method_missing</code>
+      </li>
+      <li>This is your last chance to respond to a &#8220;message&#8221;</li>
+    </ul>
+  </section>
+  <section>
+    <h3>OpenStruct</h3>
+    <ul>
+      <li>Like a dictionary but has getters and setters</li>
+    </ul>
+    <pre><code>person = OpenStruct.new&#x000A;person.name    = "John Smith"&#x000A;person.age     = 70&#x000A;person.pension = 300&#x000A;&#x000A;puts person.name     # -> "John Smith"&#x000A;puts person.age      # -> 70&#x000A;puts person.address  # -> nil&#x000A;</code></pre>
+  </section>
+  <section>
+    <h3>Let&#8217;s define it</h3>
+    <pre><code>class OpenStruct&#x000A;  def initialize&#x000A;    @attrs = {}&#x000A;  end&#x000A;&#x000A;  def method_missing(method, val = nil)&#x000A;    if method =~ /^(\w+)=$/&#x000A;      # Setter&#x000A;      @attrs[$1] = val&#x000A;    elsif method =~ /\w+/&#x000A;      # Getter&#x000A;      @attrs[method]&#x000A;    else&#x000A;      # Die&#x000A;      super&#x000A;    end&#x000A;  end&#x000A;end&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <h2>
+    <code>instance_eval</code>
+  </h2>
+  <ul>
+    <li>Evalutes a code block in the context of an object instance</li>
+    <li>You can access private methods and instance variables</li>
+  </ul>
+  <pre><code>class Dog&#x000A;  private&#x000A;  def bark&#x000A;    "woof"&#x000A;  end&#x000A;end&#x000A;&#x000A;dog = Dog.new&#x000A;dog.instance_eval { bark }  # => "woof"&#x000A;</code></pre>
+</section>
+<section>
+  <h1>Domain Specific Languages</h1>
+</section>
+<section>
+  <section>
+    <h2>Domain Specific Languages</h2>
+    <ul>
+      <li>In this class we have seen 3 general purpose programming languages</li>
+      <li>
+        There are many general purpose languages, but there are
+        <strong>far more</strong>
+        domain specific languages
+      </li>
+      <li>DSLs are small, special purpose languages for a very specific problem</li>
+      <li>Examples are configuration languages, testing frameworks, etc</li>
+    </ul>
+  </section>
+  <section>
+    <h3>nginx configuration</h3>
+    <pre><code>server {&#x000A;    listen          80;&#x000A;    server_name     domain.com *.domain.com;&#x000A;    return          301 $scheme://www.domain.com$request_uri;&#x000A; }&#x000A;&#x000A;server {&#x000A;    listen          80;&#x000A;    server_name     www.domain.com;&#x000A;&#x000A;    index           index.html;&#x000A;    root            /home/domain.com;&#x000A;}&#x000A;</code></pre>
+  </section>
+</section>
+<section>
+  <section>
+    <h2>DSLs in Ruby</h2>
+    <ul>
+      <li>Do to Ruby&#8217;s flexibility, it is easy to implement DSLs with Ruby</li>
+      <li>A widely used example is the testing framework RSpec</li>
+    </ul>
+    <pre><code>feature "Widget management" do&#x000A;  scenario "User creates a new widget" do&#x000A;    visit "/widgets/new"&#x000A;&#x000A;    fill_in "Name", :with => "My Widget"&#x000A;    click_button "Create Widget"&#x000A;&#x000A;    expect(page).to have_text("Widget was successfully created.")&#x000A;  end&#x000A;end</code></pre>
+  </section>
+</section>
+
+      </div>
+    </div>
+
+	<script src="/vendor/reveal.js-2.5.0/lib/js/head.min.js"></script>
+	<script src="/vendor/reveal.js-2.5.0/js/reveal.min.js"></script>
+
+	<script>
+	  // Full list of configuration options available here:
+	  // https://github.com/hakimel/reveal.js#configuration
+	  Reveal.initialize({
+	  controls: true,
+	  progress: true,
+	  history: true,
+	  center: true,
+
+	  theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+	  transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+	  // Optional libraries used to extend on reveal.js
+	  dependencies: [
+	  { src: '/vendor/reveal.js-2.5.0/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+	  { src: '/vendor/reveal.js-2.5.0/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+	  ]
+	  });
+	</script>
+    
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-37844085-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+
+  </body>
+</html>

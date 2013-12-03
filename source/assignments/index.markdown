@@ -37,3 +37,7 @@ footer: false
 
 **Week 12 (11/19/13)**
 - [Ruby on CodeAcademy](http://www.codecademy.com/tracks/ruby) Sections 16-19
+
+**Week 14 (12/3/13)**
+- [Seeing Metaclasses Clearly](http://dannytatom.me/metaid/)
+- [Macros](http://www.trottercashion.com/2011/02/08/rubys-define_method-method_missing-and-instance_eval.html)

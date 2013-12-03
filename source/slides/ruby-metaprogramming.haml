@@ -1,0 +1,343 @@
+---
+layout: slide
+---
+
+%section
+  %h1 Programming Languages
+  %h3 Metaprogramming in Ruby
+  %small Jim Posen - ECE/CS 2014
+
+%section
+  %h2 Ruby is Flexible
+  %ul
+    %li Rubyists like to claim this
+    %li
+      What have we seen so far to support this?
+      %ul
+        %li.fragment Dynamic/duck typing
+        %li.fragment Open classes
+        %li.fragment Blocks
+        %li.fragment Anonymous classes
+
+%section
+  %h2 Method definition review
+  %ul
+    %li Instance methods are defined in classes
+    %li Methods are callable on instances of the class
+
+  %pre
+    %code
+      :preserve
+        class Dog
+          def bark
+            "woof"
+          end
+        end
+
+        dog = Dog.new
+        dog.bark
+
+%section
+  %h2 Self
+  %ul
+    %li
+      %code self
+      is a reference to the object in scope
+
+  %pre
+    %code
+      :preserve
+        class Dog
+          def speak
+            self.bark
+          end
+        end
+
+        dog.speak
+
+%section
+  %h2 Methods on classes
+  %ul
+    %li Certain methods are defined on instances of Class
+    %li
+      %code new
+      and
+      %code superclass
+      for example
+    %li This is possible because classes are objects
+
+  %pre
+    %code
+      :preserve
+        Dog.superclass  # => Animal
+        Dog.new  # => instance of Dog
+        Dog.class  # => Class
+
+%section
+  %section
+    %h2 Class method review
+    %ul
+      %li We can also define custom methods on classes
+
+    %pre
+      %code
+        :preserve
+          def Dog
+            def self.type
+              :mammal
+            end
+          end
+
+          Dog.type  # => :mammal
+
+  %section
+    %h3 Let's deconstruct this
+    %ul
+      %li In the context of the class definition, what is self?
+      %li.fragment It's the Dog object
+
+  %section
+    %p Then that should be equivalent to
+    %pre
+      %code
+        :preserve
+          def Dog
+          end
+
+          def Dog.type
+            :mammal
+          end
+
+          Dog.type  # => :mammal
+
+%section
+  %section
+    %h2 Taking this a step further
+    %ul
+      %li We can define methods inside classes, callable on all instances
+      %li
+        It appears that we can define methods
+        %em on objects
+
+    %pre
+      %code
+        :preserve
+          dog = Dog.new
+          dog.bark  # => "woof"
+
+          def dog.bark
+            "meow"
+          end
+
+          dog.bark  # => "meow"
+
+          other_dog = Dog.new
+          dog.bark  # => "woof"
+
+  %section
+    %h3 Not quite
+    %ul
+      %li Object store instance variables
+      %li
+        %strong Objects do not store methods, only classes can
+
+%section
+  %h2 Eigenclasses
+  %ul
+    %li You may define methods on an object's eigenclass
+    %li Methods defined here are only callable on the object
+    %li
+      Every object
+      %em may
+      have one
+    %li Eigenclasses are also called metaclasses or singleton classes
+
+%section
+  %h2 Connecting with your inner eigenclass
+  %ul
+    %li
+      You can use
+      %code class << object
+      to open up that object's eigenclass
+    %li
+      %code Object#singleton_class
+      will return your eigenclass
+
+  %pre
+    %code
+      :preserve
+        class Dog
+          class << self
+            def type
+              :mammal
+            end
+          end
+        end
+
+        class << Dog
+          def type
+            :mammal
+          end
+        end
+
+%section
+  %h3 The moral of the story
+  %ul
+    %li We have a new way to add custom functionality
+    %li
+      Be aware of what
+      %code self
+      is referring to
+
+
+%section
+  %h2
+    %code define_method
+  %ul
+    %li We can define methods programmatically
+    %li
+      %code Class#define_method
+      takes a block and defines a method on the class
+    %li
+      This is how we can define
+      %code Class#attr_accessor
+
+  %pre
+    %code
+      :preserve
+        class Class
+          def attr_accessor(attr)
+            define_method(attr) do
+              instance_variable_get "@\#{attr}"
+            end
+
+            define_method("\#{attr}=") do |val|
+              instance_variable_set "@\#{attr}", val
+            end
+          end
+        end
+
+%section
+  %section
+    %h2
+      %code method_missing
+    %ul
+      %li
+        If no method definition is found, Ruby will try to call
+        %code method_missing
+      %li This is your last chance to respond to a "message"
+
+  %section
+    %h3 OpenStruct
+    %ul
+      %li Like a dictionary but has getters and setters
+    %pre
+      %code
+        :preserve
+          person = OpenStruct.new
+          person.name    = "John Smith"
+          person.age     = 70
+          person.pension = 300
+
+          puts person.name     # -> "John Smith"
+          puts person.age      # -> 70
+          puts person.address  # -> nil
+
+  %section
+    %h3 Let's define it
+    %pre
+      %code
+        :preserve
+          class OpenStruct
+            def initialize
+              @attrs = {}
+            end
+
+            def method_missing(method, val = nil)
+              if method =~ /^(\w+)=$/
+                # Setter
+                @attrs[$1] = val
+              elsif method =~ /\w+/
+                # Getter
+                @attrs[method]
+              else
+                # Die
+                super
+              end
+            end
+          end
+
+%section
+  %h2
+    %code instance_eval
+  %ul
+    %li Evalutes a code block in the context of an object instance
+    %li You can access private methods and instance variables
+
+  %pre
+    %code
+      :preserve
+        class Dog
+          private
+          def bark
+            "woof"
+          end
+        end
+
+        dog = Dog.new
+        dog.instance_eval { bark }  # => "woof"
+
+%section
+  %h1 Domain Specific Languages
+
+%section
+  %section
+    %h2 Domain Specific Languages
+    %ul
+      %li In this class we have seen 3 general purpose programming languages
+      %li
+        There are many general purpose languages, but there are
+        %strong far more
+        domain specific languages
+      %li DSLs are small, special purpose languages for a very specific problem
+      %li Examples are configuration languages, testing frameworks, etc
+
+  %section
+    %h3 nginx configuration
+    %pre
+      %code
+        :preserve
+          server {
+              listen          80;
+              server_name     domain.com *.domain.com;
+              return          301 $scheme://www.domain.com$request_uri;
+           }
+
+          server {
+              listen          80;
+              server_name     www.domain.com;
+
+              index           index.html;
+              root            /home/domain.com;
+          }
+
+%section
+  %section
+    %h2 DSLs in Ruby
+    %ul
+      %li Do to Ruby's flexibility, it is easy to implement DSLs with Ruby
+      %li A widely used example is the testing framework RSpec
+
+    %pre
+      %code
+        :preserve
+          feature "Widget management" do
+            scenario "User creates a new widget" do
+              visit "/widgets/new"
+
+              fill_in "Name", :with => "My Widget"
+              click_button "Create Widget"
+
+              expect(page).to have_text("Widget was successfully created.")
+            end
+          end
